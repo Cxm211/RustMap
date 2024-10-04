@@ -1,0 +1,11 @@
+You will be provided with C code that contains some simple and complex macros. Your task is to convert these macros into non-macro equivalent code, ensuring the functionality and logic remain the same. You must replace the macro definitions with standard C code (such as inline functions or constant variables), but the way they are called or invoked should not change in the code. All code that is not part of a macro should remain unchanged. Generate compliable and complete code. 
+Requirements:
+1. For simple macros (e.g., constant values), replace them with appropriate const variables with same names.
+2. For macros with arguments (complex macros), replace them with functions while ensuring that return values, function name and functionality remain unchanged. If the parameter types of the converted function are unclear, refer to the later code for clarification. If the type remains unclear, do not convert the macro and highlight the uncertainty.
+3. If a macro is defined or undefined within a conditional compilation directive (e.g., #if, #ifdef, #ifndef), it should remain unchanged for all statements.
+4. Be mindful of any operator precedence or edge cases that could occur with macro expansions, and ensure the logic is preserved without altering the original functionality.
+5. If a macro has been replaced and is followed by an #undef directive, remove the #undef statement.
+6. If the macro applies to multiple data types, create multiple versions of the function for each applicable data type (using function overloading or type-specific function names as needed in C).
+7. If there are any uncertainties about how the macro should be converted or any potential ambiguity, ask for clarification before making the conversion.
+8. After converting the macros, output the entire modified code with both the converted macros and the unchanged non-macro code.
+9. If any undefined function or macros appears in future conversations, refer to the conversation history for context.

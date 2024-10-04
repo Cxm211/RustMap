@@ -1,0 +1,33 @@
+If the C code references other vital functions or structures, ask me first and wait for my provided input. (ASK ME first) Convert the given code to idiomatic Rust, keeping its func- tion. Use minimal unsafe traits. Don’t translate unknown vari-
+ables or functions, and avoid assumptions. (ASK ME first)
+(1) If a variable inside the function is modified, add the mut specifier.
+
+(2) Distinguish between mutable and immutable refer- ences by storing intermediate values.
+(3) Ifnecessary,addlifetimeannotations.needaddmore refe
+(4) Add clear comments for all numeric types and pay at- tention to type conversions, especially between usize and others.
+(5) Be especially careful if the C code itself has out-of- bound errors.
+(6) UsetheRustlibraryasmuchaspossible.
+(7) When performing arithmetic operations, be mindful
+of potential overflow or underflow.
+translate: 
+
+static
+void showFileNames ( void )
+{
+   if (noisy)
+   fprintf (
+      
+# 687 "bzip2.c" 3 4
+     stderr
+# 687 "bzip2.c"
+           ,
+      "\tInput file = %s, output file = %s\n",
+      inName, outName
+   );
+}
+
+
+
+I must reiterate: if you encounter unfamiliar variables or functions during translation, you must ask me and wait for my provided input before translating. 
+
+(ASK ME FIRST)

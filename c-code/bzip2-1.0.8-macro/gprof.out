@@ -1,0 +1,282 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 50.00      0.02     0.02     1129     0.02     0.02  mainGtU
+ 50.00      0.04     0.02        1    20.00    20.00  fallbackSort
+  0.00      0.04     0.00       26     0.00     1.54  BZ2_bzCompress
+  0.00      0.04     0.00       26     0.00     0.00  myfeof
+  0.00      0.04     0.00       26     0.00     1.54  myfeof
+  0.00      0.04     0.00       25     0.00     1.54  BZ2_bzWrite
+  0.00      0.04     0.00       12     0.00     0.00  BZ2_hbMakeCodeLengths
+  0.00      0.04     0.00        9     0.00     0.00  add_pair_to_block
+  0.00      0.04     0.00        5     0.00     0.00  copyFileName
+  0.00      0.04     0.00        4     0.00     0.00  default_bzalloc
+  0.00      0.04     0.00        4     0.00     0.00  default_bzfree
+  0.00      0.04     0.00        4     0.00     0.00  hasSuffix
+  0.00      0.04     0.00        3     0.00     0.00  BZ2_hbAssignCodes
+  0.00      0.04     0.00        2     0.00     0.00  addFlagsFromEnvVar
+  0.00      0.04     0.00        2     0.00     0.00  bsPutUInt32
+  0.00      0.04     0.00        1     0.00    40.00  BZ2_blockSort
+  0.00      0.04     0.00        1     0.00     0.00  BZ2_bzCompressEnd
+  0.00      0.04     0.00        1     0.00     0.00  BZ2_bzCompressInit
+  0.00      0.04     0.00        1     0.00     1.54  BZ2_bzWriteClose64
+  0.00      0.04     0.00        1     0.00     0.00  BZ2_bzWriteOpen
+  0.00      0.04     0.00        1     0.00    40.00  BZ2_compressBlock
+  0.00      0.04     0.00        1     0.00    40.00  compress
+  0.00      0.04     0.00        1     0.00    40.00  compressStream
+  0.00      0.04     0.00        1     0.00     0.00  generateMTFValues
+  0.00      0.04     0.00        1     0.00    20.00  mainSort
+  0.00      0.04     0.00        1     0.00     0.00  snocString
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 25.00% of 0.04 seconds
+
+index % time    self  children    called     name
+                0.00    0.00       1/26          BZ2_bzWriteClose64 [12]
+                0.00    0.04      25/26          BZ2_bzWrite [8]
+[1]    100.0    0.00    0.04      26         BZ2_bzCompress [1]
+                0.00    0.04      26/26          myfeof [2]
+-----------------------------------------------
+                0.00    0.04      26/26          BZ2_bzCompress [1]
+[2]    100.0    0.00    0.04      26         myfeof [2]
+                0.00    0.04       1/1           BZ2_compressBlock [4]
+                0.00    0.00       9/9           add_pair_to_block [15]
+-----------------------------------------------
+                0.00    0.04       1/1           BZ2_compressBlock [4]
+[3]    100.0    0.00    0.04       1         BZ2_blockSort [3]
+                0.00    0.02       1/1           mainSort [11]
+                0.02    0.00       1/1           fallbackSort [10]
+-----------------------------------------------
+                0.00    0.04       1/1           myfeof [2]
+[4]    100.0    0.00    0.04       1         BZ2_compressBlock [4]
+                0.00    0.04       1/1           BZ2_blockSort [3]
+                0.00    0.00      12/12          BZ2_hbMakeCodeLengths [14]
+                0.00    0.00       3/3           BZ2_hbAssignCodes [20]
+                0.00    0.00       2/2           bsPutUInt32 [22]
+                0.00    0.00       1/1           generateMTFValues [26]
+-----------------------------------------------
+                0.00    0.04       1/1           main [7]
+[5]    100.0    0.00    0.04       1         compress [5]
+                0.00    0.04       1/1           compressStream [6]
+                0.00    0.00       4/4           hasSuffix [19]
+                0.00    0.00       2/5           copyFileName [16]
+-----------------------------------------------
+                0.00    0.04       1/1           compress [5]
+[6]    100.0    0.00    0.04       1         compressStream [6]
+                0.00    0.04      25/25          BZ2_bzWrite [8]
+                0.00    0.00       1/1           BZ2_bzWriteClose64 [12]
+                0.00    0.00      26/26          myfeof [13]
+                0.00    0.00       1/1           BZ2_bzWriteOpen [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]    100.0    0.00    0.04                 main [7]
+                0.00    0.04       1/1           compress [5]
+                0.00    0.00       3/5           copyFileName [16]
+                0.00    0.00       2/2           addFlagsFromEnvVar [21]
+                0.00    0.00       1/1           snocString [27]
+-----------------------------------------------
+                0.00    0.04      25/25          compressStream [6]
+[8]     96.2    0.00    0.04      25         BZ2_bzWrite [8]
+                0.00    0.04      25/26          BZ2_bzCompress [1]
+-----------------------------------------------
+                0.02    0.00    1129/1129        mainSort [11]
+[9]     50.0    0.02    0.00    1129         mainGtU [9]
+-----------------------------------------------
+                0.02    0.00       1/1           BZ2_blockSort [3]
+[10]    50.0    0.02    0.00       1         fallbackSort [10]
+-----------------------------------------------
+                0.00    0.02       1/1           BZ2_blockSort [3]
+[11]    50.0    0.00    0.02       1         mainSort [11]
+                0.02    0.00    1129/1129        mainGtU [9]
+-----------------------------------------------
+                0.00    0.00       1/1           compressStream [6]
+[12]     3.8    0.00    0.00       1         BZ2_bzWriteClose64 [12]
+                0.00    0.00       1/26          BZ2_bzCompress [1]
+                0.00    0.00       1/1           BZ2_bzCompressEnd [23]
+-----------------------------------------------
+                0.00    0.00      26/26          compressStream [6]
+[13]     0.0    0.00    0.00      26         myfeof [13]
+-----------------------------------------------
+                0.00    0.00      12/12          BZ2_compressBlock [4]
+[14]     0.0    0.00    0.00      12         BZ2_hbMakeCodeLengths [14]
+-----------------------------------------------
+                0.00    0.00       9/9           myfeof [2]
+[15]     0.0    0.00    0.00       9         add_pair_to_block [15]
+-----------------------------------------------
+                0.00    0.00       2/5           compress [5]
+                0.00    0.00       3/5           main [7]
+[16]     0.0    0.00    0.00       5         copyFileName [16]
+-----------------------------------------------
+                0.00    0.00       4/4           BZ2_bzCompressInit [24]
+[17]     0.0    0.00    0.00       4         default_bzalloc [17]
+-----------------------------------------------
+                0.00    0.00       4/4           BZ2_bzCompressEnd [23]
+[18]     0.0    0.00    0.00       4         default_bzfree [18]
+-----------------------------------------------
+                0.00    0.00       4/4           compress [5]
+[19]     0.0    0.00    0.00       4         hasSuffix [19]
+-----------------------------------------------
+                0.00    0.00       3/3           BZ2_compressBlock [4]
+[20]     0.0    0.00    0.00       3         BZ2_hbAssignCodes [20]
+-----------------------------------------------
+                0.00    0.00       2/2           main [7]
+[21]     0.0    0.00    0.00       2         addFlagsFromEnvVar [21]
+-----------------------------------------------
+                0.00    0.00       2/2           BZ2_compressBlock [4]
+[22]     0.0    0.00    0.00       2         bsPutUInt32 [22]
+-----------------------------------------------
+                0.00    0.00       1/1           BZ2_bzWriteClose64 [12]
+[23]     0.0    0.00    0.00       1         BZ2_bzCompressEnd [23]
+                0.00    0.00       4/4           default_bzfree [18]
+-----------------------------------------------
+                0.00    0.00       1/1           BZ2_bzWriteOpen [25]
+[24]     0.0    0.00    0.00       1         BZ2_bzCompressInit [24]
+                0.00    0.00       4/4           default_bzalloc [17]
+-----------------------------------------------
+                0.00    0.00       1/1           compressStream [6]
+[25]     0.0    0.00    0.00       1         BZ2_bzWriteOpen [25]
+                0.00    0.00       1/1           BZ2_bzCompressInit [24]
+-----------------------------------------------
+                0.00    0.00       1/1           BZ2_compressBlock [4]
+[26]     0.0    0.00    0.00       1         generateMTFValues [26]
+-----------------------------------------------
+                0.00    0.00       1/1           main [7]
+[27]     0.0    0.00    0.00       1         snocString [27]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [3] BZ2_blockSort          [14] BZ2_hbMakeCodeLengths  [10] fallbackSort (blocksort.c)
+   [1] BZ2_bzCompress         [21] addFlagsFromEnvVar (bzip2.c) [26] generateMTFValues (compress.c)
+  [23] BZ2_bzCompressEnd      [15] add_pair_to_block (bzlib.c) [19] hasSuffix (bzip2.c)
+  [24] BZ2_bzCompressInit     [22] bsPutUInt32 (compress.c) [9] mainGtU (blocksort.c)
+   [8] BZ2_bzWrite             [5] compress (bzip2.c)     [11] mainSort (blocksort.c)
+  [12] BZ2_bzWriteClose64      [6] compressStream (bzip2.c) [13] myfeof (bzip2.c)
+  [25] BZ2_bzWriteOpen        [16] copyFileName (bzip2.c)  [2] myfeof (bzlib.c)
+   [4] BZ2_compressBlock      [17] default_bzalloc (bzlib.c) [27] snocString (bzip2.c)
+  [20] BZ2_hbAssignCodes      [18] default_bzfree (bzlib.c)

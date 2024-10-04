@@ -1,0 +1,27 @@
+digraph {
+	graph [fontname=Arial, nodesep=0.125, ranksep=0.25];
+	node [fontcolor=white, fontname=Arial, height=0, shape=box, style=filled, width=0];
+	edge [fontname=Arial];
+	1 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="mainGtU\n100.00%\n(100.00%)\n141832×"];
+	2 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="BZ2_bzCompress\n100.00%\n(0.00%)\n27×"];
+	2 -> 3 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n27×", labeldistance="4.00", penwidth="4.00"];
+	3 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="myfeof\n100.00%\n(0.00%)\n27×"];
+	3 -> 5 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n1×", labeldistance="4.00", penwidth="4.00"];
+	4 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="BZ2_blockSort\n100.00%\n(0.00%)\n1×"];
+	4 -> 8 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n1×", labeldistance="4.00", penwidth="4.00"];
+	5 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="BZ2_compressBlock\n100.00%\n(0.00%)\n1×"];
+	5 -> 4 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n1×", labeldistance="4.00", penwidth="4.00"];
+	6 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="compress\n100.00%\n(0.00%)\n1×"];
+	6 -> 7 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n1×", labeldistance="4.00", penwidth="4.00"];
+	7 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="compressStream\n100.00%\n(0.00%)\n1×"];
+	7 -> 10 [arrowsize="0.86", color="#d0d806", fontcolor="#d0d806", fontsize="10.00", label="74.07%\n20×", labeldistance="2.96", penwidth="2.96"];
+	7 -> 11 [arrowsize="0.51", color="#0c9590", fontcolor="#0c9590", fontsize="10.00", label="25.93%\n1×", labeldistance="1.04", penwidth="1.04"];
+	8 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="mainSort\n100.00%\n(0.00%)\n1×"];
+	8 -> 1 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n141832×", labeldistance="4.00", penwidth="4.00"];
+	9 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="main\n100.00%\n(0.00%)"];
+	9 -> 6 [arrowsize="1.00", color="#ff0000", fontcolor="#ff0000", fontsize="10.00", label="100.00%\n1×", labeldistance="4.00", penwidth="4.00"];
+	10 [color="#d0d806", fontcolor="#ffffff", fontsize="10.00", label="BZ2_bzWrite\n74.07%\n(0.00%)\n20×"];
+	10 -> 2 [arrowsize="0.86", color="#d0d806", fontcolor="#d0d806", fontsize="10.00", label="74.07%\n20×", labeldistance="2.96", penwidth="2.96"];
+	11 [color="#0c9590", fontcolor="#ffffff", fontsize="10.00", label="BZ2_bzWriteClose64\n25.93%\n(0.00%)\n1×"];
+	11 -> 2 [arrowsize="0.51", color="#0c9590", fontcolor="#0c9590", fontsize="10.00", label="25.93%\n7×", labeldistance="1.04", penwidth="1.04"];
+}

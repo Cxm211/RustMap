@@ -1,0 +1,146 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "blocksort.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/blocksort.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "huffman.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/huffman.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "crctable.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/crctable.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "randtable.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/randtable.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "compress.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/compress.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "decompress.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/decompress.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "bzlib.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/bzlib.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "bzip2.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/bzip2.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "--coverage",
+      "-pg",
+      "-c",
+      "bzip2recover.c"
+    ],
+    "directory": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro",
+    "file": "/root/rustmap/xuemeng/c-code/bzip2-1.0.8-macro/bzip2recover.c"
+  }
+]
