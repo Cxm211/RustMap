@@ -1,0 +1,40 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3: 
+      105:    4:int qselect(int *v, int len, int k)
+        -:    5:{
+        -:    6:#	define SWAP(a, b) { tmp = v[a]; v[a] = v[b]; v[b] = tmp; }
+        -:    7:	int i, st, tmp;
+        -:    8: 
+      600:    9:	for (st = i = 0; i < len - 1; i++) {
+      495:   10:		if (v[i] > v[len-1]) continue;
+      267:   11:		SWAP(i, st);
+      267:   12:		st++;
+      267:   13:	}
+        -:   14: 
+      105:   15:	SWAP(len-1, st);
+        -:   16: 
+      180:   17:	return k == st	?v[st]
+       75:   18:			:st > k	? qselect(v, st, k)
+       33:   19:				: qselect(v + st, len - st, k - st);
+        -:   20:}
+        -:   21: 
+        3:   22:int main(void)
+        -:   23:{
+        -:   24:#	define N (sizeof(x)/sizeof(x[0]))
+        3:   25:	int x[] = {9, 8, 7, 6, 5, 0, 1, 2, 3, 4};
+        -:   26:	int y[N];
+        -:   27: 
+        -:   28:	int i;
+       33:   29:	for (i = 0; i < 10; i++) {
+       30:   30:		memcpy(y, x, sizeof(x)); // qselect modifies array
+       30:   31:		printf("%d: %d\n", i, qselect(y, 10, i));
+       30:   32:	}
+        -:   33: 
+        3:   34:	return 0;
+        -:   35:}

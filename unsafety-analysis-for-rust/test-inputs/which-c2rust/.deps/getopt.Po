@@ -1,0 +1,1 @@
+getopt.o: getopt.c /usr/include/stdc-predef.h config.h

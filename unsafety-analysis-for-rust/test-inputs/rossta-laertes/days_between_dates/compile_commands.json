@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/days_between_dates",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/days_between_dates/main.c"
+  }
+]

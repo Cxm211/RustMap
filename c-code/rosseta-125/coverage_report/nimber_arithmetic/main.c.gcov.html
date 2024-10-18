@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - nimber_arithmetic/main.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory nimber_arithmetic">nimber_arithmetic</a> - main.c<span style="font-size: 80%;"> (source / <a href="main.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">46</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-05-15 14:36:07</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : #include &lt;stdio.h&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : #include &lt;stdint.h&gt;</span>
+<span id="L3"><span class="lineNum">       3</span>              :  </span>
+<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC tlaBgGNC">       30543 : uint32_t hpo2(uint32_t n) {</span></span>
+<span id="L5"><span class="lineNum">       5</span> <span class="tlaGNC">       30543 :     return n &amp; -n;</span></span>
+<span id="L6"><span class="lineNum">       6</span>              : }</span>
+<span id="L7"><span class="lineNum">       7</span>              :  </span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">        9276 : uint32_t lhpo2(uint32_t n) {</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">        9276 :     uint32_t q = 0, m = hpo2(n);</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">       31221 :     for (; m % 2 == 0; m &gt;&gt;= 1, ++q) {}</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">        9276 :     return q;</span></span>
+<span id="L12"><span class="lineNum">      12</span>              : }</span>
+<span id="L13"><span class="lineNum">      13</span>              :  </span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">         771 : uint32_t nimsum(uint32_t x, uint32_t y) {</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">         771 :     return x ^ y;</span></span>
+<span id="L16"><span class="lineNum">      16</span>              : }</span>
+<span id="L17"><span class="lineNum">      17</span>              :  </span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">       17022 : uint32_t nimprod(uint32_t x, uint32_t y) {</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">       17022 :     if (x &lt; 2 || y &lt; 2)</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">        5640 :         return x * y;</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">       11382 :     uint32_t h = hpo2(x);</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">       11382 :     if (x &gt; h)</span></span>
+<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">        4167 :         return nimprod(h, y) ^ nimprod(x ^ h, y);</span></span>
+<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">        7215 :     if (hpo2(y) &lt; y)</span></span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">        2577 :         return nimprod(y, x);</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">        4638 :     uint32_t xp = lhpo2(x), yp = lhpo2(y);</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">        4638 :     uint32_t comp = xp &amp; yp;</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">        4638 :     if (comp == 0)</span></span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">        1968 :         return x * y;</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">        2670 :     h = hpo2(comp);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">        2670 :     return nimprod(nimprod(x &gt;&gt; h, y &gt;&gt; h), 3 &lt;&lt; (h - 1));</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">       17022 : }</span></span>
+<span id="L33"><span class="lineNum">      33</span>              :  </span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           6 : void print_table(uint32_t n, char op, uint32_t(*func)(uint32_t, uint32_t)) {</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           6 :     printf(&quot; %c |&quot;, op);</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">         102 :     for (uint32_t a = 0; a &lt;= n; ++a)</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          96 :         printf(&quot;%3d&quot;, a);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :     printf(&quot;\n--- -&quot;);</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         102 :     for (uint32_t a = 0; a &lt;= n; ++a)</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          96 :         printf(&quot;---&quot;);</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">           6 :     printf(&quot;\n&quot;);</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">         102 :     for (uint32_t b = 0; b &lt;= n; ++b) {</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          96 :         printf(&quot;%2d |&quot;, b);</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">        1632 :         for (uint32_t a = 0; a &lt;= n; ++a)</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">        1536 :             printf(&quot;%3d&quot;, func(a, b));</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          96 :         printf(&quot;\n&quot;);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          96 :     }</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">           6 : }</span></span>
+<span id="L49"><span class="lineNum">      49</span>              :  </span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           3 : int main() {</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           3 :     print_table(15, '+', nimsum);</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           3 :     printf(&quot;\n&quot;);</span></span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           3 :     print_table(15, '*', nimprod);</span></span>
+<span id="L54"><span class="lineNum">      54</span> <span class="tlaGNC">           3 :     const uint32_t a = 21508, b = 42689;</span></span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :     printf(&quot;\n%d + %d = %d\n&quot;, a, b, nimsum(a, b));</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaGNC">           3 :     printf(&quot;%d * %d = %d\n&quot;, a, b, nimprod(a, b));</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaGNC">           3 :     return 0;</span></span>
+<span id="L58"><span class="lineNum">      58</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.1-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

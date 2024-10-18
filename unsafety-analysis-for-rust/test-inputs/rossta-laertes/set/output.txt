@@ -1,0 +1,14 @@
+a is: 0 3 6 9
+	0 in set a
+	1 not in set a
+	2 not in set a
+	3 in set a
+	4 not in set a
+b is: 3 5 6 9 10
+union(a, b) is: 0 3 5 6 9 10
+c = common(a, b) is: 3 6 9
+a - b is: 0
+b - a is: 5 10
+b is not a subset of a
+c is a subset of a
+union(a, b) - common(a, b) equals union(a - b, b - a)

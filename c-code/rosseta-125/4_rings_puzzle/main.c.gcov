@@ -1,0 +1,88 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:#define TRUE 1
+        -:    4:#define FALSE 0
+        -:    5: 
+        -:    6:int a,b,c,d,e,f,g;
+        -:    7:int lo,hi,unique,show;
+        -:    8:int solutions;
+        -:    9: 
+        -:   10:void
+     1708:   11:bf()
+        -:   12:{
+    18284:   13:    for (f = lo;f <= hi; f++)
+    17080:   14:        if ((!unique) ||
+    16912:   15:           ((f != a) && (f != c) && (f != d) && (f != g) && (f != e)))
+        -:   16:            {
+    15736:   17:            b = e + f - c;
+    15784:   18:            if ((b >= lo) && (b <= hi) &&
+    11660:   19:                   ((!unique) || ((b != a) && (b != c) &&
+      120:   20:                   (b != d) && (b != g) && (b != e) && (b != f))))
+        -:   21:                {
+    11488:   22:                solutions++;
+    11488:   23:                if (show)
+       48:   24:                    printf("%d %d %d %d %d %d %d\n",a,b,c,d,e,f,g);
+    11488:   25:                }
+    15736:   26:            }
+     1708:   27:}
+        -:   28: 
+        -:   29: 
+        -:   30:void
+      324:   31:ge()
+        -:   32:{
+     3252:   33:    for (e = lo;e <= hi; e++)
+     5544:   34:        if ((!unique) || ((e != a) && (e != c) && (e != d)))
+        -:   35:            {
+     2616:   36:            g = d + e;
+     2784:   37:            if ((g >= lo) && (g <= hi) &&
+     1736:   38:                   ((!unique) || ((g != a) && (g != c) &&
+      168:   39:                   (g != d) && (g != e))))
+     1708:   40:                bf();
+     2616:   41:            }
+      324:   42:}
+        -:   43: 
+        -:   44:void
+       12:   45:acd()
+        -:   46:{
+      108:   47:    for (c = lo;c <= hi; c++)
+      888:   48:        for (d = lo;d <= hi; d++)
+     1528:   49:            if ((!unique) || (c != d))
+        -:   50:                {
+      736:   51:                a = c + d;
+      840:   52:                if ((a >= lo) && (a <= hi) &&
+      324:   53:                   ((!unique) || ((c != 0) && (d != 0))))
+      324:   54:                    ge();
+      832:   55:                }
+       12:   56:}
+        -:   57: 
+        -:   58: 
+        -:   59:void
+       12:   60:foursquares(int plo,int phi, int punique,int pshow)
+        -:   61:{
+       12:   62:    lo = plo;
+       12:   63:    hi = phi;
+       12:   64:    unique = punique;
+       12:   65:    show = pshow;
+       12:   66:    solutions = 0;
+        -:   67: 
+       12:   68:    printf("\n");
+        -:   69: 
+       12:   70:    acd();
+        -:   71: 
+       12:   72:    if (unique)
+        8:   73:        printf("\n%d unique solutions in %d to %d\n",solutions,lo,hi);
+        -:   74:    else
+        4:   75:        printf("\n%d non-unique solutions in %d to %d\n",solutions,lo,hi);
+       12:   76:}
+        -:   77: 
+        4:   78:main()
+        -:   79:{
+        4:   80:    foursquares(1,7,TRUE,TRUE);
+        4:   81:    foursquares(3,9,TRUE,TRUE);
+        4:   82:    foursquares(0,9,FALSE,FALSE);
+        4:   83:}

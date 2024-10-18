@@ -1,0 +1,26 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include<stdio.h>
+        -:    2: 
+        4:    3:int main()
+        -:    4:{
+        -:    5:	int police,sanitation,fire;
+        -:    6: 
+        4:    7:	printf("Police     Sanitation         Fire\n");
+        4:    8:	printf("----------------------------------");
+        -:    9: 
+       16:   10:	for(police=2;police<=6;police+=2){
+       96:   11:		for(sanitation=1;sanitation<=7;sanitation++){
+      672:   12:			for(fire=1;fire<=7;fire++){
+      588:   13:				if(police!=sanitation && sanitation!=fire && fire!=police && police+fire+sanitation==12){
+       56:   14:					printf("\n%d\t\t%d\t\t%d",police,sanitation,fire);
+       56:   15:				}
+      588:   16:			}
+       84:   17:		}
+       12:   18:	}
+        -:   19: 
+        4:   20:	return 0;
+        -:   21:}

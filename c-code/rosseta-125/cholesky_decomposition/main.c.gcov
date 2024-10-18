@@ -1,0 +1,56 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+        8:    5:double *cholesky(double *A, int n) {
+        8:    6:    double *L = (double*)calloc(n * n, sizeof(double));
+        8:    7:    if (L == NULL)
+    #####:    8:        exit(EXIT_FAILURE);
+        -:    9: 
+       36:   10:    for (int i = 0; i < n; i++)
+       92:   11:        for (int j = 0; j < (i+1); j++) {
+       64:   12:            double s = 0;
+      120:   13:            for (int k = 0; k < j; k++)
+       56:   14:                s += L[i * n + k] * L[j * n + k];
+       64:   15:            L[i * n + j] = (i == j) ?
+       28:   16:                           sqrt(A[i * n + i] - s) :
+       36:   17:                           (1.0 / L[j * n + j] * (A[i * n + j] - s));
+       92:   18:        }
+        -:   19: 
+        8:   20:    return L;
+        -:   21:}
+        -:   22: 
+        8:   23:void show_matrix(double *A, int n) {
+       36:   24:    for (int i = 0; i < n; i++) {
+      128:   25:        for (int j = 0; j < n; j++)
+      100:   26:            printf("%2.5f ", A[i * n + j]);
+       28:   27:        printf("\n");
+       28:   28:    }
+        8:   29:}
+        -:   30: 
+        4:   31:int main() {
+        4:   32:    int n = 3;
+        4:   33:    double m1[] = {25, 15, -5,
+        -:   34:                   15, 18,  0,
+        -:   35:                   -5,  0, 11};
+        4:   36:    double *c1 = cholesky(m1, n);
+        4:   37:    show_matrix(c1, n);
+        4:   38:    printf("\n");
+        4:   39:    free(c1);
+        -:   40: 
+        4:   41:    n = 4;
+        4:   42:    double m2[] = {18, 22,  54,  42,
+        -:   43:                   22, 70,  86,  62,
+        -:   44:                   54, 86, 174, 134,
+        -:   45:                   42, 62, 134, 106};
+        4:   46:    double *c2 = cholesky(m2, n);
+        4:   47:    show_matrix(c2, n);
+        4:   48:    free(c2);
+        -:   49: 
+        4:   50:    return 0;
+        -:   51:}

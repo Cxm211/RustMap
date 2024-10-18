@@ -1,0 +1,1 @@
+Usage : target/debug/main <integer specifying rows in magic square>

@@ -1,0 +1,44 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:int main() {
+        -:    4:  {
+        3:    5:    unsigned long long n = 1;
+       93:    6:    for (int i = 0; i < 30; i++) {
+        -:    7:      // __builtin_popcount() for unsigned int
+        -:    8:      // __builtin_popcountl() for unsigned long
+        -:    9:      // __builtin_popcountll() for unsigned long long
+       90:   10:      printf("%d ", __builtin_popcountll(n));
+       90:   11:      n *= 3;
+       90:   12:    }
+        3:   13:    printf("\n");
+        -:   14:  }
+        -:   15: 
+        -:   16:  int od[30];
+        3:   17:  int ne = 0, no = 0;
+        3:   18:  printf("evil  : ");
+      183:   19:  for (int n = 0; ne+no < 60; n++) {
+      180:   20:    if ((__builtin_popcount(n) & 1) == 0) {
+       90:   21:      if (ne < 30) {
+       90:   22:	printf("%d ", n);
+       90:   23:	ne++;
+       90:   24:      }
+       90:   25:    } else {
+       90:   26:      if (no < 30) {
+       90:   27:	od[no++] = n;
+       90:   28:      }
+        -:   29:    }
+      180:   30:  }
+        3:   31:  printf("\n");
+        3:   32:  printf("odious: ");
+       93:   33:  for (int i = 0; i < 30; i++) {
+       90:   34:    printf("%d ", od[i]);
+       90:   35:  }
+        3:   36:  printf("\n");
+        -:   37: 
+        3:   38:  return 0;
+        -:   39:}

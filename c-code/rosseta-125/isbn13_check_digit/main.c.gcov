@@ -1,0 +1,37 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+       12:    3:int check_isbn13(const char *isbn) {
+       12:    4:    int ch = *isbn, count = 0, sum = 0;
+        -:    5:    /* check isbn contains 13 digits and calculate weighted sum */
+      180:    6:    for ( ; ch != 0; ch = *++isbn, ++count) {
+        -:    7:        /* skip hyphens or spaces */
+      168:    8:        if (ch == ' ' || ch == '-') {
+       12:    9:            --count;
+       12:   10:            continue;
+        -:   11:        }
+      156:   12:        if (ch < '0' || ch > '9') {
+    #####:   13:            return 0;
+        -:   14:        }
+      156:   15:        if (count & 1) {
+       72:   16:            sum += 3 * (ch - '0');
+       72:   17:        } else {
+       84:   18:            sum += ch - '0';
+        -:   19:        }
+      156:   20:    }
+       12:   21:    if (count != 13) return 0;
+       12:   22:    return !(sum%10);
+       12:   23:}
+        -:   24: 
+        3:   25:int main() {
+        -:   26:    int i;
+        3:   27:    const char* isbns[] = {"978-1734314502", "978-1734314509", "978-1788399081", "978-1788399083"};
+       15:   28:    for (i = 0; i < 4; ++i) {
+       12:   29:        printf("%s: %s\n", isbns[i], check_isbn13(isbns[i]) ? "good" : "bad");
+       12:   30:    }
+        3:   31:    return 0;
+        -:   32:}

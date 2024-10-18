@@ -1,0 +1,22 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:int main(void)
+        -:    4:{
+        3:    5:	int i, j, n = 12;
+        -:    6: 
+       39:    7:	for (j = 1; j <= n; j++) printf("%3d%c", j, j != n ? ' ' : '\n');
+       42:    8:	for (j = 0; j <= n; j++) printf(j != n ? "----" : "+\n");
+        -:    9: 
+       39:   10:	for (i = 1; i <= n; i++) {
+      468:   11:		for (j = 1; j <= n; j++)
+      432:   12:			printf(j < i ? "    " : "%3d ", i * j);
+       36:   13:                printf("| %d\n", i);
+       36:   14:        }
+        -:   15: 
+        3:   16:	return 0;
+        -:   17:}

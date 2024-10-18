@@ -1,0 +1,49 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:int jos(int n, int k, int m) {
+        -:    4:	int a;
+      126:    5:	for (a = m + 1; a <= n; a++)
+      123:    6:		m = (m + k) % a;
+        3:    7:	return m;
+        -:    8:}
+        -:    9: 
+        -:   10:typedef unsigned long long xint;
+        -:   11: 
+        9:   12:xint jos_large(xint n, xint k, xint m) {
+        9:   13:	if (k <= 1) return n - m - 1;
+        -:   14: 
+        9:   15:	xint a = m;
+  3826587:   16:	while (a < n) {
+  3826578:   17:		xint q = (a - m + k - 2) / (k - 1);
+        -:   18: 
+  3826578:   19:		if (a + q > n)	q = n - a;
+  3826569:   20:		else if (!q)	q = 1;
+        -:   21: 
+  3826578:   22:		m = (m + q * k) % (a += q);
+        -:   23:	}
+        -:   24: 
+        9:   25:	return m;
+        9:   26:}
+        -:   27: 
+        3:   28:int main(void) {
+        -:   29:	xint n, k, i;
+        -:   30: 
+        3:   31:	n = 41;
+        3:   32:	k = 3;
+        3:   33:	printf("n = %llu, k = %llu, final survivor: %d\n", n, k, jos(n, k, 0));
+        -:   34: 
+        3:   35:	n = 9876543210987654321ULL;
+        3:   36:	k = 12031;
+        3:   37:	printf("n = %llu, k = %llu, three survivors:", n, k);
+        -:   38: 
+       12:   39:	for (i = 3; i--; )
+        9:   40:		printf(" %llu", jos_large(n, k, i));
+        3:   41:	putchar('\n');
+        -:   42: 
+        3:   43:	return 0;
+        -:   44:}

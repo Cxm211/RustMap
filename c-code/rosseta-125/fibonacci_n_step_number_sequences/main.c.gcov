@@ -1,0 +1,48 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2:The function anynacci determines the n-arity of the sequence from the number of seed elements. 0 ended arrays are used since C does not have a way of determining the length of dynamic and function-passed integer arrays.*/
+        -:    3: 
+        -:    4:#include<stdlib.h>
+        -:    5:#include<stdio.h>
+        -:    6: 
+        -:    7:int *
+       12:    8:anynacci (int *seedArray, int howMany)
+        -:    9:{
+       12:   10:  int *result = malloc (howMany * sizeof (int));
+        -:   11:  int i, j, initialCardinality;
+        -:   12: 
+       45:   13:  for (i = 0; seedArray[i] != 0; i++);
+       12:   14:  initialCardinality = i;
+        -:   15: 
+       45:   16:  for (i = 0; i < initialCardinality; i++)
+       33:   17:    result[i] = seedArray[i];
+        -:   18: 
+       99:   19:  for (i = initialCardinality; i < howMany; i++)
+        -:   20:    {
+       87:   21:      result[i] = 0;
+      318:   22:      for (j = i - initialCardinality; j < i; j++)
+      231:   23:        result[i] += result[j];
+       87:   24:    }
+       12:   25:  return result;
+        -:   26:}
+        -:   27: 
+        -:   28:int
+        3:   29:main ()
+        -:   30:{
+        3:   31:  int fibo[] = { 1, 1, 0 }, tribo[] = { 1, 1, 2, 0 }, tetra[] = { 1, 1, 2, 4, 0 }, luca[] = { 2, 1, 0 };
+        3:   32:  int *fibonacci = anynacci (fibo, 10), *tribonacci = anynacci (tribo, 10), *tetranacci = anynacci (tetra, 10), 
+        3:   33:      *lucas = anynacci(luca, 10);
+        -:   34:  int i;
+        -:   35: 
+        3:   36:  printf ("\nFibonacci\tTribonacci\tTetranacci\tLucas\n");
+        -:   37: 
+       33:   38:  for (i = 0; i < 10; i++)
+       60:   39:    printf ("\n%d\t\t%d\t\t%d\t\t%d", fibonacci[i], tribonacci[i],
+       30:   40:            tetranacci[i], lucas[i]);
+        -:   41: 
+        3:   42:  return 0;
+        -:   43:}

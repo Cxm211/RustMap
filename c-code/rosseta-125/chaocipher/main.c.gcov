@@ -1,0 +1,77 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4: 
+        -:    5:#define TRUE 1
+        -:    6:#define FALSE 0
+        -:    7: 
+        -:    8:typedef int bool;
+        -:    9:typedef enum { ENCRYPT, DECRYPT } cmode;
+        -:   10: 
+        -:   11:const char *l_alphabet = "HXUCZVAMDSLKPEFJRIGTWOBNYQ";
+        -:   12:const char *r_alphabet = "PTLNBQDEOYSFAVZKGJRIHWXUMC";
+        -:   13: 
+        8:   14:void chao(const char *in, char *out, cmode mode, bool show_steps) {
+        -:   15:    int i, j, index;
+        -:   16:    char store;
+        8:   17:    size_t len = strlen(in);
+        -:   18:    char left[27], right[27], temp[27];
+        8:   19:    strcpy(left, l_alphabet);
+        8:   20:    strcpy(right, r_alphabet);
+        8:   21:    temp[26] = '\0';
+        -:   22: 
+      224:   23:    for (i = 0; i < len; ++i ) {
+      224:   24:        if (show_steps) printf("%s  %s\n", left, right);
+      224:   25:        if (mode == ENCRYPT) {
+      112:   26:            index = strchr(right, in[i]) - right;
+      112:   27:            out[i] = left[index];
+      112:   28:        }
+        -:   29:        else {
+      112:   30:            index = strchr(left, in[i]) - left;
+      112:   31:            out[i] = right[index];
+        -:   32:        }
+      224:   33:        if (i == len - 1) break;
+        -:   34: 
+        -:   35:        /* permute left */
+        -:   36: 
+     2896:   37:        for (j = index; j < 26; ++j) temp[j - index] = left[j];
+     3152:   38:        for (j = 0; j < index; ++j) temp[26 - index + j] = left[j];
+      216:   39:        store = temp[1];
+     2808:   40:        for (j = 2; j < 14; ++j) temp[j - 1] = temp[j];
+      216:   41:        temp[13] = store;
+      216:   42:        strcpy(left, temp);
+        -:   43: 
+        -:   44:        /* permute right */
+        -:   45: 
+     2896:   46:        for (j = index; j < 26; ++j) temp[j - index] = right[j];
+     3152:   47:        for (j = 0; j < index; ++j) temp[26 - index + j] = right[j];
+      216:   48:        store = temp[0];
+     5616:   49:        for (j = 1; j < 26; ++j) temp[j - 1] = temp[j];
+      216:   50:        temp[25] = store;
+      216:   51:        store = temp[2];
+     2592:   52:        for (j = 3; j < 14; ++j) temp[j - 1] = temp[j];
+      216:   53:        temp[13] = store;
+      216:   54:        strcpy(right, temp);
+      216:   55:    }
+        8:   56:}
+        -:   57: 
+        4:   58:int main() {
+        4:   59:    const char *plain_text = "WELLDONEISBETTERTHANWELLSAID";
+        4:   60:    char *cipher_text = malloc(strlen(plain_text) + 1);
+        4:   61:    char *plain_text2 = malloc(strlen(plain_text) + 1);
+        4:   62:    printf("The original plaintext is : %s\n", plain_text);
+        4:   63:    printf("\nThe left and right alphabets after each permutation"
+        -:   64:           " during encryption are :\n\n");
+        4:   65:    chao(plain_text, cipher_text, ENCRYPT, TRUE);
+        4:   66:    printf("\nThe ciphertext is : %s\n", cipher_text);
+        4:   67:    chao(cipher_text, plain_text2, DECRYPT, FALSE);
+        4:   68:    printf("\nThe recovered plaintext is : %s\n", plain_text2);
+        4:   69:    free(cipher_text);
+        4:   70:    free(plain_text2);
+        4:   71:    return 0;
+        -:   72:}

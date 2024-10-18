@@ -1,0 +1,75 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4: 
+        -:    5:/*  Constraints: input is in the form of (\+|-)?[0-9]+
+        -:    6: *  and without leading zero (0 itself can be as "0" or "+0", but not "-0");
+        -:    7: *  input pointer is realloc'able and may change;
+        -:    8: *  if input has leading + sign, return may or may not keep it.
+        -:    9: *  The constranits conform to sprintf("%+d") and this function's own output.
+        -:   10: */
+       24:   11:char * incr(char *s)
+        -:   12:{
+        -:   13:	int i, begin, tail, len;
+       24:   14:	int neg = (*s == '-');
+       24:   15:	char tgt = neg ? '0' : '9';
+        -:   16: 
+        -:   17:	/* special case: "-1" */
+       24:   18:	if (!strcmp(s, "-1")) {
+        3:   19:		s[0] = '0', s[1] = '\0';
+        3:   20:		return s;
+        -:   21:	}
+        -:   22: 
+       21:   23:	len = strlen(s);
+       21:   24:	begin = (*s == '-' || *s == '+') ? 1 : 0;
+        -:   25: 
+        -:   26:	/* find out how many digits need to be changed */
+      291:   27:	for (tail = len - 1; tail >= begin && s[tail] == tgt; tail--);
+        -:   28: 
+       21:   29:	if (tail < begin && !neg) {
+        -:   30:		/* special case: all 9s, string will grow */
+        6:   31:		if (!begin) s = realloc(s, len + 2);
+        6:   32:		s[0] = '1';
+       24:   33:		for (i = 1; i <= len - begin; i++) s[i] = '0';
+        6:   34:		s[len + 1] = '\0';
+       21:   35:	} else if (tail == begin && neg && s[1] == '1') {
+        -:   36:		/* special case: -1000..., so string will shrink */
+      135:   37:		for (i = 1; i < len - begin; i++) s[i] = '9';
+        3:   38:		s[len - 1] = '\0';
+        3:   39:	} else { /* normal case; change tail to all 0 or 9, change prev digit by 1*/
+      132:   40:		for (i = len - 1; i > tail; i--)
+      120:   41:			s[i] = neg ? '9' : '0';
+       12:   42:		s[tail] += neg ? -1 : 1;
+        -:   43:	}
+        -:   44: 
+       21:   45:	return s;
+       24:   46:}
+        -:   47: 
+       24:   48:void string_test(const char *s)
+        -:   49:{
+       24:   50:	char *ret = malloc(strlen(s));
+       24:   51:	strcpy(ret, s);
+        -:   52: 
+       24:   53:	printf("text: %s\n", ret);
+       24:   54:	printf("  ->: %s\n", ret = incr(ret));
+       24:   55:	free(ret);
+       24:   56:}
+        -:   57: 
+        3:   58:int main()
+        -:   59:{
+        3:   60:	string_test("+0");
+        3:   61:	string_test("-1");
+        3:   62:	string_test("-41");
+        3:   63:	string_test("+41");
+        3:   64:	string_test("999");
+        3:   65:	string_test("+999");
+        3:   66:	string_test("109999999999999999999999999999999999999999");
+        3:   67:	string_test("-100000000000000000000000000000000000000000000");
+        -:   68: 
+        3:   69:	return 0;
+        -:   70:}

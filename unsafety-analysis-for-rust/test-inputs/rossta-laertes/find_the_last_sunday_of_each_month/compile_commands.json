@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/find_the_last_sunday_of_each_month",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/find_the_last_sunday_of_each_month/main.c"
+  }
+]

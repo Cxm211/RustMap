@@ -1,0 +1,14 @@
+{
+  "avail_in": 2,
+  "total_in_lo32": 0,
+  "total_in_hi32": 0,
+  "avail_out": 0,
+  "total_out_lo32": 0,
+  "total_out_hi32": 0,
+  "next_in_ptr": 140603258831132,
+  "next_out_ptr": 0,
+  "state_ptr": 140603136419296,
+  "opaque_ptr": 0,
+  "bzalloc_ptr": 94777470406752,
+  "bzfree_ptr": 94777470406896
+}

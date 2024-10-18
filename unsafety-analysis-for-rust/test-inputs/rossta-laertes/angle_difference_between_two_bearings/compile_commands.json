@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/angle_difference_between_two_bearings",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/angle_difference_between_two_bearings/main.c"
+  }
+]

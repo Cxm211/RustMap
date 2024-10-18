@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/constrained_random_points_on_a_circle",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/constrained_random_points_on_a_circle/main.c"
+  }
+]

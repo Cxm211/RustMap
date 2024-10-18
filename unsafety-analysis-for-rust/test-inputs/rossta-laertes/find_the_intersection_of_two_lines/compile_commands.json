@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/find_the_intersection_of_two_lines",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/find_the_intersection_of_two_lines/main.c"
+  }
+]

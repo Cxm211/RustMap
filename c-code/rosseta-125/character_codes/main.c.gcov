@@ -1,0 +1,12 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        4:    3:int main() {
+        4:    4:  printf("%d\n", 'a'); /* prints "97" */
+        4:    5:  printf("%c\n", 97); /* prints "a"; we don't have to cast because printf is type agnostic */
+        4:    6:  return 0;
+        -:    7:}

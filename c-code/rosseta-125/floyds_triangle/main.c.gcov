@@ -1,0 +1,67 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        6:    3:void t(int n)
+        -:    4:{
+        -:    5:	int i, j, c, len;
+        -:    6: 
+        6:    7:	i = n * (n - 1) / 2;
+       15:    8:	for (len = c = 1; c < i; c *= 10, len++);
+        6:    9:	c -= i; // c is the col where width changes
+        -:   10: 
+        -:   11:#define SPEED_MATTERS 0
+        -:   12:#if SPEED_MATTERS	// in case we really, really wanted to print huge triangles often
+        -:   13:	char tmp[32], s[4096], *p;
+        -:   14: 
+        -:   15:	sprintf(tmp, "%*d", len, 0);
+        -:   16: 
+        -:   17:	inline void inc_numstr(void) {
+        -:   18:		int k = len;
+        -:   19: 
+        -:   20:	redo:	if (!k--) return;
+        -:   21: 
+        -:   22:		if (tmp[k] == '9') {
+        -:   23:			tmp[k] = '0';
+        -:   24:			goto redo;
+        -:   25:		}
+        -:   26: 
+        -:   27:		if (++tmp[k] == '!')
+        -:   28:			tmp[k] = '1';
+        -:   29:	}
+        -:   30: 
+        -:   31:	for (p = s, i = 1; i <= n; i++) {
+        -:   32:		for (j = 1; j <= i; j++) {
+        -:   33:			inc_numstr();
+        -:   34:			__builtin_memcpy(p, tmp + 1 - (j >= c), len - (j < c));
+        -:   35:			p += len - (j < c);
+        -:   36: 
+        -:   37:			*(p++) = (i - j)? ' ' : '\n';
+        -:   38: 
+        -:   39:			if (p - s + len >= 4096) {
+        -:   40:				fwrite(s, 1, p - s, stdout);
+        -:   41:				p = s;
+        -:   42:			}
+        -:   43:		}
+        -:   44:	}
+        -:   45: 
+        -:   46:	fwrite(s, 1, p - s, stdout);
+        -:   47:#else // NO_IT_DOESN'T
+        -:   48:	int num;
+       63:   49:	for (num = i = 1; i <= n; i++)
+      417:   50:		for (j = 1; j <= i; j++)
+      417:   51:			printf("%*d%c",	len - (j < c), num++, i - j ? ' ':'\n');
+        -:   52:#endif
+        6:   53:}
+        -:   54: 
+        3:   55:int main(void)
+        -:   56:{
+        3:   57:	t(5), t(14);
+        -:   58: 
+        -:   59:	// maybe not 
+        -:   60:	// t(10000);
+        3:   61:	return 0;
+        -:   62:}

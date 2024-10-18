@@ -1,0 +1,102 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <math.h>
+        -:    5: 
+        3:    6:void print_headings()
+        -:    7:{
+        3:    8:	printf("%2s", "N");
+        3:    9:	printf(" %10s", "Length");
+        3:   10:	printf(" %-20s", "Entropy");
+        3:   11:	printf(" %-40s", "Word");
+        3:   12:	printf("\n");
+        3:   13:}
+        -:   14: 
+      111:   15:double calculate_entropy(int ones, int zeros)
+        -:   16:{
+      111:   17:	double result = 0;
+        -:   18: 
+      111:   19:	int total = ones + zeros;
+      111:   20:	result -= (double) ones / total * log2((double) ones / total);
+      111:   21:	result -= (double) zeros / total * log2((double) zeros / total);
+        -:   22: 
+      111:   23:	if (result != result) { // NAN
+        6:   24:		result = 0;
+        6:   25:	}
+        -:   26: 
+      111:   27:	return result;
+        -:   28:}
+        -:   29: 
+      111:   30:void print_entropy(char *word)
+        -:   31:{
+      111:   32:	int ones = 0;
+      111:   33:	int zeros = 0;
+        -:   34: 
+        -:   35:	int i;
+189738066:   36:	for (i = 0; word[i]; i++) {
+189737955:   37:		char c = word[i];
+        -:   38: 
+189737955:   39:		switch (c) {
+        -:   40:			case '0':
+117264504:   41:				zeros++;
+117264504:   42:				break;
+        -:   43:			case '1':
+ 72473451:   44:				ones++;
+ 72473451:   45:				break;
+        -:   46:		}
+189737955:   47:	}
+        -:   48: 
+      111:   49:	double entropy = calculate_entropy(ones, zeros);
+      111:   50:	printf(" %-20.18f", entropy);
+      111:   51:}
+        -:   52: 
+      111:   53:void print_word(int n, char *word)
+        -:   54:{
+      111:   55:	printf("%2d", n);
+        -:   56: 
+      111:   57:	printf(" %10ld", strlen(word));
+        -:   58: 
+      111:   59:	print_entropy(word);
+        -:   60: 
+      111:   61:	if (n < 10) {
+       27:   62:		printf(" %-40s", word);
+       27:   63:	} else {
+       84:   64:		printf(" %-40s", "...");
+        -:   65:	}
+        -:   66: 
+      111:   67:	printf("\n");
+      111:   68:}
+        -:   69: 
+        3:   70:int main(int argc, char *argv[])
+        -:   71:{
+        3:   72:	print_headings();
+        -:   73: 
+        3:   74:	char *last_word = malloc(2);
+        3:   75:	strcpy(last_word, "1");
+        -:   76: 
+        3:   77:	char *current_word = malloc(2);
+        3:   78:	strcpy(current_word, "0");
+        -:   79: 
+        3:   80:	print_word(1, last_word);
+        -:   81:	int i;
+      111:   82:	for (i = 2; i <= 37; i++) {
+      108:   83:		print_word(i, current_word);
+        -:   84: 
+      108:   85:		char *next_word = malloc(strlen(current_word) + strlen(last_word) + 1);
+      108:   86:		strcpy(next_word, current_word);
+      108:   87:		strcat(next_word, last_word);
+        -:   88: 
+      108:   89:		free(last_word);
+      108:   90:		last_word = current_word;
+      108:   91:		current_word = next_word;
+      108:   92:	}
+        -:   93: 
+        3:   94:	free(last_word);
+        3:   95:	free(current_word);
+        3:   96:	return 0;
+        -:   97:}

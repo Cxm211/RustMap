@@ -1,0 +1,8 @@
+error: expected one of `!` or `[`, found `include`
+ --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/chinese_remainder_theorem.rs:1:2
+  |
+1 | #include <stdio.h>
+  |  ^^^^^^^ expected one of `!` or `[`
+
+error: aborting due to previous error
+

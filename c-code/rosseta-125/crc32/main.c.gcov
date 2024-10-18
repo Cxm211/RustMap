@@ -1,0 +1,53 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <inttypes.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <string.h>
+        -:    4: 
+        -:    5:uint32_t
+        4:    6:rc_crc32(uint32_t crc, const char *buf, size_t len)
+        -:    7:{
+        -:    8:	static uint32_t table[256];
+        -:    9:	static int have_table = 0;
+        -:   10:	uint32_t rem;
+        -:   11:	uint8_t octet;
+        -:   12:	int i, j;
+        -:   13:	const char *p, *q;
+        -:   14: 
+        -:   15:	/* This check is not thread safe; there is no mutex. */
+        4:   16:	if (have_table == 0) {
+        -:   17:		/* Calculate CRC table. */
+     1028:   18:		for (i = 0; i < 256; i++) {
+     1024:   19:			rem = i;  /* remainder from polynomial division */
+     9216:   20:			for (j = 0; j < 8; j++) {
+     8192:   21:				if (rem & 1) {
+     4096:   22:					rem >>= 1;
+     4096:   23:					rem ^= 0xedb88320;
+     4096:   24:				} else
+     4096:   25:					rem >>= 1;
+     8192:   26:			}
+     1024:   27:			table[i] = rem;
+     1024:   28:		}
+        4:   29:		have_table = 1;
+        4:   30:	}
+        -:   31: 
+        4:   32:	crc = ~crc;
+        4:   33:	q = buf + len;
+      176:   34:	for (p = buf; p < q; p++) {
+      172:   35:		octet = *p;  /* Cast to unsigned octet. */
+      172:   36:		crc = (crc >> 8) ^ table[(crc & 0xff) ^ octet];
+      172:   37:	}
+        4:   38:	return ~crc;
+        -:   39:}
+        -:   40: 
+        -:   41:int
+        4:   42:main()
+        -:   43:{
+        4:   44:	const char *s = "The quick brown fox jumps over the lazy dog";
+        4:   45:	printf("%" PRIX32 "\n", rc_crc32(0, s, strlen(s)));
+        -:   46: 
+        4:   47:	return 0;
+        -:   48:}

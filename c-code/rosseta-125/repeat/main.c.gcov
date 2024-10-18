@@ -1,0 +1,20 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:void repeat(void (*f)(void), unsigned int n) {
+       15:    4: while (n-->0)
+       12:    5:  (*f)(); //or just f()
+        3:    6:}
+        -:    7: 
+       12:    8:void example() {
+       12:    9: printf("Example\n");
+       12:   10:}
+        -:   11: 
+        3:   12:int main(int argc, char *argv[]) {
+        3:   13: repeat(example, 4);
+        3:   14: return 0;
+        -:   15:}

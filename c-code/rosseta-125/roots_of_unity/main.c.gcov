@@ -1,0 +1,29 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <math.h>
+        -:    3: 
+        3:    4:int main()
+        -:    5:{
+        3:    6:	double a, c, s, PI2 = atan2(1, 1) * 8;
+        -:    7:	int n, i;
+        -:    8: 
+      165:    9:	for (n = 1; n < 10; n++) for (i = 0; i < n; i++) {
+      135:   10:		c = s = 0;
+      135:   11:		if (!i )		c =  1;
+      108:   12:		else if(n == 4 * i)	s =  1;
+      102:   13:		else if(n == 2 * i)	c = -1;
+       90:   14:		else if(3 * n == 4 * i)	s = -1;
+        -:   15:		else
+       84:   16:			a = i * PI2 / n, c = cos(a), s = sin(a);
+        -:   17: 
+      135:   18:		if (c) printf("%.2g", c);
+      135:   19:		printf(s == 1 ? "i" : s == -1 ? "-i" : s ? "%+.2gi" : "", s);
+      135:   20:		printf(i == n - 1 ?"\n":",  ");
+      162:   21:	}
+        -:   22: 
+        3:   23:	return 0;
+        -:   24:}

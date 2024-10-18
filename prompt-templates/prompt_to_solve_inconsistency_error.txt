@@ -1,0 +1,15 @@
+// C code fragment with its before- and after-states:
+{
+    (before-state of C)
+    (...Here is the C code fragment that have
+        caused errors in the translated Rust...)
+    (after-state of C)
+}
+
+// Rust code generation:
+{
+    (before-state in Rust)
+    /** please generate Rust code fragment here to have
+        consistent states as the C code above
+      */
+}

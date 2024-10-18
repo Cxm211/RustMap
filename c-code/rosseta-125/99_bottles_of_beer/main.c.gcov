@@ -1,0 +1,33 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2: * 99 Bottles, C, KISS (i.e. keep it simple and straightforward) version
+        -:    3: */
+        -:    4: 
+        -:    5:#include <stdio.h>
+        -:    6: 
+        4:    7:int main(void)
+        -:    8:{
+        -:    9:  int n;
+        -:   10: 
+      392:   11:  for( n = 99; n > 2; n-- )
+      388:   12:    printf(
+        -:   13:      "%d bottles of beer on the wall, %d bottles of beer.\n"
+        -:   14:      "Take one down and pass it around, %d bottles of beer on the wall.\n\n", 
+      388:   15:       n, n, n - 1);
+        -:   16: 
+        4:   17:  printf(  
+        -:   18:      "2 bottles of beer on the wall, 2 bottles of beer.\n"
+        -:   19:      "Take one down and pass it around, 1 bottle of beer on the wall.\n\n"                  
+        -:   20: 
+        -:   21:      "1 bottle of beer on the wall, 1 bottle of beer.\n"
+        -:   22:      "Take one down and pass it around, no more bottles of beer on the wall.\n\n"                  
+        -:   23: 
+        -:   24:      "No more bottles of beer on the wall, no more bottles of beer.\n" 
+        -:   25:      "Go to the store and buy some more, 99 bottles of beer on the wall.\n");
+        -:   26: 
+        4:   27:      return 0;
+        -:   28:}

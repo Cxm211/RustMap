@@ -1,0 +1,554 @@
+digraph G {
+rankdir="LR";
+    main [label="IntNative main (IntNative argc, Char *argv[])
+/root/rustmap/bzip2-real-test/bzip2.i:7850"]
+    main -> configError
+    main -> signal
+    main -> mySIGSEGVorSIGBUScatcher
+    main -> copyFileName
+    main -> addFlagsFromEnvVar
+    main -> snocString
+    main -> strcmp
+    main -> strlen
+    main -> strstr
+    main -> license
+    main -> usage
+    main -> exit
+    main -> fprintf
+    main -> redundant
+    main -> strncmp
+    main -> mySignalCatcher
+    main -> compress
+    main -> uncompress
+    main -> setExit
+    main -> testf
+    main -> free
+    configError [label="void configError (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6799"]
+    configError -> fprintf
+    configError -> setExit
+    configError -> exit
+    fprintf [label="fprintf()"]
+    setExit [label="void setExit (Int32 v)
+/root/rustmap/bzip2-real-test/bzip2.i:6508"]
+    exit [label="exit()"]
+    signal [label="__sighandler_t signal (int __sig, __sighandler_t __handler)
+/root/rustmap/bzip2-real-test/bzip2.i:2754"]
+    mySIGSEGVorSIGBUScatcher [label="void mySIGSEGVorSIGBUScatcher (IntNative n)
+/root/rustmap/bzip2-real-test/bzip2.i:6703"]
+    mySIGSEGVorSIGBUScatcher -> write
+    mySIGSEGVorSIGBUScatcher -> strlen
+    mySIGSEGVorSIGBUScatcher -> setExit
+    write [label="write()"]
+    strlen [label="strlen()"]
+    copyFileName [label="void copyFileName (Char *to, Char *from)
+/root/rustmap/bzip2-real-test/bzip2.i:6826"]
+    copyFileName -> strlen
+    copyFileName -> fprintf
+    copyFileName -> setExit
+    copyFileName -> exit
+    copyFileName -> strncpy
+    strncpy [label="strncpy (char *__restrict __dest, const char *__restrict __src, size_t __len)
+/root/rustmap/bzip2-real-test/bzlib.i:2516"]
+    addFlagsFromEnvVar [label="void addFlagsFromEnvVar (Cell **argList, Char *varName)
+/root/rustmap/bzip2-real-test/bzip2.i:7811"]
+    addFlagsFromEnvVar -> getenv
+    addFlagsFromEnvVar -> snocString
+    getenv [label="getenv()"]
+    snocString [label="Cell *snocString (Cell *root, Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:7789"]
+    snocString -> mkCell
+    snocString -> myMalloc
+    snocString -> strlen
+    snocString -> strcpy
+    snocString -> snocString
+    mkCell [label="Cell *mkCell (void)
+/root/rustmap/bzip2-real-test/bzip2.i:7772"]
+    mkCell -> myMalloc
+    myMalloc [label="void *myMalloc (Int32 n)
+/root/rustmap/bzip2-real-test/bzip2.i:7758"]
+    myMalloc -> malloc
+    myMalloc -> outOfMemory
+    malloc [label="malloc()"]
+    outOfMemory [label="void outOfMemory (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6785"]
+    outOfMemory -> fprintf
+    outOfMemory -> showFileNames
+    outOfMemory -> cleanUpAndFail
+    showFileNames [label="void showFileNames (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6533"]
+    showFileNames -> fprintf
+    cleanUpAndFail [label="void cleanUpAndFail (Int32 ec)
+/root/rustmap/bzip2-real-test/bzip2.i:6548"]
+    cleanUpAndFail -> stat
+    cleanUpAndFail -> fprintf
+    cleanUpAndFail -> fclose
+    cleanUpAndFail -> remove
+    cleanUpAndFail -> setExit
+    cleanUpAndFail -> exit
+    stat [label="stat()"]
+    fclose [label="fclose()"]
+    remove [label="remove()"]
+    strcpy [label="strcpy (char *__restrict __dest, const char *__restrict __src)
+/root/rustmap/bzip2-real-test/bzlib.i:2501"]
+    strcmp [label="int strcmp (const char *__s1, const char *__s2)
+/root/rustmap/bzip2-real-test/bzlib.i:2262"]
+    strstr [label="char *strstr (const char *__haystack, const char *__needle)
+/root/rustmap/bzip2-real-test/bzlib.i:2315"]
+    license [label="void license (void)
+/root/rustmap/bzip2-real-test/bzip2.i:7666"]
+    license -> fprintf
+    license -> BZ2_bzlibVersion
+    BZ2_bzlibVersion [label="const char *BZ2_bzlibVersion (void)
+/root/rustmap/bzip2-real-test/bzlib.i:4560"]
+    usage [label="void usage (Char *fullProgName)
+/root/rustmap/bzip2-real-test/bzip2.i:7693"]
+    usage -> fprintf
+    usage -> BZ2_bzlibVersion
+    redundant [label="void redundant (Char *flag)
+/root/rustmap/bzip2-real-test/bzip2.i:7739"]
+    redundant -> fprintf
+    strncmp [label="int strncmp (const char *__s1, const char *__s2, size_t __n)
+/root/rustmap/bzip2-real-test/bzlib.i:2265"]
+    mySignalCatcher [label="void mySignalCatcher (IntNative n)
+/root/rustmap/bzip2-real-test/bzip2.i:6690"]
+    mySignalCatcher -> fprintf
+    mySignalCatcher -> cleanUpAndFail
+    compress [label="void compress (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:7022"]
+    compress -> panic
+    compress -> copyFileName
+    compress -> strcat
+    compress -> containsDubiousChars
+    compress -> fprintf
+    compress -> setExit
+    compress -> fileExists
+    compress -> strerror
+    compress -> hasSuffix
+    compress -> stat
+    compress -> notAStandardFile
+    compress -> remove
+    compress -> countHardLinks
+    compress -> saveInputFileMetaInfo
+    compress -> isatty
+    compress -> fileno
+    compress -> fopen
+    compress -> fclose
+    compress -> fopen_output_safely
+    compress -> pad
+    compress -> fflush
+    compress -> compressStream
+    compress -> applySavedTimeInfoToOutputFile
+    compress -> ioError
+    panic [label="void panic (const Char *s)
+/root/rustmap/bzip2-real-test/bzip2.i:6623"]
+    panic -> fprintf
+    panic -> showFileNames
+    panic -> cleanUpAndFail
+    strcat [label="strcat (char *__restrict __dest, const char *__restrict __src)
+/root/rustmap/bzip2-real-test/bzlib.i:2532"]
+    containsDubiousChars [label="Bool containsDubiousChars (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:6980"]
+    fileExists [label="Bool fileExists (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:6849"]
+    fileExists -> fopen
+    fileExists -> fclose
+    fopen [label="FILE *fopen (const char *__restrict __filename, const char *__restrict __modes)
+/root/rustmap/bzip2-real-test/bzlib.i:1453"]
+    strerror [label="strerror()"]
+    hasSuffix [label="Bool hasSuffix (Char *s, const Char *suffix)
+/root/rustmap/bzip2-real-test/bzip2.i:6999"]
+    hasSuffix -> strlen
+    hasSuffix -> strcmp
+    notAStandardFile [label="Bool notAStandardFile (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:6896"]
+    notAStandardFile -> lstat
+    lstat [label="lstat()"]
+    countHardLinks [label="Int32 countHardLinks (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:6917"]
+    countHardLinks -> lstat
+    saveInputFileMetaInfo [label="void saveInputFileMetaInfo (Char *srcName)
+/root/rustmap/bzip2-real-test/bzip2.i:6931"]
+    saveInputFileMetaInfo -> stat
+    saveInputFileMetaInfo -> ioError
+    ioError [label="void ioError (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6674"]
+    ioError -> fprintf
+    ioError -> perror
+    ioError -> showFileNames
+    ioError -> cleanUpAndFail
+    perror [label="perror()"]
+    isatty [label="isatty()"]
+    fileno [label="fileno()"]
+    fopen_output_safely [label="FILE *fopen_output_safely (Char *name, const char *mode)
+/root/rustmap/bzip2-real-test/bzip2.i:6861"]
+    fopen_output_safely -> open
+    fopen_output_safely -> fdopen
+    fopen_output_safely -> close
+    open [label="int open (const char *__file, int __oflag, ...)
+/root/rustmap/bzip2-real-test/bzip2.i:4314"]
+    fdopen [label="FILE *fdopen (int __fd, const char *__modes)
+/root/rustmap/bzip2-real-test/bzlib.i:1460"]
+    close [label="close()"]
+    pad [label="void pad (Char *s)
+/root/rustmap/bzip2-real-test/bzip2.i:6813"]
+    pad -> strlen
+    pad -> fprintf
+    fflush [label="fflush()"]
+    compressStream [label="void compressStream (FILE *stream, FILE *zStream)
+/root/rustmap/bzip2-real-test/bzip2.i:6122"]
+    compressStream -> ferror
+    compressStream -> BZ2_bzWriteOpen
+    compressStream -> fprintf
+    compressStream -> myfeof
+    compressStream -> fread
+    compressStream -> BZ2_bzWrite
+    compressStream -> BZ2_bzWriteClose64
+    compressStream -> fflush
+    compressStream -> fileno
+    compressStream -> applySavedFileAttrToOutputFile
+    compressStream -> fclose
+    compressStream -> uInt64_from_UInt32s
+    compressStream -> uInt64_to_double
+    compressStream -> uInt64_toAscii
+    compressStream -> configError
+    compressStream -> outOfMemory
+    compressStream -> ioError
+    compressStream -> panic
+    ferror [label="ferror()"]
+    BZ2_bzWriteOpen [label="BZFILE *BZ2_bzWriteOpen (int *bzerror, FILE *f, int blockSize100k, int verbosity, int workFactor)
+/root/rustmap/bzip2-real-test/bzlib.i:3853"]
+    BZ2_bzWriteOpen -> ferror
+    BZ2_bzWriteOpen -> malloc
+    BZ2_bzWriteOpen -> BZ2_bzCompressInit
+    BZ2_bzWriteOpen -> free
+    BZ2_bzCompressInit [label="int BZ2_bzCompressInit (bz_stream *strm, int blockSize100k, int verbosity, int workFactor)
+/root/rustmap/bzip2-real-test/bzlib.i:3045"]
+    BZ2_bzCompressInit -> bz_config_ok
+    BZ2_bzCompressInit -> default_bzalloc
+    BZ2_bzCompressInit -> default_bzfree
+    BZ2_bzCompressInit -> init_RL
+    BZ2_bzCompressInit -> prepare_new_block
+    bz_config_ok [label="int bz_config_ok (void)
+/root/rustmap/bzip2-real-test/bzlib.i:2986"]
+    default_bzalloc [label="void *default_bzalloc (void *opaque, Int32 items, Int32 size)
+/root/rustmap/bzip2-real-test/bzlib.i:2997"]
+    default_bzalloc -> malloc
+    default_bzfree [label="void default_bzfree (void *opaque, void *addr)
+/root/rustmap/bzip2-real-test/bzlib.i:3004"]
+    default_bzfree -> free
+    free [label="free()"]
+    init_RL [label="void init_RL (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3028"]
+    prepare_new_block [label="void prepare_new_block (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3014"]
+    myfeof [label="Bool myfeof (FILE *f)
+/root/rustmap/bzip2-real-test/bzip2.i:6109"]
+    myfeof -> fgetc
+    myfeof -> ungetc
+    fgetc [label="fgetc()"]
+    ungetc [label="ungetc()"]
+    fread [label="size_t fread (void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream)
+/root/rustmap/bzip2-real-test/bzlib.i:1687"]
+    BZ2_bzWrite [label="void BZ2_bzWrite (int *bzerror, BZFILE *b, void *buf, int len)
+/root/rustmap/bzip2-real-test/bzlib.i:3945"]
+    BZ2_bzWrite -> ferror
+    BZ2_bzWrite -> BZ2_bzCompress
+    BZ2_bzWrite -> fwrite
+    BZ2_bzCompress [label="int BZ2_bzCompress (bz_stream *strm, int action)
+/root/rustmap/bzip2-real-test/bzlib.i:3303"]
+    BZ2_bzCompress -> handle_compress
+    BZ2_bzCompress -> isempty_RL
+    handle_compress [label="Bool handle_compress (bz_stream *strm)
+/root/rustmap/bzip2-real-test/bzlib.i:3257"]
+    handle_compress -> copy_output_until_stop
+    handle_compress -> isempty_RL
+    handle_compress -> prepare_new_block
+    handle_compress -> copy_input_until_stop
+    handle_compress -> flush_RL
+    handle_compress -> BZ2_compressBlock
+    copy_output_until_stop [label="Bool copy_output_until_stop (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3230"]
+    isempty_RL [label="Bool isempty_RL (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3036"]
+    copy_input_until_stop [label="Bool copy_input_until_stop (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3185"]
+    copy_input_until_stop -> add_pair_to_block
+    add_pair_to_block [label="void add_pair_to_block (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3143"]
+    flush_RL [label="void flush_RL (EState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3179"]
+    flush_RL -> add_pair_to_block
+    flush_RL -> init_RL
+    BZ2_compressBlock [label="void BZ2_compressBlock (EState *s, Bool is_last_block)
+/root/rustmap/bzip2-real-test/compress.i:3471"]
+    BZ2_compressBlock -> fprintf
+    BZ2_compressBlock -> BZ2_blockSort
+    BZ2_compressBlock -> BZ2_bsInitWrite
+    BZ2_compressBlock -> bsPutUChar
+    BZ2_compressBlock -> bsPutUInt32
+    BZ2_compressBlock -> bsW
+    BZ2_compressBlock -> generateMTFValues
+    BZ2_compressBlock -> sendMTFValues
+    BZ2_compressBlock -> bsFinishWrite
+    BZ2_blockSort [label="void BZ2_blockSort (EState *s)
+/root/rustmap/bzip2-real-test/blocksort.i:3686"]
+    BZ2_blockSort -> fallbackSort
+    BZ2_blockSort -> mainSort
+    BZ2_blockSort -> fprintf
+    BZ2_blockSort -> BZ2_bz__AssertH__fail
+    fallbackSort [label="void fallbackSort (UInt32 *fmap, UInt32 *eclass, UInt32 *bhtab, Int32 nblock, Int32 verb)
+/root/rustmap/bzip2-real-test/blocksort.i:3051"]
+    fallbackSort -> fprintf
+    fallbackSort -> fallbackQSort3
+    fallbackSort -> BZ2_bz__AssertH__fail
+    fallbackQSort3 [label="void fallbackQSort3 (UInt32 *fmap, UInt32 *eclass, Int32 loSt, Int32 hiSt)
+/root/rustmap/bzip2-real-test/blocksort.i:2970"]
+    fallbackQSort3 -> BZ2_bz__AssertH__fail
+    fallbackQSort3 -> fallbackSimpleSort
+    BZ2_bz__AssertH__fail [label="void BZ2_bz__AssertH__fail (int errcode)
+/root/rustmap/bzip2-real-test/bzlib.i:2932"]
+    BZ2_bz__AssertH__fail -> fprintf
+    BZ2_bz__AssertH__fail -> BZ2_bzlibVersion
+    BZ2_bz__AssertH__fail -> exit
+    fallbackSimpleSort [label="__inline__ void fallbackSimpleSort (UInt32 *fmap, UInt32 *eclass, Int32 lo, Int32 hi)
+/root/rustmap/bzip2-real-test/blocksort.i:2941"]
+    mainSort [label="void mainSort (UInt32 *ptr, UChar *block, UInt16 *quadrant, UInt32 *ftab, Int32 nblock, Int32 verb, Int32 *budget)
+/root/rustmap/bzip2-real-test/blocksort.i:3482"]
+    mainSort -> fprintf
+    mainSort -> mainQSort3
+    mainSort -> BZ2_bz__AssertH__fail
+    mainQSort3 [label="void mainQSort3 (UInt32 *ptr, UChar *block, UInt16 *quadrant, Int32 nblock, Int32 loSt, Int32 hiSt, Int32 dSt, Int32 *budget)
+/root/rustmap/bzip2-real-test/blocksort.i:3384"]
+    mainQSort3 -> BZ2_bz__AssertH__fail
+    mainQSort3 -> mainSimpleSort
+    mainQSort3 -> mmed3
+    mainSimpleSort [label="void mainSimpleSort (UInt32 *ptr, UChar *block, UInt16 *quadrant, Int32 nblock, Int32 lo, Int32 hi, Int32 d, Int32 *budget)
+/root/rustmap/bzip2-real-test/blocksort.i:3300"]
+    mainSimpleSort -> mainGtU
+    mainGtU [label="__inline__ Bool mainGtU (UInt32 i1, UInt32 i2, UChar *block, UInt16 *quadrant, UInt32 nblock, Int32 *budget)
+/root/rustmap/bzip2-real-test/blocksort.i:3171"]
+    mmed3 [label="__inline__ UChar mmed3 (UChar a, UChar b, UChar c)
+/root/rustmap/bzip2-real-test/blocksort.i:3373"]
+    BZ2_bsInitWrite [label="void BZ2_bsInitWrite (EState *s)
+/root/rustmap/bzip2-real-test/compress.i:2939"]
+    bsPutUChar [label="void bsPutUChar (EState *s, UChar c)
+/root/rustmap/bzip2-real-test/compress.i:2980"]
+    bsPutUChar -> bsW
+    bsW [label="__inline__ void bsW (EState *s, Int32 n, UInt32 v)
+/root/rustmap/bzip2-real-test/compress.i:2959"]
+    bsPutUInt32 [label="void bsPutUInt32 (EState *s, UInt32 u)
+/root/rustmap/bzip2-real-test/compress.i:2969"]
+    bsPutUInt32 -> bsW
+    generateMTFValues [label="void generateMTFValues (EState *s)
+/root/rustmap/bzip2-real-test/compress.i:3006"]
+    generateMTFValues -> makeMaps_e
+    makeMaps_e [label="void makeMaps_e (EState *s)
+/root/rustmap/bzip2-real-test/compress.i:2992"]
+    sendMTFValues [label="void sendMTFValues (EState *s)
+/root/rustmap/bzip2-real-test/compress.i:3102"]
+    sendMTFValues -> fprintf
+    sendMTFValues -> BZ2_bz__AssertH__fail
+    sendMTFValues -> BZ2_hbMakeCodeLengths
+    sendMTFValues -> BZ2_hbAssignCodes
+    sendMTFValues -> bsW
+    BZ2_hbMakeCodeLengths [label="void BZ2_hbMakeCodeLengths (UChar *len, Int32 *freq, Int32 alphaSize, Int32 maxLen)
+/root/rustmap/bzip2-real-test/huffman.i:2932"]
+    BZ2_hbMakeCodeLengths -> BZ2_bz__AssertH__fail
+    BZ2_hbAssignCodes [label="void BZ2_hbAssignCodes (Int32 *code, UChar *length, Int32 minLen, Int32 maxLen, Int32 alphaSize)
+/root/rustmap/bzip2-real-test/huffman.i:3003"]
+    bsFinishWrite [label="void bsFinishWrite (EState *s)
+/root/rustmap/bzip2-real-test/compress.i:2948"]
+    fwrite [label="fwrite()"]
+    BZ2_bzWriteClose64 [label="void BZ2_bzWriteClose64 (int *bzerror, BZFILE *b, int abandon, unsigned int *nbytes_in_lo32, unsigned int *nbytes_in_hi32, unsigned int *nbytes_out_lo32, unsigned int *nbytes_out_hi32)
+/root/rustmap/bzip2-real-test/bzlib.i:4042"]
+    BZ2_bzWriteClose64 -> ferror
+    BZ2_bzWriteClose64 -> BZ2_bzCompress
+    BZ2_bzWriteClose64 -> fwrite
+    BZ2_bzWriteClose64 -> fflush
+    BZ2_bzWriteClose64 -> BZ2_bzCompressEnd
+    BZ2_bzWriteClose64 -> free
+    BZ2_bzCompressEnd [label="int BZ2_bzCompressEnd (bz_stream *strm)
+/root/rustmap/bzip2-real-test/bzlib.i:3368"]
+    applySavedFileAttrToOutputFile [label="void applySavedFileAttrToOutputFile (IntNative fd)
+/root/rustmap/bzip2-real-test/bzip2.i:6962"]
+    applySavedFileAttrToOutputFile -> fchmod
+    applySavedFileAttrToOutputFile -> ioError
+    applySavedFileAttrToOutputFile -> fchown
+    fchmod [label="int fchmod (int __fd, __mode_t __mode)
+/root/rustmap/bzip2-real-test/bzip2.i:5892"]
+    fchown [label="int fchown (int __fd, __uid_t __owner, __gid_t __group)
+/root/rustmap/bzip2-real-test/bzip2.i:4491"]
+    uInt64_from_UInt32s [label="void uInt64_from_UInt32s (UInt64 *n, UInt32 lo32, UInt32 hi32)
+/root/rustmap/bzip2-real-test/bzip2.i:6029"]
+    uInt64_to_double [label="double uInt64_to_double (UInt64 *n)
+/root/rustmap/bzip2-real-test/bzip2.i:6043"]
+    uInt64_toAscii [label="void uInt64_toAscii (char *outbuf, UInt64 *n)
+/root/rustmap/bzip2-real-test/bzip2.i:6086"]
+    uInt64_toAscii -> uInt64_qrm10
+    uInt64_toAscii -> uInt64_isZero
+    uInt64_qrm10 [label="Int32 uInt64_qrm10 (UInt64 *n)
+/root/rustmap/bzip2-real-test/bzip2.i:6068"]
+    uInt64_isZero [label="Bool uInt64_isZero (UInt64 *n)
+/root/rustmap/bzip2-real-test/bzip2.i:6057"]
+    applySavedTimeInfoToOutputFile [label="void applySavedTimeInfoToOutputFile (Char *dstName)
+/root/rustmap/bzip2-real-test/bzip2.i:6943"]
+    applySavedTimeInfoToOutputFile -> utime
+    applySavedTimeInfoToOutputFile -> ioError
+    utime [label="int utime (const char *__file, const struct utimbuf *__file_times)
+/root/rustmap/bzip2-real-test/bzip2.i:4410"]
+    uncompress [label="void uncompress (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:7273"]
+    uncompress -> panic
+    uncompress -> copyFileName
+    uncompress -> mapSuffix
+    uncompress -> strcat
+    uncompress -> containsDubiousChars
+    uncompress -> fprintf
+    uncompress -> setExit
+    uncompress -> fileExists
+    uncompress -> strerror
+    uncompress -> stat
+    uncompress -> notAStandardFile
+    uncompress -> remove
+    uncompress -> countHardLinks
+    uncompress -> saveInputFileMetaInfo
+    uncompress -> isatty
+    uncompress -> fileno
+    uncompress -> fopen
+    uncompress -> fclose
+    uncompress -> fopen_output_safely
+    uncompress -> pad
+    uncompress -> fflush
+    uncompress -> uncompressStream
+    uncompress -> applySavedTimeInfoToOutputFile
+    uncompress -> ioError
+    mapSuffix [label="Bool mapSuffix (Char *name, const Char *oldSuffix, const Char *newSuffix)
+/root/rustmap/bzip2-real-test/bzip2.i:7009"]
+    mapSuffix -> hasSuffix
+    mapSuffix -> strlen
+    mapSuffix -> strcat
+    uncompressStream [label="Bool uncompressStream (FILE *zStream, FILE *stream)
+/root/rustmap/bzip2-real-test/bzip2.i:6246"]
+    uncompressStream -> ferror
+    uncompressStream -> BZ2_bzReadOpen
+    uncompressStream -> BZ2_bzRead
+    uncompressStream -> fwrite
+    uncompressStream -> BZ2_bzReadGetUnused
+    uncompressStream -> panic
+    uncompressStream -> BZ2_bzReadClose
+    uncompressStream -> myfeof
+    uncompressStream -> fileno
+    uncompressStream -> applySavedFileAttrToOutputFile
+    uncompressStream -> fclose
+    uncompressStream -> fflush
+    uncompressStream -> fprintf
+    uncompressStream -> rewind
+    uncompressStream -> fread
+    uncompressStream -> configError
+    uncompressStream -> ioError
+    uncompressStream -> crcError
+    uncompressStream -> outOfMemory
+    uncompressStream -> compressedStreamEOF
+    BZ2_bzReadOpen [label="BZFILE *BZ2_bzReadOpen (int *bzerror, FILE *f, int verbosity, int small, void *unused, int nUnused)
+/root/rustmap/bzip2-real-test/bzlib.i:4154"]
+    BZ2_bzReadOpen -> ferror
+    BZ2_bzReadOpen -> malloc
+    BZ2_bzReadOpen -> BZ2_bzDecompressInit
+    BZ2_bzReadOpen -> free
+    BZ2_bzDecompressInit [label="int BZ2_bzDecompressInit (bz_stream *strm, int verbosity, int small)
+/root/rustmap/bzip2-real-test/bzlib.i:3404"]
+    BZ2_bzDecompressInit -> bz_config_ok
+    BZ2_bzDecompressInit -> default_bzalloc
+    BZ2_bzDecompressInit -> default_bzfree
+    BZ2_bzRead [label="int BZ2_bzRead (int *bzerror, BZFILE *b, void *buf, int len)
+/root/rustmap/bzip2-real-test/bzlib.i:4290"]
+    BZ2_bzRead -> ferror
+    BZ2_bzRead -> myfeof
+    BZ2_bzRead -> fread
+    BZ2_bzRead -> BZ2_bzDecompress
+    myfeof [label="Bool myfeof (FILE *f)
+/root/rustmap/bzip2-real-test/bzlib.i:3841"]
+    myfeof -> fgetc
+    myfeof -> ungetc
+    BZ2_bzDecompress [label="int BZ2_bzDecompress (bz_stream *strm)
+/root/rustmap/bzip2-real-test/bzlib.i:3734"]
+    BZ2_bzDecompress -> unRLE_obuf_to_output_SMALL
+    BZ2_bzDecompress -> unRLE_obuf_to_output_FAST
+    BZ2_bzDecompress -> fprintf
+    BZ2_bzDecompress -> BZ2_decompress
+    BZ2_bzDecompress -> BZ2_bz__AssertH__fail
+    unRLE_obuf_to_output_SMALL [label="Bool unRLE_obuf_to_output_SMALL (DState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3632"]
+    unRLE_obuf_to_output_SMALL -> BZ2_indexIntoF
+    BZ2_indexIntoF [label="__inline__ Int32 BZ2_indexIntoF (Int32 indx, Int32 *cftab)
+/root/rustmap/bzip2-real-test/bzlib.i:3613"]
+    unRLE_obuf_to_output_FAST [label="Bool unRLE_obuf_to_output_FAST (DState *s)
+/root/rustmap/bzip2-real-test/bzlib.i:3462"]
+    BZ2_decompress [label="Int32 BZ2_decompress (DState *s)
+/root/rustmap/bzip2-real-test/decompress.i:2946"]
+    BZ2_decompress -> fprintf
+    BZ2_decompress -> makeMaps_d
+    BZ2_decompress -> BZ2_hbCreateDecodeTables
+    BZ2_decompress -> BZ2_indexIntoF
+    BZ2_decompress -> BZ2_bz__AssertH__fail
+    makeMaps_d [label="void makeMaps_d (DState *s)
+/root/rustmap/bzip2-real-test/decompress.i:2936"]
+    BZ2_hbCreateDecodeTables [label="void BZ2_hbCreateDecodeTables (Int32 *limit, Int32 *base, Int32 *perm, UChar *length, Int32 minLen, Int32 maxLen, Int32 alphaSize)
+/root/rustmap/bzip2-real-test/huffman.i:3021"]
+    BZ2_bzReadGetUnused [label="void BZ2_bzReadGetUnused (int *bzerror, BZFILE *b, void **unused, int *nUnused)
+/root/rustmap/bzip2-real-test/bzlib.i:4394"]
+    BZ2_bzReadClose [label="void BZ2_bzReadClose (int *bzerror, BZFILE *b)
+/root/rustmap/bzip2-real-test/bzlib.i:4258"]
+    BZ2_bzReadClose -> BZ2_bzDecompressEnd
+    BZ2_bzReadClose -> free
+    BZ2_bzDecompressEnd [label="int BZ2_bzDecompressEnd (bz_stream *strm)
+/root/rustmap/bzip2-real-test/bzlib.i:3798"]
+    rewind [label="rewind()"]
+    crcError [label="void crcError (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6640"]
+    crcError -> fprintf
+    crcError -> showFileNames
+    crcError -> cadvise
+    crcError -> cleanUpAndFail
+    cadvise [label="void cadvise (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6516"]
+    cadvise -> fprintf
+    compressedStreamEOF [label="void compressedStreamEOF (void)
+/root/rustmap/bzip2-real-test/bzip2.i:6655"]
+    compressedStreamEOF -> fprintf
+    compressedStreamEOF -> perror
+    compressedStreamEOF -> showFileNames
+    compressedStreamEOF -> cadvise
+    compressedStreamEOF -> cleanUpAndFail
+    testf [label="void testf (Char *name)
+/root/rustmap/bzip2-real-test/bzip2.i:7541"]
+    testf -> panic
+    testf -> copyFileName
+    testf -> containsDubiousChars
+    testf -> fprintf
+    testf -> setExit
+    testf -> fileExists
+    testf -> strerror
+    testf -> stat
+    testf -> isatty
+    testf -> fileno
+    testf -> fopen
+    testf -> pad
+    testf -> fflush
+    testf -> testStream
+    testStream [label="Bool testStream (FILE *zStream)
+/root/rustmap/bzip2-real-test/bzip2.i:6391"]
+    testStream -> ferror
+    testStream -> BZ2_bzReadOpen
+    testStream -> BZ2_bzRead
+    testStream -> BZ2_bzReadGetUnused
+    testStream -> panic
+    testStream -> BZ2_bzReadClose
+    testStream -> myfeof
+    testStream -> fclose
+    testStream -> fprintf
+    testStream -> configError
+    testStream -> ioError
+    testStream -> outOfMemory
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/canonicalize_cidr",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/canonicalize_cidr/main.c"
+  }
+]

@@ -1,0 +1,176 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <locale.h>
+        -:    5: 
+        -:    6:#define TRUE 1
+        -:    7:#define FALSE 0
+        -:    8: 
+        -:    9:typedef unsigned char bool;
+        -:   10: 
+        3:   11:void sieve(bool *c, int limit) {
+        3:   12:    int i, p = 3, p2;
+        -:   13:    // TRUE denotes composite, FALSE denotes prime.
+        3:   14:    c[0] = TRUE;
+        3:   15:    c[1] = TRUE;
+        -:   16:    // no need to bother with even numbers over 2 for this task
+      504:   17:    for (;;) {
+      504:   18:        p2 = p * p;
+      504:   19:        if (p2 >= limit) {
+        3:   20:            break;
+        -:   21:        }
+  2433789:   22:        for (i = p2; i < limit; i += 2*p) {
+  2433288:   23:            c[i] = TRUE;
+  2433288:   24:        }
+     1509:   25:        for (;;) {
+     1509:   26:            p += 2;
+     1509:   27:            if (!c[p]) {
+      501:   28:                break;
+        -:   29:            }
+        -:   30:        }
+        -:   31:    }
+        3:   32:}
+        -:   33: 
+       15:   34:void printHelper(const char *cat, int len, int lim, int n) {
+       15:   35:    const char *sp = strcmp(cat, "unsexy primes") ? "sexy prime " : "";
+       15:   36:    const char *verb = (len == 1) ? "is" : "are";
+       15:   37:    printf("Number of %s%s less than %'d = %'d\n", sp, cat, lim, len);
+       15:   38:    printf("The last %d %s:\n", n, verb);
+       15:   39:}
+        -:   40: 
+       51:   41:void printArray(int *a, int len) {
+        -:   42:    int i;
+       51:   43:    printf("[");
+      231:   44:    for (i = 0; i < len; ++i) printf("%d ", a[i]);
+       51:   45:    printf("\b]");
+       51:   46:}
+        -:   47: 
+        3:   48:int main() {
+        3:   49:    int i, ix, n, lim = 1000035;
+        3:   50:    int pairs = 0, trips = 0, quads = 0, quins = 0, unsexy = 2;
+        3:   51:    int pr = 0, tr = 0, qd = 0, qn = 0, un = 2;
+        3:   52:    int lpr = 5, ltr = 5, lqd = 5, lqn = 5, lun = 10;
+        -:   53:    int last_pr[5][2], last_tr[5][3], last_qd[5][4], last_qn[5][5];
+        -:   54:    int last_un[10];
+        3:   55:    bool *sv = calloc(lim - 1, sizeof(bool)); // all FALSE by default
+        3:   56:    setlocale(LC_NUMERIC, "");
+        3:   57:    sieve(sv, lim);
+        -:   58: 
+        -:   59:    // get the counts first
+  1500051:   60:    for (i = 3; i < lim; i += 2) {
+  1500048:   61:        if (i > 5 && i < lim-6 && !sv[i] && sv[i-6] && sv[i+6]) {
+   145875:   62:            unsexy++;
+   145875:   63:            continue;
+        -:   64:        }
+  1354173:   65:        if (i < lim-6 && !sv[i] && !sv[i+6]) {
+    49158:   66:            pairs++;
+  1354173:   67:        } else continue;
+        -:   68: 
+    49158:   69:        if (i < lim-12 && !sv[i+12]) {
+     8700:   70:            trips++;
+    49158:   71:        } else continue;
+        -:   72: 
+     8700:   73:        if (i < lim-18 && !sv[i+18]) {
+      975:   74:            quads++;
+     8700:   75:        } else continue;
+        -:   76: 
+      975:   77:        if (i < lim-24 && !sv[i+24]) {
+        3:   78:            quins++;
+        3:   79:        }
+      975:   80:    }
+        3:   81:    if (pairs < lpr) lpr = pairs;
+        3:   82:    if (trips < ltr) ltr = trips;
+        3:   83:    if (quads < lqd) lqd = quads;
+        3:   84:    if (quins < lqn) lqn = quins;
+        3:   85:    if (unsexy < lun) lun = unsexy;
+        -:   86: 
+        -:   87:    // now get the last 'x' for each category
+  1500051:   88:    for (i = 3; i < lim; i += 2) {
+  1500048:   89:        if (i > 5 && i < lim-6 && !sv[i] && sv[i-6] && sv[i+6]) {
+   145875:   90:            un++;
+   145875:   91:            if (un > unsexy - lun) {
+       30:   92:                last_un[un + lun - 1 - unsexy] = i;
+       30:   93:            }
+   145875:   94:            continue;
+        -:   95:        }
+  1354173:   96:        if (i < lim-6 && !sv[i] && !sv[i+6]) {
+    49158:   97:            pr++;
+    49158:   98:            if (pr > pairs - lpr) {
+       15:   99:                ix = pr + lpr - 1 - pairs;
+       15:  100:                last_pr[ix][0] = i; last_pr[ix][1] = i + 6;
+       15:  101:            }
+  1354173:  102:        } else continue;
+        -:  103: 
+    49158:  104:        if (i < lim-12 && !sv[i+12]) {
+     8700:  105:            tr++;
+     8700:  106:            if (tr > trips - ltr) {
+       15:  107:                ix = tr + ltr - 1 - trips;
+       15:  108:                last_tr[ix][0] = i; last_tr[ix][1] = i + 6;
+       15:  109:                last_tr[ix][2] = i + 12;
+       15:  110:            }
+    49158:  111:        } else continue;
+        -:  112: 
+     8700:  113:        if (i < lim-18 && !sv[i+18]) {
+      975:  114:            qd++;
+      975:  115:            if (qd > quads - lqd) {
+       15:  116:                ix = qd + lqd - 1 - quads;
+       15:  117:                last_qd[ix][0] = i; last_qd[ix][1] = i + 6;
+       15:  118:                last_qd[ix][2] = i + 12; last_qd[ix][3] = i + 18;
+       15:  119:            }
+     8700:  120:        } else continue;
+        -:  121: 
+      975:  122:        if (i < lim-24 && !sv[i+24]) {
+        3:  123:            qn++;
+        3:  124:            if (qn > quins - lqn) {
+        3:  125:                ix = qn + lqn - 1 - quins;
+        3:  126:                last_qn[ix][0] = i; last_qn[ix][1] = i + 6;
+        3:  127:                last_qn[ix][2] = i + 12; last_qn[ix][3] = i + 18;
+        3:  128:                last_qn[ix][4] = i + 24;
+        3:  129:            }
+        3:  130:        }
+      975:  131:    }
+        -:  132: 
+        3:  133:    printHelper("pairs", pairs, lim, lpr);
+        3:  134:    printf("  [");
+       18:  135:    for (i = 0; i < lpr; ++i) {
+       15:  136:        printArray(last_pr[i], 2);
+       15:  137:        printf("\b] ");
+       15:  138:    }
+        3:  139:    printf("\b]\n\n");
+        -:  140: 
+        3:  141:    printHelper("triplets", trips, lim, ltr);
+        3:  142:    printf("  [");
+       18:  143:    for (i = 0; i < ltr; ++i) {
+       15:  144:        printArray(last_tr[i], 3);
+       15:  145:        printf("\b] ");
+       15:  146:    }
+        3:  147:    printf("\b]\n\n");
+        -:  148: 
+        3:  149:    printHelper("quadruplets", quads, lim, lqd);
+        3:  150:    printf("  [");
+       18:  151:    for (i = 0; i < lqd; ++i) {
+       15:  152:        printArray(last_qd[i], 4);
+       15:  153:        printf("\b] ");
+       15:  154:    }
+        3:  155:    printf("\b]\n\n");
+        -:  156: 
+        3:  157:    printHelper("quintuplets", quins, lim, lqn);
+        3:  158:    printf("  [");
+        6:  159:    for (i = 0; i < lqn; ++i) {
+        3:  160:        printArray(last_qn[i], 5);
+        3:  161:        printf("\b] ");
+        3:  162:    }
+        3:  163:    printf("\b]\n\n");
+        -:  164: 
+        3:  165:    printHelper("unsexy primes", unsexy, lim, lun);
+        3:  166:    printf("  [");
+        3:  167:    printArray(last_un, lun);
+        3:  168:    printf("\b]\n");
+        3:  169:    free(sv);
+        3:  170:    return 0;
+        -:  171:}

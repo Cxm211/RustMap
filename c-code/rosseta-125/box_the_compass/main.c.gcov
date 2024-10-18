@@ -1,0 +1,58 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        4:    3:int main()
+        -:    4:{
+        -:    5:        int i, j;
+        4:    6:        double degrees[] = { 0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5,
+        -:    7:                84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88,
+        -:    8:                168.75, 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12,
+        -:    9:                253.13, 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5,
+        -:   10:                354.37, 354.38 };
+        4:   11:        const char * names =  "North                 "
+        -:   12:                              "North by east         "
+        -:   13:                              "North-northeast       "
+        -:   14:                              "Northeast by north    "
+        -:   15:                              "Northeast             "
+        -:   16:                              "Northeast by east     "
+        -:   17:                              "East-northeast        "
+        -:   18:                              "East by north         "
+        -:   19:                              "East                  "
+        -:   20:                              "East by south         "
+        -:   21:                              "East-southeast        "
+        -:   22:                              "Southeast by east     "
+        -:   23:                              "Southeast             "
+        -:   24:                              "Southeast by south    "
+        -:   25:                              "South-southeast       "
+        -:   26:                              "South by east         "
+        -:   27:                              "South                 "
+        -:   28:                              "South by west         "
+        -:   29:                              "South-southwest       "
+        -:   30:                              "Southwest by south    "
+        -:   31:                              "Southwest             "
+        -:   32:                              "Southwest by west     "
+        -:   33:                              "West-southwest        "
+        -:   34:                              "West by south         "
+        -:   35:                              "West                  "
+        -:   36:                              "West by north         "
+        -:   37:                              "West-northwest        "
+        -:   38:                              "Northwest by west     "
+        -:   39:                              "Northwest             "
+        -:   40:                              "Northwest by north    "
+        -:   41:                              "North-northwest       "
+        -:   42:                              "North by west         "
+        -:   43:                              "North                 ";
+        -:   44: 
+      136:   45:        for (i = 0; i < 33; i++) {
+      132:   46:                j = .5 + degrees[i] * 32 / 360;
+        -:   47: 
+      264:   48:                printf("%2d  %.22s  %6.2f\n", (j % 32) + 1, names + (j % 32) * 22,
+      132:   49:                        degrees[i]);
+      132:   50:        }
+        -:   51: 
+        4:   52:        return 0;
+        -:   53:}

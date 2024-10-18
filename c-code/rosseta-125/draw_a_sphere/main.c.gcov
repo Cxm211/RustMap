@@ -1,0 +1,62 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:#include <ctype.h>
+        -:    5:#include <math.h>
+        -:    6: 
+        -:    7:const char *shades = ".:!*oe&#%@";
+        -:    8: 
+        -:    9:double light[3] = { 30, 30, -50 };
+    12580:   10:void normalize(double * v)
+        -:   11:{
+    12580:   12:        double len = sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
+    12580:   13:        v[0] /= len; v[1] /= len; v[2] /= len;
+    12580:   14:}
+        -:   15: 
+    12576:   16:double dot(double *x, double *y)
+        -:   17:{
+    12576:   18:        double d = x[0]*y[0] + x[1]*y[1] + x[2]*y[2];
+    12576:   19:        return d < 0 ? -d : 0;
+        -:   20:}
+        -:   21: 
+        8:   22:void draw_sphere(double R, double k, double ambient)
+        -:   23:{
+        -:   24:        int i, j, intensity;
+        -:   25:        double b;
+        -:   26:        double vec[3], x, y;
+      256:   27:        for (i = floor(-R); i <= ceil(R); i++) {
+      248:   28:                x = i + .5;
+    16976:   29:                for (j = floor(-2 * R); j <= ceil(2 * R); j++) {
+    16728:   30:                        y = j / 2. + .5;
+    16728:   31:                        if (x * x + y * y <= R * R) {
+    12576:   32:                                vec[0] = x;
+    12576:   33:                                vec[1] = y;
+    12576:   34:                                vec[2] = sqrt(R * R - x * x - y * y);
+    12576:   35:                                normalize(vec);
+    12576:   36:                                b = pow(dot(light, vec), k) + ambient;
+    12576:   37:                                intensity = (1 - b) * (sizeof(shades) - 1);
+    12576:   38:                                if (intensity < 0) intensity = 0;
+    12576:   39:                                if (intensity >= sizeof(shades) - 1)
+    #####:   40:                                        intensity = sizeof(shades) - 2;
+    12576:   41:                                putchar(shades[intensity]);
+    12576:   42:                        } else
+     4152:   43:                                putchar(' ');
+    16728:   44:                }
+      248:   45:                putchar('\n');
+      248:   46:        }
+        8:   47:}
+        -:   48: 
+        -:   49: 
+        4:   50:int main()
+        -:   51:{
+        4:   52:        normalize(light);
+        4:   53:        draw_sphere(20, 4, .1);
+        4:   54:        draw_sphere(10, 2, .4);
+        -:   55: 
+        4:   56:        return 0;
+        -:   57:}

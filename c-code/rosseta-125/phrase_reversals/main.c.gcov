@@ -1,0 +1,75 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3: 
+        -:    4:/* The functions used are destructive, so after each call the string needs
+        -:    5: * to be copied over again. One could easily allocate new strings as
+        -:    6: * required, but this way allows the caller to manage memory themselves */
+        -:    7: 
+       30:    8:char* reverse_section(char *s, size_t length)
+        -:    9:{
+       30:   10:    if (length == 0) return s;
+        -:   11: 
+        -:   12:    size_t i; char temp;
+      192:   13:    for (i = 0; i < length / 2 + 1; ++i)
+      162:   14:        temp = s[i], s[i] = s[length - i], s[length - i] = temp;
+       30:   15:    return s;
+       30:   16:}
+        -:   17: 
+        6:   18:char* reverse_words_in_order(char *s, char delim)
+        -:   19:{
+        6:   20:    if (!strlen(s)) return s;
+        -:   21: 
+        -:   22:    size_t i, j;
+       30:   23:    for (i = 0; i < strlen(s) - 1; ++i) {
+      174:   24:        for (j = 0; s[i + j] != 0 && s[i + j] != delim; ++j)
+        -:   25:            ;
+       24:   26:        reverse_section(s + i, j - 1);
+       24:   27:        s += j;
+       24:   28:    }
+        6:   29:    return s;
+        6:   30:}
+        -:   31: 
+        6:   32:char* reverse_string(char *s)
+        -:   33:{
+        6:   34:    return strlen(s) ? reverse_section(s, strlen(s) - 1) : s;
+        -:   35:}
+        -:   36: 
+        3:   37:char* reverse_order_of_words(char *s, char delim)
+        -:   38:{
+        3:   39:    reverse_string(s);
+        3:   40:    reverse_words_in_order(s, delim);
+        3:   41:    return s;
+        -:   42:}
+        -:   43: 
+        3:   44:int main(void)
+        -:   45:{
+        3:   46:    char str[]    = "rosetta code phrase reversal";
+        3:   47:    size_t lenstr = sizeof(str) / sizeof(str[0]);
+        3:   48:    char scopy[lenstr];
+        3:   49:    char delim = ' ';
+        -:   50: 
+        -:   51:    /* Original String */
+        3:   52:    printf("Original:       \"%s\"\n", str);
+        -:   53: 
+        -:   54:    /* Reversed string */
+        3:   55:    strncpy(scopy, str, lenstr);
+        3:   56:    reverse_string(scopy);
+        3:   57:    printf("Reversed:       \"%s\"\n", scopy);
+        -:   58: 
+        -:   59:    /* Reversed words in string */
+        3:   60:    strncpy(scopy, str, lenstr);
+        3:   61:    reverse_words_in_order(scopy, delim);
+        3:   62:    printf("Reversed words: \"%s\"\n", scopy);
+        -:   63: 
+        -:   64:    /* Reversed order of words in string */
+        3:   65:    strncpy(scopy, str, lenstr);
+        3:   66:    reverse_order_of_words(scopy, delim);
+        3:   67:    printf("Reversed order: \"%s\"\n", scopy);
+        -:   68: 
+        3:   69:    return 0;
+        3:   70:}

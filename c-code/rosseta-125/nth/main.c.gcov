@@ -1,0 +1,57 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+      204:    3:char* addSuffix(int num, char* buf, size_t len)
+        -:    4:{
+      204:    5:    char *suffixes[4] = { "th", "st", "nd", "rd" };
+        -:    6:    int i;
+        -:    7: 
+      204:    8:    switch (num % 10)
+        -:    9:    {
+       24:   10:        case 1 : i = (num % 100 == 11) ? 0 : 1;
+       24:   11:	         break;
+       24:   12:        case 2 : i = (num % 100 == 12) ? 0 : 2;
+       24:   13:                 break;
+       24:   14:        case 3 : i = (num % 100 == 13) ? 0 : 3;
+       24:   15:                 break;
+      132:   16:        default: i = 0;
+      132:   17:    };
+        -:   18: 
+      204:   19:    snprintf(buf, len, "%d%s", num, suffixes[i]);
+      204:   20:    return buf;
+        -:   21:}
+        -:   22: 
+        3:   23:int main(void)
+        -:   24:{
+        -:   25:    int i;
+        -:   26: 
+        3:   27:    printf("Set [0,25]:\n");
+       81:   28:    for (i = 0; i < 26; i++)
+        -:   29:    {
+        -:   30:        char s[5];
+       78:   31:        printf("%s ", addSuffix(i, s, 5));
+       78:   32:    }
+        3:   33:    putchar('\n'); 
+        -:   34: 
+        3:   35:    printf("Set [250,265]:\n");
+       51:   36:    for (i = 250; i < 266; i++)
+        -:   37:    {
+        -:   38:        char s[6];
+       48:   39:        printf("%s ", addSuffix(i, s, 6));
+       48:   40:    }
+        3:   41:    putchar('\n'); 
+        -:   42: 
+        3:   43:    printf("Set [1000,1025]:\n");
+       81:   44:    for (i = 1000; i < 1026; i++)
+        -:   45:    {
+        -:   46:        char s[7];
+       78:   47:        printf("%s ", addSuffix(i, s, 7));
+       78:   48:    }
+        3:   49:    putchar('\n');
+        -:   50: 
+        3:   51:    return 0;
+        -:   52:}

@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/convert_decimal_number_to_rational",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/convert_decimal_number_to_rational/main.c"
+  }
+]

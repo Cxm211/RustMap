@@ -1,0 +1,134 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+       12:    5:double int_leftrect(double from, double to, double n, double (*func)())
+        -:    6:{
+       12:    7:   double h = (to-from)/n;
+       12:    8:   double sum = 0.0, x;
+ 33003300:    9:   for(x=from; x <= (to-h); x += h)
+ 33003288:   10:      sum += func(x);
+       12:   11:   return h*sum;
+        -:   12:}
+        -:   13: 
+       12:   14:double int_rightrect(double from, double to, double n, double (*func)())
+        -:   15:{
+       12:   16:   double h = (to-from)/n;
+       12:   17:   double sum = 0.0, x;
+ 33003300:   18:   for(x=from; x <= (to-h); x += h)
+ 33003288:   19:     sum += func(x+h);
+       12:   20:   return h*sum;
+        -:   21:}
+        -:   22: 
+       12:   23:double int_midrect(double from, double to, double n, double (*func)())
+        -:   24:{
+       12:   25:   double h = (to-from)/n;
+       12:   26:   double sum = 0.0, x;
+ 33003300:   27:   for(x=from; x <= (to-h); x += h)
+ 33003288:   28:     sum += func(x+h/2.0);
+       12:   29:   return h*sum;
+        -:   30:}
+        -:   31: 
+       12:   32:double int_trapezium(double from, double to, double n, double (*func)())
+        -:   33:{
+       12:   34:   double h = (to - from) / n;
+       12:   35:   double sum = func(from) + func(to);
+        -:   36:   int i;
+ 33003300:   37:   for(i = 1;i < n;i++)
+ 33003288:   38:       sum += 2.0*func(from + i * h);
+       12:   39:   return  h * sum / 2.0;
+        -:   40:}
+        -:   41: 
+       12:   42:double int_simpson(double from, double to, double n, double (*func)())
+        -:   43:{
+       12:   44:   double h = (to - from) / n;
+       12:   45:   double sum1 = 0.0;
+       12:   46:   double sum2 = 0.0;
+        -:   47:   int i;
+        -:   48: 
+        -:   49:   double x;
+        -:   50: 
+ 33003312:   51:   for(i = 0;i < n;i++)
+ 33003300:   52:      sum1 += func(from + h * i + h / 2.0);
+        -:   53: 
+ 33003300:   54:   for(i = 1;i < n;i++)
+ 33003288:   55:      sum2 += func(from + h * i);
+        -:   56: 
+       12:   57:   return h / 6.0 * (func(from) + func(to) + 4.0 * sum1 + 2.0 * sum2);
+        -:   58:}
+        -:   59:/* test */
+197999994:   60:double f3(double x)
+        -:   61:{
+197999994:   62:  return x;
+        -:   63:}
+        -:   64: 
+       60:   65:double f3a(double x)
+        -:   66:{
+       60:   67:  return x*x/2.0;
+        -:   68:}
+        -:   69: 
+    17997:   70:double f2(double x)
+        -:   71:{
+    17997:   72:  return 1.0/x;
+        -:   73:}
+        -:   74: 
+       30:   75:double f2a(double x)
+        -:   76:{
+       30:   77:  return log(x);
+        -:   78:}
+        -:   79: 
+     1797:   80:double f1(double x)
+        -:   81:{
+     1797:   82:  return x*x*x;
+        -:   83:}
+        -:   84: 
+       30:   85:double f1a(double x)
+        -:   86:{
+       30:   87:  return x*x*x*x/4.0;
+        -:   88:}
+        -:   89: 
+        -:   90:typedef double (*pfunc)(double, double, double, double (*)());
+        -:   91:typedef double (*rfunc)(double);
+        -:   92: 
+        -:   93:#define INTG(F,A,B) (F((B))-F((A)))
+        -:   94: 
+        3:   95:int main()
+        -:   96:{
+        -:   97:     int i, j;
+        -:   98:     double ic;
+        -:   99: 
+        3:  100:     pfunc f[5] = { 
+        -:  101:       int_leftrect, int_rightrect,
+        -:  102:       int_midrect,  int_trapezium,
+        -:  103:       int_simpson 
+        -:  104:     };
+        3:  105:     const char *names[5] = {
+        -:  106:       "leftrect", "rightrect", "midrect",
+        -:  107:       "trapezium", "simpson" 
+        -:  108:     };
+        3:  109:     rfunc rf[] = { f1, f2, f3, f3 };
+        3:  110:     rfunc If[] = { f1a, f2a, f3a, f3a };
+        3:  111:     double ivals[] = { 
+        -:  112:       0.0, 1.0,
+        -:  113:       1.0, 100.0,
+        -:  114:       0.0, 5000.0,
+        -:  115:       0.0, 6000.0
+        -:  116:     };
+        3:  117:     double approx[] = { 100.0, 1000.0, 5000000.0, 6000000.0 };
+        -:  118: 
+       15:  119:     for(j=0; j < (sizeof(rf) / sizeof(rfunc)); j++)
+        -:  120:     {
+       72:  121:       for(i=0; i < 5 ; i++)
+        -:  122:       {
+       60:  123:         ic = (*f[i])(ivals[2*j], ivals[2*j+1], approx[j], rf[j]);
+       60:  124:         printf("%10s [ 0,1] num: %+lf, an: %lf\n",
+       60:  125:                names[i], ic, INTG((*If[j]), ivals[2*j], ivals[2*j+1]));
+       60:  126:       }
+       12:  127:       printf("\n");
+       12:  128:     }
+        3:  129:}

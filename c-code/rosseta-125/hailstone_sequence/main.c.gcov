@@ -1,0 +1,46 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+   300003:    4:int hailstone(int n, int *arry)
+        -:    5:{
+   300003:    6:    int hs = 1;
+        -:    7: 
+ 32561805:    8:    while (n!=1) {
+ 32261802:    9:        hs++;
+ 32261802:   10:        if (arry) *arry++ = n;
+ 32261802:   11:        n = (n&1) ? (3*n+1) : (n/2);
+        -:   12:    }
+   300003:   13:    if (arry) *arry++ = n;
+   300003:   14:    return hs;
+        -:   15:}
+        -:   16: 
+        3:   17:int main()
+        -:   18:{
+        3:   19:    int j, hmax = 0;
+        -:   20:    int jatmax, n;
+        -:   21:    int *arry;
+        -:   22: 
+   300000:   23:    for (j=1; j<100000; j++) {
+   299997:   24:       n = hailstone(j, NULL);
+   299997:   25:       if (hmax < n) {
+      105:   26:           hmax = n;
+      105:   27:           jatmax = j;
+      105:   28:       }
+   299997:   29:    }
+        3:   30:    n = hailstone(27, NULL);
+        3:   31:    arry = malloc(n*sizeof(int));
+        3:   32:    n = hailstone(27, arry);
+        -:   33: 
+        3:   34:    printf("[ %d, %d, %d, %d, ...., %d, %d, %d, %d] len=%d\n",
+        3:   35:        arry[0],arry[1],arry[2],arry[3],
+        3:   36:        arry[n-4], arry[n-3], arry[n-2], arry[n-1], n);
+        3:   37:    printf("Max %d at j= %d\n", hmax, jatmax);
+        3:   38:    free(arry);
+        -:   39: 
+        3:   40:    return 0;
+        -:   41:}

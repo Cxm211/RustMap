@@ -1,0 +1,79 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+        -:    5:typedef int (*seq_func)(void *);
+        -:    6:#define SEQ_BASE seq_func f; int output
+        -:    7: 
+        -:    8:/* sort of polymorphing data structure */
+        -:    9:typedef struct { SEQ_BASE; } gen_t;
+        -:   10: 
+      304:   11:int seq_next(void *state)
+        -:   12:{
+      304:   13:	return ((gen_t*)state)->output = (*(seq_func*)state)(state);
+        -:   14:}
+        -:   15: 
+        -:   16:typedef struct {
+        -:   17:	SEQ_BASE;
+        -:   18:	int pos, n;
+        -:   19:} power_gen_t;
+        -:   20: 
+      184:   21:int power_next(void *s)
+        -:   22:{
+      184:   23:	return (int)pow(++((power_gen_t*)s)->pos, ((power_gen_t*)s)->n);
+        -:   24:}
+        -:   25: 
+        8:   26:void *power_seq(int n)
+        -:   27:{
+        8:   28:	power_gen_t *s = malloc(sizeof(power_gen_t));
+        8:   29:	s->output = -1;
+        8:   30:	s->f = power_next;
+        8:   31:	s->n = n;
+        8:   32:	s->pos = -1;
+        8:   33:	return s;
+        -:   34:}
+        -:   35: 
+        -:   36:typedef struct {
+        -:   37:	SEQ_BASE;
+        -:   38:	void *in, *without;
+        -:   39:} filter_gen_t;
+        -:   40: 
+      120:   41:int filter_next(void *s)
+        -:   42:{
+      120:   43:	gen_t *in = ((filter_gen_t*)s)->in, *wo = ((filter_gen_t*)s)->without;
+        -:   44: 
+      120:   45:	do{
+      136:   46:		seq_next(in);
+      184:   47:		while (wo->output < in->output)
+       48:   48:			seq_next(wo);
+      136:   49:	} while(wo->output == in->output);
+        -:   50: 
+      120:   51:	return in->output;
+        -:   52:}
+        -:   53: 
+        4:   54:void* filter_seq(gen_t *in, gen_t *without)
+        -:   55:{
+        4:   56:	filter_gen_t *filt = malloc(sizeof(filter_gen_t));
+        4:   57:	filt->in = in;
+        4:   58:	filt->without = without;
+        4:   59:	filt->f = filter_next;
+        4:   60:	filt->output = -1;
+        4:   61:	return filt;
+        -:   62:}
+        -:   63: 
+        4:   64:int main()
+        -:   65:{
+        -:   66:	int i;
+        4:   67:	void *s = filter_seq(power_seq(2), power_seq(3));
+        -:   68: 
+       84:   69:	for (i = 0; i < 20; i++) seq_next(s);
+       44:   70:	for (i = 0; i < 10; i++)
+       40:   71:		printf("%d\n", seq_next(s));
+        -:   72: 
+        4:   73:	return 0;
+        -:   74:}

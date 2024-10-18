@@ -1,0 +1,52 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:int digits[26] = { 0, 0, 100, 500, 0, 0, 0, 0, 1, 1, 0, 50, 1000, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 10, 0, 0 };
+        -:    4: 
+        -:    5:/* assuming ASCII, do upper case and get index in alphabet. could also be
+        -:    6:        inline int VALUE(char x) { return digits [ (~0x20 & x) - 'A' ]; }
+        -:    7:   if you think macros are evil */
+        -:    8:#define VALUE(x) digits[(~0x20 & (x)) - 'A']
+        -:    9: 
+       12:   10:int decode(const char * roman)
+        -:   11:{
+        -:   12:        const char *bigger;
+        -:   13:        int current;
+       12:   14:        int arabic = 0;
+       75:   15:        while (*roman != '\0') {
+       63:   16:                current = VALUE(*roman);
+        -:   17:                /*      if (!current) return -1;
+        -:   18:                        note: -1 can be used as error code; Romans didn't even have zero
+        -:   19:                */
+       63:   20:                bigger = roman;
+        -:   21: 
+        -:   22:                /* look for a larger digit, like IV or XM */
+      222:   23:                while (VALUE(*bigger) <= current && *++bigger != '\0');
+        -:   24: 
+       63:   25:                if (*bigger == '\0')
+       54:   26:                        arabic += current;
+        -:   27:                else {
+        9:   28:                        arabic += VALUE(*bigger);
+       18:   29:                        while (roman < bigger)
+        9:   30:                                arabic -= VALUE(* (roman++) );
+        -:   31:                }
+        -:   32: 
+       63:   33:                roman ++;
+        -:   34:        }
+       12:   35:        return arabic;
+        -:   36:}
+        -:   37: 
+        3:   38:int main()
+        -:   39:{
+        3:   40:        const char * romans[] = { "MCmxC", "MMVIII", "MDClXVI", "MCXLUJ" };
+        -:   41:        int i;
+        -:   42: 
+       15:   43:        for (i = 0; i < 4; i++)
+       12:   44:                printf("%s\t%d\n", romans[i], decode(romans[i]));
+        -:   45: 
+        3:   46:        return 0;
+        -:   47:}

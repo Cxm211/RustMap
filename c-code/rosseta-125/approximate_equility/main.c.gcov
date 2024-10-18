@@ -1,0 +1,29 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <math.h>
+        -:    2:#include <stdbool.h>
+        -:    3:#include <stdio.h>
+        -:    4: 
+       32:    5:bool approxEquals(double value, double other, double epsilon) {
+       32:    6:    return fabs(value - other) < epsilon;
+        -:    7:}
+        -:    8: 
+       32:    9:void test(double a, double b) {
+       32:   10:    double epsilon = 1e-18;
+       32:   11:    printf("%f, %f => %d\n", a, b, approxEquals(a, b, epsilon));
+       32:   12:}
+        -:   13: 
+        4:   14:int main() {
+        4:   15:    test(100000000000000.01, 100000000000000.011);
+        4:   16:    test(100.01, 100.011);
+        4:   17:    test(10000000000000.001 / 10000.0, 1000000000.0000001000);
+        4:   18:    test(0.001, 0.0010000001);
+        4:   19:    test(0.000000000000000000000101, 0.0);
+        4:   20:    test(sqrt(2.0) * sqrt(2.0), 2.0);
+        4:   21:    test(-sqrt(2.0) * sqrt(2.0), -2.0);
+        4:   22:    test(3.14159265358979323846, 3.14159265358979324);
+        4:   23:    return 0;
+        -:   24:}

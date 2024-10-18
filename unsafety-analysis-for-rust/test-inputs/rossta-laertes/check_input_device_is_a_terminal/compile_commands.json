@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/check_input_device_is_a_terminal",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/check_input_device_is_a_terminal/main.c"
+  }
+]

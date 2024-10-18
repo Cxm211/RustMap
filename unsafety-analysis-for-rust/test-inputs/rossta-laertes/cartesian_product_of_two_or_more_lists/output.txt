@@ -1,0 +1,1 @@
+Usage : target/debug/main <Set product expression enclosed in double quotes>

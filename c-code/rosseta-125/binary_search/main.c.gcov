@@ -1,0 +1,51 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        4:    3:int bsearch (int *a, int n, int x) {
+        4:    4:    int i = 0, j = n - 1;
+        4:    5:    while (i <= j) {
+        4:    6:        int k = i + ((j - i) / 2);
+        4:    7:        if (a[k] == x) {
+        4:    8:            return k;
+        -:    9:        }
+    #####:   10:        else if (a[k] < x) {
+    #####:   11:            i = k + 1;
+    #####:   12:        }
+        -:   13:        else {
+    #####:   14:            j = k - 1;
+        -:   15:        }
+        -:   16:    }
+    #####:   17:    return -1;
+        4:   18:}
+        -:   19: 
+       20:   20:int bsearch_r (int *a, int x, int i, int j) {
+       20:   21:    if (j < i) {
+        4:   22:        return -1;
+        -:   23:    }
+       16:   24:    int k = i + ((j - i) / 2);
+       16:   25:    if (a[k] == x) {
+    #####:   26:        return k;
+        -:   27:    }
+       16:   28:    else if (a[k] < x) {
+        8:   29:        return bsearch_r(a, x, k + 1, j);
+        -:   30:    }
+        -:   31:    else {
+        8:   32:        return bsearch_r(a, x, i, k - 1);
+        -:   33:    }
+       20:   34:}
+        -:   35: 
+        4:   36:int main () {
+        4:   37:    int a[] = {-31, 0, 1, 2, 2, 4, 65, 83, 99, 782};
+        4:   38:    int n = sizeof a / sizeof a[0];
+        4:   39:    int x = 2;
+        4:   40:    int i = bsearch(a, n, x);
+        4:   41:    printf("%d is at index %d\n", x, i);
+        4:   42:    x = 5;
+        4:   43:    i = bsearch_r(a, x, 0, n - 1);
+        4:   44:    printf("%d is at index %d\n", x, i);
+        4:   45:    return 0;
+        -:   46:}

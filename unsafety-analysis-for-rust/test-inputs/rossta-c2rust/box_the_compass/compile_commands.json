@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/box_the_compass",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/box_the_compass/main.c"
+  }
+]

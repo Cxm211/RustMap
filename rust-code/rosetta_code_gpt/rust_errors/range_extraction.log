@@ -1,0 +1,37 @@
+error[E0596]: cannot borrow `s.0` as mutable, as `s` is not declared as mutable
+  --> range_extraction.rs:1:11
+   |
+1  | fn rprint(s: Option<&mut String>, x: &[i32]) -> usize {
+   |           ^ not mutable
+...
+11 |             if let Some(ref mut s) = s {
+   |                         --------- cannot borrow as mutable
+...
+21 |                 if let Some(ref mut s) = s {
+   |                             --------- cannot borrow as mutable
+   |
+help: consider changing this to be mutable
+   |
+1  | fn rprint(mut s: Option<&mut String>, x: &[i32]) -> usize {
+   |           +++
+
+error[E0716]: temporary value dropped while borrowed
+  --> range_extraction.rs:39:23
+   |
+39 |     let s = Some(&mut String::new());
+   |                       ^^^^^^^^^^^^^ - temporary value is freed at the end of this statement
+   |                       |
+   |                       creates a temporary value which is freed while still in use
+40 |     let _ = rprint(s, &x);
+   |                    - borrow later used here
+   |
+help: consider using a `let` binding to create a longer lived value
+   |
+39 ~     let binding = String::new();
+40 ~     let s = Some(&mut binding);
+   |
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0596, E0716.
+For more information about an error, try `rustc --explain E0596`.

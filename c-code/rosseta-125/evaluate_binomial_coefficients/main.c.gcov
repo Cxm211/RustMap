@@ -1,0 +1,48 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <limits.h>
+        -:    3: 
+        -:    4:/* We go to some effort to handle overflow situations */
+        -:    5: 
+       64:    6:static unsigned long gcd_ui(unsigned long x, unsigned long y) {
+        -:    7:  unsigned long t;
+       64:    8:  if (y < x) { t = x; x = y; y = t; }
+      292:    9:  while (y > 0) {
+      228:   10:    t = y;  y = x % y;  x = t;  /* y1 <- x0 % y0 ; x1 <- y0 */
+        -:   11:  }
+       64:   12:  return x;
+        -:   13:}
+        -:   14: 
+       12:   15:unsigned long binomial(unsigned long n, unsigned long k) {
+       12:   16:  unsigned long d, g, r = 1;
+       12:   17:  if (k == 0) return 1;
+       12:   18:  if (k == 1) return n;
+       12:   19:  if (k >= n) return (k == n);
+       12:   20:  if (k > n/2) k = n-k;
+      220:   21:  for (d = 1; d <= k; d++) {
+      208:   22:    if (r >= ULONG_MAX/n) {  /* Possible overflow */
+        -:   23:      unsigned long nr, dr;  /* reduced numerator / denominator */
+       32:   24:      g = gcd_ui(n, d);  nr = n/g;  dr = d/g;
+       32:   25:      g = gcd_ui(r, dr);  r = r/g;  dr = dr/g;
+       32:   26:      if (r >= ULONG_MAX/nr) return 0;  /* Unavoidable overflow */
+       32:   27:      r *= nr;
+       32:   28:      r /= dr;
+       32:   29:      n--;
+       32:   30:    } else {
+      176:   31:      r *= n--;
+      176:   32:      r /= d;
+        -:   33:    }
+      208:   34:  }
+       12:   35:  return r;
+       12:   36:}
+        -:   37: 
+        4:   38:int main() {
+        4:   39:    printf("%lu\n", binomial(5, 3));
+        4:   40:    printf("%lu\n", binomial(40, 19));
+        4:   41:    printf("%lu\n", binomial(67, 31));
+        4:   42:    return 0;
+        -:   43:}

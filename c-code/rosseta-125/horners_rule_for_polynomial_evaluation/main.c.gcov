@@ -1,0 +1,27 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:double horner(double *coeffs, int s, double x)
+        -:    4:{
+        -:    5:  int i;
+        3:    6:  double res = 0.0;
+        -:    7: 
+       15:    8:  for(i=s-1; i >= 0; i--)
+        -:    9:  {
+       12:   10:    res = res * x + coeffs[i];
+       12:   11:  }
+        3:   12:  return res;
+        -:   13:}
+        -:   14: 
+        -:   15: 
+        3:   16:int main()
+        -:   17:{
+        3:   18:  double coeffs[] = { -19.0, 7.0, -4.0, 6.0 };
+        -:   19: 
+        3:   20:  printf("%5.1f\n", horner(coeffs, sizeof(coeffs)/sizeof(double), 3.0));
+        3:   21:  return 0;
+        -:   22:}

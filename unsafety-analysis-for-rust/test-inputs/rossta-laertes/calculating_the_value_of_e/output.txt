@@ -1,0 +1,6 @@
+The double precision in C give about 15 significant digits.
+Values below are presented with 16 digits after the decimal point.
+
+Euler constant e = 2.7182818284590451
+Euler constant e = 2.7181159362660465
+Euler constant e = 2.7182818284590455

@@ -1,0 +1,134 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+        -:    5:#define foreach(a, b, c) for (int a = b; a < c; a++)
+        -:    6:#define for_i foreach(i, 0, n)
+        -:    7:#define for_j foreach(j, 0, n)
+        -:    8:#define for_k foreach(k, 0, n)
+        -:    9:#define for_ij for_i for_j
+        -:   10:#define for_ijk for_ij for_k
+        -:   11:#define _dim int n
+        -:   12:#define _swap(x, y) { typeof(x) tmp = x; x = y; y = tmp; }
+        -:   13:#define _sum_k(a, b, c, s) { s = 0; foreach(k, a, b) s+= c; }
+        -:   14: 
+        -:   15:typedef double **mat;
+        -:   16: 
+        -:   17:#define _zero(a) mat_zero(a, n)
+      714:   18:void mat_zero(mat x, int n) { for_ij x[i][j] = 0; }
+        -:   19: 
+        -:   20:#define _new(a) a = mat_new(n)
+       30:   21:mat mat_new(_dim)
+        -:   22:{
+       30:   23:	mat x = malloc(sizeof(double*) * n);
+       30:   24:	x[0]  = malloc(sizeof(double) * n * n);
+        -:   25: 
+      135:   26:	for_i x[i] = x[0] + n * i;
+       30:   27:	_zero(x);
+        -:   28: 
+       30:   29:	return x;
+        -:   30:}
+        -:   31: 
+        -:   32:#define _copy(a) mat_copy(a, n)
+        6:   33:mat mat_copy(void *s, _dim)
+        -:   34:{
+        6:   35:	mat x = mat_new(n);
+      102:   36:	for_ij x[i][j] = ((double (*)[n])s)[i][j];
+        6:   37:	return x;
+        -:   38:}
+        -:   39: 
+        -:   40:#define _del(x) mat_del(x)
+       30:   41:void mat_del(mat x) { free(x[0]); free(x); }
+        -:   42: 
+        -:   43:#define _QUOT(x) #x
+        -:   44:#define QUOTE(x) _QUOT(x)
+        -:   45:#define _show(a) printf(QUOTE(a)" =");mat_show(a, 0, n)
+       24:   46:void mat_show(mat x, char *fmt, _dim)
+        -:   47:{
+       24:   48:	if (!fmt) fmt = "%8.4g";
+      108:   49:	for_i {
+       84:   50:		printf(i ? "      " : " [ ");
+      384:   51:		for_j {
+      300:   52:			printf(fmt, x[i][j]);
+      300:   53:			printf(j < n - 1 ? "  " : i == n - 1 ? " ]\n" : "\n");
+      300:   54:		}
+       84:   55:	}
+       24:   56:}
+        -:   57: 
+        -:   58:#define _mul(a, b) mat_mul(a, b, n)
+        6:   59:mat mat_mul(mat a, mat b, _dim)
+        -:   60:{
+        6:   61:	mat c = _new(c);
+      375:   62:	for_ijk c[i][j] += a[i][k] * b[k][j];
+        6:   63:	return c;
+        -:   64:}
+        -:   65: 
+        -:   66:#define _pivot(a, b) mat_pivot(a, b, n)
+        6:   67:void mat_pivot(mat a, mat p, _dim)
+        -:   68:{
+      102:   69:	for_ij { p[i][j] = (i == j); }
+       27:   70:	for_i  {
+       21:   71:		int max_j = i;
+       69:   72:		foreach(j, i, n)
+       48:   73:			if (fabs(a[j][i]) > fabs(a[max_j][i])) max_j = j;
+        -:   74: 
+       21:   75:		if (max_j != i)
+       27:   76:			for_k { _swap(p[i][k], p[max_j][k]); }
+       21:   77:	}
+        6:   78:}
+        -:   79: 
+        -:   80:#define _LU(a, l, u, p) mat_LU(a, l, u, p, n)
+        6:   81:void mat_LU(mat A, mat L, mat U, mat P, _dim)
+        -:   82:{
+        6:   83:	_zero(L); _zero(U);
+        6:   84:	_pivot(A, P);
+        -:   85: 
+        6:   86:	mat Aprime = _mul(P, A);
+        -:   87: 
+       27:   88:	for_i  { L[i][i] = 1; }
+      102:   89:	for_ij {
+        -:   90:		double s;
+       75:   91:		if (j <= i) {
+       90:   92:			_sum_k(0, j, L[j][k] * U[k][i], s)
+       48:   93:			U[j][i] = Aprime[j][i] - s;
+       48:   94:		}
+       75:   95:		if (j >= i) {
+       90:   96:			_sum_k(0, i, L[j][k] * U[k][i], s);
+       48:   97:			L[j][i] = (Aprime[j][i] - s) / U[i][i];
+       48:   98:		}
+       96:   99:	}
+        -:  100: 
+        6:  101:	_del(Aprime);
+        6:  102:}
+        -:  103: 
+        -:  104:double A3[][3] = {{ 1, 3, 5 }, { 2, 4, 7 }, { 1, 1, 0 }};
+        -:  105:double A4[][4] = {{11, 9, 24, 2}, {1, 5, 2, 6}, {3, 17, 18, 1}, {2, 5, 7, 1}};
+        -:  106: 
+        3:  107:int main()
+        -:  108:{
+        3:  109:	int n = 3;
+        -:  110:	mat A, L, P, U;
+        -:  111: 
+        3:  112:	_new(L); _new(P); _new(U);
+        3:  113:	A = _copy(A3);
+        3:  114:	_LU(A, L, U, P);
+        3:  115:	_show(A); _show(L); _show(U); _show(P);
+        3:  116:	_del(A);  _del(L);  _del(U);  _del(P);
+        -:  117: 
+        3:  118:	printf("\n");
+        -:  119: 
+        3:  120:	n = 4;
+        -:  121: 
+        3:  122:	_new(L); _new(P); _new(U);
+        3:  123:	A = _copy(A4);
+        3:  124:	_LU(A, L, U, P);
+        3:  125:	_show(A); _show(L); _show(U); _show(P);
+        3:  126:	_del(A);  _del(L);  _del(U);  _del(P);
+        -:  127: 
+        3:  128:	return 0;
+        -:  129:}

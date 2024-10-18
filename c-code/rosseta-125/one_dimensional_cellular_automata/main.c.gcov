@@ -1,0 +1,33 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3: 
+        -:    4:char trans[] = "___#_##_";
+        -:    5: 
+        -:    6:#define v(i) (cell[i] != '_')
+       27:    7:int evolve(char cell[], char backup[], int len)
+        -:    8:{
+       27:    9:	int i, diff = 0;
+        -:   10: 
+      540:   11:	for (i = 0; i < len; i++) {
+        -:   12:		/* use left, self, right as binary number bits for table index */
+      513:   13:		backup[i] = trans[ v(i-1) * 4 + v(i) * 2 + v(i + 1) ];
+      513:   14:		diff += (backup[i] != cell[i]);
+      513:   15:	}
+        -:   16: 
+       27:   17:	strcpy(cell, backup);
+       27:   18:	return diff;
+        -:   19:}
+        -:   20: 
+        3:   21:int main()
+        -:   22:{
+        3:   23:	char	c[] = "_###_##_#_#_#_#__#__\n",
+        3:   24:		b[] = "____________________\n";
+        -:   25: 
+       27:   26:	do { printf(c + 1); } while (evolve(c + 1, b + 1, sizeof(c) - 3));
+        3:   27:	return 0;
+        -:   28:}

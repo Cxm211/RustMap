@@ -1,0 +1,108 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:const char DIGITS[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        -:    4:const int DIGITS_LEN = 64;
+        -:    5: 
+       12:    6:void encodeNegativeBase(long n, long base, char *out) {
+       12:    7:    char *ptr = out;
+        -:    8: 
+       12:    9:    if (base > -1 || base < -62) {
+        -:   10:        /* Bounds check*/
+    #####:   11:        out = "";
+    #####:   12:        return;
+        -:   13:    }
+       12:   14:    if (n == 0) {
+        -:   15:        /* Trivial case */
+    #####:   16:        out = "0";
+    #####:   17:        return;
+        -:   18:    }
+        -:   19: 
+        -:   20:    /* Convert the number into a string (in reverse) */
+       54:   21:    while (n != 0) {
+       42:   22:        long rem = n % base;
+       42:   23:        n = n / base;
+       42:   24:        if (rem < 0) {
+       12:   25:            n++;
+       12:   26:            rem = rem - base;
+       12:   27:        }
+       42:   28:        *ptr = DIGITS[rem];
+       42:   29:        ptr++;
+        -:   30:    }
+       12:   31:    *ptr = 0;
+        -:   32: 
+        -:   33:    /* Reverse the current string to get the final result */
+       12:   34:    ptr--;
+       27:   35:    while (out < ptr) {
+       15:   36:        char t = *out;
+       15:   37:        *out = *ptr;
+       15:   38:        *ptr = t;
+       15:   39:        out++;
+       15:   40:        ptr--;
+        -:   41:    }
+       12:   42:    return;
+       12:   43:}
+        -:   44: 
+       12:   45:long decodeNegativeBase(const char* ns, long base) {
+        -:   46:    long value, bb;
+        -:   47:    int i;
+        -:   48:    const char *ptr;
+        -:   49: 
+       12:   50:    if (base < -62 || base > -1) {
+        -:   51:        /* Bounds check */
+    #####:   52:        return 0;
+        -:   53:    }
+       12:   54:    if (ns[0] == 0 || (ns[0] == '0' && ns[1] == 0)) {
+        -:   55:        /* Trivial case */
+    #####:   56:        return 0;
+        -:   57:    }
+        -:   58: 
+        -:   59:    /* Find the end of the string */
+       12:   60:    ptr = ns;
+       54:   61:    while (*ptr != 0) {
+       42:   62:        ptr++;
+        -:   63:    }
+        -:   64: 
+        -:   65:    /* Convert */
+       12:   66:    value = 0;
+       12:   67:    bb = 1;
+       12:   68:    ptr--;
+       54:   69:    while (ptr >= ns) {
+      153:   70:        for (i = 0; i < DIGITS_LEN; i++) {
+      153:   71:            if (*ptr == DIGITS[i]) {
+       42:   72:                value = value + i * bb;
+       42:   73:                bb = bb * base;
+       42:   74:                break;
+        -:   75:            }
+      111:   76:        }
+       42:   77:        ptr--;
+        -:   78:    }
+        -:   79: 
+       12:   80:    return value;
+       12:   81:}
+        -:   82: 
+       12:   83:void driver(long n, long b) {
+        -:   84:    char buf[64];
+        -:   85:    long value;
+        -:   86: 
+       12:   87:    encodeNegativeBase(n, b, buf);
+       12:   88:    printf("%12d encoded in base %3d = %12s\n", n, b, buf);
+        -:   89: 
+       12:   90:    value = decodeNegativeBase(buf, b);
+       12:   91:    printf("%12s decoded in base %3d = %12d\n", buf, b, value);
+        -:   92: 
+       12:   93:    printf("\n");
+       12:   94:}
+        -:   95: 
+        3:   96:int main() {
+        3:   97:    driver(10, -2);
+        3:   98:    driver(146, -3);
+        3:   99:    driver(15, -10);
+        3:  100:    driver(12, -62);
+        -:  101: 
+        3:  102:    return 0;
+        -:  103:}

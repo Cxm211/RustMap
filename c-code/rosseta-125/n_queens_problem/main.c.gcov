@@ -1,0 +1,36 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:int count = 0;
+     6171:    5:void solve(int n, int col, int *hist)
+        -:    6:{
+     6171:    7:	if (col == n) {
+      276:    8:		printf("\nNo. %d\n-----\n", ++count);
+     2484:    9:		for (int i = 0; i < n; i++, putchar('\n'))
+    19872:   10:			for (int j = 0; j < n; j++)
+    19872:   11:				putchar(j == hist[i] ? 'Q' : ((i + j) & 1) ? ' ' : '.');
+        -:   12: 
+      276:   13:		return;
+        -:   14:	}
+        -:   15: 
+        -:   16:#	define attack(i, j) (hist[j] == i || abs(hist[j] - i) == col - j)
+    53055:   17:	for (int i = 0, j = 0; i < n; i++) {
+   146424:   18:		for (j = 0; j < col && !attack(i, j); j++);
+    47160:   19:		if (j < col) continue;
+        -:   20: 
+     6168:   21:		hist[col] = i;
+     6168:   22:		solve(n, col + 1, hist);
+     6168:   23:	}
+     6171:   24:}
+        -:   25: 
+        3:   26:int main(int n, char **argv)
+        -:   27:{
+        3:   28:	if (n <= 1 || (n = atoi(argv[1])) <= 0) n = 8;
+        3:   29:	int hist[n];
+        3:   30:	solve(n, 0, hist);
+        3:   31:}

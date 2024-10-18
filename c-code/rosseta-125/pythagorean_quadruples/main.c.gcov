@@ -1,0 +1,41 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <string.h>
+        -:    4: 
+        -:    5:#define N 2200
+        -:    6:#define N2 2200 * 2200 * 2
+        -:    7: 
+        3:    8:int main(int argc, char **argv) {
+        3:    9:    int a, b, c, d, a2, s = 3, s1, s2; 
+        -:   10:    int r[N + 1];
+        3:   11:    memset(r, 0, sizeof(r));
+        3:   12:    int *ab = calloc(N2 + 1, sizeof(int));  // allocate on heap, zero filled
+        -:   13: 
+     6603:   14:    for (a = 1; a <= N; a++) {
+     6600:   15:        a2 = a * a;
+  7269900:   16:        for (b = a; b <= N; b++) ab[a2 + b * b] = 1;
+     6600:   17:    }
+        -:   18: 
+     6603:   19:    for (c = 1; c <= N; c++) {
+     6600:   20:        s1 = s;
+     6600:   21:        s += 2;
+     6600:   22:        s2 = s;
+  7263300:   23:        for (d = c + 1; d <= N; d++) {
+  7256700:   24:            if (ab[s1]) r[d] = 1;
+  7256700:   25:            s1 += s2;
+  7256700:   26:            s2 += 2;
+  7256700:   27:        }
+     6600:   28:    }
+        -:   29: 
+     6603:   30:    for (d = 1; d <= N; d++) {
+     6600:   31:        if (!r[d]) printf("%d ", d);
+     6600:   32:    }
+        3:   33:    printf("\n");
+        3:   34:    free(ab);
+        3:   35:    return 0; 
+        -:   36:}

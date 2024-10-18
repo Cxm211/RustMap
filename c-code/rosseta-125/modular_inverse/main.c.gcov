@@ -1,0 +1,25 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:int mul_inv(int a, int b)
+        -:    4:{
+        3:    5:	int b0 = b, t, q;
+        3:    6:	int x0 = 0, x1 = 1;
+        3:    7:	if (b == 1) return 1;
+       12:    8:	while (a > 1) {
+        9:    9:		q = a / b;
+        9:   10:		t = b, b = a % b, a = t;
+        9:   11:		t = x0, x0 = x1 - q * x0, x1 = t;
+        -:   12:	}
+        3:   13:	if (x1 < 0) x1 += b0;
+        3:   14:	return x1;
+        3:   15:}
+        -:   16: 
+        3:   17:int main(void) {
+        3:   18:	printf("%d\n", mul_inv(42, 2017));
+        3:   19:	return 0;
+        -:   20:}

@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/flatten_a_list",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/flatten_a_list/main.c"
+  }
+]

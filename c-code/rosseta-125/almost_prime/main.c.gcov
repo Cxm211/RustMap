@@ -1,0 +1,35 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+     1436:    3:int kprime(int n, int k)
+        -:    4:{
+     1436:    5:	int p, f = 0;
+     6068:    6:	for (p = 2; f < k && p*p <= n; p++)
+     6856:    7:		while (0 == n % p)
+     2224:    8:			n /= p, f++;
+        -:    9: 
+     1436:   10:	return f + (n > 1) == k;
+        -:   11:}
+        -:   12: 
+        4:   13:int main(void)
+        -:   14:{
+        -:   15:	int i, c, k;
+        -:   16: 
+       24:   17:	for (k = 1; k <= 5; k++) {
+       20:   18:		printf("k = %d:", k);
+        -:   19: 
+     1456:   20:		for (i = 2, c = 0; c < 10; i++)
+     1636:   21:			if (kprime(i, k)) {
+      200:   22:				printf(" %d", i);
+      200:   23:				c++;
+      200:   24:			}
+        -:   25: 
+       20:   26:		putchar('\n');
+       20:   27:	}
+        -:   28: 
+        4:   29:	return 0;
+        -:   30:}

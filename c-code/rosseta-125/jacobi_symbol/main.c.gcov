@@ -1,0 +1,44 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3: 
+        -:    4:#define SWAP(a, b) (((a) ^= (b)), ((b) ^= (a)), ((a) ^= (b)))
+        -:    5: 
+      693:    6:int jacobi(unsigned long a, unsigned long n) {
+      693:    7:	if (a >= n) a %= n;
+      693:    8:	int result = 1;
+     1512:    9:	while (a) {
+     1446:   10:		while ((a & 1) == 0) {
+      627:   11:			a >>= 1;
+      627:   12:			if ((n & 7) == 3 || (n & 7) == 5) result = -result;
+        -:   13:		}
+      819:   14:		SWAP(a, n);
+      819:   15:		if ((a & 3) == 3 && (n & 3) == 3) result = -result;
+      819:   16:		a %= n;
+        -:   17:	}
+      693:   18:	if (n == 1) return result;
+      147:   19:	return 0;
+      693:   20:}
+        -:   21: 
+        3:   22:void print_table(unsigned kmax, unsigned nmax) {
+        3:   23:	printf("n\\k|");
+       66:   24:	for (int k = 0; k <= kmax; ++k) printf("%'3u", k);
+        3:   25:	printf("\n----");
+       66:   26:	for (int k = 0; k <= kmax; ++k) printf("---");
+        3:   27:	putchar('\n');
+       36:   28:	for (int n = 1; n <= nmax; n += 2) {
+       33:   29:		printf("%-2u |", n);
+      726:   30:		for (int k = 0; k <= kmax; ++k)
+      693:   31:			printf("%'3d", jacobi(k, n));
+       33:   32:		putchar('\n');
+       33:   33:	}
+        3:   34:}
+        -:   35: 
+        3:   36:int main() {
+        3:   37:	print_table(20, 21);
+        3:   38:	return 0;
+        -:   39:}

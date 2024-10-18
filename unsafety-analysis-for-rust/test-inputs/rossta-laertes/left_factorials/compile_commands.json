@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/left_factorials",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/left_factorials/main.c"
+  }
+]

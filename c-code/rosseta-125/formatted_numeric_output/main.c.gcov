@@ -1,0 +1,16 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        3:    2:main(){
+        3:    3:  float r=7.125;
+        3:    4:  printf(" %9.3f\n",-r);
+        3:    5:  printf(" %9.3f\n",r);
+        3:    6:  printf(" %-9.3f\n",r);
+        3:    7:  printf(" %09.3f\n",-r);
+        3:    8:  printf(" %09.3f\n",r);
+        3:    9:  printf(" %-09.3f\n",r);
+        3:   10:  return 0;
+        -:   11:}

@@ -1,0 +1,74 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdbool.h>
+        -:    3: 
+       30:    4:int proper_divisors(const int n, bool print_flag)
+        -:    5:{
+       30:    6:    int count = 0;
+        -:    7: 
+      165:    8:    for (int i = 1; i < n; ++i) {
+      135:    9:        if (n % i == 0) {
+       51:   10:            count++;
+       51:   11:            if (print_flag)
+       51:   12:                printf("%d ", i);
+       51:   13:        }
+      135:   14:    }
+        -:   15: 
+       30:   16:    if (print_flag)
+       30:   17:        printf("\n");
+        -:   18: 
+       30:   19:    return count;
+        -:   20:}
+        -:   21: 
+    60000:   22:int countProperDivisors(int n){
+    60000:   23:	int prod = 1,i,count=0;
+        -:   24: 
+   119985:   25:	while(n%2==0){
+    59985:   26:		count++;
+    59985:   27:		n /= 2;
+        -:   28:	}
+        -:   29: 
+    60000:   30:	prod *= (1+count);
+        -:   31: 
+  1074885:   32:	for(i=3;i*i<=n;i+=2){
+  1014885:   33:		count = 0;
+        -:   34: 
+  1093431:   35:		while(n%i==0){
+    78546:   36:			count++;
+    78546:   37:			n /= i;
+        -:   38:		}
+        -:   39: 
+  1014885:   40:		prod *= (1+count);
+  1014885:   41:	}
+        -:   42: 
+    60000:   43:	if(n>2)
+    58068:   44:		prod *= 2;
+        -:   45: 
+    60000:   46:	return prod - 1;
+        -:   47:}
+        -:   48: 
+        3:   49:int main(void)
+        -:   50:{
+       33:   51:    for (int i = 1; i <= 10; ++i) {
+       30:   52:        printf("%d: ", i);
+       30:   53:        proper_divisors(i, true);
+       30:   54:    }
+        -:   55: 
+        3:   56:    int max = 0;
+        3:   57:    int max_i = 1;
+        -:   58: 
+    60003:   59:    for (int i = 1; i <= 20000; ++i) {
+    60000:   60:        int v = countProperDivisors(i);
+    60000:   61:        if (v >= max) {
+      171:   62:            max = v;
+      171:   63:            max_i = i;
+      171:   64:        }
+    60000:   65:    }
+        -:   66: 
+        3:   67:    printf("%d with %d divisors\n", max_i, max);
+        3:   68:    return 0;
+        -:   69:}

@@ -1,0 +1,304 @@
+Community_1:
+  incs-blocksort.i 🔒static_variable
+
+Community_2:
+  BZ2_crc32Table 🌍global_variable
+  BZ2_rNums 🌍global_variable
+  blockSize100k 🌍global_variable
+  verbosity 🌍global_variable
+  workFactor 🌍global_variable
+  bzerrorstrings-bzlib.i 🔒static_variable
+  DState 📜typedef_struct
+    typedef
+   struct {
+
+      bz_stream* strm;
+
+
+      Int32 state;
+
+
+      UChar state_out_ch;
+      Int32 state_out_len;
+      Bool blockRandomised;
+      Int32 rNToGo; Int32 rTPos;
+
+
+      UInt32 bsBuff;
+      Int32 bsLive;
+
+
+      Int32 blockSize100k;
+      Bool smallDecompress;
+      Int32 currBlockNo;
+      Int32 verbosity;
+
+
+      Int32 origPtr;
+      UInt32 tPos;
+      Int32 k0;
+      Int32 unzftab[256];
+      Int32 nblock_used;
+      Int32 cftab[257];
+      Int32 cftabCopy[257];
+
+
+      UInt32 *tt;
+
+
+      UInt16 *ll16;
+      UChar *ll4;
+
+
+      UInt32 storedBlockCRC;
+      UInt32 storedCombinedCRC;
+      UInt32 calculatedBlockCRC;
+      UInt32 calculatedCombinedCRC;
+
+
+      Int32 nInUse;
+      Bool inUse[256];
+      Bool inUse16[16];
+      UChar seqToUnseq[256];
+
+
+      UChar mtfa [4096];
+      Int32 mtfbase[256 / 16];
+      UChar selector [(2 + (900000 / 50))];
+      UChar selectorMtf[(2 + (900000 / 50))];
+      UChar len [6][258];
+
+      Int32 limit [6][258];
+      Int32 base [6][258];
+      Int32 perm [6][258];
+      Int32 minLens[6];
+
+
+      Int32 save_i;
+      Int32 save_j;
+      Int32 save_t;
+      Int32 save_alphaSize;
+      Int32 save_nGroups;
+      Int32 save_nSelectors;
+      Int32 save_EOB;
+      Int32 save_groupNo;
+      Int32 save_groupPos;
+      Int32 save_nextSym;
+      Int32 save_nblockMAX;
+      Int32 save_nblock;
+      Int32 save_es;
+      Int32 save_N;
+      Int32 save_curr;
+      Int32 save_zt;
+      Int32 save_zn;
+      Int32 save_zvec;
+      Int32 save_zj;
+      Int32 save_gSel;
+      Int32 save_gMinlen;
+      Int32* save_gLimit;
+      Int32* save_gBase;
+      Int32* save_gPerm;
+
+   }
+   DState;
+  bz_stream 📜typedef_struct
+    typedef
+   struct {
+      char *next_in;
+      unsigned int avail_in;
+      unsigned int total_in_lo32;
+      unsigned int total_in_hi32;
+
+      char *next_out;
+      unsigned int avail_out;
+      unsigned int total_out_lo32;
+      unsigned int total_out_hi32;
+
+      void *state;
+
+      void *(*bzalloc)(void *,int,int);
+      void (*bzfree)(void *,void *);
+      void *opaque;
+   }
+   bz_stream;
+  EState 📜typedef_struct
+    typedef
+   struct {
+
+      bz_stream* strm;
+
+
+
+      Int32 mode;
+      Int32 state;
+
+
+      UInt32 avail_in_expect;
+
+
+      UInt32* arr1;
+      UInt32* arr2;
+      UInt32* ftab;
+      Int32 origPtr;
+
+
+      UInt32* ptr;
+      UChar* block;
+      UInt16* mtfv;
+      UChar* zbits;
+
+
+      Int32 workFactor;
+
+
+      UInt32 state_in_ch;
+      Int32 state_in_len;
+      Int32 rNToGo; Int32 rTPos;
+
+
+      Int32 nblock;
+      Int32 nblockMAX;
+      Int32 numZ;
+      Int32 state_out_pos;
+
+
+      Int32 nInUse;
+      Bool inUse[256];
+      UChar unseqToSeq[256];
+
+
+      UInt32 bsBuff;
+      Int32 bsLive;
+
+
+      UInt32 blockCRC;
+      UInt32 combinedCRC;
+
+
+      Int32 verbosity;
+      Int32 blockNo;
+      Int32 blockSize100k;
+
+
+      Int32 nMTF;
+      Int32 mtfFreq [258];
+      UChar selector [(2 + (900000 / 50))];
+      UChar selectorMtf[(2 + (900000 / 50))];
+
+      UChar len [6][258];
+      Int32 code [6][258];
+      Int32 rfreq [6][258];
+
+      UInt32 len_pack[258][4];
+
+   }
+   EState;
+  UInt64 📜typedef_struct
+    typedef
+   struct { UChar b[8]; }
+   UInt64;
+  bzFile 📜typedef_struct
+    typedef
+   struct {
+      FILE* handle;
+      Char buf[5000];
+      Int32 bufN;
+      Bool writing;
+      bz_stream strm;
+      Int32 lastErr;
+      Bool initialisedOk;
+   }
+   bzFile;
+
+Community_3:
+  deleteOutputOnInterrupt 🌍global_variable
+  forceOverwrite 🌍global_variable
+  inName 🌍global_variable
+  keepInputFiles 🌍global_variable
+  noisy 🌍global_variable
+  outName 🌍global_variable
+  outputHandleJustInCase 🌍global_variable
+  progName 🌍global_variable
+  srcMode 🌍global_variable
+  unzFailsExist 🌍global_variable
+  unzSuffix 🌍global_variable
+  zSuffix 🌍global_variable
+  FILE 📜typedef_struct
+    typedef struct _IO_FILE FILE;
+  stat 📦direct_struct
+    struct stat
+  {
+
+
+
+    __dev_t st_dev;
+
+
+
+
+    __ino_t st_ino;
+
+
+
+
+
+
+
+    __nlink_t st_nlink;
+    __mode_t st_mode;
+
+    __uid_t st_uid;
+    __gid_t st_gid;
+
+    int __pad0;
+
+    __dev_t st_rdev;
+
+
+
+
+    __off_t st_size;
+
+
+
+    __blksize_t st_blksize;
+
+    __blkcnt_t st_blocks;
+    struct timespec st_atim;
+    struct timespec st_mtim;
+    struct timespec st_ctim;
+    __syscall_slong_t __glibc_reserved[3];
+  }
+
+Community_4:
+  exitValue 🌍global_variable
+  longestFileName 🌍global_variable
+  numFileNames 🌍global_variable
+  numFilesProcessed 🌍global_variable
+  opMode 🌍global_variable
+  progNameReally 🌍global_variable
+  smallMode 🌍global_variable
+  testFailsExist 🌍global_variable
+  tmpName 🌍global_variable
+  Cell 📜typedef_struct
+    typedef
+   struct zzzz {
+      Char *name;
+      struct zzzz *link;
+   }
+   Cell;
+
+Community_5:
+  fileMetaInfo-bzip2.i 🔒static_variable
+  utimbuf 📦direct_struct
+    struct utimbuf
+  {
+
+
+
+
+    __time_t actime;
+    __time_t modtime;
+
+  }
+

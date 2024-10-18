@@ -1,0 +1,23 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        4:    3:int main()
+        -:    4:{
+        4:    5:  char is_open[100] = { 0 };
+        -:    6:  int pass, door;
+        -:    7: 
+        -:    8:  /* do the 100 passes */
+      404:    9:  for (pass = 0; pass < 100; ++pass)
+     2328:   10:    for (door = pass; door < 100; door += pass+1)
+     2328:   11:      is_open[door] = !is_open[door];
+        -:   12: 
+        -:   13:  /* output the result */
+      404:   14:  for (door = 0; door < 100; ++door)
+      400:   15:    printf("door #%d is %s.\n", door+1, (is_open[door]? "open" : "closed"));
+        -:   16: 
+        4:   17:  return 0;
+        -:   18:}

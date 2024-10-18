@@ -1,0 +1,51 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:typedef unsigned long long ull;
+        -:    4: 
+       64:    5:ull binomial(ull m, ull n)
+        -:    6:{
+       64:    7:	ull r = 1, d = m - n;
+       64:    8:	if (d > n) { n = d; d = m - n; }
+        -:    9: 
+      544:   10:	while (m > n) {
+      480:   11:		r *= m--;
+      900:   12:		while (d > 1 && ! (r%d) ) r /= d--;
+        -:   13:	}
+        -:   14: 
+       64:   15:	return r;
+        -:   16:}
+        -:   17: 
+       64:   18:ull catalan1(int n) {
+       64:   19:	return binomial(2 * n, n) / (1 + n);
+        -:   20:}
+        -:   21: 
+ 86093440:   22:ull catalan2(int n) {
+        -:   23:	int i;
+ 86093440:   24:	ull r = !n;
+        -:   25: 
+129140128:   26:	for (i = 0; i < n; i++)
+ 43046688:   27:		r += catalan2(i) * catalan2(n - 1 - i);
+ 86093440:   28:	return r;
+        -:   29:}
+        -:   30: 
+      544:   31:ull catalan3(int n)
+        -:   32:{
+      544:   33:	return n ? 2 * (2 * n - 1) * catalan3(n - 1) / (1 + n) : 1;
+        -:   34:}
+        -:   35: 
+        4:   36:int main(void)
+        -:   37:{
+        -:   38:	int i;
+        4:   39:	puts("\tdirect\tsumming\tfrac");
+       68:   40:	for (i = 0; i < 16; i++) {
+      128:   41:		printf("%d\t%llu\t%llu\t%llu\n", i,
+       64:   42:			catalan1(i), catalan2(i), catalan3(i));
+       64:   43:	}
+        -:   44: 
+        4:   45:	return 0;
+        -:   46:}

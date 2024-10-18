@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - munchausen_numbers/main.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory munchausen_numbers">munchausen_numbers</a> - main.c<span style="font-size: 80%;"> (source / <a href="main.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-05-15 14:36:07</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : #include &lt;stdio.h&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : #include &lt;math.h&gt;</span>
+<span id="L3"><span class="lineNum">       3</span>              :  </span>
+<span id="L4"><span class="lineNum">       4</span> <span class="tlaGNC tlaBgGNC">           3 : int main() {</span></span>
+<span id="L5"><span class="lineNum">       5</span> <span class="tlaGNC">       15000 :     for (int i = 1; i &lt; 5000; i++) {</span></span>
+<span id="L6"><span class="lineNum">       6</span>              :         // loop through each digit in i</span>
+<span id="L7"><span class="lineNum">       7</span>              :         // e.g. for 1000 we get 0, 0, 0, 1.</span>
+<span id="L8"><span class="lineNum">       8</span> <span class="tlaGNC">       14997 :         int sum = 0;</span></span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC">       71664 :         for (int number = i; number &gt; 0; number /= 10) {</span></span>
+<span id="L10"><span class="lineNum">      10</span> <span class="tlaGNC">       56667 :             int digit = number % 10;</span></span>
+<span id="L11"><span class="lineNum">      11</span>              :             // find the sum of the digits </span>
+<span id="L12"><span class="lineNum">      12</span>              :             // raised to themselves </span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">       56667 :             sum += pow(digit, digit);</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">       56667 :         }</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">       14997 :         if (sum == i) {</span></span>
+<span id="L16"><span class="lineNum">      16</span>              :             // the sum is equal to the number</span>
+<span id="L17"><span class="lineNum">      17</span>              :             // itself; thus it is a </span>
+<span id="L18"><span class="lineNum">      18</span>              :             // munchausen number</span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           6 :             printf(&quot;%i\n&quot;, i);</span></span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC">           6 :         } </span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">       14997 :     }</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           3 :     return 0;</span></span>
+<span id="L23"><span class="lineNum">      23</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.1-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

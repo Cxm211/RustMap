@@ -1,0 +1,35 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include<math.h>
+        -:    2:#include<stdio.h>
+        -:    3: 
+        -:    4:double
+        9:    5:meanAngle (double *angles, int size)
+        -:    6:{
+        9:    7:  double y_part = 0, x_part = 0;
+        -:    8:  int i;
+        -:    9: 
+       36:   10:  for (i = 0; i < size; i++)
+        -:   11:    {
+       27:   12:      x_part += cos (angles[i] * M_PI / 180);
+       27:   13:      y_part += sin (angles[i] * M_PI / 180);
+       27:   14:    }
+        -:   15: 
+        9:   16:  return atan2 (y_part / size, x_part / size) * 180 / M_PI;
+        -:   17:}
+        -:   18: 
+        -:   19:int
+        3:   20:main ()
+        -:   21:{
+        3:   22:  double angleSet1[] = { 350, 10 };
+        3:   23:  double angleSet2[] = { 90, 180, 270, 360};
+        3:   24:  double angleSet3[] = { 10, 20, 30};
+        -:   25: 
+        3:   26:  printf ("\nMean Angle for 1st set : %lf degrees", meanAngle (angleSet1, 2));
+        3:   27:  printf ("\nMean Angle for 2nd set : %lf degrees", meanAngle (angleSet2, 4));
+        3:   28:  printf ("\nMean Angle for 3rd set : %lf degrees\n", meanAngle (angleSet3, 3));
+        3:   29:  return 0;
+        -:   30:}

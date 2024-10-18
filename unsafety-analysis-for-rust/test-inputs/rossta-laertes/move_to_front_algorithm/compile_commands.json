@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/move_to_front_algorithm",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/move_to_front_algorithm/main.c"
+  }
+]

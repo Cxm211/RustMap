@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - gaussian_elimination/main.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html" title="Click to go to top-level">top level</a> - <a href="index.html" title="Click to go to directory gaussian_elimination">gaussian_elimination</a> - main.c<span style="font-size: 80%;"> (source / <a href="main.c.func-c.html" title="Click to go to function table">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntry">38</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2024-05-15 14:36:07</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : #include &lt;stdio.h&gt;</span>
+<span id="L2"><span class="lineNum">       2</span>              : #include &lt;stdlib.h&gt;</span>
+<span id="L3"><span class="lineNum">       3</span>              : #include &lt;math.h&gt;</span>
+<span id="L4"><span class="lineNum">       4</span>              :  </span>
+<span id="L5"><span class="lineNum">       5</span>              : #define mat_elem(a, y, x, n) (a + ((y) * (n) + (x)))</span>
+<span id="L6"><span class="lineNum">       6</span>              :  </span>
+<span id="L7"><span class="lineNum">       7</span> <span class="tlaGNC tlaBgGNC">          18 : void swap_row(double *a, double *b, int r1, int r2, int n)</span></span>
+<span id="L8"><span class="lineNum">       8</span>              : {</span>
+<span id="L9"><span class="lineNum">       9</span>              :         double tmp, *p1, *p2;</span>
+<span id="L10"><span class="lineNum">      10</span>              :         int i;</span>
+<span id="L11"><span class="lineNum">      11</span>              :  </span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">          18 :         if (r1 == r2) return;</span></span>
+<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">          84 :         for (i = 0; i &lt; n; i++) {</span></span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">          72 :                 p1 = mat_elem(a, r1, i, n);</span></span>
+<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">          72 :                 p2 = mat_elem(a, r2, i, n);</span></span>
+<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">          72 :                 tmp = *p1, *p1 = *p2, *p2 = tmp;</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">          72 :         }</span></span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">          12 :         tmp = b[r1], b[r1] = b[r2], b[r2] = tmp;</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">          18 : }</span></span>
+<span id="L20"><span class="lineNum">      20</span>              :  </span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           3 : void gauss_eliminate(double *a, double *b, double *x, int n)</span></span>
+<span id="L22"><span class="lineNum">      22</span>              : {</span>
+<span id="L23"><span class="lineNum">      23</span>              : #define A(y, x) (*mat_elem(a, y, x, n))</span>
+<span id="L24"><span class="lineNum">      24</span>              :         int i, j, col, row, max_row,dia;</span>
+<span id="L25"><span class="lineNum">      25</span>              :         double max, tmp;</span>
+<span id="L26"><span class="lineNum">      26</span>              :  </span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">          21 :         for (dia = 0; dia &lt; n; dia++) {</span></span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">          18 :                 max_row = dia, max = A(dia, dia);</span></span>
+<span id="L29"><span class="lineNum">      29</span>              :  </span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">          63 :                 for (row = dia + 1; row &lt; n; row++)</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">          66 :                         if ((tmp = fabs(A(row, dia))) &gt; max)</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">          21 :                                 max_row = row, max = tmp;</span></span>
+<span id="L33"><span class="lineNum">      33</span>              :  </span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">          18 :                 swap_row(a, b, dia, max_row, n);</span></span>
+<span id="L35"><span class="lineNum">      35</span>              :  </span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">          63 :                 for (row = dia + 1; row &lt; n; row++) {</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">          45 :                         tmp = A(row, dia) / A(dia, dia);</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">         210 :                         for (col = dia+1; col &lt; n; col++)</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">         165 :                                 A(row, col) -= tmp * A(dia, col);</span></span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">          45 :                         A(row, dia) = 0;</span></span>
+<span id="L41"><span class="lineNum">      41</span> <span class="tlaGNC">          45 :                         b[row] -= tmp * b[dia];</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC">          45 :                 }</span></span>
+<span id="L43"><span class="lineNum">      43</span> <span class="tlaGNC">          18 :         }</span></span>
+<span id="L44"><span class="lineNum">      44</span> <span class="tlaGNC">          21 :         for (row = n - 1; row &gt;= 0; row--) {</span></span>
+<span id="L45"><span class="lineNum">      45</span> <span class="tlaGNC">          18 :                 tmp = b[row];</span></span>
+<span id="L46"><span class="lineNum">      46</span> <span class="tlaGNC">          63 :                 for (j = n - 1; j &gt; row; j--)</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">          45 :                         tmp -= x[j] * A(row, j);</span></span>
+<span id="L48"><span class="lineNum">      48</span> <span class="tlaGNC">          18 :                 x[row] = tmp / A(row, row);</span></span>
+<span id="L49"><span class="lineNum">      49</span> <span class="tlaGNC">          18 :         }</span></span>
+<span id="L50"><span class="lineNum">      50</span>              : #undef A</span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           3 : }</span></span>
+<span id="L52"><span class="lineNum">      52</span>              :  </span>
+<span id="L53"><span class="lineNum">      53</span> <span class="tlaGNC">           3 : int main(void)</span></span>
+<span id="L54"><span class="lineNum">      54</span>              : {</span>
+<span id="L55"><span class="lineNum">      55</span> <span class="tlaGNC">           3 :         double a[] = {</span></span>
+<span id="L56"><span class="lineNum">      56</span>              :                 1.00, 0.00, 0.00,  0.00,  0.00, 0.00,</span>
+<span id="L57"><span class="lineNum">      57</span>              :                 1.00, 0.63, 0.39,  0.25,  0.16, 0.10,</span>
+<span id="L58"><span class="lineNum">      58</span>              :                 1.00, 1.26, 1.58,  1.98,  2.49, 3.13,</span>
+<span id="L59"><span class="lineNum">      59</span>              :                 1.00, 1.88, 3.55,  6.70, 12.62, 23.80,</span>
+<span id="L60"><span class="lineNum">      60</span>              :                 1.00, 2.51, 6.32, 15.88, 39.90, 100.28,</span>
+<span id="L61"><span class="lineNum">      61</span>              :                 1.00, 3.14, 9.87, 31.01, 97.41, 306.02</span>
+<span id="L62"><span class="lineNum">      62</span>              :         };</span>
+<span id="L63"><span class="lineNum">      63</span> <span class="tlaGNC">           3 :         double b[] = { -0.01, 0.61, 0.91, 0.99, 0.60, 0.02 };</span></span>
+<span id="L64"><span class="lineNum">      64</span>              :         double x[6];</span>
+<span id="L65"><span class="lineNum">      65</span>              :         int i;</span>
+<span id="L66"><span class="lineNum">      66</span>              :  </span>
+<span id="L67"><span class="lineNum">      67</span> <span class="tlaGNC">           3 :         gauss_eliminate(a, b, x, 6);</span></span>
+<span id="L68"><span class="lineNum">      68</span>              :  </span>
+<span id="L69"><span class="lineNum">      69</span> <span class="tlaGNC">          21 :         for (i = 0; i &lt; 6; i++)</span></span>
+<span id="L70"><span class="lineNum">      70</span> <span class="tlaGNC">          18 :                 printf(&quot;%g\n&quot;, x[i]);</span></span>
+<span id="L71"><span class="lineNum">      71</span>              :  </span>
+<span id="L72"><span class="lineNum">      72</span> <span class="tlaGNC">           3 :         return 0;</span></span>
+<span id="L73"><span class="lineNum">      73</span>              : }</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.1-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

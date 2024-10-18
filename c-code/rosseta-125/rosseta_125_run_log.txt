@@ -1,0 +1,140 @@
+1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
+evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+Running main.c in price_fraction/
+Compilation failed in price_fraction/
+Running main.c in proper_divisors/
+1: 
+2: 1 
+3: 1 
+4: 1 2 
+5: 1 
+6: 1 2 3 
+7: 1 
+8: 1 2 4 
+9: 1 3 
+10: 1 2 5 
+18480 with 79 divisors
+Running main.c in pythagorean_quadruples/
+1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+Running main.c in pythagorean_triples/
+Up to 10: 0 triples, 0 primitives.
+Up to 100: 17 triples, 7 primitives.
+Up to 1000: 325 triples, 70 primitives.
+Up to 10000: 4858 triples, 703 primitives.
+Up to 100000: 64741 triples, 7026 primitives.
+Up to 1000000: 808950 triples, 70229 primitives.
+Up to 10000000: 9706567 triples, 702309 primitives.
+Up to 100000000: 113236940 triples, 7023027 primitives.
+Running main.c in quickselect_algorithm/
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+Running main.c in range_expansion/
+-3 -2 -1 3 4 5 7 8 9 10 11 17 18 19 20 
+Ok
+-6 -5 -4 -3 -2 -1 0 1 2 3 
+Syntax error at --1,3-5,7-11,14,15,17-20
+Running main.c in range_extraction/
+0-2,4,6-8,11,12,14-25,27-33,35-39
+Running main.c in rational/
+6
+28
+496
+8128
+Running main.c in repeat/
+Example
+Example
+Example
+Example
+Running main.c in repeat_a_string/
+hahahahaha
+Running main.c in roman_numerals_decode/
+MCmxC	1990
+MMVIII	2008
+MDClXVI	1666
+MCXLUJ	1146
+Running main.c in root_mean_square/
+6.204837
+Running main.c in roots_of_unity/
+1
+1,  -1
+1,  -0.5+0.87i,  -0.5-0.87i
+1,  i,  -1,  -i
+1,  0.31+0.95i,  -0.81+0.59i,  -0.81-0.59i,  0.31-0.95i
+1,  0.5+0.87i,  -0.5+0.87i,  -1,  -0.5-0.87i,  0.5-0.87i
+1,  0.62+0.78i,  -0.22+0.97i,  -0.9+0.43i,  -0.9-0.43i,  -0.22-0.97i,  0.62-0.78i
+1,  0.71+0.71i,  i,  -0.71+0.71i,  -1,  -0.71-0.71i,  -i,  0.71-0.71i
+1,  0.77+0.64i,  0.17+0.98i,  -0.5+0.87i,  -0.94+0.34i,  -0.94-0.34i,  -0.5-0.87i,  0.17-0.98i,  0.77-0.64i
+Running main.c in runge_kutta_method/
+x	y	rel. err.
+------------
+0	1	0
+1	1.5625	-9.3262e-08
+2	4	-2.2987e-07
+3	10.5625	-2.75462e-07
+4	25	-2.49396e-07
+5	52.5625	-2.05844e-07
+6	100	-1.65946e-07
+7	175.562	-1.33956e-07
+8	289	-1.09222e-07
+9	451.562	-9.01828e-08
+10	676	-7.54191e-08
+Running main.c in set/
+a is: 0 3 6 9
+	0 in set a
+	1 not in set a
+	2 not in set a
+	3 in set a
+	4 not in set a
+b is: 3 5 6 9 10
+union(a, b) is: 0 3 5 6 9 10
+c = common(a, b) is: 3 6 9
+a - b is: 0
+b - a is: 5 10
+b is not a subset of a
+c is a subset of a
+union(a, b) - common(a, b) equals union(a - b, b - a)
+Running main.c in sexy_primes/
+Number of sexy prime pairs less than 1,000,035 = 16,386
+The last 5 are:
+  [[999371 999377 ]] [999431 999437 ]] [999721 999727 ]] [999763 999769 ]] [999953 999959 ]] ]
+
+Number of sexy prime triplets less than 1,000,035 = 2,900
+The last 5 are:
+  [[997427 997433 997439 ]] [997541 997547 997553 ]] [998071 998077 998083 ]] [998617 998623 998629 ]] [998737 998743 998749 ]] ]
+
+Number of sexy prime quadruplets less than 1,000,035 = 325
+The last 5 are:
+  [[977351 977357 977363 977369 ]] [983771 983777 983783 983789 ]] [986131 986137 986143 986149 ]] [990371 990377 990383 990389 ]] [997091 997097 997103 997109 ]] ]
+
+Number of sexy prime quintuplets less than 1,000,035 = 1
+The last 1 is:
+  [[5 11 17 23 29 ]] ]
+
+Number of unsexy primes less than 1,000,035 = 48,627
+The last 10 are:
+  [[999853 999863 999883 999907 999917 999931 999961 999979 999983 1000003 ]]
+Running main.c in short_circuit_evaluation/
+I am a
+false && true = false
+
+I am a
+true || false = true
+
+I am a
+I am b
+true && false = false
+
+I am a
+I am b
+false || false = false
+
+Script execution completed.

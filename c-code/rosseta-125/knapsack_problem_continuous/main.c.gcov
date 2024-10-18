@@ -1,0 +1,42 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:struct item { double w, v; const char *name; } items[] = {
+        -:    5:	{ 3.8, 36, "beef" },
+        -:    6:	{ 5.4, 43, "pork" },
+        -:    7:	{ 3.6, 90, "ham" },
+        -:    8:	{ 2.4, 45, "greaves" },
+        -:    9:	{ 4.0, 30, "flitch" },
+        -:   10:	{ 2.5, 56, "brawn" },
+        -:   11:	{ 3.7, 67, "welt" },
+        -:   12:	{ 3.0, 95, "salami" },
+        -:   13:	{ 5.9, 98, "sausage" },
+        -:   14:};
+        -:   15: 
+       75:   16:int item_cmp(const void *aa, const void *bb)
+        -:   17:{
+       75:   18:	const struct item *a = aa, *b = bb;
+       75:   19:	double ua = a->v / a->w, ub = b->v / b->w;
+       75:   20:	return ua < ub ? -1 : ua > ub;
+        -:   21:}
+        -:   22: 
+        3:   23:int main()
+        -:   24:{
+        -:   25:	struct item *it;
+        3:   26:	double space = 15;
+        -:   27: 
+        3:   28:	qsort(items, 9, sizeof(struct item), item_cmp);
+       18:   29:	for (it = items + 9; it---items && space > 0; space -= it->w)
+       30:   30:		if (space >= it->w)
+       12:   31:			printf("take all %s\n", it->name);
+        -:   32:		else
+        3:   33:			printf("take %gkg of %g kg of %s\n",
+        3:   34:				space, it->w, it->name);
+        -:   35: 
+        3:   36:	return 0;
+        -:   37:}

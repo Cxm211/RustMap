@@ -1,0 +1,78 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+        -:    5:#define mat_elem(a, y, x, n) (a + ((y) * (n) + (x)))
+        -:    6: 
+       18:    7:void swap_row(double *a, double *b, int r1, int r2, int n)
+        -:    8:{
+        -:    9:	double tmp, *p1, *p2;
+        -:   10:	int i;
+        -:   11: 
+       18:   12:	if (r1 == r2) return;
+       84:   13:	for (i = 0; i < n; i++) {
+       72:   14:		p1 = mat_elem(a, r1, i, n);
+       72:   15:		p2 = mat_elem(a, r2, i, n);
+       72:   16:		tmp = *p1, *p1 = *p2, *p2 = tmp;
+       72:   17:	}
+       12:   18:	tmp = b[r1], b[r1] = b[r2], b[r2] = tmp;
+       18:   19:}
+        -:   20: 
+        3:   21:void gauss_eliminate(double *a, double *b, double *x, int n)
+        -:   22:{
+        -:   23:#define A(y, x) (*mat_elem(a, y, x, n))
+        -:   24:	int i, j, col, row, max_row,dia;
+        -:   25:	double max, tmp;
+        -:   26: 
+       21:   27:	for (dia = 0; dia < n; dia++) {
+       18:   28:		max_row = dia, max = A(dia, dia);
+        -:   29: 
+       63:   30:		for (row = dia + 1; row < n; row++)
+       66:   31:			if ((tmp = fabs(A(row, dia))) > max)
+       21:   32:				max_row = row, max = tmp;
+        -:   33: 
+       18:   34:		swap_row(a, b, dia, max_row, n);
+        -:   35: 
+       63:   36:		for (row = dia + 1; row < n; row++) {
+       45:   37:			tmp = A(row, dia) / A(dia, dia);
+      210:   38:			for (col = dia+1; col < n; col++)
+      165:   39:				A(row, col) -= tmp * A(dia, col);
+       45:   40:			A(row, dia) = 0;
+       45:   41:			b[row] -= tmp * b[dia];
+       45:   42:		}
+       18:   43:	}
+       21:   44:	for (row = n - 1; row >= 0; row--) {
+       18:   45:		tmp = b[row];
+       63:   46:		for (j = n - 1; j > row; j--)
+       45:   47:			tmp -= x[j] * A(row, j);
+       18:   48:		x[row] = tmp / A(row, row);
+       18:   49:	}
+        -:   50:#undef A
+        3:   51:}
+        -:   52: 
+        3:   53:int main(void)
+        -:   54:{
+        3:   55:	double a[] = {
+        -:   56:		1.00, 0.00, 0.00,  0.00,  0.00, 0.00,
+        -:   57:		1.00, 0.63, 0.39,  0.25,  0.16, 0.10,
+        -:   58:		1.00, 1.26, 1.58,  1.98,  2.49, 3.13,
+        -:   59:		1.00, 1.88, 3.55,  6.70, 12.62, 23.80,
+        -:   60:		1.00, 2.51, 6.32, 15.88, 39.90, 100.28,
+        -:   61:		1.00, 3.14, 9.87, 31.01, 97.41, 306.02
+        -:   62:	};
+        3:   63:	double b[] = { -0.01, 0.61, 0.91, 0.99, 0.60, 0.02 };
+        -:   64:	double x[6];
+        -:   65:	int i;
+        -:   66: 
+        3:   67:	gauss_eliminate(a, b, x, 6);
+        -:   68: 
+       21:   69:	for (i = 0; i < 6; i++)
+       18:   70:		printf("%g\n", x[i]);
+        -:   71: 
+        3:   72:	return 0;
+        -:   73:}

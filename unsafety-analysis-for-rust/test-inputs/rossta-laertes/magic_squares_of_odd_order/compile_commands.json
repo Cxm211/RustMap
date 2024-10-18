@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/magic_squares_of_odd_order",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/magic_squares_of_odd_order/main.c"
+  }
+]

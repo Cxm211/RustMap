@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/magic_8_ball",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/magic_8_ball/main.c"
+  }
+]

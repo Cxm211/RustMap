@@ -1,0 +1,16 @@
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,Manual Unsafety Categorization of which_rs_gpt                                                       							,,,,,,,
+,,,ReadFromUnion,MutGlobalAccess,InlineAsm,ExternCall,RawPtrDeref,UnsafeCast,Alloc
+,,func_search,,2,,,,,
+,,get_current_working_directory,,9,,,,,
+,,path_clean_up,,,,,,,
+,,path_search,,3,,,,,
+,,print_usage,,2,,2,,,
+,,process_alias,,3,,,,,
+,,x_realloc_x_malloc,,,,2,,,2
+,,Total Count,0,19,0,4,0,0,2

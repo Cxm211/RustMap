@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/kernighans_large_earthquake_problem",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/kernighans_large_earthquake_problem/main.c"
+  }
+]

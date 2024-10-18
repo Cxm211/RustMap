@@ -1,0 +1,122 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include<stdlib.h>
+        -:    2:   #include<ctype.h>
+        -:    3:   #include<stdio.h>
+        -:    4: 
+    #####:    5:   int** oddMagicSquare(int n) {
+    #####:    6:        if (n < 3 || n % 2 == 0)
+    #####:    7:            return NULL;
+        -:    8: 
+    #####:    9:        int value = 0;
+    #####:   10:        int squareSize = n * n;
+    #####:   11:        int c = n / 2, r = 0,i;
+        -:   12: 
+    #####:   13:        int** result = (int**)malloc(n*sizeof(int*));
+        -:   14: 
+    #####:   15:		for(i=0;i<n;i++)
+    #####:   16:			result[i] = (int*)malloc(n*sizeof(int));
+        -:   17: 
+    #####:   18:        while (++value <= squareSize) {
+    #####:   19:            result[r][c] = value;
+    #####:   20:            if (r == 0) {
+    #####:   21:                if (c == n - 1) {
+    #####:   22:                    r++;
+    #####:   23:                } else {
+    #####:   24:                    r = n - 1;
+    #####:   25:                    c++;
+        -:   26:                }
+    #####:   27:            } else if (c == n - 1) {
+    #####:   28:                r--;
+    #####:   29:                c = 0;
+    #####:   30:            } else if (result[r - 1][c + 1] == 0) {
+    #####:   31:                r--;
+    #####:   32:                c++;
+    #####:   33:            } else {
+    #####:   34:                r++;
+        -:   35:            }
+        -:   36:        }
+    #####:   37:        return result;
+    #####:   38:    }
+        -:   39: 
+    #####:   40:    int** singlyEvenMagicSquare(int n) {
+    #####:   41:        if (n < 6 || (n - 2) % 4 != 0)
+    #####:   42:            return NULL;
+        -:   43: 
+    #####:   44:        int size = n * n;
+    #####:   45:        int halfN = n / 2;
+    #####:   46:        int subGridSize = size / 4, i;
+        -:   47: 
+    #####:   48:        int** subGrid = oddMagicSquare(halfN);
+    #####:   49:        int gridFactors[] = {0, 2, 3, 1};
+    #####:   50:        int** result = (int**)malloc(n*sizeof(int*));
+        -:   51: 
+    #####:   52:		for(i=0;i<n;i++)
+    #####:   53:			result[i] = (int*)malloc(n*sizeof(int));
+        -:   54: 
+    #####:   55:        for (int r = 0; r < n; r++) {
+    #####:   56:            for (int c = 0; c < n; c++) {
+    #####:   57:                int grid = (r / halfN) * 2 + (c / halfN);
+    #####:   58:                result[r][c] = subGrid[r % halfN][c % halfN];
+    #####:   59:                result[r][c] += gridFactors[grid] * subGridSize;
+    #####:   60:            }
+    #####:   61:        }
+        -:   62: 
+    #####:   63:        int nColsLeft = halfN / 2;
+    #####:   64:        int nColsRight = nColsLeft - 1;
+        -:   65: 
+    #####:   66:        for (int r = 0; r < halfN; r++)
+    #####:   67:            for (int c = 0; c < n; c++) {
+    #####:   68:                if (c < nColsLeft || c >= n - nColsRight
+    #####:   69:                        || (c == nColsLeft && r == nColsLeft)) {
+        -:   70: 
+    #####:   71:                    if (c == 0 && r == nColsLeft)
+    #####:   72:                        continue;
+        -:   73: 
+    #####:   74:                    int tmp = result[r][c];
+    #####:   75:                    result[r][c] = result[r + halfN][c];
+    #####:   76:                    result[r + halfN][c] = tmp;
+    #####:   77:                }
+    #####:   78:            }
+        -:   79: 
+    #####:   80:        return result;
+    #####:   81:    }
+        -:   82: 
+    #####:   83:	int numDigits(int n){
+    #####:   84:		int count = 1;
+        -:   85: 
+    #####:   86:		while(n>=10){
+    #####:   87:			n /= 10;
+    #####:   88:			count++;
+        -:   89:		}
+        -:   90: 
+    #####:   91:		return count;
+        -:   92:	}
+        -:   93: 
+    #####:   94:	void printMagicSquare(int** square,int rows){
+        -:   95:		int i,j;
+        -:   96: 
+    #####:   97:		for(i=0;i<rows;i++){
+    #####:   98:			for(j=0;j<rows;j++){
+    #####:   99:				printf("%*s%d",rows - numDigits(square[i][j]),"",square[i][j]);
+    #####:  100:			}
+    #####:  101:			printf("\n");
+    #####:  102:		}
+    #####:  103:		printf("\nMagic constant: %d ", (rows * rows + 1) * rows / 2);
+    #####:  104:	}
+        -:  105: 
+        3:  106:	int main(int argC,char* argV[])
+        -:  107:	{
+        -:  108:		int n;
+        -:  109: 
+        3:  110:		if(argC!=2||isdigit(argV[1][0])==0)
+        3:  111:			printf("Usage : %s <integer specifying rows in magic square>",argV[0]);
+        -:  112:		else{
+    #####:  113:			n = atoi(argV[1]);
+    #####:  114:			printMagicSquare(singlyEvenMagicSquare(n),n);
+        -:  115:		}
+        3:  116:		return 0;
+        -:  117:	}

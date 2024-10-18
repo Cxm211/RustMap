@@ -1,0 +1,52 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:typedef unsigned long long ull;
+        -:    4: 
+    47586:    5:int is89(int x)
+        -:    6:{
+   287694:    7:	while (1) {
+   287694:    8:		int s = 0;
+   632421:    9:		do s += (x%10)*(x%10); while ((x /= 10));
+        -:   10: 
+   287694:   11:		if (s == 89) return 1;
+   247053:   12:		if (s == 1) return 0;
+   240108:   13:		x = s;
+        -:   14:	}
+    47586:   15:}
+        -:   16: 
+        -:   17: 
+        3:   18:int main(void)
+        -:   19:{
+        -:   20:	// array bounds is sort of random here, it's big enough for 64bit unsigned.
+        3:   21:	ull sums[32*81 + 1] = {1, 0};
+        -:   22: 
+       60:   23:	for (int n = 1; ; n++) {
+    51090:   24:		for (int i = n*81; i; i--) {
+   493740:   25:			for (int j = 1; j < 10; j++) {
+   447510:   26:				int s = j*j;
+   447510:   27:				if (s > i) break;
+   442710:   28:				sums[i] += sums[i-s];
+   442710:   29:			}
+    51030:   30:		}
+        -:   31: 
+       60:   32:		ull count89 = 0;
+    47643:   33:		for (int i = 1; i < n*81 + 1; i++) {
+    47586:   34:			if (!is89(i)) continue;
+        -:   35: 
+    40641:   36:			if (sums[i] > ~0ULL - count89) {
+        3:   37:				printf("counter overflow for 10^%d\n", n);
+        3:   38:				return 0;
+        -:   39:			}
+    40638:   40:			count89 += sums[i];
+    40638:   41:		}
+        -:   42: 
+       57:   43:		printf("1->10^%d: %llu\n", n, count89);
+       57:   44:	}
+        -:   45: 
+        -:   46:	return 0;
+        -:   47:}

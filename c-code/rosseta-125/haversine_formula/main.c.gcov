@@ -1,0 +1,31 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <math.h>
+        -:    4: 
+        -:    5:#define R 6371
+        -:    6:#define TO_RAD (3.1415926536 / 180)
+        3:    7:double dist(double th1, double ph1, double th2, double ph2)
+        -:    8:{
+        -:    9:	double dx, dy, dz;
+        3:   10:	ph1 -= ph2;
+        3:   11:	ph1 *= TO_RAD, th1 *= TO_RAD, th2 *= TO_RAD;
+        -:   12: 
+        3:   13:	dz = sin(th1) - sin(th2);
+        3:   14:	dx = cos(ph1) * cos(th1) - cos(th2);
+        3:   15:	dy = sin(ph1) * cos(th1);
+        3:   16:	return asin(sqrt(dx * dx + dy * dy + dz * dz) / 2) * 2 * R;
+        -:   17:}
+        -:   18: 
+        3:   19:int main()
+        -:   20:{
+        3:   21:	double d = dist(36.12, -86.67, 33.94, -118.4);
+        -:   22:	/* Americans don't know kilometers */
+        3:   23:	printf("dist: %.1f km (%.1f mi.)\n", d, d / 1.609344);
+        -:   24: 
+        3:   25:	return 0;
+        -:   26:}

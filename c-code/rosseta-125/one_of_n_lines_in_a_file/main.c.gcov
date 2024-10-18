@@ -1,0 +1,36 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:
+ 27000000:    4:int irand(int n)
+        -:    5:{
+ 27000000:    6:	int r, randmax = RAND_MAX / n * n;
+ 27000000:    7:	while ((r = rand()) >= randmax)
+        -:    8:		;
+ 27000000:    9:	return r / (randmax / n);
+        -:   10:}
+        -:   11:
+  3000000:   12:int one_of_n(int n)
+        -:   13:{
+  3000000:   14:	int i, r = 0;
+ 30000000:   15:	for (i = 1; i < n; i++)
+ 32790177:   16:		if (!irand(i + 1))
+  5790177:   17:			r = i;
+  3000000:   18:	return r;
+        -:   19:}
+        -:   20:
+        3:   21:int main(void)
+        -:   22:{
+        3:   23:	int i, r[10] = {0};
+        -:   24:
+  3000003:   25:	for (i = 0; i < 1000000; i++, r[one_of_n(10)]++)
+        -:   26:		;
+       33:   27:	for (i = 0; i < 10; i++)
+       30:   28:		printf("%d%c", r[i], i == 9 ? '\n' : ' ');
+        -:   29:
+        3:   30:	return 0;
+        -:   31:}

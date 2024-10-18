@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/next_highest_int_from_digits",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/next_highest_int_from_digits/main.c"
+  }
+]

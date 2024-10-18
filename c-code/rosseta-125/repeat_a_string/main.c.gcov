@@ -1,0 +1,27 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4: 
+        3:    5:char * string_repeat( int n, const char * s ) {
+        3:    6:  size_t slen = strlen(s);
+        3:    7:  char * dest = malloc(n*slen+1);
+        -:    8: 
+        -:    9:  int i; char * p;
+       18:   10:  for ( i=0, p = dest; i < n; ++i, p += slen ) {
+       15:   11:    memcpy(p, s, slen);
+       15:   12:  }
+        3:   13:  *p = '\0';
+        3:   14:  return dest;
+        -:   15:}
+        -:   16: 
+        3:   17:int main() {
+        3:   18:  char * result = string_repeat(5, "ha");
+        3:   19:  puts(result);
+        3:   20:  free(result);
+        3:   21:  return 0;
+        -:   22:}

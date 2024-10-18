@@ -1,0 +1,60 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdint.h>
+        -:    3: 
+        -:    4:typedef uint32_t uint;
+        -:    5:typedef uint64_t ulong;
+        -:    6: 
+       16:    7:ulong ipow(const uint x, const uint y) {
+       16:    8:    ulong result = 1;
+      120:    9:    for (uint i = 1; i <= y; i++)
+      104:   10:        result *= x;
+       16:   11:    return result;
+        -:   12:}
+        -:   13: 
+    10204:   14:uint min(const uint x, const uint y) {
+    10204:   15:    return (x < y) ? x : y;
+        -:   16:}
+        -:   17: 
+  2615520:   18:void throw_die(const uint n_sides, const uint n_dice, const uint s, uint counts[]) {
+  2615520:   19:    if (n_dice == 0) {
+  2105796:   20:        counts[s]++;
+  2105796:   21:        return;
+        -:   22:    }
+        -:   23: 
+  3125228:   24:    for (uint i = 1; i < n_sides + 1; i++)
+  2615504:   25:        throw_die(n_sides, n_dice - 1, s + i, counts);
+  2615520:   26:}
+        -:   27: 
+        8:   28:double beating_probability(const uint n_sides1, const uint n_dice1,
+        -:   29:                           const uint n_sides2, const uint n_dice2) {
+        8:   30:    const uint len1 = (n_sides1 + 1) * n_dice1;
+        8:   31:    uint C1[len1];
+      408:   32:    for (uint i = 0; i < len1; i++)
+      400:   33:        C1[i] = 0;
+        8:   34:    throw_die(n_sides1, n_dice1, 0, C1);
+        -:   35: 
+        8:   36:    const uint len2 = (n_sides2 + 1) * n_dice2;
+        8:   37:    uint C2[len2];
+      368:   38:    for (uint j = 0; j < len2; j++)
+      360:   39:        C2[j] = 0;
+        8:   40:    throw_die(n_sides2, n_dice2, 0, C2);
+        -:   41: 
+        8:   42:    const double p12 = (double)(ipow(n_sides1, n_dice1) * ipow(n_sides2, n_dice2));
+        -:   43: 
+        8:   44:    double tot = 0;
+      408:   45:    for (uint i = 0; i < len1; i++)
+    10204:   46:        for (uint j = 0; j < min(i, len2); j++)
+    10204:   47:            tot += (double)C1[i] * C2[j] / p12;
+        8:   48:    return tot;
+        8:   49:}
+        -:   50: 
+        4:   51:int main() {
+        4:   52:    printf("%1.16f\n", beating_probability(4, 9, 6, 6));
+        4:   53:    printf("%1.16f\n", beating_probability(10, 5, 7, 6));
+        4:   54:    return 0;
+        -:   55:}

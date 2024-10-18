@@ -1,0 +1,37 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdbool.h>
+        -:    3: 
+       12:    4:bool a(bool in)
+        -:    5:{
+       12:    6:  printf("I am a\n");
+       12:    7:  return in;
+        -:    8:}
+        -:    9: 
+        6:   10:bool b(bool in)
+        -:   11:{
+        6:   12:  printf("I am b\n");
+        6:   13:  return in;
+        -:   14:}
+        -:   15: 
+        -:   16:#define TEST(X,Y,O)						\
+        -:   17:  do {								\
+        -:   18:    x = a(X) O b(Y);						\
+        -:   19:    printf(#X " " #O " " #Y " = %s\n\n", x ? "true" : "false");	\
+        -:   20:  } while(false);
+        -:   21: 
+        3:   22:int main()
+        -:   23:{
+        -:   24:  bool x;
+        -:   25: 
+        3:   26:  TEST(false, true, &&); // b is not evaluated
+        3:   27:  TEST(true, false, ||); // b is not evaluated
+        3:   28:  TEST(true, false, &&); // b is evaluated
+        3:   29:  TEST(false, false, ||); // b is evaluated 
+        -:   30: 
+        3:   31:  return 0;
+        -:   32:}

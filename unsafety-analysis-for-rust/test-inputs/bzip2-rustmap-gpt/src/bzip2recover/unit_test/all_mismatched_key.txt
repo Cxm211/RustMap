@@ -1,0 +1,37 @@
+__inline__ void fallbackSimpleSort (UInt32 *fmap, UInt32 *eclass, Int32 lo, Int32 hi)bzip2/blocksort.i:2483
+int sprintf (char *__restrict __s, const char *__restrict __format, ...)bzip2/bzip2recover.i:321
+__inline__ UChar mmed3 (UChar a, UChar b, UChar c)bzip2/blocksort.i:2915
+Bool endsInBz2 (Char *name)bzip2/bzip2recover.i:2232
+char *strncpy (char *__restrict __dest, const char *__restrict __src, size_t __n)bzip2/bzip2recover.i:1788
+const char *BZ2_bzlibVersion (void)bzip2/bzlib.i:4102
+__inline__ Bool mainGtU (UInt32 i1, UInt32 i2, UChar *block, UInt16 *quadrant, UInt32 nblock, Int32 *budget)bzip2/blocksort.i:2713
+char *strstr (const char *__haystack, const char *__needle)bzip2/bzip2recover.i:1869
+void fallbackQSort3 (UInt32 *fmap, UInt32 *eclass, Int32 loSt, Int32 hiSt)bzip2/blocksort.i:2512
+void *default_bzalloc (void *opaque, Int32 items, Int32 size)bzip2/bzlib.i:2539
+Bool mapSuffix (Char *name, const Char *oldSuffix, const Char *newSuffix)bzip2/bzip2.i:6217
+char *strcat (char *__restrict __dest, const char *__restrict __src)bzip2/bzip2recover.i:1793
+void BZ2_hbMakeCodeLengths (UChar *len, Int32 *freq, Int32 alphaSize, Int32 maxLen)bzip2/huffman.i:2474
+char *strcpy (char *__restrict __dest, const char *__restrict __src)bzip2/bzip2recover.i:1785
+void default_bzfree (void *opaque, void *addr)bzip2/bzlib.i:2546
+int strcmp (const char *__s1, const char *__s2)bzip2/bzip2recover.i:1800
+Bool hasSuffix (Char *s, const Char *suffix)bzip2/bzip2.i:6207
+int utime (const char *__file, const struct utimbuf *__file_times)bzip2/bzip2.i:3886
+FILE *fdopen (int __fd, const char *__modes)bzip2/bzlib.i:1337
+int fchmod (int __fd, __mode_t __mode)bzip2/bzip2.i:5100
+void BZ2_hbCreateDecodeTables (Int32 *limit, Int32 *base, Int32 *perm, UChar *length, Int32 minLen, Int32 maxLen, Int32 alphaSize)bzip2/huffman.i:2563
+void license (void)bzip2/bzip2.i:6874
+__sighandler_t signal (int __sig, __sighandler_t __handler)bzip2/bzip2.i:2296
+void BZ2_bz__AssertH__fail (int errcode)bzip2/bzlib.i:2474
+Bool containsDubiousChars (Char *name)bzip2/bzip2.i:6188
+int strncmp (const char *__s1, const char *__s2, size_t __n)bzip2/bzip2recover.i:1803
+void mainSort (UInt32 *ptr, UChar *block, UInt16 *quadrant, UInt32 *ftab, Int32 nblock, Int32 verb, Int32 *budget)bzip2/blocksort.i:3024
+void mainQSort3 (UInt32 *ptr, UChar *block, UInt16 *quadrant, Int32 nblock, Int32 loSt, Int32 hiSt, Int32 dSt, Int32 *budget)bzip2/blocksort.i:2926
+int fchown (int __fd, __uid_t __owner, __gid_t __group)bzip2/bzip2.i:3967
+__inline__ Int32 BZ2_indexIntoF (Int32 indx, Int32 *cftab)bzip2/bzlib.i:3155
+void BZ2_hbAssignCodes (Int32 *code, UChar *length, Int32 minLen, Int32 maxLen, Int32 alphaSize)bzip2/huffman.i:2545
+void *myMalloc (Int32 n)bzip2/bzip2.i:6966
+char *strrchr (const char *__s, int __c)bzip2/bzip2recover.i:1859
+void usage (Char *fullProgName)bzip2/bzip2.i:6901
+void fallbackSort (UInt32 *fmap, UInt32 *eclass, UInt32 *bhtab, Int32 nblock, Int32 verb)bzip2/blocksort.i:2593
+int bz_config_ok (void)bzip2/bzlib.i:2528
+36

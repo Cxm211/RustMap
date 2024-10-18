@@ -1,0 +1,26 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        4:    3:int main()
+        -:    4:{    
+        4:    5:    const char *fruit[2] = { "apples", "oranges" };
+        -:    6: 
+        -:    7:    // Acquire the length of the array by dividing the size of all elements (found
+        -:    8:    // with sizeof(fruit)) by the size of the first element.
+        -:    9: 
+        -:   10:    // Note that since the array elements are pointers to null-terminated character
+        -:   11:    // arrays, the size of the first element is actually the size of the pointer
+        -:   12:    // type - not the length of the string.
+        -:   13: 
+        -:   14:    // This size, regardless of the type being pointed to, is 8 bytes, 4 bytes, or
+        -:   15:    // 2 bytes on 64-bit, 32-bit, or 16-bit platforms respectively.
+        4:   16:    int length = sizeof(fruit) / sizeof(fruit[0]);
+        -:   17: 
+        4:   18:    printf("%d\n", length);
+        -:   19: 
+        4:   20:    return 0;
+        -:   21:}

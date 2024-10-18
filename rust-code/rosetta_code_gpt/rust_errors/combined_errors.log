@@ -1,0 +1,279 @@
+bell_numbers
+
+error[E0502]: cannot borrow `tri` as immutable because it is also borrowed as mutable
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/bell_numbers.rs:21:42
+   |
+21 |        set_bell(&mut tri, i, 0, get_bell(&tri, i - 1, i - 2));
+   |        -------- --------                 ^^^^ immutable borrow occurs here
+   |        |        |
+   |        |        mutable borrow occurs here
+   |        mutable borrow later used by call
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0502`.
+
+chinese_remainder_theorem
+
+error: expected one of `!` or `[`, found `include`
+ --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/chinese_remainder_theorem.rs:1:2
+  |
+1 | #include <stdio.h>
+  |  ^^^^^^^ expected one of `!` or `[`
+
+error: aborting due to previous error
+
+
+
+evaluate_binomial_coefficients
+
+error[E0282]: type annotations needed
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/evaluate_binomial_coefficients.rs:17:7
+   |
+17 |   let mut d;
+   |       ^^^^^
+   |
+help: consider giving `d` an explicit type
+   |
+17 |   let mut d: /* Type */;
+   |            ++++++++++++
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0282`.
+
+hailstone_sequence
+
+error[E0277]: the trait bound `Vec<i32>: AsMut<Option<_>>` is not satisfied
+ --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:7:34
+  |
+7 |         if let Some(arry) = arry.as_mut() { 
+  |                                  ^^^^^^ the trait `AsMut<Option<_>>` is not implemented for `Vec<i32>`
+  |
+  = help: the following other types implement trait `AsMut<T>`:
+            <Vec<T, A> as AsMut<Vec<T, A>>>
+            <Vec<T, A> as AsMut<[T]>>
+
+error[E0277]: the trait bound `Vec<i32>: AsMut<Option<_>>` is not satisfied
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:16:30
+   |
+16 |     if let Some(arry) = arry.as_mut() {
+   |                              ^^^^^^ the trait `AsMut<Option<_>>` is not implemented for `Vec<i32>`
+   |
+   = help: the following other types implement trait `AsMut<T>`:
+             <Vec<T, A> as AsMut<Vec<T, A>>>
+             <Vec<T, A> as AsMut<[T]>>
+
+error[E0308]: mismatched types
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:27:30
+   |
+27 |         let n = hailstone(j, None);
+   |                 ---------    ^^^^ expected `&mut Vec<i32>`, found `Option<_>`
+   |                 |
+   |                 arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut Vec<i32>`
+                           found enum `Option<_>`
+note: function defined here
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:1:4
+   |
+1  | fn hailstone(n: i32, arry: &mut Vec<i32>) -> i32 {
+   |    ^^^^^^^^^         -------------------
+
+error[E0308]: mismatched types
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:34:27
+   |
+34 |     let n = hailstone(27, Some(&mut arry)); 
+   |             ---------     ^^^^^^^^^^^^^^^ expected `&mut Vec<i32>`, found `Option<&mut Vec<i32>>`
+   |             |
+   |             arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut Vec<i32>`
+                           found enum `Option<&mut Vec<i32>>`
+note: function defined here
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/hailstone_sequence.rs:1:4
+   |
+1  | fn hailstone(n: i32, arry: &mut Vec<i32>) -> i32 {
+   |    ^^^^^^^^^         -------------------
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+increment_a_numerical_string
+
+error[E0277]: the trait bound `u8: Neg` is not satisfied
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/increment_a_numerical_string.rs:36:63
+   |
+36 |         let updated_tail_char = ((tail_char as u8) + if neg { -1 } else { 1 }) as char;
+   |                                                               ^^ the trait `Neg` is not implemented for `u8`
+   |
+   = help: the following other types implement trait `Neg`:
+             &f32
+             &f64
+             &i128
+             &i16
+             &i32
+             &i64
+             &i8
+             &isize
+           and 8 others
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0277`.
+
+iterated_digits_squaring
+
+error[E0308]: mismatched types
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/iterated_digits_squaring.rs:39:23
+   |
+39 |             if !is_89(i) {
+   |                 ----- ^ expected `i32`, found `usize`
+   |                 |
+   |                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/iterated_digits_squaring.rs:3:4
+   |
+3  | fn is_89(mut x: i32) -> bool {
+   |    ^^^^^ ----------
+help: you can convert a `usize` to an `i32` and panic if the converted value doesn't fit
+   |
+39 |             if !is_89(i.try_into().unwrap()) {
+   |                        ++++++++++++++++++++
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0308`.
+
+last_letter_first_letter
+
+error[E0601]: `main` function not found in crate `last_letter_first_letter`
+  |
+  = note: consider adding a `main` function to `/root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/last_letter_first_letter.rs`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0601`.
+
+one_dimensional_cellular_automata
+
+
+population_count
+
+error[E0689]: can't call method `count_ones` on ambiguous numeric type `{integer}`
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/population_count.rs:20:14
+   |
+20 |         if n.count_ones() % 2 == 0 {
+   |              ^^^^^^^^^^
+   |
+help: you must specify a type for this binding, like `i32`
+   |
+18 |     let mut n: i32 = 0;
+   |              +++++
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0689`.
+
+pythagorean_triples
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:4:9
+  |
+4 |     [1, -2, 2,  2, -1, 2,  2, -2, 3],
+  |         ^^ cannot apply unary operator `-`
+  |
+  = note: unsigned values cannot be negated
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:4:20
+  |
+4 |     [1, -2, 2,  2, -1, 2,  2, -2, 3],
+  |                    ^^
+  |                    |
+  |                    cannot apply unary operator `-`
+  |                    help: you may have meant the maximum value of `u64`: `u64::MAX`
+  |
+  = note: unsigned values cannot be negated
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:4:31
+  |
+4 |     [1, -2, 2,  2, -1, 2,  2, -2, 3],
+  |                               ^^ cannot apply unary operator `-`
+  |
+  = note: unsigned values cannot be negated
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:6:6
+  |
+6 |     [-1, 2, 2, -2,  1, 2, -2,  2, 3]
+  |      ^^
+  |      |
+  |      cannot apply unary operator `-`
+  |      help: you may have meant the maximum value of `u64`: `u64::MAX`
+  |
+  = note: unsigned values cannot be negated
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:6:16
+  |
+6 |     [-1, 2, 2, -2,  1, 2, -2,  2, 3]
+  |                ^^ cannot apply unary operator `-`
+  |
+  = note: unsigned values cannot be negated
+
+error[E0600]: cannot apply unary operator `-` to type `u64`
+ --> pythagorean_triples.rs:6:27
+  |
+6 |     [-1, 2, 2, -2,  1, 2, -2,  2, 3]
+  |                           ^^ cannot apply unary operator `-`
+  |
+  = note: unsigned values cannot be negated
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0600`.
+
+range_extraction
+
+error[E0596]: cannot borrow `s.0` as mutable, as `s` is not declared as mutable
+  --> range_extraction.rs:1:11
+   |
+1  | fn rprint(s: Option<&mut String>, x: &[i32]) -> usize {
+   |           ^ not mutable
+...
+11 |             if let Some(ref mut s) = s {
+   |                         --------- cannot borrow as mutable
+...
+21 |                 if let Some(ref mut s) = s {
+   |                             --------- cannot borrow as mutable
+   |
+help: consider changing this to be mutable
+   |
+1  | fn rprint(mut s: Option<&mut String>, x: &[i32]) -> usize {
+   |           +++
+
+error[E0716]: temporary value dropped while borrowed
+  --> range_extraction.rs:39:23
+   |
+39 |     let s = Some(&mut String::new());
+   |                       ^^^^^^^^^^^^^ - temporary value is freed at the end of this statement
+   |                       |
+   |                       creates a temporary value which is freed while still in use
+40 |     let _ = rprint(s, &x);
+   |                    - borrow later used here
+   |
+help: consider using a `let` binding to create a longer lived value
+   |
+39 ~     let binding = String::new();
+40 ~     let s = Some(&mut binding);
+   |
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0596, E0716.
+For more information about an error, try `rustc --explain E0596`.

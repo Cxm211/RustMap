@@ -1,0 +1,27 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stddef.h> /* for size_t */
+        -:    3:#include <limits.h> /* for CHAR_BIT */
+        -:    4: 
+        3:    5:int main() {
+        3:    6:    int one = 1;
+        -:    7: 
+        -:    8:    /*
+        -:    9:     * Best bet: size_t typically is exactly one word.
+        -:   10:     */
+        3:   11:    printf("word size = %d bits\n", (int)(CHAR_BIT * sizeof(size_t)));
+        -:   12: 
+        -:   13:    /*
+        -:   14:     * Check if the least significant bit is located
+        -:   15:     * in the lowest-address byte.
+        -:   16:     */
+        3:   17:    if (*(char *)&one)
+        3:   18:        printf("little endian\n");
+        -:   19:    else
+    #####:   20:        printf("big endian\n");
+        3:   21:    return 0;
+        -:   22:}

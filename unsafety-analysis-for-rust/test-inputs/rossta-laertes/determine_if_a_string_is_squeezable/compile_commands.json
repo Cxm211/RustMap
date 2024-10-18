@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/determine_if_a_string_is_squeezable",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/determine_if_a_string_is_squeezable/main.c"
+  }
+]

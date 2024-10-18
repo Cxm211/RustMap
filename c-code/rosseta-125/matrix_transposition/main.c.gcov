@@ -1,0 +1,30 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:void transpose(void *dest, void *src, int src_h, int src_w)
+        -:    4:{
+        -:    5:	int i, j;
+        3:    6:	double (*d)[src_h] = dest, (*s)[src_w] = src;
+       12:    7:	for (i = 0; i < src_h; i++)
+       54:    8:		for (j = 0; j < src_w; j++)
+       54:    9:			d[j][i] = s[i][j];
+        3:   10:}
+        -:   11: 
+        3:   12:int main()
+        -:   13:{
+        -:   14:	int i, j;
+        3:   15:	double a[3][5] = {{ 0, 1, 2, 3, 4 },
+        -:   16:			  { 5, 6, 7, 8, 9 },
+        -:   17:			  { 1, 0, 0, 0, 42}};
+        -:   18:	double b[5][3];
+        3:   19:	transpose(b, a, 3, 5);
+        -:   20: 
+       18:   21:	for (i = 0; i < 5; i++)
+       60:   22:		for (j = 0; j < 3; j++)
+       60:   23:			printf("%g%c", b[i][j], j == 2 ? '\n' : ' ');
+        3:   24:	return 0;
+        -:   25:}

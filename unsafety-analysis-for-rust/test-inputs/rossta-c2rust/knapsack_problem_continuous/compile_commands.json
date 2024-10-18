@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/knapsack_problem_continuous",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/knapsack_problem_continuous/main.c"
+  }
+]

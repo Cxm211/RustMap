@@ -1,0 +1,50 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3: 
+        -:    4:/* s, t: two strings; ls, lt: their respective length */
+132846195:    5:int levenshtein(const char *s, int ls, const char *t, int lt)
+        -:    6:{
+        -:    7:        int a, b, c;
+        -:    8: 
+        -:    9:        /* if either string is empty, difference is inserting all chars 
+        -:   10:         * from the other
+        -:   11:         */
+132846195:   12:        if (!ls) return lt;
+ 83956734:   13:        if (!lt) return ls;
+        -:   14: 
+        -:   15:        /* if last letters are the same, the difference is whatever is
+        -:   16:         * required to edit the rest of the strings
+        -:   17:         */
+ 57041586:   18:        if (s[ls - 1] == t[lt - 1])
+ 19139283:   19:                return levenshtein(s, ls - 1, t, lt - 1);
+        -:   20: 
+        -:   21:        /* else try:
+        -:   22:         *      changing last letter of s to that of t; or
+        -:   23:         *      remove last letter of s; or
+        -:   24:         *      remove last letter of t,
+        -:   25:         * any of which is 1 edit plus editing the rest of the strings
+        -:   26:         */
+ 37902303:   27:        a = levenshtein(s, ls - 1, t, lt - 1);
+ 37902303:   28:        b = levenshtein(s, ls,     t, lt - 1);
+ 37902303:   29:        c = levenshtein(s, ls - 1, t, lt    );
+        -:   30: 
+ 37902303:   31:        if (a > b) a = b;
+ 37902303:   32:        if (a > c) a = c;
+        -:   33: 
+ 37902303:   34:        return a + 1;
+132846195:   35:}
+        -:   36: 
+        3:   37:int main()
+        -:   38:{
+        3:   39:        const char *s1 = "rosettacode";
+        3:   40:        const char *s2 = "raisethysword";
+        6:   41:        printf("distance between `%s' and `%s': %d\n", s1, s2,
+        3:   42:                levenshtein(s1, strlen(s1), s2, strlen(s2)));
+        -:   43: 
+        3:   44:        return 0;
+        -:   45:}

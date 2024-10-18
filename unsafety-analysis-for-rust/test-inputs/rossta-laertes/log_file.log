@@ -1,0 +1,951 @@
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/100_doors/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/100_prisoners/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/15_puzzle_game/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/2048/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/21_game/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/24_game/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/4_rings_puzzle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/99_bottles_of_beer/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/9_billion_names_of_God_the_integer/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ABC_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/AKS_test_for_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/A_plus_B/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abbreviations_automatic/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abbreviations_easy/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abbreviations_simple/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abelian_sandpile_model/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abundant_deficient_and_perfect_number_classifications/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/abundant_odd_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/accumulator_factory/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ackermann_function/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/active_object/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/aliquot_sequence_classifications/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/almost_prime/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/amicable_pairs/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/anagrams/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/angle_difference_between_two_bearings/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/apply_a_callback_to_an_array/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/apply_a_digital_filter/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/approximate_equility/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/arbitrary_precision_integers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/arithmetic_geometric_mean/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/arithmetic_mean/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/array_concatenation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/array_length/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/assertions/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/atomic_updates/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/attractive_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/average_loop_length/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/average_mode/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/avl_tree/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/babbage_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/balanced_brackets/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bankers_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/base64_decode_data/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bell_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/benfords_law/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bernoulli_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/best_shuffle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/binary_digits/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/binary_search/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bioinformatics_base_count/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bitcoin_address_validation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/bitwise_io/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/box_the_compass/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/brace_expansion/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/caesar_cipher/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/calculate_pi/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/calculating_the_value_of_e/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/calendar/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/call_a_function_in_a_shared_library/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/call_an_object_method/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/canonicalize_cidr/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/carmichael_3_strong_pseudoprimes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cartesian_product_of_two_or_more_lists/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/casting_out_nines/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/catalan_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/catamorphism/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/chaocipher/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/character_codes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/check_input_device_is_a_terminal/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/check_output_device_is_a_terminal/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/check_that_file_exists/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/chinese_remainder_theorem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/chinese_zodiac/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cholesky_decomposition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/circles_of_given_radius_through_two_points/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/circular_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/combinations/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/comma_quibbling/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/command_line_arguments/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/compile_time_calculation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/concurrent_computing/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/constrained_random_points_on_a_circle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/construct_from_rational_number/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/continued_fraction/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/convert_decimal_number_to_rational/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/convert_seconds_to_compound_duration/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/convex_hull/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/conways_game_of_life/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/copy_a_string/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/count_in_factors/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/count_the_coins/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cramers_rule/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/crc32/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/create_a_two_dimentional_array_at_runtime/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/create_an_html_table/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/csv_data_manipulation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/csv_to_html_translation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cuban_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cumulative_standard_deviation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/currying/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cusip/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/cut_a_rectangle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/damm_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/date_format/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/days_between_dates/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/days_of_the_week/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/deal_cards_for_freecell/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/deepcopy/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/delegates/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/department_number/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/deranged_anagrams/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/determine_if_a_string_has_all_same_characters/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/determine_if_a_string_has_all_unique_characters/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/determine_if_a_string_is_collapsible/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/determine_if_a_string_is_squeezable/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/determine_if_only_one_instance_is_running/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/dice_game_probabilities/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/digital_root/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/dining_philosophers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/discordian_date/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/dot_product/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/dragon_curve/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/draw_a_sphere/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/dutch_national_flag_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/egyptian_division/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/emirp_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/empty_directory/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/entropy/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/environment_variables/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ethiopian_multiplication/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/euler_method/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/evaluate_binomial_coefficients/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/evolutionary_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/exponential/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/extreme_floating_point_values/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/factor_of_an_integer/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/factors_of_a_mersenne_number/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fairshare_between_two_and_more/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/farey_sequence/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fasta_format/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fermat_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fibonacci_n_step_number_sequences/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fibonacci_word/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/filter/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/find_the_intersection_of_two_lines/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/find_the_last_sunday_of_each_month/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/first_class_functions/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/five_weekends/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/flatten_a_list/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/flood_fill/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/floyds_triangle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/formatted_numeric_output/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/function_composition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/fusc_sequence/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/gaussian_elimination/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/general_fizzbuzz/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/generate_chess960_starting_position/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/generate_random_chess_position/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/generic_swap/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/gray_code/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/greatest_subsequential_sum/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/guess_the_number_with_feedback/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/hailstone_sequence/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/hamming_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/hash_from_two_arrays/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/haversine_formula/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/hilbert_curve/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/hofstadter_q_sequence/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/horners_rule_for_polynomial_evaluation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/host_introspection/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/huffman_coding/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/identity_matrix/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/increasing_gaps_between_consecutive_niven_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/increment_a_numerical_string/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/infinity/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/input_loop/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/integer/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/integer_comparison/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/integer_roots/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/inverted_index/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/isbn13_check_digit/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/iterated_digits_squaring/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/jacobi_symbol/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/jortsort/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/josephus_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/k_means_clustering/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/kernighans_large_earthquake_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/knapsack_problem_0_1/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/knapsack_problem_continuous/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/knights_tour/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/knuths_algorithm_s/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/langtons_ant/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/largest_int_from_concatenated_ints/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/last_letter_first_letter/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/leap_year/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/least_common_multiple/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/left_factorials/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/leonardo_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/levenshtein_distance/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/levenshtein_distance_alignment/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/list_comprehensions/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/long_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/longest_common_prefix/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/longest_common_substring/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/longest_increasing_subsequence/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/loop_over_multiple_arrays_simultaneously/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/loops_nested/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/lu_decomposition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/lucas_lehmer_test/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/luhn_test_of_credit_card_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/machine_code/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/mad_libs/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/magic_8_ball/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/magic_squares_of_doubly_even_order/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/magic_squares_of_odd_order/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/magic_squares_of_singly_even_order/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/magnanimous_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/mandelbrot_set/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/map_range/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/matrix_chain_multiplication/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/matrix_exponentiation_operator/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/matrix_multiplication/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/matrix_transposition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/maximum_triangle_path_sum/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/mcnuggets_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/mean_angle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/median/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/memory_allocation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/menu/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/middle_three_digits/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/modular_exponentiation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/modular_inverse/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/monte_carlo_methods/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/monty_hall_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/morse_code/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/move_to_front_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/multiplication_tables/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/munchausen_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/munching_squares/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/mutual_recursion/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/n_plus_one_half/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/n_queens_problem/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/n_smooth_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/negative_base_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/next_highest_int_from_digits/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/nim_game/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/nimber_arithmetic/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/nth/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/null_object/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/number_names/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/numerical_integration/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/old_lady_swallowed_a_fly/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/one_dimensional_cellular_automata/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/one_of_n_lines_in_a_file/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/optional_parameters/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ordered_words/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/palindrome_dates/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/palindrome_detection/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/pangram_checker/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/parametric_polymorphism/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/parse_an_ip_address/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/partition_an_integer_x_into_n_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/pascals_triangle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/perfect_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/perfect_shuffle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/permutations/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/phrase_reversals/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/population_count/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/power_set/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/price_fraction/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/prime_conspiracy/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/prime_decomposition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/primorial_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/priority_queue/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/proper_divisors/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/pythagorean_mean/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/pythagorean_quadruples/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/pythagorean_triples/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/quaternion_type/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/queue_definition/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/quickselect_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ramer_douglas_line_simplification/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/random_number/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/random_number_generator/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/range_consolidation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/range_expansion/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/range_extraction/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/rational/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/ray_casting_algorithm/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/regular_expression/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/remove_duplicate_elements/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/repeat/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/repeat_a_string/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/rock_paper_scissors/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/roman_numerals_decode/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/roman_numerals_encode/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/root_mean_square/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/roots_of_unity/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/rot_13/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/rpg_attributes_generator/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/run_length_encoding/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/runge_kutta_method/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/self_describing_numbers/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/semiprime/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/sequence_of_non_squares/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/set/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/sexy_primes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/short_circuit_evaluation/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/show_ascii_table/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/show_the_epoch/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/sierpinski_arrowhead_curve/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/sierpinski_triangle/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/sieve_of_eratosthenes/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/simple_moving_average/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/value_capture/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory
+----
+Processing: /root/lab/laertes/test-inputs/t_rosta/write_a_ppm_file/src/main.rs
+error: could not find `Cargo.toml` in `/root/lab/Rosseta代码` or any parent directory

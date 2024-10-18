@@ -1,0 +1,35 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:/* let us declare our functions; indeed here we need
+        -:    5:   really only M declaration, so that F can "see" it
+        -:    6:   and the compiler won't complain with a warning */
+        -:    7:int F(const int n);
+        -:    8:int M(const int n);
+        -:    9: 
+    19902:   10:int F(const int n)
+        -:   11:{
+    19902:   12:  return (n == 0) ? 1 : n - M(F(n - 1));
+        -:   13:}
+        -:   14: 
+    19902:   15:int M(const int n)
+        -:   16:{
+    19902:   17:  return (n == 0) ? 0 : n - F(M(n - 1));
+        -:   18:}
+        -:   19: 
+        3:   20:int main(void)
+        -:   21:{
+        -:   22:  int i;
+       63:   23:  for (i = 0; i < 20; i++)
+       60:   24:    printf("%2d ", F(i));
+        3:   25:  printf("\n");
+       63:   26:  for (i = 0; i < 20; i++)
+       60:   27:    printf("%2d ", M(i));
+        3:   28:  printf("\n");
+        3:   29:  return EXIT_SUCCESS;
+        -:   30:}

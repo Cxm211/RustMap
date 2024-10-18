@@ -1,0 +1,61 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:typedef unsigned long long ham;
+        -:    5: 
+        -:    6:size_t alloc = 0, n = 1;
+        -:    7:ham *q = 0;
+        -:    8: 
+    15222:    9:void qpush(ham h)
+        -:   10:{
+        -:   11:	int i, j;
+    15222:   12:	if (alloc <= n) {
+       21:   13:		alloc = alloc ? alloc * 2 : 16;
+       21:   14:		q = realloc(q, sizeof(ham) * alloc);
+       21:   15:	}
+        -:   16: 
+    16566:   17:	for (i = n++; (j = i/2) && q[j] > h; q[i] = q[j], i = j);
+    15222:   18:	q[i] = h;
+    15222:   19:}
+        -:   20: 
+     5073:   21:ham qpop()
+        -:   22:{
+        -:   23:	int i, j;
+        -:   24:	ham r, t;
+        -:   25:	/* outer loop for skipping duplicates */
+    18180:   26:	for (r = q[1]; n > 1 && r == q[1]; q[i] = t) {
+        -:   27:		/* inner loop is the normal down heap routine */
+   111579:   28:		for (i = 1, t = q[--n]; (j = i * 2) < n;) {
+    99621:   29:			if (j + 1 < n && q[j] > q[j+1]) j++;
+    99621:   30:			if (t <= q[j]) break;
+    98472:   31:			q[i] = q[j], i = j;
+        -:   32:		}
+    13107:   33:	}
+        -:   34: 
+     5073:   35:	return r;
+        -:   36:}
+        -:   37: 
+        3:   38:int main()
+        -:   39:{
+        -:   40:	int i;
+        -:   41:	ham h;
+        -:   42: 
+     5076:   43:	for (qpush(i = 1); i <= 1691; i++) {
+        -:   44:		/* takes smallest value, and queue its multiples */
+     5073:   45:		h = qpop();
+     5073:   46:		qpush(h * 2);
+     5073:   47:		qpush(h * 3);
+     5073:   48:		qpush(h * 5);
+        -:   49: 
+     5073:   50:		if (i <= 20 || i == 1691)
+       63:   51:			printf("%6d: %llu\n", i, h);
+     5073:   52:	}
+        -:   53: 
+        -:   54:	/* free(q); */
+        3:   55:	return 0;
+        -:   56:}

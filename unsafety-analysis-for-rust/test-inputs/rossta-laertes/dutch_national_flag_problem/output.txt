@@ -1,0 +1,2 @@
+Non-sorted: bbrbb
+Sorted: rbbbb

@@ -1,0 +1,28 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <math.h>
+        -:    3: 
+        3:    4:int main() {
+    15000:    5:    for (int i = 1; i < 5000; i++) {
+        -:    6:        // loop through each digit in i
+        -:    7:        // e.g. for 1000 we get 0, 0, 0, 1.
+    14997:    8:        int sum = 0;
+    71664:    9:        for (int number = i; number > 0; number /= 10) {
+    56667:   10:            int digit = number % 10;
+        -:   11:            // find the sum of the digits 
+        -:   12:            // raised to themselves 
+    56667:   13:            sum += pow(digit, digit);
+    56667:   14:        }
+    14997:   15:        if (sum == i) {
+        -:   16:            // the sum is equal to the number
+        -:   17:            // itself; thus it is a 
+        -:   18:            // munchausen number
+        6:   19:            printf("%i\n", i);
+        6:   20:        } 
+    14997:   21:    }
+        3:   22:    return 0;
+        -:   23:}

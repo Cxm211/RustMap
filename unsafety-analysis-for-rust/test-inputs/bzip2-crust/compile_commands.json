@@ -1,0 +1,128 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "blocksort.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/blocksort.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "huffman.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/huffman.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "crctable.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/crctable.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "randtable.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/randtable.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "compress.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/compress.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "decompress.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/decompress.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "bzlib.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/bzlib.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "bzip2.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/bzip2.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Winline",
+      "-O2",
+      "-g",
+      "-D_FILE_OFFSET_BITS=64",
+      "-c",
+      "bzip2recover.c"
+    ],
+    "directory": "/Users/mac/bbbbb2",
+    "file": "/Users/mac/bbbbb2/bzip2recover.c"
+  }
+]

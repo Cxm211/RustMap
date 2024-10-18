@@ -1,0 +1,3 @@
+bzip2 Complexity,,,,,,,,
+,RustMap-Stdev,C2Rust-Stdev,RustMap-Sum,C2Rust-Sum,RustMap-Max,C2Rust-Max,RustMap-Min,C2Rust-Min
+total,1167.038414,1883.013208,2917,5766,1917,3500,18,16

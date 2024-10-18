@@ -1,0 +1,2 @@
+word size = 64 bits
+little endian

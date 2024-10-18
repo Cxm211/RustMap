@@ -1,0 +1,63 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdint.h>
+        -:    3: 
+    30543:    4:uint32_t hpo2(uint32_t n) {
+    30543:    5:    return n & -n;
+        -:    6:}
+        -:    7: 
+     9276:    8:uint32_t lhpo2(uint32_t n) {
+     9276:    9:    uint32_t q = 0, m = hpo2(n);
+    31221:   10:    for (; m % 2 == 0; m >>= 1, ++q) {}
+     9276:   11:    return q;
+        -:   12:}
+        -:   13: 
+      771:   14:uint32_t nimsum(uint32_t x, uint32_t y) {
+      771:   15:    return x ^ y;
+        -:   16:}
+        -:   17: 
+    17022:   18:uint32_t nimprod(uint32_t x, uint32_t y) {
+    17022:   19:    if (x < 2 || y < 2)
+     5640:   20:        return x * y;
+    11382:   21:    uint32_t h = hpo2(x);
+    11382:   22:    if (x > h)
+     4167:   23:        return nimprod(h, y) ^ nimprod(x ^ h, y);
+     7215:   24:    if (hpo2(y) < y)
+     2577:   25:        return nimprod(y, x);
+     4638:   26:    uint32_t xp = lhpo2(x), yp = lhpo2(y);
+     4638:   27:    uint32_t comp = xp & yp;
+     4638:   28:    if (comp == 0)
+     1968:   29:        return x * y;
+     2670:   30:    h = hpo2(comp);
+     2670:   31:    return nimprod(nimprod(x >> h, y >> h), 3 << (h - 1));
+    17022:   32:}
+        -:   33: 
+        6:   34:void print_table(uint32_t n, char op, uint32_t(*func)(uint32_t, uint32_t)) {
+        6:   35:    printf(" %c |", op);
+      102:   36:    for (uint32_t a = 0; a <= n; ++a)
+       96:   37:        printf("%3d", a);
+        6:   38:    printf("\n--- -");
+      102:   39:    for (uint32_t a = 0; a <= n; ++a)
+       96:   40:        printf("---");
+        6:   41:    printf("\n");
+      102:   42:    for (uint32_t b = 0; b <= n; ++b) {
+       96:   43:        printf("%2d |", b);
+     1632:   44:        for (uint32_t a = 0; a <= n; ++a)
+     1536:   45:            printf("%3d", func(a, b));
+       96:   46:        printf("\n");
+       96:   47:    }
+        6:   48:}
+        -:   49: 
+        3:   50:int main() {
+        3:   51:    print_table(15, '+', nimsum);
+        3:   52:    printf("\n");
+        3:   53:    print_table(15, '*', nimprod);
+        3:   54:    const uint32_t a = 21508, b = 42689;
+        3:   55:    printf("\n%d + %d = %d\n", a, b, nimsum(a, b));
+        3:   56:    printf("%d * %d = %d\n", a, b, nimprod(a, b));
+        3:   57:    return 0;
+        -:   58:}

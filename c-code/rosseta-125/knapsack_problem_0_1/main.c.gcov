@@ -1,0 +1,83 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:typedef struct {
+        -:    5:    char *name;
+        -:    6:    int weight;
+        -:    7:    int value;
+        -:    8:} item_t;
+        -:    9: 
+        -:   10:item_t items[] = {
+        -:   11:    {"map",                      9,   150},
+        -:   12:    {"compass",                 13,    35},
+        -:   13:    {"water",                  153,   200},
+        -:   14:    {"sandwich",                50,   160},
+        -:   15:    {"glucose",                 15,    60},
+        -:   16:    {"tin",                     68,    45},
+        -:   17:    {"banana",                  27,    60},
+        -:   18:    {"apple",                   39,    40},
+        -:   19:    {"cheese",                  23,    30},
+        -:   20:    {"beer",                    52,    10},
+        -:   21:    {"suntan cream",            11,    70},
+        -:   22:    {"camera",                  32,    30},
+        -:   23:    {"T-shirt",                 24,    15},
+        -:   24:    {"trousers",                48,    10},
+        -:   25:    {"umbrella",                73,    40},
+        -:   26:    {"waterproof trousers",     42,    70},
+        -:   27:    {"waterproof overclothes",  43,    75},
+        -:   28:    {"note-case",               22,    80},
+        -:   29:    {"sunglasses",               7,    20},
+        -:   30:    {"towel",                   18,    12},
+        -:   31:    {"socks",                    4,    50},
+        -:   32:    {"book",                    30,    10},
+        -:   33:};
+        -:   34: 
+        3:   35:int *knapsack (item_t *items, int n, int w) {
+        -:   36:    int i, j, a, b, *mm, **m, *s;
+        3:   37:    mm = calloc((n + 1) * (w + 1), sizeof (int));
+        3:   38:    m = malloc((n + 1) * sizeof (int *));
+        3:   39:    m[0] = mm;
+       69:   40:    for (i = 1; i <= n; i++) {
+       66:   41:        m[i] = &mm[i * (w + 1)];
+    26532:   42:        for (j = 0; j <= w; j++) {
+    26466:   43:            if (items[i - 1].weight > j) {
+     2409:   44:                m[i][j] = m[i - 1][j];
+     2409:   45:            }
+        -:   46:            else {
+    24057:   47:                a = m[i - 1][j];
+    24057:   48:                b = m[i - 1][j - items[i - 1].weight] + items[i - 1].value;
+    24057:   49:                m[i][j] = a > b ? a : b;
+        -:   50:            }
+    26466:   51:        }
+       66:   52:    }
+        3:   53:    s = calloc(n, sizeof (int));
+       69:   54:    for (i = n, j = w; i > 0; i--) {
+       66:   55:        if (m[i][j] > m[i - 1][j]) {
+       36:   56:            s[i - 1] = 1;
+       36:   57:            j -= items[i - 1].weight;
+       36:   58:        }
+       66:   59:    }
+        3:   60:    free(mm);
+        3:   61:    free(m);
+        3:   62:    return s;
+        -:   63:}
+        -:   64: 
+        3:   65:int main () {
+        3:   66:    int i, n, tw = 0, tv = 0, *s;
+        3:   67:    n = sizeof (items) / sizeof (item_t);
+        3:   68:    s = knapsack(items, n, 400);
+       69:   69:    for (i = 0; i < n; i++) {
+       66:   70:        if (s[i]) {
+       36:   71:            printf("%-22s %5d %5d\n", items[i].name, items[i].weight, items[i].value);
+       36:   72:            tw += items[i].weight;
+       36:   73:            tv += items[i].value;
+       36:   74:        }
+       66:   75:    }
+        3:   76:    printf("%-22s %5d %5d\n", "totals:", tw, tv);
+        3:   77:    return 0;
+        -:   78:}

@@ -1,0 +1,49 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <math.h>
+        -:    3: 
+        -:    4:typedef double (*deriv_f)(double, double);
+        -:    5:#define FMT " %7.3f"
+        -:    6: 
+       12:    7:void ivp_euler(deriv_f f, double y, int step, int end_t)
+        -:    8:{
+       12:    9:	int t = 0;
+        -:   10: 
+       12:   11:	printf(" Step %2d: ", (int)step);
+       12:   12:	do {
+      332:   13:		if (t % 10 == 0) printf(FMT, y);
+      332:   14:		y += step * f(t, y);
+      332:   15:	} while ((t += step) <= end_t);
+       12:   16:	printf("\n");
+       12:   17:}
+        -:   18: 
+        4:   19:void analytic()
+        -:   20:{
+        -:   21:	double t;
+        4:   22:	printf("    Time: ");
+       48:   23:	for (t = 0; t <= 100; t += 10) printf(" %7g", t);
+        4:   24:	printf("\nAnalytic: ");
+        -:   25: 
+       48:   26:	for (t = 0; t <= 100; t += 10)
+       44:   27:		printf(FMT, 20 + 80 * exp(-0.07 * t));
+        4:   28:	printf("\n");
+        4:   29:}
+        -:   30: 
+      332:   31:double cooling(double t, double temp)
+        -:   32:{
+      332:   33:	return -0.07 * (temp - 20);
+        -:   34:}
+        -:   35: 
+        4:   36:int main()
+        -:   37:{
+        4:   38:	analytic();
+        4:   39:	ivp_euler(cooling, 100, 2, 100);
+        4:   40:	ivp_euler(cooling, 100, 5, 100);
+        4:   41:	ivp_euler(cooling, 100, 10, 100);
+        -:   42: 
+        4:   43:	return 0;
+        -:   44:}

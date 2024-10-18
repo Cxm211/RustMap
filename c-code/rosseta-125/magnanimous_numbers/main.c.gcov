@@ -1,0 +1,93 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h> 
+        -:    2:#include <string.h>
+        -:    3: 
+        -:    4:typedef int bool;
+        -:    5:typedef unsigned long long ull;
+        -:    6: 
+        -:    7:#define TRUE 1
+        -:    8:#define FALSE 0
+        -:    9: 
+        -:   10:/* OK for 'small' numbers. */
+  2120547:   11:bool is_prime(ull n) {
+        -:   12:    ull d;
+  2120547:   13:    if (n < 2) return FALSE;
+  2120538:   14:    if (!(n % 2)) return n == 2;
+  1060113:   15:    if (!(n % 3)) return n == 3;
+   746823:   16:    d = 5;
+  7466577:   17:    while (d * d <= n) {
+  7223808:   18:        if (!(n % d)) return FALSE;
+  6923199:   19:        d += 2;
+  6923199:   20:        if (!(n % d)) return FALSE;
+  6719754:   21:        d += 4;
+        -:   22:    }
+   242769:   23:    return TRUE;
+  2120547:   24:}
+        -:   25: 
+       12:   26:void ord(char *res, int n) {
+        -:   27:    char suffix[3];
+       12:   28:    int m = n % 100;
+       12:   29:    if (m >= 4 && m <= 20) {
+    #####:   30:        sprintf(res,"%dth", n);
+    #####:   31:        return;
+        -:   32:    }
+       12:   33:    switch(m % 10) {
+        -:   34:        case 1:
+        6:   35:            strcpy(suffix, "st");
+        6:   36:            break;
+        -:   37:        case 2:
+    #####:   38:            strcpy(suffix, "nd");
+    #####:   39:            break;
+        -:   40:        case 3:
+    #####:   41:            strcpy(suffix, "rd");
+    #####:   42:            break;
+        -:   43:        default:
+        6:   44:            strcpy(suffix, "th");
+        6:   45:            break;
+        -:   46:    }
+       12:   47:    sprintf(res, "%d%s", n, suffix);
+       12:   48:}
+        -:   49: 
+  1879803:   50:bool is_magnanimous(ull n) {
+        -:   51:    ull p, q, r;
+  1879803:   52:    if (n < 10) return TRUE;
+  2120547:   53:    for (p = 10; ; p *= 10) {
+  2120547:   54:        q = n / p;
+  2120547:   55:        r = n % p;
+  2120547:   56:        if (!is_prime(q + r)) return FALSE;
+   242829:   57:        if (q < 10) break;
+   240834:   58:    }
+     1995:   59:    return TRUE;
+  1879803:   60:}
+        -:   61: 
+        9:   62:void list_mags(int from, int thru, int digs, int per_line) {
+        9:   63:    ull i = 0;
+        9:   64:    int c = 0;
+        -:   65:    char res1[13], res2[13];
+        9:   66:    if (from < 2) {
+        3:   67:        printf("\nFirst %d magnanimous numbers:\n", thru);
+        3:   68:    } else {
+        6:   69:        ord(res1, from);
+        6:   70:        ord(res2, thru);
+        6:   71:        printf("\n%s through %s magnanimous numbers:\n", res1, res2);
+        -:   72:    }
+  1879812:   73:    for ( ; c < thru; ++i) {
+  1879803:   74:        if (is_magnanimous(i)) {
+     2085:   75:            if (++c >= from) {
+      195:   76:                printf("%*llu ", digs, i);
+      195:   77:                if (!(c % per_line)) printf("\n");
+      195:   78:            }
+     2085:   79:        }
+  1879803:   80:    }
+        9:   81:}
+        -:   82: 
+        3:   83:int main() {
+        3:   84:    list_mags(1, 45, 3, 15);
+        3:   85:    list_mags(241, 250, 1, 10);
+        3:   86:    list_mags(391, 400, 1, 10);
+        3:   87:    return 0;
+        -:   88:}

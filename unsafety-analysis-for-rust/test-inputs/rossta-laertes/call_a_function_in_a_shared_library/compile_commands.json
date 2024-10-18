@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/call_a_function_in_a_shared_library",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/call_a_function_in_a_shared_library/main.c"
+  }
+]

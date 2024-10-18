@@ -1,0 +1,12 @@
+error[E0502]: cannot borrow `tri` as immutable because it is also borrowed as mutable
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/bell_numbers.rs:21:42
+   |
+21 |        set_bell(&mut tri, i, 0, get_bell(&tri, i - 1, i - 2));
+   |        -------- --------                 ^^^^ immutable borrow occurs here
+   |        |        |
+   |        |        mutable borrow occurs here
+   |        mutable borrow later used by call
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0502`.

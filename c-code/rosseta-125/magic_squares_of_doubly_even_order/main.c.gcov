@@ -1,0 +1,67 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include<stdlib.h>
+        -:    2:#include<ctype.h>
+        -:    3:#include<stdio.h>
+        -:    4: 
+    #####:    5:int** doublyEvenMagicSquare(int n) {
+    #####:    6:	if (n < 4 || n % 4 != 0)
+    #####:    7:		return NULL;
+        -:    8: 
+    #####:    9:	int bits = 38505;
+    #####:   10:	int size = n * n;
+    #####:   11:	int mult = n / 4,i,r,c,bitPos;
+        -:   12: 
+    #####:   13:	int** result = (int**)malloc(n*sizeof(int*));
+        -:   14: 
+    #####:   15:	for(i=0;i<n;i++)
+    #####:   16:		result[i] = (int*)malloc(n*sizeof(int));
+        -:   17: 
+    #####:   18:	for (r = 0, i = 0; r < n; r++) {
+    #####:   19:		for (c = 0; c < n; c++, i++) {
+    #####:   20:			bitPos = c / mult + (r / mult) * 4;
+    #####:   21:			result[r][c] = (bits & (1 << bitPos)) != 0 ? i + 1 : size - i;
+    #####:   22:		}
+    #####:   23:	}
+    #####:   24:	return result;
+    #####:   25:}
+        -:   26: 
+    #####:   27:int numDigits(int n){
+    #####:   28:	int count = 1;
+        -:   29: 
+    #####:   30:	while(n>=10){
+    #####:   31:		n /= 10;
+    #####:   32:		count++;
+        -:   33:	}
+        -:   34: 
+    #####:   35:	return count;
+        -:   36:}
+        -:   37: 
+    #####:   38:void printMagicSquare(int** square,int rows){
+    #####:   39:	int i,j,baseWidth = numDigits(rows*rows) + 3;
+        -:   40: 
+    #####:   41:	printf("Doubly Magic Square of Order : %d and Magic Constant : %d\n\n",rows,(rows * rows + 1) * rows / 2);
+        -:   42: 
+    #####:   43:	for(i=0;i<rows;i++){
+    #####:   44:		for(j=0;j<rows;j++){
+    #####:   45:			printf("%*s%d",baseWidth - numDigits(square[i][j]),"",square[i][j]);
+    #####:   46:		}
+    #####:   47:		printf("\n");
+    #####:   48:	}
+    #####:   49:}
+        -:   50: 
+        3:   51:int main(int argC,char* argV[])
+        -:   52:{
+        -:   53:	int n;
+        -:   54: 
+        3:   55:	if(argC!=2||isdigit(argV[1][0])==0)
+        3:   56:		printf("Usage : %s <integer specifying rows in magic square>",argV[0]);
+        -:   57:	else{
+    #####:   58:		n = atoi(argV[1]);
+    #####:   59:		printMagicSquare(doublyEvenMagicSquare(n),n);
+        -:   60:	}
+        3:   61:	return 0;
+        -:   62:}

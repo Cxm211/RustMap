@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/monty_hall_problem",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/monty_hall_problem/main.c"
+  }
+]

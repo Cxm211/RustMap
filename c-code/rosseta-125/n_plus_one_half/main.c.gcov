@@ -1,0 +1,16 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        3:    3:int main()
+        -:    4:{
+        -:    5:  int i;
+       33:    6:  for (i = 1; i <= 10; i++) {
+       30:    7:    printf("%d", i);
+       30:    8:    printf(i == 10 ? "\n" : ", ");
+       30:    9:  }
+        3:   10:  return 0;
+        -:   11:}

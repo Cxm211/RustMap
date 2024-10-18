@@ -1,0 +1,56 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:#define TRUE 1
+        -:    4:#define FALSE 0
+        -:    5:#define MAX 120
+        -:    6: 
+        -:    7:typedef int bool;
+        -:    8: 
+     1644:    9:bool is_prime(int n) {
+     1644:   10:    int d = 5;
+     1644:   11:    if (n < 2) return FALSE;
+     1520:   12:    if (!(n % 2)) return n == 2;
+      840:   13:    if (!(n % 3)) return n == 3;
+      628:   14:    while (d *d <= n) {
+      204:   15:        if (!(n % d)) return FALSE;
+      152:   16:        d += 2;
+      152:   17:        if (!(n % d)) return FALSE;
+      132:   18:        d += 4;
+        -:   19:    }
+      424:   20:    return TRUE;
+     1644:   21:}
+        -:   22: 
+      480:   23:int count_prime_factors(int n) {
+      480:   24:    int count = 0, f = 2;
+      480:   25:    if (n == 1) return 0;
+      476:   26:    if (is_prime(n)) return 1;
+     1336:   27:    while (TRUE) {
+     1336:   28:        if (!(n % f)) {
+     1044:   29:            count++;
+     1044:   30:            n /= f;
+     1044:   31:            if (n == 1) return count;
+      688:   32:            if (is_prime(n)) f = n;
+      688:   33:        } 
+      292:   34:        else if (f >= 3) f += 2;
+      200:   35:        else f = 3;
+        -:   36:    }
+      480:   37:}
+        -:   38: 
+        4:   39:int main() {    
+        4:   40:    int i, n, count = 0;
+        4:   41:    printf("The attractive numbers up to and including %d are:\n", MAX);
+      484:   42:    for (i = 1; i <= MAX; ++i) {
+      480:   43:        n = count_prime_factors(i);
+      480:   44:        if (is_prime(n)) {
+      296:   45:            printf("%4d", i);
+      296:   46:            if (!(++count % 20)) printf("\n");
+      296:   47:        }
+      480:   48:    }
+        4:   49:    printf("\n");
+        4:   50:    return 0;  
+        -:   51:}

@@ -1,0 +1,60 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <limits.h>
+        -:    2:#include <stdio.h>
+        -:    3:
+     3198:    4:int fusc(int n)
+        -:    5:{
+     3198:    6:        if (n == 0 || n == 1)
+     1035:    7:                return n;
+     2163:    8:        else if (n % 2 == 0)
+     1311:    9:                return fusc(n / 2);
+        -:   10:        else
+      852:   11:                return fusc((n - 1) / 2) + fusc((n + 1) / 2);
+     3198:   12:}
+        -:   13:
+    #####:   14:int numLen(int n)
+        -:   15:{
+    #####:   16:        int sum = 1;
+        -:   17:
+    #####:   18:        while (n > 9)
+        -:   19:        {
+    #####:   20:                n = n / 10;
+    #####:   21:                sum++;
+        -:   22:        }
+        -:   23:
+    #####:   24:        return sum;
+        -:   25:}
+        -:   26:
+    #####:   27:void printLargeFuscs(int limit)
+        -:   28:{
+    #####:   29:        int i, f, len, maxLen = 1;
+        -:   30:
+    #####:   31:        printf("\n\nPrinting all largest Fusc numbers upto %d \nIndex-------Value", limit);
+        -:   32:
+    #####:   33:        for (i = 0; i <= limit; i++)
+        -:   34:        {
+    #####:   35:                f = fusc(i);
+    #####:   36:                len = numLen(f);
+        -:   37:
+    #####:   38:                if (len > maxLen)
+        -:   39:                {
+    #####:   40:                        maxLen = len;
+    #####:   41:                        printf("\n%5d%12d", i, f);
+    #####:   42:                }
+    #####:   43:        }
+    #####:   44:}
+        -:   45:
+        3:   46:int main()
+        -:   47:{
+        -:   48:        int i;
+        -:   49:
+        3:   50:        printf("Index-------Value");
+      186:   51:        for (i = 0; i < 61; i++)
+      183:   52:                printf("\n%5d%12d", i, fusc(i));
+        -:   53:        //printLargeFuscs(INT_MAX);
+        3:   54:        return 0;
+        -:   55:}

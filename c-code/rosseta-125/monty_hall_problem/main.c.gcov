@@ -1,0 +1,26 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <time.h>
+        -:    4: 
+        -:    5:#define GAMES 3000000
+        -:    6: 
+        3:    7:int main(void){
+        3:    8:    unsigned i, j, k, choice, winsbyswitch=0, door[3];
+        -:    9: 
+        3:   10:    srand(time(NULL));                                                          //initialize random seed.
+  9000003:   11:    for(i=0; i<GAMES; i++){
+  9000000:   12:        door[0] = (!(rand()%2)) ? 1: 0;                                         //give door 1 either a car or a goat randomly.
+  9000000:   13:        if(door[0]) door[1]=door[2]=0;                                          //if 1st door has car, give other doors goats.
+  4497829:   14:        else{ door[1] = (!(rand()%2)) ? 1: 0; door[2] = (!door[1]) ? 1: 0; }    //else, give 2nd door car or goat, give 3rd door what's left.
+  9000000:   15:        choice = rand()%3;                                                      //choose a random door.
+        -:   16: 
+        -:   17:        //if the next door has a goat, and the following door has a car, or vice versa, you'd win if you switch.
+  9000000:   18:        if(((!(door[((choice+1)%3)])) && (door[((choice+2)%3)])) || (!(door[((choice+2)%3)]) && (door[((choice+1)%3)]))) winsbyswitch++;
+  9000000:   19:    }
+        3:   20:    printf("\nAfter %u games, I won %u by switching.  That is %f%%. ", GAMES, winsbyswitch, (float)winsbyswitch*100.0/(float)i);
+        3:   21:}

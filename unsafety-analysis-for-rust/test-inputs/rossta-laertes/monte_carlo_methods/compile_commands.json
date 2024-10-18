@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/monte_carlo_methods",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/monte_carlo_methods/main.c"
+  }
+]

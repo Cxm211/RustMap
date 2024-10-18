@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/luhn_test_of_credit_card_numbers",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/luhn_test_of_credit_card_numbers/main.c"
+  }
+]

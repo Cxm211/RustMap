@@ -1,0 +1,66 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4: 
+       44:    5:void farey(int n)
+        -:    6:{
+        -:    7:	typedef struct { int d, n; } frac;
+       44:    8:	frac f1 = {0, 1}, f2 = {1, n}, t;
+        -:    9:	int k;
+        -:   10: 
+       44:   11:	printf("%d/%d %d/%d", 0, 1, 1, n);
+      708:   12:	while (f2.n > 1) {
+      664:   13:		k = (n + f1.n) / f2.n;
+      664:   14:		t = f1, f1 = f2, f2 = (frac) { f2.d * k - t.d, f2.n * k - t.n };
+      664:   15:		printf(" %d/%d", f2.d, f2.n);
+        -:   16:	}
+        -:   17: 
+       44:   18:	putchar('\n');
+       44:   19:}
+        -:   20: 
+        -:   21:typedef unsigned long long ull;
+        -:   22:ull *cache;
+        -:   23:size_t ccap;
+        -:   24: 
+  3693596:   25:ull farey_len(int n)
+        -:   26:{
+  3693596:   27:	if (n >= ccap) {
+       20:   28:		size_t old = ccap;
+       20:   29:		if (!ccap) ccap = 16;
+      100:   30:		while (ccap <= n) ccap *= 2;
+       20:   31:		cache = realloc(cache, sizeof(ull) * ccap);
+       20:   32:		memset(cache + old, 0, sizeof(ull) * (ccap - old));
+  3693596:   33:	} else if (cache[n])
+  3668304:   34:		return cache[n];
+        -:   35: 
+    25292:   36:	ull len = (ull)n*(n + 3) / 2;
+    25292:   37:	int p, q = 0;
+  3718844:   38:	for (p = 2; p <= n; p = q) {
+  3693552:   39:		q = n/(n/p) + 1;
+  3693552:   40:		len -= farey_len(n/p) * (q - p);
+  3693552:   41:	}
+        -:   42: 
+    25292:   43:	cache[n] = len;
+    25292:   44:	return len;
+  3693596:   45:}
+        -:   46: 
+        4:   47:int main(void)
+        -:   48:{
+        -:   49:	int n;
+       48:   50:	for (n = 1; n <= 11; n++) {
+       44:   51:		printf("%d: ", n);
+       44:   52:		farey(n);
+       44:   53:	}
+        -:   54: 
+       44:   55:	for (n = 100; n <= 1000; n += 100)
+       40:   56:		printf("%d: %llu items\n", n, farey_len(n));
+        -:   57: 
+        4:   58:	n = 10000000;
+        4:   59:	printf("\n%d: %llu items\n", n, farey_len(n));
+        4:   60:	return 0;
+        -:   61:}

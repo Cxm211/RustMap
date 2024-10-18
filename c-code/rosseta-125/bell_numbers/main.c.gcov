@@ -1,0 +1,61 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+     1656:    4:size_t bellIndex(int row, int col) {
+     1656:    5:    return row * (row - 1) / 2 + col;
+        -:    6:}
+        -:    7: 
+     1176:    8:int getBell(int *bellTri, int row, int col) {
+     1176:    9:    size_t index = bellIndex(row, col);
+     1176:   10:    return bellTri[index];
+        -:   11:}
+        -:   12: 
+      480:   13:void setBell(int *bellTri, int row, int col, int value) {
+      480:   14:    size_t index = bellIndex(row, col);
+      480:   15:    bellTri[index] = value;
+      480:   16:}
+        -:   17: 
+        4:   18:int *bellTriangle(int n) {
+        4:   19:    size_t length = n * (n + 1) / 2;
+        4:   20:    int *tri = calloc(length, sizeof(int));
+        -:   21:    int i, j;
+        -:   22: 
+        4:   23:    setBell(tri, 1, 0, 1);
+       60:   24:    for (i = 2; i <= n; ++i) {
+       56:   25:        setBell(tri, i, 0, getBell(tri, i - 1, i - 2));
+      476:   26:        for (j = 1; j < i; ++j) {
+      420:   27:            int value = getBell(tri, i, j - 1) + getBell(tri, i - 1, j - 1);
+      420:   28:            setBell(tri, i, j, value);
+      420:   29:        }
+       56:   30:    }
+        -:   31: 
+        4:   32:    return tri;
+        -:   33:}
+        -:   34: 
+        4:   35:int main() {
+        4:   36:    const int rows = 15;
+        4:   37:    int *bt = bellTriangle(rows);
+        -:   38:    int i, j;
+        -:   39: 
+        4:   40:    printf("First fifteen Bell numbers:\n");
+       64:   41:    for (i = 1; i <= rows; ++i) {
+       60:   42:        printf("%2d: %d\n", i, getBell(bt, i, 0));
+       60:   43:    }
+        -:   44: 
+        4:   45:    printf("\nThe first ten rows of Bell's triangle:\n");
+       44:   46:    for (i = 1; i <= 10; ++i) {
+       40:   47:        printf("%d", getBell(bt, i, 0));
+      220:   48:        for (j = 1; j < i; ++j) {
+      180:   49:            printf(", %d", getBell(bt, i, j));
+      180:   50:        }
+       40:   51:        printf("\n");
+       40:   52:    }
+        -:   53: 
+        4:   54:    free(bt);
+        4:   55:    return 0;
+        -:   56:}

@@ -1,0 +1,68 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include<stdio.h>
+        -:    2:#include<math.h>
+        -:    3: 
+        -:    4:typedef struct{
+        -:    5:	double x,y;
+        -:    6:	}point;
+        -:    7: 
+       20:    8:double distance(point p1,point p2)
+        -:    9:{
+       20:   10:	return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+        -:   11:}
+        -:   12: 
+       20:   13:void findCircles(point p1,point p2,double radius)
+        -:   14:{
+       20:   15:	double separation = distance(p1,p2),mirrorDistance;
+        -:   16: 
+       20:   17:	if(separation == 0.0)
+        -:   18:	{
+        8:   19:		radius == 0.0 ? printf("\nNo circles can be drawn through (%.4f,%.4f)",p1.x,p1.y):
+        4:   20:							 printf("\nInfinitely many circles can be drawn through (%.4f,%.4f)",p1.x,p1.y);
+        8:   21:	}
+        -:   22: 
+       12:   23:	else if(separation == 2*radius)
+        -:   24:	{
+        4:   25:		printf("\nGiven points are opposite ends of a diameter of the circle with center (%.4f,%.4f) and radius %.4f",(p1.x+p2.x)/2,(p1.y+p2.y)/2,radius); 
+        4:   26:	}
+        -:   27: 
+        8:   28:	else if(separation > 2*radius)
+        -:   29:	{
+        4:   30:		printf("\nGiven points are farther away from each other than a diameter of a circle with radius %.4f",radius);
+        4:   31:	}   
+        -:   32: 
+        -:   33:	else
+        -:   34:	{
+        4:   35:		mirrorDistance =sqrt(pow(radius,2) - pow(separation/2,2));
+        -:   36: 
+        4:   37:		printf("\nTwo circles are possible.");
+        4:   38:		printf("\nCircle C1 with center (%.4f,%.4f), radius %.4f and Circle C2 with center (%.4f,%.4f), radius %.4f",(p1.x+p2.x)/2 + mirrorDistance*(p1.y-p2.y)/separation,(p1.y+p2.y)/2 + mirrorDistance*(p2.x-p1.x)/separation,radius,(p1.x+p2.x)/2 - mirrorDistance*(p1.y-p2.y)/separation,(p1.y+p2.y)/2 - mirrorDistance*(p2.x-p1.x)/separation,radius);
+        -:   39:	}
+       20:   40:}
+        -:   41: 
+        4:   42:int main()
+        -:   43:{
+        -:   44:    int i;
+        -:   45: 
+        4:   46:    point cases[] = 	
+        -:   47:    {	{0.1234, 0.9876},    {0.8765, 0.2345},  
+        -:   48:	{0.0000, 2.0000},    {0.0000, 0.0000},   
+        -:   49:	{0.1234, 0.9876},    {0.1234, 0.9876},   
+        -:   50:	{0.1234, 0.9876},    {0.8765, 0.2345},    
+        -:   51:	{0.1234, 0.9876},    {0.1234, 0.9876}
+        -:   52:    };
+        -:   53: 
+        4:   54:    double radii[] = {2.0,1.0,2.0,0.5,0.0};
+        -:   55: 
+       24:   56:    for(i=0;i<5;i++)
+        -:   57:    {	
+       20:   58:	printf("\nCase %d)",i+1);
+       20:   59:	findCircles(cases[2*i],cases[2*i+1],radii[i]);
+       20:   60:    }
+        -:   61: 
+        4:   62:    return 0;
+        -:   63:}

@@ -1,0 +1,118 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdio.h>
+        -:    4:#include <inttypes.h>
+        -:    5: 
+        -:    6:typedef struct {
+        -:    7:    uint16_t index;
+        -:    8:    char last_char, first_char;
+        -:    9:} Ref;
+        -:   10: 
+        -:   11:Ref* longest_path_refs;
+        -:   12:size_t longest_path_refs_len;
+        -:   13: 
+        -:   14:Ref* refs;
+        -:   15:size_t refs_len;
+        -:   16: 
+        -:   17:size_t n_solutions;
+        -:   18: 
+        -:   19:const char** longest_path;
+        -:   20:size_t longest_path_len;
+        -:   21: 
+        -:   22: 
+ 15048234:   23:void search(size_t curr_len) {
+ 15048234:   24:    if (curr_len == longest_path_refs_len) {
+    10767:   25:        n_solutions++;
+ 15048234:   26:    } else if (curr_len > longest_path_refs_len) {
+       69:   27:        n_solutions = 1;
+       69:   28:        longest_path_refs_len = curr_len;
+       69:   29:        memcpy(longest_path_refs, refs, curr_len * sizeof(Ref));
+       69:   30:    }
+        -:   31: 
+        -:   32:    // recursive search
+ 15048234:   33:    intptr_t last_char = refs[curr_len - 1].last_char;
+843095172:   34:    for (size_t i = curr_len; i < refs_len; i++)
+843094962:   35:        if (refs[i].first_char == last_char) {
+ 15048024:   36:            Ref aux = refs[curr_len];
+ 15048024:   37:            refs[curr_len] = refs[i];
+ 15048024:   38:            refs[i] = aux;
+ 15048024:   39:            search(curr_len + 1);
+ 15048024:   40:            refs[i] = refs[curr_len];
+ 15048024:   41:            refs[curr_len] = aux;
+ 15048024:   42:        }
+ 15048234:   43:}
+        -:   44: 
+        3:   45:void find_longest_chain(const char* items[],
+        -:   46:                        size_t items_len) {
+        3:   47:    refs_len = items_len;
+        3:   48:    refs = calloc(refs_len, sizeof(Ref));
+        -:   49: 
+        -:   50:    // enough space for all items
+        3:   51:    longest_path_refs_len = 0;
+        3:   52:    longest_path_refs = calloc(refs_len, sizeof(Ref));
+        -:   53: 
+      213:   54:    for (size_t i = 0; i < items_len; i++) {
+      210:   55:        size_t itemsi_len = strlen(items[i]);
+      210:   56:        if (itemsi_len <= 1)
+    #####:   57:            exit(1);
+      210:   58:        refs[i].index = (uint16_t)i;
+      210:   59:        refs[i].last_char = items[i][itemsi_len - 1];
+      210:   60:        refs[i].first_char = items[i][0];
+      210:   61:    }
+        -:   62: 
+        -:   63:    // try each item as possible start
+      213:   64:    for (size_t i = 0; i < items_len; i++) {
+      210:   65:        Ref aux = refs[0];
+      210:   66:        refs[0] = refs[i];
+      210:   67:        refs[i] = aux;
+      210:   68:        search(1);
+      210:   69:        refs[i] = refs[0];
+      210:   70:        refs[0] = aux;
+      210:   71:    }
+        -:   72: 
+        3:   73:    longest_path_len = longest_path_refs_len;
+        3:   74:    longest_path = calloc(longest_path_len, sizeof(const char*));
+       72:   75:    for (size_t i = 0; i < longest_path_len; i++)
+       69:   76:        longest_path[i] = items[longest_path_refs[i].index];
+        -:   77: 
+        3:   78:    free(longest_path_refs);
+        3:   79:    free(refs);
+        3:   80:}
+        -:   81: 
+        3:   82:int main() {
+        3:   83:    const char* pokemon[] = {"audino", "bagon", "baltoy", "banette",
+        -:   84:    "bidoof", "braviary", "bronzor", "carracosta", "charmeleon",
+        -:   85:    "cresselia", "croagunk", "darmanitan", "deino", "emboar",
+        -:   86:    "emolga", "exeggcute", "gabite", "girafarig", "gulpin",
+        -:   87:    "haxorus", "heatmor", "heatran", "ivysaur", "jellicent",
+        -:   88:    "jumpluff", "kangaskhan", "kricketune", "landorus", "ledyba",
+        -:   89:    "loudred", "lumineon", "lunatone", "machamp", "magnezone",
+        -:   90:    "mamoswine", "nosepass", "petilil", "pidgeotto", "pikachu",
+        -:   91:    "pinsir", "poliwrath", "poochyena", "porygon2", "porygonz",
+        -:   92:    "registeel", "relicanth", "remoraid", "rufflet", "sableye",
+        -:   93:    "scolipede", "scrafty", "seaking", "sealeo", "silcoon",
+        -:   94:    "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga",
+        -:   95:    "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix",
+        -:   96:    "wailord", "wartortle", "whismur", "wingull", "yamask"};
+        3:   97:    size_t pokemon_len = sizeof(pokemon) / sizeof(pokemon[0]);
+        -:   98: 
+        3:   99:    find_longest_chain(pokemon, pokemon_len);
+        3:  100:    printf("Maximum path length: %u\n", longest_path_len);
+        3:  101:    printf("Paths of that length: %u\n", n_solutions);
+        3:  102:    printf("Example path of that length:\n");
+       15:  103:    for (size_t i = 0; i < longest_path_len; i += 7) {
+       12:  104:        printf("  ");
+       81:  105:        for (size_t j = i; j < (i+7) && j < longest_path_len; j++)
+       69:  106:            printf("%s ", longest_path[j]);
+       12:  107:        printf("\n");
+       12:  108:    }
+        -:  109: 
+        3:  110:    free(longest_path);
+        -:  111: 
+        3:  112:    return 0;
+        -:  113:}

@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/apply_a_callback_to_an_array",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/apply_a_callback_to_an_array/main.c"
+  }
+]

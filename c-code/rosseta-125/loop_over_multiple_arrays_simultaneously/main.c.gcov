@@ -1,0 +1,16 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:char a1[] = {'a','b','c'};
+        -:    4:char a2[] = {'A','B','C'};
+        -:    5:int a3[] = {1,2,3};
+        -:    6: 
+        3:    7:int main(void) {
+       12:    8:    for (int i = 0; i < 3; i++) {
+        9:    9:        printf("%c%c%i\n", a1[i], a2[i], a3[i]);
+        9:   10:    }
+        3:   11:}

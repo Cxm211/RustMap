@@ -1,0 +1,26 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <math.h>
+        -:    3: 
+        4:    4:int main() {
+        4:    5:    const int N = 2;
+        4:    6:    int base = 10;
+        4:    7:    int c1 = 0;
+        4:    8:    int c2 = 0;
+        -:    9:    int k;
+        -:   10: 
+      400:   11:    for (k = 1; k < pow(base, N); k++) {
+      396:   12:        c1++;
+      396:   13:        if (k % (base - 1) == (k * k) % (base - 1)) {
+       88:   14:            c2++;
+       88:   15:            printf("%d ", k);
+       88:   16:        }
+      396:   17:    }
+        -:   18: 
+        4:   19:    printf("\nTring %d numbers instead of %d numbers saves %f%%\n", c2, c1, 100.0 - 100.0 * c2 / c1);
+        4:   20:    return 0;
+        -:   21:}

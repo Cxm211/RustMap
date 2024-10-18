@@ -1,0 +1,20 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+       15:    3:int is_leap_year(int year)
+        -:    4:{
+       15:    5:    return (!(year % 4) && year % 100 || !(year % 400)) ? 1 : 0;
+        -:    6:}
+        -:    7: 
+        3:    8:int main()
+        -:    9:{
+        3:   10:    int test_case[] = {1900, 1994, 1996, 1997, 2000}, key, end, year;
+       18:   11:    for (key = 0, end = sizeof(test_case)/sizeof(test_case[0]); key < end; ++key) {
+       15:   12:        year = test_case[key];
+       15:   13:        printf("%d is %sa leap year.\n", year, (is_leap_year(year) == 1 ? "" : "not "));
+       15:   14:    }
+        3:   15:}

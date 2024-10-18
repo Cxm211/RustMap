@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/knuths_algorithm_s",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/knuths_algorithm_s/main.c"
+  }
+]

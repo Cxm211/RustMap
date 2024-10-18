@@ -1,0 +1,53 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdint.h>
+        -:    4: 
+        -:    5:/* should be 64-bit integers if going over 1 billion */
+        -:    6:typedef unsigned long xint;
+        -:    7:#define FMT "%lu"
+        -:    8: 
+        -:    9:xint total, prim, max_peri;
+        -:   10:xint U[][9] =  {{ 1, -2, 2,  2, -1, 2,  2, -2, 3},
+        -:   11:        { 1,  2, 2,  2,  1, 2,  2,  2, 3},
+        -:   12:        {-1,  2, 2, -2,  1, 2, -2,  2, 3}};
+        -:   13: 
+ 70230363:   14:void new_tri(xint in[])
+        -:   15:{
+        -:   16:    int i;
+ 70230363:   17:    xint t[3], p = in[0] + in[1] + in[2];
+        -:   18: 
+ 70230363:   19:    if (p > max_peri) return;
+        -:   20: 
+ 23410113:   21:    prim ++;
+        -:   22: 
+        -:   23:    /* for every primitive triangle, its multiples would be right-angled too;
+        -:   24:     * count them up to the max perimeter */
+ 23410113:   25:    total += max_peri / p;
+        -:   26: 
+        -:   27:    /* recursively produce next tier by multiplying the matrices */
+ 93640452:   28:    for (i = 0; i < 3; i++) {
+ 70230339:   29:        t[0] = U[i][0] * in[0] + U[i][1] * in[1] + U[i][2] * in[2];
+ 70230339:   30:        t[1] = U[i][3] * in[0] + U[i][4] * in[1] + U[i][5] * in[2];
+ 70230339:   31:        t[2] = U[i][6] * in[0] + U[i][7] * in[1] + U[i][8] * in[2];
+ 70230339:   32:        new_tri(t);
+ 70230339:   33:    }
+ 70230363:   34:}
+        -:   35: 
+        3:   36:int main()
+        -:   37:{
+        3:   38:    xint seed[3] = {3, 4, 5};
+        -:   39: 
+       27:   40:    for (max_peri = 10; max_peri <= 100000000; max_peri *= 10) {
+       24:   41:        total = prim = 0;
+       24:   42:        new_tri(seed);
+        -:   43: 
+       24:   44:        printf( "Up to "FMT": "FMT" triples, "FMT" primitives.\n",
+       24:   45:            max_peri, total, prim);
+       24:   46:    }
+        3:   47:    return 0;
+        -:   48:}

@@ -1,0 +1,16 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3: 
+        4:    4:int main(int argc, char* argv[])
+        -:    5:{
+        -:    6:  int i;
+        4:    7:  (void) printf("This program is named %s.\n", argv[0]);
+        4:    8:  for (i = 1; i < argc; ++i)
+    #####:    9:    (void) printf("the argument #%d is %s\n", i, argv[i]);
+        4:   10:  return EXIT_SUCCESS;
+        -:   11:}

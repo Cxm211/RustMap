@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/roman_numerals_encode",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/roman_numerals_encode/main.c"
+  }
+]

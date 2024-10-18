@@ -1,0 +1,4 @@
+
+Mean Angle for 1st set : -0.000000 degrees
+Mean Angle for 2nd set : -90.000000 degrees
+Mean Angle for 3rd set : 20.000000 degrees

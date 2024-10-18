@@ -1,0 +1,37 @@
+   Compiling c2rust_out v0.0.0 (/home/kali/alias-limit/artifact/18-lifetimes-rosta/4_rings_puzzle)
+warning: path statement with no effect
+  --> src/main.rs:41:17
+   |
+41 |                 solutions;
+   |                 ^^^^^^^^^^
+   |
+   = note: `#[warn(path_statements)]` on by default
+
+warning: path statement with no effect
+  --> src/main.rs:57:9
+   |
+57 |         f;
+   |         ^^
+
+warning: path statement with no effect
+  --> src/main.rs:73:9
+   |
+73 |         e;
+   |         ^^
+
+warning: path statement with no effect
+  --> src/main.rs:91:13
+   |
+91 |             d;
+   |             ^^
+
+warning: path statement with no effect
+  --> src/main.rs:94:9
+   |
+94 |         c;
+   |         ^^
+
+warning: `c2rust_out` (lib) generated 5 warnings
+warning: `c2rust_out` (bin "main") generated 5 warnings (5 duplicates)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.26s
+     Running `target/debug/main`

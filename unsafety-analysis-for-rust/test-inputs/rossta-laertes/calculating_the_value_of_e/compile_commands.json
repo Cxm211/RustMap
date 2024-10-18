@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/calculating_the_value_of_e",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/calculating_the_value_of_e/main.c"
+  }
+]

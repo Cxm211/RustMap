@@ -1,0 +1,84 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:
+        -:    4:typedef unsigned long long ULONG;
+        -:    5:
+    20896:    6:ULONG get_prime(int idx)
+        -:    7:{
+        -:    8:        static long n_primes = 0, alloc = 0;
+        -:    9:        static ULONG *primes = 0;
+        -:   10:        ULONG last, p;
+        -:   11:        int i;
+        -:   12:
+    20896:   13:        if (idx >= n_primes)
+        -:   14:        {
+       44:   15:                if (n_primes >= alloc)
+        -:   16:                {
+        4:   17:                        alloc += 16; /* be conservative */
+        4:   18:                        primes = realloc(primes, sizeof(ULONG) * alloc);
+        4:   19:                }
+       44:   20:                if (!n_primes)
+        -:   21:                {
+        4:   22:                        primes[0] = 2;
+        4:   23:                        primes[1] = 3;
+        4:   24:                        n_primes = 2;
+        4:   25:                }
+        -:   26:
+       44:   27:                last = primes[n_primes - 1];
+      112:   28:                while (idx >= n_primes)
+        -:   29:                {
+       68:   30:                        last += 2;
+      188:   31:                        for (i = 0; i < n_primes; i++)
+        -:   32:                        {
+      188:   33:                                p = primes[i];
+      188:   34:                                if (p * p > last)
+        -:   35:                                {
+       40:   36:                                        primes[n_primes++] = last;
+       40:   37:                                        break;
+        -:   38:                                }
+      148:   39:                                if (last % p == 0)
+       28:   40:                                        break;
+      120:   41:                        }
+        -:   42:                }
+       44:   43:        }
+    20896:   44:        return primes[idx];
+        -:   45:}
+        -:   46:
+        4:   47:int main()
+        -:   48:{
+        -:   49:        ULONG n, x, p;
+        -:   50:        int i, first;
+        -:   51:
+     4000:   52:        for (x = 1; x < 1000; x++)
+        -:   53:        {
+     3996:   54:                printf("%lld = ", n = x);
+        -:   55:
+    20896:   56:                for (i = 0, first = 1;; i++)
+        -:   57:                {
+    20896:   58:                        p = get_prime(i);
+    28736:   59:                        while (n % p == 0)
+        -:   60:                        {
+     7840:   61:                                n /= p;
+     7840:   62:                                if (!first)
+     4516:   63:                                        printf(" x ");
+     7840:   64:                                first = 0;
+     7840:   65:                                printf("%lld", p);
+        -:   66:                        }
+    20896:   67:                        if (n <= p * p)
+     3996:   68:                                break;
+    16900:   69:                }
+        -:   70:
+     3996:   71:                if (first)
+      672:   72:                        printf("%lld\n", n);
+     3324:   73:                else if (n > 1)
+     2976:   74:                        printf(" x %lld\n", n);
+        -:   75:                else
+      348:   76:                        printf("\n");
+     3996:   77:        }
+        4:   78:        return 0;
+        -:   79:}

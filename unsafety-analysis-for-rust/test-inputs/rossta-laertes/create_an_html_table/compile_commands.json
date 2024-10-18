@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/create_an_html_table",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/create_an_html_table/main.c"
+  }
+]

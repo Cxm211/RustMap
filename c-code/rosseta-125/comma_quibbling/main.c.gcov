@@ -1,0 +1,58 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4: 
+       20:    5:char *quib(const char **strs, size_t size)
+        -:    6:{
+        -:    7: 
+       20:    8:    size_t len = 3 + ((size > 1) ? (2 * size + 1) : 0);
+        -:    9:    size_t i;
+        -:   10: 
+       60:   11:    for (i = 0; i < size; i++)
+       40:   12:        len += strlen(strs[i]);
+        -:   13: 
+       20:   14:    char *s = malloc(len * sizeof(*s));
+       20:   15:    if (!s)
+        -:   16:    {
+    #####:   17:        perror("Can't allocate memory!\n");
+    #####:   18:        exit(EXIT_FAILURE);
+        -:   19:    }
+        -:   20: 
+       20:   21:    strcpy(s, "{");
+       20:   22:    switch (size) {
+        4:   23:        case 0:  break;
+        4:   24:        case 1:  strcat(s, strs[0]);
+        4:   25:                 break;
+       36:   26:        default: for (i = 0; i < size - 1; i++)
+        -:   27:                 {
+       24:   28:                     strcat(s, strs[i]);
+       24:   29:                     if (i < size - 2)
+       12:   30:                         strcat(s, ", ");
+        -:   31:                     else
+       12:   32:                         strcat(s, " and ");
+       24:   33:                 }
+       12:   34:                 strcat(s, strs[i]);
+       12:   35:                 break;
+        -:   36:    }  
+       20:   37:    strcat(s, "}");
+       20:   38:    return s;
+        -:   39:}
+        -:   40: 
+        4:   41:int main(void)
+        -:   42:{
+        4:   43:    const char *test[] = {"ABC", "DEF", "G", "H"};
+        -:   44:    char *s;
+        -:   45: 
+       24:   46:    for (size_t i = 0; i < 5; i++)
+        -:   47:    {
+       20:   48:        s = quib(test, i);
+       20:   49:        printf("%s\n", s);
+       20:   50:        free(s);
+       20:   51:    }
+        4:   52:    return EXIT_SUCCESS;
+        -:   53:}

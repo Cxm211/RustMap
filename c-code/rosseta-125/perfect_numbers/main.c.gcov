@@ -1,0 +1,35 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include "stdio.h"
+        -:    2:#include "math.h"
+        -:    3:
+      594:    4:int perfect(int n)
+        -:    5:{
+      594:    6:    int max = (int)sqrt((double)n) + 1;
+      594:    7:    int tot = 1;
+        -:    8:    int i;
+        -:    9:
+     5352:   10:    for (i = 2; i < max; i++)
+     5811:   11:        if ((n % i) == 0)
+        -:   12:        {
+     1053:   13:            tot += i;
+     1053:   14:            int q = n / i;
+     1053:   15:            if (q > i)
+     1014:   16:                tot += q;
+     1053:   17:        }
+        -:   18:
+      594:   19:    return tot == n;
+        -:   20:}
+        -:   21:
+        3:   22:int main()
+        -:   23:{
+        -:   24:    int n;
+      597:   25:    for (n = 2; n < 200; n++)
+      600:   26:        if (perfect(n))
+        6:   27:            printf("%d\n", n);
+        -:   28:
+        3:   29:    return 0;
+        -:   30:}

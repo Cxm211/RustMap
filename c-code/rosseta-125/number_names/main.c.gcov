@@ -1,0 +1,140 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <string.h>
+        -:    3: 
+        -:    4:const char *ones[] = { 0, "one", "two", "three", "four",
+        -:    5:	"five", "six", "seven", "eight", "nine", 
+        -:    6:	"ten", "eleven", "twelve", "thirteen", "fourteen",
+        -:    7:	"fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+        -:    8:const char *tens[] = { 0, "ten", "twenty", "thirty", "forty",
+        -:    9:	"fifty", "sixty", "seventy", "eighty", "ninety" };
+        -:   10:const char *llions[] = { 0, "thousand", "million", "billion", "trillion",
+        -:   11:	};
+        -:   12:const int maxillion = sizeof(llions) / sizeof(llions[0]) * 3 - 3;
+        -:   13: 
+       93:   14:int say_hundred(const char *s, int len, int depth, int has_lead)
+        -:   15:{
+        -:   16:	int c[3], i;
+      372:   17:	for (i = -3; i < 0; i++) {
+      279:   18:		if (len + i >= 0) c[i + 3] = s[len + i] - '0';
+       24:   19:		else c[i + 3] = 0;
+      279:   20:	}
+       93:   21:	if (!(c[0] + c[1] + c[2])) return 0;
+        -:   22: 
+       87:   23:	if (c[0]) {
+       48:   24:		printf("%s hundred", ones[c[0]]);
+       48:   25:		has_lead = 1;
+       48:   26:	}
+        -:   27: 
+       87:   28:	if (has_lead && (c[1] || c[2]))
+       69:   29:		printf((!depth || c[0]) && (!c[0] || !c[1]) ? "and " :
+       57:   30:			c[0] ? " " : "");
+        -:   31: 
+       87:   32:	if (c[1] < 2) {
+       39:   33:		if (c[1] || c[2]) printf("%s", ones[c[1] * 10 + c[2]]);
+       39:   34:	} else {
+       48:   35:		if (c[1]) {
+       48:   36:			printf("%s", tens[c[1]]);
+       48:   37:			if (c[2]) putchar('-');
+       48:   38:		}
+       48:   39:		if (c[2]) printf("%s", ones[c[2]]);
+        -:   40:	}
+        -:   41: 
+       87:   42:	return 1;
+       93:   43:}
+        -:   44: 
+       33:   45:int say_maxillion(const char *s, int len, int depth, int has_lead)
+        -:   46:{
+       33:   47:	int n = len / 3, r = len % 3;
+       33:   48:	if (!r) {
+       18:   49:		n--;
+       18:   50:		r = 3;
+       18:   51:	}
+       33:   52:	const char *e = s + r;
+       33:   53:	do {
+       93:   54:		if (say_hundred(s, r, n, has_lead) && n) {
+       57:   55:			has_lead = 1;
+       57:   56:			printf(" %s", llions[n]);
+       57:   57:			if (!depth) printf(", ");
+       33:   58:			else printf(" ");
+       57:   59:		}
+       93:   60:		s = e; e += 3;
+       93:   61:	} while (r = 3, n--);
+        -:   62: 
+       33:   63:	return 1;
+        -:   64:}
+        -:   65: 
+       18:   66:void say_number(const char *s)
+        -:   67:{
+       18:   68:	int len, i, got_sign = 0;
+        -:   69: 
+       18:   70:	while (*s == ' ') s++;
+       18:   71:	if (*s < '0' || *s > '9') {
+        3:   72:		if (*s == '-') got_sign = -1;
+    #####:   73:		else if (*s == '+') got_sign = 1;
+    #####:   74:		else goto nan;
+        3:   75:		s++;
+        3:   76:	} else
+       15:   77:		got_sign = 1;
+        -:   78: 
+       18:   79:	while (*s == '0') {
+    #####:   80:		s++;
+    #####:   81:		if (*s == '\0') {
+    #####:   82:			printf("zero\n");
+    #####:   83:			return;
+        -:   84:		}
+        -:   85:	}
+        -:   86: 
+       18:   87:	len = strlen(s);
+       18:   88:	if (!len) goto nan;
+        -:   89: 
+      273:   90:	for (i = 0; i < len; i++) {
+      255:   91:		if (s[i] < '0' || s[i] > '9') {
+    #####:   92:			printf("(not a number)");
+    #####:   93:			return;
+        -:   94:		}
+      255:   95:	}
+       18:   96:	if (got_sign == -1) printf("minus ");
+        -:   97: 
+       18:   98:	int n = len / maxillion;
+       18:   99:	int r = len % maxillion;
+       18:  100:	if (!r) {
+    #####:  101:		r = maxillion;
+    #####:  102:		n--;
+    #####:  103:	}
+        -:  104: 
+       18:  105:	const char *end = s + len - n * maxillion;
+       18:  106:	int has_lead = 0;
+       18:  107:	do {
+       33:  108:		if ((has_lead = say_maxillion(s, r, n, has_lead))) {
+       66:  109:			for (i = 0; i < n; i++)
+       33:  110:				printf(" %s", llions[maxillion / 3]);
+       33:  111:			if (n) printf(", ");
+       33:  112:		}
+       33:  113:		n--;
+       33:  114:		r = maxillion;
+       33:  115:		s = end;
+       33:  116:		end += r;
+       33:  117:	} while (n >= 0);
+        -:  118: 
+       18:  119:	printf("\n");
+       18:  120:	return;
+        -:  121: 
+    #####:  122:nan:	printf("not a number\n");
+    #####:  123:	return;
+       18:  124:}
+        -:  125: 
+        3:  126:int main()
+        -:  127:{
+        3:  128:	say_number("-42");
+        3:  129:	say_number("1984");
+        3:  130:	say_number("10000");
+        3:  131:	say_number("1024");
+        3:  132:	say_number("1001001001001");
+        3:  133:	say_number("123456789012345678901234567890123456789012345678900000001");
+        3:  134:	return 0;
+        -:  135:}

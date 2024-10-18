@@ -1,0 +1,74 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#define FMT "%lld"
+        -:    4:typedef long long int fr_int_t;
+        -:    5:typedef struct { fr_int_t num, den; } frac;
+        -:    6: 
+ 38764500:    7:fr_int_t gcd(fr_int_t m, fr_int_t n)
+        -:    8:{
+        -:    9:	fr_int_t t;
+244999545:   10:	while (n) { t = n; n = m % n; m = t; }
+ 38764500:   11:	return m;
+        -:   12:}
+        -:   13: 
+ 38764500:   14:frac frac_new(fr_int_t num, fr_int_t den)
+        -:   15:{
+        -:   16:	frac a;
+ 38764500:   17:	if (!den) {
+    #####:   18:		printf("divide by zero: "FMT"/"FMT"\n", num, den);
+    #####:   19:		abort();
+        -:   20:	}
+        -:   21: 
+ 38764500:   22:	int g = gcd(num, den);
+        -:   23: 
+ 38764500:   24:	if (g)	{ num /= g; den /= g; }
+    #####:   25:	else	{ num = 0; den = 1;   }
+        -:   26: 
+ 38764500:   27:	if (den < 0) {
+    #####:   28:		den = -den;
+    #####:   29:		num = -num;
+    #####:   30:	}
+ 38764500:   31:	a.num = num; a.den = den;
+ 38764500:   32:	return a;
+        -:   33:}
+        -:   34: 
+        -:   35:#define BINOP(op, n, d) frac frac_##op(frac a, frac b) { return frac_new(n,d); }
+ 17809392:   36:BINOP(add, a.num * b.den + b.num * a.den, a.den * b.den);
+    #####:   37:BINOP(sub, a.num * b.den - b.num + a.den, a.den * b.den);
+    #####:   38:BINOP(mul, a.num * b.num, a.den * b.den);
+    #####:   39:BINOP(div, a.num * b.den, a.den * b.num);
+        -:   40: 
+  1572858:   41:int frac_cmp(frac a, frac b) {
+  1572858:   42:	int l = a.num * b.den, r = a.den * b.num;
+  1572858:   43:	return l < r ? -1 : l > r;
+        -:   44:}
+        -:   45:#define frac_cmp_int(a, b) frac_cmp(a, frac_new(b, 1))
+    #####:   46:int frtoi(frac a) { return a.den / a.num; }
+    #####:   47:double frtod(frac a) { return (double)a.den / a.num; }
+        -:   48: 
+        3:   49:int main()
+        -:   50:{
+        -:   51:	int n, k;
+        -:   52:	frac sum, kf;
+        -:   53: 
+  1572861:   54:	for (n = 2; n < 1<<19; n++) {
+  1572858:   55:		sum = frac_new(1, n);
+        -:   56: 
+758461314:   57:		for (k = 2; k * k < n; k++) {
+756888456:   58:			if (n % k) continue;
+  8904696:   59:			kf = frac_new(1, k);
+  8904696:   60:			sum = frac_add(sum, kf);
+        -:   61: 
+  8904696:   62:			kf = frac_new(1, n / k);
+  8904696:   63:			sum = frac_add(sum, kf);
+  8904696:   64:		}
+  1572858:   65:		if (frac_cmp_int(sum, 1) == 0) printf("%d\n", n);
+  1572858:   66:	}
+        -:   67: 
+        3:   68:	return 0;
+        -:   69:}

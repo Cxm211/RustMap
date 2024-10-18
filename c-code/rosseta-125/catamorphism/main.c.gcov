@@ -1,0 +1,29 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:typedef int (*intFn)(int, int);
+        -:    4: 
+       12:    5:int reduce(intFn fn, int size, int *elms)
+        -:    6:{
+       12:    7:    int i, val = *elms;
+       60:    8:    for (i = 1; i < size; ++i)
+       48:    9:        val = fn(val, elms[i]);
+       12:   10:    return val;
+        -:   11:}
+        -:   12: 
+       16:   13:int add(int a, int b) { return a + b; }
+       16:   14:int sub(int a, int b) { return a - b; }
+       16:   15:int mul(int a, int b) { return a * b; }
+        -:   16: 
+        4:   17:int main(void)
+        -:   18:{
+        4:   19:    int nums[] = {1, 2, 3, 4, 5};
+        4:   20:    printf("%d\n", reduce(add, 5, nums));
+        4:   21:    printf("%d\n", reduce(sub, 5, nums));
+        4:   22:    printf("%d\n", reduce(mul, 5, nums));
+        4:   23:    return 0;
+        -:   24:}

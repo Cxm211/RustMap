@@ -1,0 +1,103 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <limits.h>
+        -:    4:
+  1000400:    5:int turn(int base, int n)
+        -:    6:{
+  1000400:    7:    int sum = 0;
+  2449140:    8:    while (n != 0)
+        -:    9:    {
+  1448740:   10:        int rem = n % base;
+  1448740:   11:        n = n / base;
+  1448740:   12:        sum += rem;
+        -:   13:    }
+  1000400:   14:    return sum % base;
+        -:   15:}
+        -:   16:
+       16:   17:void fairshare(int base, int count)
+        -:   18:{
+        -:   19:    int i;
+        -:   20:
+       16:   21:    printf("Base %2d:", base);
+      416:   22:    for (i = 0; i < count; i++)
+        -:   23:    {
+      400:   24:        int t = turn(base, i);
+      400:   25:        printf(" %2d", t);
+      400:   26:    }
+       16:   27:    printf("\n");
+       16:   28:}
+        -:   29:
+       20:   30:void turnCount(int base, int count)
+        -:   31:{
+       20:   32:    int *cnt = calloc(base, sizeof(int));
+        -:   33:    int i, minTurn, maxTurn, portion;
+        -:   34:
+       20:   35:    if (NULL == cnt)
+        -:   36:    {
+    #####:   37:        printf("Failed to allocate space to determine the spread of turns.\n");
+    #####:   38:        return;
+        -:   39:    }
+        -:   40:
+  1000020:   41:    for (i = 0; i < count; i++)
+        -:   42:    {
+  1000000:   43:        int t = turn(base, i);
+  1000000:   44:        cnt[t]++;
+  1000000:   45:    }
+        -:   46:
+       20:   47:    minTurn = INT_MAX;
+       20:   48:    maxTurn = INT_MIN;
+       20:   49:    portion = 0;
+   606292:   50:    for (i = 0; i < base; i++)
+        -:   51:    {
+   606272:   52:        if (cnt[i] > 0)
+        -:   53:        {
+   606268:   54:            portion++;
+   606268:   55:        }
+   606272:   56:        if (cnt[i] < minTurn)
+        -:   57:        {
+       28:   58:            minTurn = cnt[i];
+       28:   59:        }
+   606272:   60:        if (cnt[i] > maxTurn)
+        -:   61:        {
+       28:   62:            maxTurn = cnt[i];
+       28:   63:        }
+   606272:   64:    }
+        -:   65:
+       20:   66:    printf("  With %d people: ", base);
+       20:   67:    if (0 == minTurn)
+        -:   68:    {
+        4:   69:        printf("Only %d have a turn\n", portion);
+        4:   70:    }
+       16:   71:    else if (minTurn == maxTurn)
+        -:   72:    {
+        4:   73:        printf("%d\n", minTurn);
+        4:   74:    }
+        -:   75:    else
+        -:   76:    {
+       12:   77:        printf("%d or %d\n", minTurn, maxTurn);
+        -:   78:    }
+        -:   79:
+       20:   80:    free(cnt);
+       20:   81:}
+        -:   82:
+        4:   83:int main()
+        -:   84:{
+        4:   85:    fairshare(2, 25);
+        4:   86:    fairshare(3, 25);
+        4:   87:    fairshare(5, 25);
+        4:   88:    fairshare(11, 25);
+        -:   89:
+        4:   90:    printf("How many times does each get a turn in 50000 iterations?\n");
+        4:   91:    turnCount(191, 50000);
+        4:   92:    turnCount(1377, 50000);
+        4:   93:    turnCount(49999, 50000);
+        4:   94:    turnCount(50000, 50000);
+        4:   95:    turnCount(50001, 50000);
+        -:   96:
+        4:   97:    return 0;
+        -:   98:}

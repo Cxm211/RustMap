@@ -1,0 +1,40 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <math.h>
+        -:    2:#include <stdio.h>
+        -:    3: 
+        -:    4:const char* animals[] = { "Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Goat","Monkey","Rooster","Dog","Pig" };
+        -:    5:const char* elements[] = { "Wood","Fire","Earth","Metal","Water" };
+        -:    6: 
+       24:    7:const char* getElement(int year) {
+       24:    8:    int element = (int)floor((year - 4) % 10 / 2);
+       24:    9:    return elements[element];
+        -:   10:}
+        -:   11: 
+       24:   12:const char* getAnimal(int year) {
+       24:   13:    return animals[(year - 4) % 12];
+        -:   14:}
+        -:   15: 
+       24:   16:const char* getYY(int year) {
+       24:   17:    if (year % 2 == 0) {
+       16:   18:        return "yang";
+        -:   19:    } else {
+        8:   20:        return "yin";
+        -:   21:    }
+       24:   22:}
+        -:   23: 
+        4:   24:int main() {
+        4:   25:    int years[] = { 1935, 1938, 1968, 1972, 1976, 2017 };
+        -:   26:    int i;
+        -:   27: 
+        -:   28:    //the zodiac cycle didnt start until 4 CE, so years <4 shouldnt be valid
+       28:   29:    for (i = 0; i < 6; ++i) {
+       24:   30:        int year = years[i];
+       24:   31:        printf("%d is the year of the %s %s (%s).\n", year, getElement(year), getAnimal(year), getYY(year));
+       24:   32:    }
+        -:   33: 
+        4:   34:    return 0;
+        -:   35:}

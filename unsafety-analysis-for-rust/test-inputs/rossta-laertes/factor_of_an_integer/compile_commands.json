@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/factor_of_an_integer",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/factor_of_an_integer/main.c"
+  }
+]

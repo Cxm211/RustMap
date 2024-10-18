@@ -1,0 +1,21 @@
+error[E0308]: mismatched types
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/iterated_digits_squaring.rs:39:23
+   |
+39 |             if !is_89(i) {
+   |                 ----- ^ expected `i32`, found `usize`
+   |                 |
+   |                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /root/rustmap/feasibility_study/rossta_code_gpt/failed_11_cases/iterated_digits_squaring.rs:3:4
+   |
+3  | fn is_89(mut x: i32) -> bool {
+   |    ^^^^^ ----------
+help: you can convert a `usize` to an `i32` and panic if the converted value doesn't fit
+   |
+39 |             if !is_89(i.try_into().unwrap()) {
+   |                        ++++++++++++++++++++
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0308`.

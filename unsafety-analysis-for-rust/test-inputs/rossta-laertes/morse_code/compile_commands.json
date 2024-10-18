@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/morse_code",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/morse_code/main.c"
+  }
+]

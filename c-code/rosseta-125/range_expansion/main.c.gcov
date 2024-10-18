@@ -1,0 +1,83 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <ctype.h>
+        -:    4: 
+        -:    5:/* BNFesque
+        -:    6:	rangelist := (range | number) [',' rangelist]
+        -:    7:	range := number '-' number	*/
+        -:    8: 
+        -:    9:int get_list(const char *, char **);
+        -:   10:int get_rnge(const char *, char **);
+        -:   11: 
+        -:   12:/* parser only parses; what to do with parsed items is up to
+        -:   13:* the add_number and and_range functions */
+        -:   14:void add_number(int x);
+        -:   15:int add_range(int x, int y);
+        -:   16: 
+        -:   17:#define skip_space while(isspace(*s)) s++
+        -:   18:#define get_number(x, s, e) (x = strtol(s, e, 10), *e != s)
+        6:   19:int get_list(const char *s, char **e)
+        -:   20:{
+        -:   21:	int x;
+        6:   22:	while (1) {
+       24:   23:		skip_space;
+       24:   24:		if (!get_rnge(s, e) && !get_number(x, s, e)) break;
+       24:   25:		s = *e;
+        -:   26: 
+       24:   27:		skip_space;
+       24:   28:		if ((*s) == '\0') { putchar('\n'); return 1; }
+       21:   29:		if ((*s) == ',')  { s++; continue; }
+        3:   30:		break;
+        -:   31:	}
+        3:   32:	*(const char **)e = s;
+        3:   33:	printf("\nSyntax error at %s\n", s);
+        3:   34:	return 0;
+        6:   35:}
+        -:   36: 
+       24:   37:int get_rnge(const char *s, char **e)
+        -:   38:{
+        -:   39:	int x, y;
+        -:   40:	char *ee;
+       24:   41:	if (!get_number(x, s, &ee)) return 0;
+       24:   42:	s = ee;
+        -:   43: 
+       27:   44:	skip_space;
+       24:   45:	if (*s != '-') {
+        9:   46:		*(const char **)e = s;
+        9:   47:		return 0;
+        -:   48:	}
+       15:   49:	s++;
+       15:   50:	if(!get_number(y, s, e)) return 0;
+       15:   51:	return add_range(x, y);
+       24:   52:}
+        -:   53: 
+    #####:   54:void add_number(int x)
+        -:   55:{
+    #####:   56:	printf("%d ", x);
+    #####:   57:}
+        -:   58: 
+       15:   59:int add_range(int x, int y)
+        -:   60:{
+       15:   61:	if (y <= x) return 0;
+       90:   62:	while (x <= y) printf("%d ", x++);
+       15:   63:	return 1;
+       15:   64:}
+        -:   65: 
+        3:   66:int main()
+        -:   67:{
+        -:   68:	char *end;
+        -:   69: 
+        -:   70:	/* this is correct */
+        3:   71:	if (get_list("-6,-3--1,3-5,7-11,14,15,17-20", &end)) puts("Ok");
+        -:   72: 
+        -:   73:	/* this is not.  note the subtle error: "-6 -3" is parsed
+        -:   74:	 * as range(-6, 3), so synax error comes after that */
+        3:   75:	get_list("-6 -3--1,3-5,7-11,14,15,17-20", &end);
+        -:   76: 
+        3:   77:	return 0;
+        -:   78:}

@@ -1,0 +1,9 @@
+Merged RustMap Test Coverage vs Original Bzip2 Coverage,,
+,Function Coverage,Line Coverage
+blocksort.c,66.7%,71.7%
+bzip2.c,100.0%,100.0%
+bzlib.c,100.0%,93.3%
+compress.c,100.0%,100.0%
+decompress.c,100.0%,93.2%
+huffman.c,100.0%,98.8%
+Average,94.4%,92.8%

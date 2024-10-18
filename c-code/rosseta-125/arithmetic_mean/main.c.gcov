@@ -1,0 +1,29 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+       24:    3:double mean(double *v, int len)
+        -:    4:{
+       24:    5:	double sum = 0;
+        -:    6:	int i;
+       84:    7:	for (i = 0; i < len; i++)
+       60:    8:		sum += v[i];
+       24:    9:	return sum / len;
+        -:   10:}
+        -:   11: 
+        4:   12:int main(void)
+        -:   13:{
+        4:   14:	double v[] = {1, 2, 2.718, 3, 3.142};
+        -:   15:	int i, len;
+       28:   16:	for (len = 5; len >= 0; len--) {
+       24:   17:		printf("mean[");
+       84:   18:		for (i = 0; i < len; i++)
+       60:   19:			printf(i ? ", %g" : "%g", v[i]);
+       24:   20:		printf("] = %g\n", mean(v, len));
+       24:   21:	}
+        -:   22: 
+        4:   23:	return 0;
+        -:   24:}

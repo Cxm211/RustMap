@@ -1,0 +1,57 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2: 
+        -:    3:typedef unsigned uint;
+      916:    4:int is_prime(uint n)
+        -:    5:{
+      916:    6:        if (!(n%2) || !(n%3)) return 0;
+      596:    7:        uint p = 1;
+     1604:    8:        while(p*p < n)
+     1272:    9:                if (n%(p += 4) == 0 || n%(p += 2) == 0)
+      264:   10:                        return 0;
+      332:   11:        return 1;
+      916:   12:}
+        -:   13: 
+      760:   14:uint reverse(uint n)
+        -:   15:{
+        -:   16:        uint r;
+     2860:   17:        for (r = 0; n; n /= 10)
+     2100:   18:                r = r*10 + (n%10);
+      760:   19:        return r;
+        -:   20:}
+        -:   21: 
+      760:   22:int is_emirp(uint n)
+        -:   23:{
+      760:   24:        uint r = reverse(n);
+      760:   25:        return r != n && is_prime(n) && is_prime(r);
+        -:   26:}
+        -:   27: 
+        4:   28:int main(int argc, char **argv)
+        -:   29:{
+        4:   30:        uint x, c = 0;
+        4:   31:        switch(argc) { // advanced args parsing
+      764:   32:        case 1: for (x = 11; c < 20; x += 2)
+      840:   33:                        if (is_emirp(x))
+       80:   34:                                printf(" %u", x), ++c;
+        4:   35:                break;
+        -:   36: 
+    #####:   37:        case 2: for (x = 7701; x < 8000; x += 2)
+    #####:   38:                        if (is_emirp(x))
+    #####:   39:                                printf(" %u", x);
+    #####:   40:                break;
+        -:   41: 
+        -:   42:        default:
+    #####:   43:                for (x = 11; ; x += 2)
+    #####:   44:                        if (is_emirp(x) && ++c == 10000) {
+    #####:   45:                                printf("%u", x);
+    #####:   46:                                break;
+        -:   47:                        }
+    #####:   48:        }
+        -:   49: 
+        4:   50:        putchar('\n');
+        4:   51:        return 0;
+        -:   52:}

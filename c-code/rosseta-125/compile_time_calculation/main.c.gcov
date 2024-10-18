@@ -1,0 +1,12 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:const int val = 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10;
+        4:    3:int main(void)
+        -:    4:{
+        4:    5:	printf("10! = %d\n", val);
+        4:    6:	return 0;
+        -:    7:}

@@ -1,0 +1,89 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <math.h>
+        -:    3:#include <string.h>
+        -:    4:#include <stdlib.h>
+        -:    5:#include <time.h>
+        -:    6: 
+        -:    7:#define TRUE 1
+        -:    8:#define FALSE 0
+        -:    9: 
+        -:   10:typedef int bool;
+        -:   11: 
+        -:   12:char grid[8][8];
+        -:   13: 
+        3:   14:void placeKings() {
+        -:   15:    int r1, r2, c1, c2;
+        4:   16:    for (;;) {
+        4:   17:        r1 = rand() % 8;
+        4:   18:        c1 = rand() % 8;
+        4:   19:        r2 = rand() % 8;
+        4:   20:        c2 = rand() % 8;
+        4:   21:        if (r1 != r2 && abs(r1 - r2) > 1 && abs(c1 - c2) > 1) {
+        3:   22:            grid[r1][c1] = 'K';
+        3:   23:            grid[r2][c2] = 'k';
+        3:   24:            return;
+        -:   25:        }
+        -:   26:    }
+        -:   27:}
+        -:   28: 
+       12:   29:void placePieces(const char *pieces, bool isPawn) {
+        -:   30:    int n, r, c;
+       12:   31:    int numToPlace = rand() % strlen(pieces);
+       56:   32:    for (n = 0; n < numToPlace; ++n) {
+       44:   33:        do {
+       66:   34:            r = rand() % 8;
+       66:   35:            c = rand() % 8;
+      110:   36:        }
+       96:   37:        while (grid[r][c] != 0 || (isPawn && (r == 7 || r == 0)));
+       44:   38:        grid[r][c] = pieces[n];
+       44:   39:    }
+       12:   40:}
+        -:   41: 
+        3:   42:void toFen() {
+        -:   43:    char fen[80], ch;
+        3:   44:    int r, c, countEmpty = 0, index = 0;
+       27:   45:    for (r = 0; r < 8; ++r) {
+      216:   46:        for (c = 0; c < 8; ++c) {
+      192:   47:            ch = grid[r][c];
+      192:   48:            printf("%2c ", ch == 0 ? '.' : ch);
+      192:   49:            if (ch == 0) {
+      142:   50:                countEmpty++;
+      142:   51:            }
+        -:   52:            else {
+       50:   53:                if (countEmpty > 0) {
+       35:   54:                    fen[index++] = countEmpty + 48;
+       35:   55:                    countEmpty = 0;               
+       35:   56:                }
+       50:   57:                fen[index++] = ch;
+        -:   58:            }
+      192:   59:        }
+       24:   60:        if (countEmpty > 0) {
+       15:   61:            fen[index++] = countEmpty + 48;
+       15:   62:            countEmpty = 0;
+       15:   63:        }
+       24:   64:        fen[index++]= '/';
+       24:   65:        printf("\n");
+       24:   66:    }
+        3:   67:    strcpy(fen + index, " w - - 0 1");
+        3:   68:    printf("%s\n", fen);
+        3:   69:}
+        -:   70: 
+        3:   71:char *createFen() {
+        3:   72:    placeKings();
+        3:   73:    placePieces("PPPPPPPP", TRUE);
+        3:   74:    placePieces("pppppppp", TRUE);
+        3:   75:    placePieces("RNBQBNR", FALSE);
+        3:   76:    placePieces("rnbqbnr", FALSE);
+        3:   77:    toFen();
+        3:   78:}
+        -:   79: 
+        3:   80:int main() {
+        3:   81:    srand(time(NULL));
+        3:   82:    createFen();
+        3:   83:    return 0;
+        -:   84:}

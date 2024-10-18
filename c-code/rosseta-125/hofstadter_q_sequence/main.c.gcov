@@ -1,0 +1,29 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3: 
+        -:    4:#define N 100000
+        3:    5:int main()
+        -:    6:{
+        3:    7:	int i, flip, *q = (int*)malloc(sizeof(int) * N) - 1;
+        -:    8: 
+        3:    9:	q[1] = q[2] = 1;
+        -:   10: 
+   299997:   11:	for (i = 3; i <= N; i++)
+   299994:   12:		q[i] = q[i - q[i - 1]] + q[i - q[i - 2]];
+        -:   13: 
+       33:   14:	for (i = 1; i <= 10; i++)
+       30:   15:		printf("%d%c", q[i], i == 10 ? '\n' : ' ');
+        -:   16: 
+        3:   17:	printf("%d\n", q[1000]);
+        -:   18: 
+   300000:   19:	for (flip = 0, i = 1; i < N; i++)
+   299997:   20:		flip += q[i] > q[i + 1];
+        -:   21: 
+        3:   22:	printf("flips: %d\n", flip);
+        3:   23:	return 0;
+        -:   24:}

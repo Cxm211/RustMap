@@ -1,0 +1,36 @@
+        -:    0:Source:main.c
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:4
+        -:    0:Programs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <string.h>
+        -:    4:
+        -:    5:#define ARRAY_CONCAT(TYPE, A, An, B, Bn) \
+        -:    6:  (TYPE *)array_concat((const void *)(A), (An), (const void *)(B), (Bn), sizeof(TYPE));
+        -:    7:
+        4:    8:void *array_concat(const void *a, size_t an,
+        -:    9:                   const void *b, size_t bn, size_t s)
+        -:   10:{
+        4:   11:  char *p = malloc(s * (an + bn));
+        4:   12:  memcpy(p, a, an * s);
+        4:   13:  memcpy(p + an * s, b, bn * s);
+        4:   14:  return p;
+        -:   15:}
+        -:   16:
+        -:   17:const int a[] = {1, 2, 3, 4, 5};
+        -:   18:const int b[] = {6, 7, 8, 9, 0};
+        -:   19:
+        4:   20:int main(void)
+        -:   21:{
+        -:   22:  unsigned int i;
+        -:   23:
+        4:   24:  int *c = ARRAY_CONCAT(int, a, 5, b, 5);
+        -:   25:
+       44:   26:  for (i = 0; i < 10; i++)
+       40:   27:    printf("%d\n", c[i]);
+        -:   28:
+        4:   29:  free(c);
+        4:   30:  return EXIT_SUCCESS;
+        -:   31:}
