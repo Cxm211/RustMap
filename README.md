@@ -92,7 +92,7 @@ We will demonstrate how to perform the Coverage Test, Complexity Test, Functiona
 
 #  2.  Scaffolding Boilerplate Generation (example of bzip2)
 
-> The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 >
 
   
@@ -231,7 +231,7 @@ Please check the detailed Example in `./prompt-templates/inconsistency-solution`
 
 # 4. Functional Test
 ## 4.1. Functional Test of bzip2
-> The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 >
 > 
 ### 4.1.1. bzip2 executable binary generation
@@ -310,7 +310,7 @@ diff original_roseta_result.log rustmap_roseta_result.log
 
 # 5. Count of Macros Definition and Usage
 
-> The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 > 
 ![](paper_pic/Macros-Counts.jpg)
 
@@ -322,7 +322,7 @@ We count the number of macros declaration and usage based on original bzip2 C, w
 We try to show the process to generate the Coverage Test Statistics in this section
 ![](./paper_pic/Coverage-Test-Result-bzip2-Rosetta.jpg)
 
-> The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 
 ## 6.1. Table 1.1: Calculating Coverage Test Ratio of Custom Test Case to bzip2 Test Suite
 we have added `coverage` flags in `Makefile` under `c-code/bzip2-1.0.8
