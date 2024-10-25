@@ -33,13 +33,14 @@
   - [2.2. Generate Function Static Call Graph](#22-generate-function-static-call-graph)
     - [2.2.1. Use Static cflow](#221-use-static-cflow)
     - [2.2.2. Generate RustMap Scaffolding](#222-generate-rustmap-scaffolding)
-- [3. Prompts](#3-prompts)
-  - [3.1. Prompt for directly applying LLM to translate](#31-prompt-for-directly-applying-llm-to-translate)
-  - [3.2. Prompt to Resolve Compilation Error](#32-prompt-to-resolve-compilation-error)
-  - [3.3. Prompt to resolve Inconsistency error.](#33-prompt-to-resolve-inconsistency-error)
-  - [4.1. Functional Test of Rosetta Code](#41-functional-test-of-rosetta-code)
-    - [4.1.1. Batch Execution of Rosetta Code](#411-batch-execution-of-rosetta-code)
-    - [4.2.2. Verification of Rosetta running result compared to original C](#422-verification-of-rosetta-running-result-compared-to-original-c)
+- [2. Prompts](#2-prompts)
+  - [2.1. Prompt for directly applying LLM to translate](#21-prompt-for-directly-applying-llm-to-translate)
+  - [2.2. Prompt to Resolve Compilation Error](#22-prompt-to-resolve-compilation-error)
+  - [2.3. Prompt to resolve Inconsistency error.](#23-prompt-to-resolve-inconsistency-error)
+- [4. Functional Test](#4-functional-test)
+  - [4.1 Functional Test of Rosetta Code](#41-functional-test-of-rosetta-code)
+    - [4.1.1 Batch Execution of Rosetta Code](#411-batch-execution-of-rosetta-code)
+    - [4.1.2. Verification of Rosetta running result compared to original C](#412-verification-of-rosetta-running-result-compared-to-original-c)
 - [5. Count of Macros Definition and Usage](#5-count-of-macros-definition-and-usage)
 - [6. Coverage Test](#6-coverage-test)
   - [6.1. Table 1.1: Calculating Coverage Test Ratio of Custom Test Case to bzip2 Test Suite](#61-table-11-calculating-coverage-test-ratio-of-custom-test-case-to-bzip2-test-suite)
@@ -117,8 +118,8 @@ The Scaffolding is generated and saved to [scaffolding.json](c-code/bzip2-1.0.8-
 
 
 
-# 3. Prompts
-## 3.1. Prompt for directly applying LLM to translate
+# 2. Prompts
+## 2.1. Prompt for directly applying LLM to translate
 ```bash
 
 If the C code references other vital functions or structures, ask mefirst and wait for my provided input.(ASK ME first)Convert the given code to idiomatic Rust, keeping its function. Useminimal unsafe traits. Don't translate unknown variables or functions, and avoid assumptions.(ASK ME frst)
@@ -139,13 +140,13 @@ I must reiterate: if you encounter unfamiliar variables or functionsduring trans
 
 
 ```
-## 3.2. Prompt to Resolve Compilation Error
+## 2.2. Prompt to Resolve Compilation Error
 Normally we will after our test generate compilation error, we will directly put the compilation error into ChatGPT-4
 See the examples of compilation errors in the directory: `prompt-templates/compilation-errors` We have listed some of compilation from our RustMap Translation of Rosetta Code
 
 
 
-## 3.3. Prompt to resolve Inconsistency error. 
+## 2.3. Prompt to resolve Inconsistency error. 
  please generate Rust code fragment here to have
   consistent states as the C code above
 ```bash
@@ -166,8 +167,9 @@ See the examples of compilation errors in the directory: `prompt-templates/compi
 }
 ```
 <!-- Please check the detailed Example in `./prompt-templates/inconsistency-solution` -->
-<!-- 
+
 # 4. Functional Test
+<!-- 
 ## 4.1. Functional Test of bzip2
 > The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 >
@@ -232,15 +234,15 @@ diff random_5000_chars.txt rec00001random_5000_chars.txt > diff_random_5000_char
 ```
  -->
 
-## 4.1. Functional Test of Rosetta Code
-### 4.1.1. Batch Execution of Rosetta Code
+## 4.1 Functional Test of Rosetta Code
+### 4.1.1 Batch Execution of Rosetta Code
 Since there are attached testcases in original Roseta Code, we will directly execute the translated Roseta Code and Compare the result with original C Roseta Code
 ```bash
 bash ./c-code/Rosetta-125/Rosetta-125.sh > original_roseta_result.log
 bash ./rust-code/Rosetta_code_gpt/125-Rosetta-code-gpt/125-Rosetta-rs.sh > rustmap_roseta_result.log
 ```
 
-### 4.2.2. Verification of Rosetta running result compared to original C
+### 4.1.2. Verification of Rosetta running result compared to original C
 ```bash
 diff original_roseta_result.log rustmap_roseta_result.log 
 ```
