@@ -56,19 +56,30 @@ check: test
 test: bzip2
 	@cat words1
 	./bzip2 -1  < testcases/sample1.ref > testcases/sample1.rb2
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_com_1.png
 	./bzip2 -2  < testcases/sample2.ref > testcases/sample2.rb2
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_com_2.png
 	./bzip2 -3  < testcases/sample3.ref > testcases/sample3.rb2
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_com_3.png
 	./bzip2 -d  < testcases/sample1.bz2 > testcases/sample1.tst
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_dec_1.png
 	./bzip2 -d  < testcases/sample2.bz2 > testcases/sample2.tst
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_dec_2.png
 	./bzip2 -d  < testcases/sample3.bz2 > testcases/sample3.tst
+	gprof bzip2 gmon.out > gprof.out
+	gprof2dot -f prof gprof.out | dot -Tpng -o dcg_dec_3.png
 	cmp testcases/sample1.bz2 testcases/sample1.rb2 > output.txt
 	cmp testcases/sample2.bz2 testcases/sample2.rb2 > output.txt
 	cmp testcases/sample3.bz2 testcases/sample3.rb2 > output.txt
 	cmp testcases/sample1.tst testcases/sample1.ref > output.txt
 	cmp testcases/sample2.tst testcases/sample2.ref > output.txt
 	cmp testcases/sample3.tst testcases/sample3.ref > output.txt
-	@cat words3
-
+	
 coverage: check
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory out
@@ -116,10 +127,10 @@ clean:
 	rm -f *.o libbz2.a bzip2 bzip2recover \
 	testcases/sample1.rb2 testcases/sample2.rb2 testcases/sample3.rb2 \
 	testcases/sample1.tst testcases/sample2.tst testcases/sample3.tst testcases/output.txt \
-	rm -f *.gcda *.gcno *.info
+	rm -f *.gcda *.gcno *.info *.png
 
 cleancoverage:
-	rm -f *.gcda *.gcno *.info
+	rm -f *.gcda *.info
 
 blocksort.o: blocksort.c
 	@cat words0

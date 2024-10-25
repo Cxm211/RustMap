@@ -1,0 +1,2448 @@
+{
+    "functions": [
+        {
+            "return_type": "int",
+            "name": "main",
+            "params": ""
+        },
+        {
+            "return_type": "void",
+            "name": "fallbackSimpleSort",
+            "params": " UInt32* fmap, \n                          UInt32* eclass, \n                          Int32   lo, \n                          Int32   hi "
+        },
+        {
+            "return_type": "void",
+            "name": "fswap",
+            "params": "UInt32* zz1, UInt32* zz2"
+        },
+        {
+            "return_type": "void",
+            "name": "fvswap",
+            "params": "Int32 zzp1, Int32 zzp2, Int32 zzn, UInt32* fmap"
+        },
+        {
+            "return_type": "Int32",
+            "name": "fmin",
+            "params": "Int32 a, Int32 b"
+        },
+        {
+            "return_type": "void",
+            "name": "fpush",
+            "params": "Int32* stackLo, Int32* stackHi, Int32* sp, Int32 lz, Int32 hz"
+        },
+        {
+            "return_type": "void",
+            "name": "fpop",
+            "params": "Int32* stackLo, Int32* stackHi, Int32* sp, Int32* lz, Int32* hz"
+        },
+        {
+            "return_type": "void",
+            "name": "fallbackQSort3",
+            "params": " UInt32* fmap, \n                      UInt32* eclass,\n                      Int32   loSt, \n                      Int32   hiSt "
+        },
+        {
+            "return_type": "void",
+            "name": "SET_BH",
+            "params": "UInt32* bhtab, Int32 zz"
+        },
+        {
+            "return_type": "void",
+            "name": "CLEAR_BH",
+            "params": "UInt32* bhtab, Int32 zz"
+        },
+        {
+            "return_type": "Int32",
+            "name": "ISSET_BH",
+            "params": "UInt32* bhtab, Int32 zz"
+        },
+        {
+            "return_type": "UInt32",
+            "name": "WORD_BH",
+            "params": "UInt32* bhtab, Int32 zz"
+        },
+        {
+            "return_type": "Int32",
+            "name": "UNALIGNED_BH",
+            "params": "Int32 zz"
+        },
+        {
+            "return_type": "void",
+            "name": "fallbackSort",
+            "params": " UInt32* fmap, \n                    UInt32* eclass, \n                    UInt32* bhtab,\n                    Int32   nblock,\n                    Int32   verb "
+        },
+        {
+            "return_type": "Bool",
+            "name": "mainGtU",
+            "params": " UInt32  i1, \n               UInt32  i2,\n               UChar*  block, \n               UInt16* quadrant,\n               UInt32  nblock,\n               Int32*  budget "
+        },
+        {
+            "return_type": "void",
+            "name": "mainSimpleSort",
+            "params": " UInt32* ptr,\n                      UChar*  block,\n                      UInt16* quadrant,\n                      Int32   nblock,\n                      Int32   lo, \n                      Int32   hi, \n                      Int32   d,\n                      Int32*  budget "
+        },
+        {
+            "return_type": "void",
+            "name": "mswap",
+            "params": "UInt32* zz1, UInt32* zz2"
+        },
+        {
+            "return_type": "void",
+            "name": "mvswap",
+            "params": "Int32 zzp1, Int32 zzp2, Int32 zzn, UInt32* ptr"
+        },
+        {
+            "return_type": "UChar",
+            "name": "mmed3",
+            "params": "UChar a, UChar b, UChar c"
+        },
+        {
+            "return_type": "Int32",
+            "name": "mmin",
+            "params": "Int32 a, Int32 b"
+        },
+        {
+            "return_type": "void",
+            "name": "mpush",
+            "params": "Int32 lz, Int32 hz, Int32 dz, Int32* stackLo, Int32* stackHi, Int32* stackD, Int32* sp"
+        },
+        {
+            "return_type": "void",
+            "name": "mpop",
+            "params": "Int32* lz, Int32* hz, Int32* dz, Int32* stackLo, Int32* stackHi, Int32* stackD, Int32* sp"
+        },
+        {
+            "return_type": "Int32",
+            "name": "mnextsize",
+            "params": "Int32 az, Int32* nextHi, Int32* nextLo"
+        },
+        {
+            "return_type": "void",
+            "name": "mnextswap",
+            "params": "Int32 az, Int32 bz, Int32* nextLo, Int32* nextHi, Int32* nextD"
+        },
+        {
+            "return_type": "void",
+            "name": "mainQSort3",
+            "params": " UInt32* ptr,\n                  UChar*  block,\n                  UInt16* quadrant,\n                  Int32   nblock,\n                  Int32   loSt, \n                  Int32   hiSt, \n                  Int32   dSt,\n                  Int32*  budget "
+        },
+        {
+            "return_type": "Int32",
+            "name": "BIGFREQ",
+            "params": "Int32 b, UInt32* ftab"
+        },
+        {
+            "return_type": "void",
+            "name": "mainSort",
+            "params": " UInt32* ptr, \n                UChar*  block,\n                UInt16* quadrant, \n                UInt32* ftab,\n                Int32   nblock,\n                Int32   verb,\n                Int32*  budget "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_blockSort",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "Int32",
+            "name": "WEIGHTOF",
+            "params": "Int32 zz0"
+        },
+        {
+            "return_type": "Int32",
+            "name": "DEPTHOF",
+            "params": "Int32 zz1"
+        },
+        {
+            "return_type": "Int32",
+            "name": "MYMAX",
+            "params": "Int32 zz2, Int32 zz3"
+        },
+        {
+            "return_type": "Int32",
+            "name": "ADDWEIGHTS",
+            "params": "Int32 zw1, Int32 zw2"
+        },
+        {
+            "return_type": "void",
+            "name": "UPHEAP",
+            "params": "Int32 z, Int32 *heap, Int32 *weight"
+        },
+        {
+            "return_type": "void",
+            "name": "DOWNHEAP",
+            "params": "Int32 z, Int32 *heap, Int32 *weight, Int32 nHeap"
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_hbMakeCodeLengths",
+            "params": " UChar *len, \n                             Int32 *freq,\n                             Int32 alphaSize,\n                             Int32 maxLen "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_hbAssignCodes",
+            "params": " Int32 *code,\n                         UChar *length,\n                         Int32 minLen,\n                         Int32 maxLen,\n                         Int32 alphaSize "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_hbCreateDecodeTables",
+            "params": " Int32 *limit,\n                                Int32 *base,\n                                Int32 *perm,\n                                UChar *length,\n                                Int32 minLen,\n                                Int32 maxLen,\n                                Int32 alphaSize "
+        },
+        {
+            "return_type": "int",
+            "name": "BZ2DLLLoadLibrary",
+            "params": "void"
+        },
+        {
+            "return_type": "int",
+            "name": "BZ2DLLFreeLibrary",
+            "params": "void"
+        },
+        {
+            "return_type": "void",
+            "name": "usage",
+            "params": "void"
+        },
+        {
+            "return_type": "int",
+            "name": "main",
+            "params": "int argc,char *argv[]"
+        },
+        {
+            "return_type": "endif",
+            "name": "while",
+            "params": "++argv,--argc"
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "'1'<=*p && *p<='9'"
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_bsInitWrite",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "bsFinishWrite",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "bsNEEDW",
+            "params": "EState* s"
+        },
+        {
+            "return_type": "void",
+            "name": "bsW",
+            "params": " EState* s, Int32 n, UInt32 v "
+        },
+        {
+            "return_type": "void",
+            "name": "bsPutUInt32",
+            "params": " EState* s, UInt32 u "
+        },
+        {
+            "return_type": "void",
+            "name": "bsPutUChar",
+            "params": " EState* s, UChar c "
+        },
+        {
+            "return_type": "void",
+            "name": "makeMaps_e",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "generateMTFValues",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "sendMTFValues",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_compressBlock",
+            "params": " EState* s, Bool is_last_block "
+        },
+        {
+            "return_type": "void",
+            "name": "ERROR_IF_EOF",
+            "params": "int i"
+        },
+        {
+            "return_type": "void",
+            "name": "ERROR_IF_NOT_ZERO",
+            "params": "int i"
+        },
+        {
+            "return_type": "void",
+            "name": "ERROR_IF_MINUS_ONE",
+            "params": "int i"
+        },
+        {
+            "return_type": "void",
+            "name": "uInt64_from_UInt32s",
+            "params": " UInt64* n, UInt32 lo32, UInt32 hi32 "
+        },
+        {
+            "return_type": "double",
+            "name": "uInt64_to_double",
+            "params": " UInt64* n "
+        },
+        {
+            "return_type": "Bool",
+            "name": "uInt64_isZero",
+            "params": " UInt64* n "
+        },
+        {
+            "return_type": "Int32",
+            "name": "uInt64_qrm10",
+            "params": " UInt64* n "
+        },
+        {
+            "return_type": "void",
+            "name": "uInt64_toAscii",
+            "params": " char* outbuf, UInt64* n "
+        },
+        {
+            "return_type": "Bool",
+            "name": "myfeof",
+            "params": " FILE* f "
+        },
+        {
+            "return_type": "void",
+            "name": "compressStream",
+            "params": " FILE *stream, FILE *zStream "
+        },
+        {
+            "return_type": "Bool",
+            "name": "uncompressStream",
+            "params": " FILE *zStream, FILE *stream "
+        },
+        {
+            "return_type": "Bool",
+            "name": "testStream",
+            "params": " FILE *zStream "
+        },
+        {
+            "return_type": "void",
+            "name": "setExit",
+            "params": " Int32 v "
+        },
+        {
+            "return_type": "void",
+            "name": "cadvise",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "showFileNames",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "cleanUpAndFail",
+            "params": " Int32 ec "
+        },
+        {
+            "return_type": "void",
+            "name": "panic",
+            "params": " const Char* s "
+        },
+        {
+            "return_type": "void",
+            "name": "crcError",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "compressedStreamEOF",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "ioError",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "mySignalCatcher",
+            "params": " IntNative n "
+        },
+        {
+            "return_type": "void",
+            "name": "mySIGSEGVorSIGBUScatcher",
+            "params": " IntNative n "
+        },
+        {
+            "return_type": "void",
+            "name": "outOfMemory",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "configError",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "pad",
+            "params": " Char *s "
+        },
+        {
+            "return_type": "void",
+            "name": "copyFileName",
+            "params": " Char* to, Char* from "
+        },
+        {
+            "return_type": "Bool",
+            "name": "fileExists",
+            "params": " Char* name "
+        },
+        {
+            "return_type": "Bool",
+            "name": "notAStandardFile",
+            "params": " Char* name "
+        },
+        {
+            "return_type": "Int32",
+            "name": "countHardLinks",
+            "params": " Char* name "
+        },
+        {
+            "return_type": "void",
+            "name": "saveInputFileMetaInfo",
+            "params": " Char *srcName "
+        },
+        {
+            "return_type": "void",
+            "name": "applySavedTimeInfoToOutputFile",
+            "params": " Char *dstName "
+        },
+        {
+            "return_type": "void",
+            "name": "applySavedFileAttrToOutputFile",
+            "params": " IntNative fd "
+        },
+        {
+            "return_type": "Bool",
+            "name": "containsDubiousChars",
+            "params": " Char* name "
+        },
+        {
+            "return_type": "Bool",
+            "name": "hasSuffix",
+            "params": " Char* s, const Char* suffix "
+        },
+        {
+            "return_type": "Bool",
+            "name": "mapSuffix",
+            "params": " Char* name, \n                 const Char* oldSuffix, \n                 const Char* newSuffix "
+        },
+        {
+            "return_type": "void",
+            "name": "compress",
+            "params": " Char *name "
+        },
+        {
+            "return_type": "void",
+            "name": "uncompress",
+            "params": " Char *name "
+        },
+        {
+            "return_type": "void",
+            "name": "testf",
+            "params": " Char *name "
+        },
+        {
+            "return_type": "void",
+            "name": "license",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "usage",
+            "params": " Char *fullProgName "
+        },
+        {
+            "return_type": "void",
+            "name": "redundant",
+            "params": " Char* flag "
+        },
+        {
+            "return_type": "void",
+            "name": "addFlagsFromEnvVar",
+            "params": " Cell** argList, Char* varName "
+        },
+        {
+            "return_type": "Bool",
+            "name": "ISFLAG",
+            "params": "Cell* aa, const Char* s"
+        },
+        {
+            "return_type": "IntNative",
+            "name": "main",
+            "params": " IntNative argc, Char *argv[] "
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "opMode == OM_UNZ"
+        },
+        {
+            "return_type": "void",
+            "name": "makeMaps_d",
+            "params": " DState* s "
+        },
+        {
+            "return_type": "Int32",
+            "name": "BZ2_decompress",
+            "params": " DState* s "
+        },
+        {
+            "return_type": "else",
+            "name": "while",
+            "params": "es > 0"
+        },
+        {
+            "return_type": "int",
+            "name": "main",
+            "params": " int argc, char** argv "
+        },
+        {
+            "return_type": "void",
+            "name": "readError",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "writeError",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "mallocFail",
+            "params": " Int32 n "
+        },
+        {
+            "return_type": "void",
+            "name": "tooManyBlocks",
+            "params": " Int32 max_handled_blocks "
+        },
+        {
+            "return_type": "void",
+            "name": "bsPutBit",
+            "params": " BitStream* bs, Int32 bit "
+        },
+        {
+            "return_type": "Int32",
+            "name": "bsGetBit",
+            "params": " BitStream* bs "
+        },
+        {
+            "return_type": "void",
+            "name": "bsClose",
+            "params": " BitStream* bs "
+        },
+        {
+            "return_type": "void",
+            "name": "bsPutUChar",
+            "params": " BitStream* bs, UChar c "
+        },
+        {
+            "return_type": "void",
+            "name": "bsPutUInt32",
+            "params": " BitStream* bs, UInt32 c "
+        },
+        {
+            "return_type": "Bool",
+            "name": "endsInBz2",
+            "params": " Char* name "
+        },
+        {
+            "return_type": "Int32",
+            "name": "main",
+            "params": " Int32 argc, Char** argv "
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "bitsRead == rbStart[wrBlock]"
+        },
+        {
+            "return_type": "void",
+            "name": "flip_bit",
+            "params": " int bit "
+        },
+        {
+            "return_type": "int",
+            "name": "main",
+            "params": " int argc, char** argv "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ2_bz__AssertH__fail",
+            "params": " int errcode "
+        },
+        {
+            "return_type": "int",
+            "name": "bz_config_ok",
+            "params": " void "
+        },
+        {
+            "return_type": "void",
+            "name": "default_bzfree",
+            "params": " void* opaque, void* addr "
+        },
+        {
+            "return_type": "void",
+            "name": "prepare_new_block",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "init_RL",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "Bool",
+            "name": "isempty_RL",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "add_pair_to_block",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "flush_RL",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "ADD_CHAR_TO_BLOCK",
+            "params": "EState* zs, UInt32 zchh0"
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "zchh != zs->state_in_ch || zs->state_in_len == 255"
+        },
+        {
+            "return_type": "Bool",
+            "name": "copy_input_until_stop",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "Bool",
+            "name": "copy_output_until_stop",
+            "params": " EState* s "
+        },
+        {
+            "return_type": "Bool",
+            "name": "handle_compress",
+            "params": " bz_stream* strm "
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "s->nblock >= s->nblockMAX"
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "s->strm->avail_in == 0"
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "action == BZ_FLUSH"
+        },
+        {
+            "return_type": "else",
+            "name": "if",
+            "params": "action == BZ_FINISH"
+        },
+        {
+            "return_type": "Bool",
+            "name": "unRLE_obuf_to_output_FAST",
+            "params": " DState* s "
+        },
+        {
+            "return_type": "Int32",
+            "name": "BZ2_indexIntoF",
+            "params": " Int32 indx, Int32 *cftab "
+        },
+        {
+            "return_type": "Bool",
+            "name": "unRLE_obuf_to_output_SMALL",
+            "params": " DState* s "
+        },
+        {
+            "return_type": "void",
+            "name": "BZ_SETERR",
+            "params": "int* bzerror, bzFile* bzf, int eee"
+        },
+        {
+            "return_type": "Bool",
+            "name": "myfeof",
+            "params": " FILE* f "
+        }
+    ],
+    "global_variables": [
+        {
+            "type": "int",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "UInt32",
+            "name": "ec_tmp"
+        },
+        {
+            "type": "Int32",
+            "name": "nNotDone"
+        },
+        {
+            "type": "Int32",
+            "name": "nBhtab"
+        },
+        {
+            "type": "Int32",
+            "name": "k"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "UInt32",
+            "name": "v"
+        },
+        {
+            "type": "UChar",
+            "name": "t"
+        },
+        {
+            "type": "return",
+            "name": "b"
+        },
+        {
+            "type": "Int32",
+            "name": "tz"
+        },
+        {
+            "type": "UChar",
+            "name": "c1"
+        },
+        {
+            "type": "Int32",
+            "name": "numQSorted"
+        },
+        {
+            "type": "UInt16",
+            "name": "s"
+        },
+        {
+            "type": "Int32",
+            "name": "vv"
+        },
+        {
+            "type": "goto",
+            "name": "zero"
+        },
+        {
+            "type": "character",
+            "name": "251"
+        },
+        {
+            "type": "Int32",
+            "name": "budget"
+        },
+        {
+            "type": "Int32",
+            "name": "budgetInit"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "too",
+            "name": "repetitive"
+        },
+        {
+            "type": "Bool",
+            "name": "tooLong"
+        },
+        {
+            "type": "HINSTANCE",
+            "name": "BZ2DLLhLib"
+        },
+        {
+            "type": "HINSTANCE",
+            "name": "hLib"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "int",
+            "name": "len"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "Int32",
+            "name": "zPend"
+        },
+        {
+            "type": "Int32",
+            "name": "wr"
+        },
+        {
+            "type": "Int32",
+            "name": "EOB"
+        },
+        {
+            "type": "UChar",
+            "name": "ll_i"
+        },
+        {
+            "type": "UChar",
+            "name": "rtmp"
+        },
+        {
+            "type": "UChar",
+            "name": "rll_i"
+        },
+        {
+            "type": "UChar",
+            "name": "rtmp2"
+        },
+        {
+            "type": "UInt16",
+            "name": "icv"
+        },
+        {
+            "type": "UInt16",
+            "name": "mtfv_i"
+        },
+        {
+            "type": "char",
+            "name": "Char"
+        },
+        {
+            "type": "char",
+            "name": "Bool"
+        },
+        {
+            "type": "char",
+            "name": "UChar"
+        },
+        {
+            "type": "int",
+            "name": "Int32"
+        },
+        {
+            "type": "int",
+            "name": "UInt32"
+        },
+        {
+            "type": "short",
+            "name": "Int16"
+        },
+        {
+            "type": "short",
+            "name": "UInt16"
+        },
+        {
+            "type": "int",
+            "name": "IntNative"
+        },
+        {
+            "type": "Int32",
+            "name": "verbosity"
+        },
+        {
+            "type": "Int32",
+            "name": "exitValue"
+        },
+        {
+            "type": "source",
+            "name": "modes"
+        },
+        {
+            "type": "Int32",
+            "name": "opMode"
+        },
+        {
+            "type": "Int32",
+            "name": "srcMode"
+        },
+        {
+            "type": "Int32",
+            "name": "longestFileName"
+        },
+        {
+            "type": "Int32",
+            "name": "workFactor"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "sum"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "rem"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "Int32",
+            "name": "nIbuf"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "Int32",
+            "name": "nUnused"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "trycat"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "closeok"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "Int32",
+            "name": "nUnused"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler_io"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "IntNative",
+            "name": "retVal"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "ends",
+            "name": "unexpectedly"
+        },
+        {
+            "type": "common",
+            "name": "problem"
+        },
+        {
+            "type": "common",
+            "name": "problem"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "exists"
+        },
+        {
+            "type": "IntNative",
+            "name": "fh"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "fp"
+        },
+        {
+            "type": "IntNative",
+            "name": "i"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "IntNative",
+            "name": "i"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "fileMetaInfo"
+        },
+        {
+            "type": "IntNative",
+            "name": "retVal"
+        },
+        {
+            "type": "IntNative",
+            "name": "retVal"
+        },
+        {
+            "type": "utimbuf",
+            "name": "uTimBuf"
+        },
+        {
+            "type": "IntNative",
+            "name": "retVal"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "Bool",
+            "name": "magicNumberOK"
+        },
+        {
+            "type": "Bool",
+            "name": "cantGuess"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "goto",
+            "name": "zzz"
+        },
+        {
+            "type": "Bool",
+            "name": "allOK"
+        },
+        {
+            "type": "MY_STAT",
+            "name": "statBuf"
+        },
+        {
+            "type": "free",
+            "name": "software"
+        },
+        {
+            "type": "ANY",
+            "name": "WARRANTY"
+        },
+        {
+            "type": "return",
+            "name": "p"
+        },
+        {
+            "type": "return",
+            "name": "c"
+        },
+        {
+            "type": "return",
+            "name": "tmp"
+        },
+        {
+            "type": "return",
+            "name": "root"
+        },
+        {
+            "type": "Bool",
+            "name": "decode"
+        },
+        {
+            "type": "source",
+            "name": "modes"
+        },
+        {
+            "type": "return",
+            "name": "exitValue"
+        },
+        {
+            "type": "int",
+            "name": "avail_in"
+        },
+        {
+            "type": "int",
+            "name": "total_in_lo32"
+        },
+        {
+            "type": "int",
+            "name": "total_in_hi32"
+        },
+        {
+            "type": "int",
+            "name": "avail_out"
+        },
+        {
+            "type": "int",
+            "name": "total_out_lo32"
+        },
+        {
+            "type": "int",
+            "name": "total_out_hi32"
+        },
+        {
+            "type": "void",
+            "name": "BZFILE"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "goto",
+            "name": "save_state_and_return"
+        },
+        {
+            "type": "UInt32",
+            "name": "v"
+        },
+        {
+            "type": "UChar",
+            "name": "uc"
+        },
+        {
+            "type": "Int32",
+            "name": "retVal"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "Int32",
+            "name": "j"
+        },
+        {
+            "type": "Int32",
+            "name": "t"
+        },
+        {
+            "type": "Int32",
+            "name": "alphaSize"
+        },
+        {
+            "type": "Int32",
+            "name": "nGroups"
+        },
+        {
+            "type": "Int32",
+            "name": "nSelectors"
+        },
+        {
+            "type": "Int32",
+            "name": "EOB"
+        },
+        {
+            "type": "Int32",
+            "name": "groupNo"
+        },
+        {
+            "type": "Int32",
+            "name": "groupPos"
+        },
+        {
+            "type": "Int32",
+            "name": "nextSym"
+        },
+        {
+            "type": "Int32",
+            "name": "nblockMAX"
+        },
+        {
+            "type": "Int32",
+            "name": "nblock"
+        },
+        {
+            "type": "Int32",
+            "name": "es"
+        },
+        {
+            "type": "Int32",
+            "name": "N"
+        },
+        {
+            "type": "Int32",
+            "name": "curr"
+        },
+        {
+            "type": "Int32",
+            "name": "zt"
+        },
+        {
+            "type": "Int32",
+            "name": "zn"
+        },
+        {
+            "type": "Int32",
+            "name": "zvec"
+        },
+        {
+            "type": "Int32",
+            "name": "zj"
+        },
+        {
+            "type": "Int32",
+            "name": "gSel"
+        },
+        {
+            "type": "Int32",
+            "name": "gMinlen"
+        },
+        {
+            "type": "goto",
+            "name": "endhdr_2"
+        },
+        {
+            "type": "UInt32",
+            "name": "nn"
+        },
+        {
+            "type": "return",
+            "name": "retVal"
+        },
+        {
+            "type": "resulting",
+            "name": "file"
+        },
+        {
+            "type": "Real",
+            "name": "Files"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "char",
+            "name": "Char"
+        },
+        {
+            "type": "char",
+            "name": "Bool"
+        },
+        {
+            "type": "char",
+            "name": "UChar"
+        },
+        {
+            "type": "int",
+            "name": "Int32"
+        },
+        {
+            "type": "int",
+            "name": "UInt32"
+        },
+        {
+            "type": "short",
+            "name": "Int16"
+        },
+        {
+            "type": "short",
+            "name": "UInt16"
+        },
+        {
+            "type": "Int32",
+            "name": "rNToGo"
+        },
+        {
+            "type": "Int32",
+            "name": "mode"
+        },
+        {
+            "type": "Int32",
+            "name": "state"
+        },
+        {
+            "type": "UInt32",
+            "name": "avail_in_expect"
+        },
+        {
+            "type": "Int32",
+            "name": "origPtr"
+        },
+        {
+            "type": "Int32",
+            "name": "workFactor"
+        },
+        {
+            "type": "UInt32",
+            "name": "state_in_ch"
+        },
+        {
+            "type": "Int32",
+            "name": "state_in_len"
+        },
+        {
+            "type": "Int32",
+            "name": "nblock"
+        },
+        {
+            "type": "Int32",
+            "name": "nblockMAX"
+        },
+        {
+            "type": "Int32",
+            "name": "numZ"
+        },
+        {
+            "type": "Int32",
+            "name": "state_out_pos"
+        },
+        {
+            "type": "Int32",
+            "name": "nInUse"
+        },
+        {
+            "type": "UInt32",
+            "name": "bsBuff"
+        },
+        {
+            "type": "Int32",
+            "name": "bsLive"
+        },
+        {
+            "type": "UInt32",
+            "name": "blockCRC"
+        },
+        {
+            "type": "UInt32",
+            "name": "combinedCRC"
+        },
+        {
+            "type": "Int32",
+            "name": "verbosity"
+        },
+        {
+            "type": "Int32",
+            "name": "blockNo"
+        },
+        {
+            "type": "Int32",
+            "name": "blockSize100k"
+        },
+        {
+            "type": "Int32",
+            "name": "nMTF"
+        },
+        {
+            "type": "3",
+            "name": "needed"
+        },
+        {
+            "type": "Int32",
+            "name": "state"
+        },
+        {
+            "type": "UChar",
+            "name": "state_out_ch"
+        },
+        {
+            "type": "Int32",
+            "name": "state_out_len"
+        },
+        {
+            "type": "Bool",
+            "name": "blockRandomised"
+        },
+        {
+            "type": "UInt32",
+            "name": "bsBuff"
+        },
+        {
+            "type": "Int32",
+            "name": "bsLive"
+        },
+        {
+            "type": "Int32",
+            "name": "blockSize100k"
+        },
+        {
+            "type": "Bool",
+            "name": "smallDecompress"
+        },
+        {
+            "type": "Int32",
+            "name": "currBlockNo"
+        },
+        {
+            "type": "Int32",
+            "name": "verbosity"
+        },
+        {
+            "type": "Int32",
+            "name": "origPtr"
+        },
+        {
+            "type": "UInt32",
+            "name": "tPos"
+        },
+        {
+            "type": "Int32",
+            "name": "k0"
+        },
+        {
+            "type": "Int32",
+            "name": "nblock_used"
+        },
+        {
+            "type": "UInt32",
+            "name": "storedBlockCRC"
+        },
+        {
+            "type": "UInt32",
+            "name": "storedCombinedCRC"
+        },
+        {
+            "type": "UInt32",
+            "name": "calculatedBlockCRC"
+        },
+        {
+            "type": "UInt32",
+            "name": "calculatedCombinedCRC"
+        },
+        {
+            "type": "Int32",
+            "name": "nInUse"
+        },
+        {
+            "type": "Int32",
+            "name": "save_i"
+        },
+        {
+            "type": "Int32",
+            "name": "save_j"
+        },
+        {
+            "type": "Int32",
+            "name": "save_t"
+        },
+        {
+            "type": "Int32",
+            "name": "save_alphaSize"
+        },
+        {
+            "type": "Int32",
+            "name": "save_nGroups"
+        },
+        {
+            "type": "Int32",
+            "name": "save_nSelectors"
+        },
+        {
+            "type": "Int32",
+            "name": "save_EOB"
+        },
+        {
+            "type": "Int32",
+            "name": "save_groupNo"
+        },
+        {
+            "type": "Int32",
+            "name": "save_groupPos"
+        },
+        {
+            "type": "Int32",
+            "name": "save_nextSym"
+        },
+        {
+            "type": "Int32",
+            "name": "save_nblockMAX"
+        },
+        {
+            "type": "Int32",
+            "name": "save_nblock"
+        },
+        {
+            "type": "Int32",
+            "name": "save_es"
+        },
+        {
+            "type": "Int32",
+            "name": "save_N"
+        },
+        {
+            "type": "Int32",
+            "name": "save_curr"
+        },
+        {
+            "type": "Int32",
+            "name": "save_zt"
+        },
+        {
+            "type": "Int32",
+            "name": "save_zn"
+        },
+        {
+            "type": "Int32",
+            "name": "save_zvec"
+        },
+        {
+            "type": "Int32",
+            "name": "save_zj"
+        },
+        {
+            "type": "Int32",
+            "name": "save_gSel"
+        },
+        {
+            "type": "Int32",
+            "name": "save_gMinlen"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "int",
+            "name": "MaybeUInt64"
+        },
+        {
+            "type": "__int64",
+            "name": "MaybeUInt64"
+        },
+        {
+            "type": "int",
+            "name": "MaybeUInt64"
+        },
+        {
+            "type": "int",
+            "name": "UInt32"
+        },
+        {
+            "type": "int",
+            "name": "Int32"
+        },
+        {
+            "type": "char",
+            "name": "UChar"
+        },
+        {
+            "type": "char",
+            "name": "Char"
+        },
+        {
+            "type": "char",
+            "name": "Bool"
+        },
+        {
+            "type": "Int32",
+            "name": "buffer"
+        },
+        {
+            "type": "Int32",
+            "name": "buffLive"
+        },
+        {
+            "type": "Char",
+            "name": "mode"
+        },
+        {
+            "type": "return",
+            "name": "bs"
+        },
+        {
+            "type": "return",
+            "name": "bs"
+        },
+        {
+            "type": "return",
+            "name": "2"
+        },
+        {
+            "type": "Int32",
+            "name": "retVal"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "MaybeUInt64",
+            "name": "bitsRead"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "char",
+            "name": "uchar"
+        },
+        {
+            "type": "int",
+            "name": "r"
+        },
+        {
+            "type": "int",
+            "name": "bit"
+        },
+        {
+            "type": "int",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "this",
+            "name": "bug"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "1"
+        },
+        {
+            "type": "return",
+            "name": "v"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "Int32",
+            "name": "n"
+        },
+        {
+            "type": "return",
+            "name": "BZ_CONFIG_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_MEM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_MEM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "Int32",
+            "name": "i"
+        },
+        {
+            "type": "return",
+            "name": "progress_in"
+        },
+        {
+            "type": "return",
+            "name": "progress_out"
+        },
+        {
+            "type": "Bool",
+            "name": "progress"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "goto",
+            "name": "preswitch"
+        },
+        {
+            "type": "goto",
+            "name": "preswitch"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_FLUSH_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_RUN_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_FINISH_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_STREAM_END"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_CONFIG_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_MEM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "UChar",
+            "name": "k1"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "int",
+            "name": "total_out_lo32_old"
+        },
+        {
+            "type": "goto",
+            "name": "return_notr"
+        },
+        {
+            "type": "goto",
+            "name": "return_notr"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "goto",
+            "name": "return_notr"
+        },
+        {
+            "type": "goto",
+            "name": "s_state_out_len_eq_one"
+        },
+        {
+            "type": "goto",
+            "name": "s_state_out_len_eq_one"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "nb"
+        },
+        {
+            "type": "UChar",
+            "name": "k1"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "Bool",
+            "name": "corrupt"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_SEQUENCE_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_DATA_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_DATA_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_DATA_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "r"
+        },
+        {
+            "type": "return",
+            "name": "r"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "Int32",
+            "name": "bufN"
+        },
+        {
+            "type": "Bool",
+            "name": "writing"
+        },
+        {
+            "type": "bz_stream",
+            "name": "strm"
+        },
+        {
+            "type": "Int32",
+            "name": "lastErr"
+        },
+        {
+            "type": "Bool",
+            "name": "initialisedOk"
+        },
+        {
+            "type": "return",
+            "name": "True"
+        },
+        {
+            "type": "return",
+            "name": "False"
+        },
+        {
+            "type": "Int32",
+            "name": "ret"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "bzf"
+        },
+        {
+            "type": "int",
+            "name": "ret"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "bzf"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "len"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "bz_stream",
+            "name": "strm"
+        },
+        {
+            "type": "int",
+            "name": "ret"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "ret"
+        },
+        {
+            "type": "goto",
+            "name": "output_overflow"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OUTBUFF_FULL"
+        },
+        {
+            "type": "return",
+            "name": "ret"
+        },
+        {
+            "type": "bz_stream",
+            "name": "strm"
+        },
+        {
+            "type": "int",
+            "name": "ret"
+        },
+        {
+            "type": "return",
+            "name": "BZ_PARAM_ERROR"
+        },
+        {
+            "type": "return",
+            "name": "ret"
+        },
+        {
+            "type": "goto",
+            "name": "output_overflow_or_eof"
+        },
+        {
+            "type": "goto",
+            "name": "errhandler"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OK"
+        },
+        {
+            "type": "return",
+            "name": "BZ_UNEXPECTED_EOF"
+        },
+        {
+            "type": "return",
+            "name": "BZ_OUTBUFF_FULL"
+        },
+        {
+            "type": "return",
+            "name": "ret"
+        },
+        {
+            "type": "return",
+            "name": "BZ_VERSION"
+        },
+        {
+            "type": "int",
+            "name": "bzerr"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "NULL"
+        },
+        {
+            "type": "return",
+            "name": "bzfp"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "return",
+            "name": "nread"
+        },
+        {
+            "type": "int",
+            "name": "bzerr"
+        },
+        {
+            "type": "return",
+            "name": "len"
+        },
+        {
+            "type": "return",
+            "name": "0"
+        },
+        {
+            "type": "int",
+            "name": "bzerr"
+        }
+    ]
+}

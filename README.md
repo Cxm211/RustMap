@@ -29,27 +29,16 @@
 - [Detailed README.md](#detailed-readmemd)
 - [1. Introducation](#1-introducation)
   - [1.1. version introduction](#11-version-introduction)
-- [2.  Scaffolding Boilerplate Generation (example of bzip2)](#2--scaffolding-boilerplate-generation-example-of-bzip2)
-  - [2.1. Step 0: Preparation for Scaffolding](#21-step-0-preparation-for-scaffolding)
-  - [2.2. Step 1: add save preprocessed file \*.i during `make`](#22-step-1-add-save-preprocessed-file-i-during-make)
-    - [2.2.1. Remove directives from \*.i](#221-remove-directives-from-i)
-    - [2.2.2.  Rename `bzip2recover.i` to `bzip2recover.i.bk`](#222--rename-bzip2recoveri-to-bzip2recoveribk)
-  - [2.3.  Dynamically applied Runtime Function Call Graph](#23--dynamically-applied-runtime-function-call-graph)
-  - [2.4. Generate Function Static Call Graph](#24-generate-function-static-call-graph)
-    - [2.4.1. Use Static cflow](#241-use-static-cflow)
-    - [2.4.2. Step 4: Generate RustMap Scaffolding](#242-step-4-generate-rustmap-scaffolding)
+  - [2.1.  Dynamically applied Runtime Function Call Graph](#21--dynamically-applied-runtime-function-call-graph)
+  - [2.2. Generate Function Static Call Graph](#22-generate-function-static-call-graph)
+    - [2.2.1. Use Static cflow](#221-use-static-cflow)
+    - [2.2.2. Generate RustMap Scaffolding](#222-generate-rustmap-scaffolding)
 - [3. Prompts](#3-prompts)
   - [3.1. Prompt for directly applying LLM to translate](#31-prompt-for-directly-applying-llm-to-translate)
   - [3.2. Prompt to Resolve Compilation Error](#32-prompt-to-resolve-compilation-error)
   - [3.3. Prompt to resolve Inconsistency error.](#33-prompt-to-resolve-inconsistency-error)
-- [4. Functional Test](#4-functional-test)
-  - [4.1. Functional Test of bzip2](#41-functional-test-of-bzip2)
-    - [4.1.1. bzip2 executable binary generation](#411-bzip2-executable-binary-generation)
-    - [4.1.2. test cases generations bzip2](#412-test-cases-generations-bzip2)
-    - [4.1.3. Functional Test compress small-files](#413-functional-test-compress-small-files)
-    - [4.1.4. Verification of RustMap bzip2 compress by uncompressing `.bz2`](#414-verification-of-rustmap-bzip2-compress-by-uncompressing-bz2)
-  - [4.2. Functional Test of Rosetta Code](#42-functional-test-of-rosetta-code)
-    - [4.2.1. Batch Execution of Rosetta Code](#421-batch-execution-of-rosetta-code)
+  - [4.1. Functional Test of Rosetta Code](#41-functional-test-of-rosetta-code)
+    - [4.1.1. Batch Execution of Rosetta Code](#411-batch-execution-of-rosetta-code)
     - [4.2.2. Verification of Rosetta running result compared to original C](#422-verification-of-rosetta-running-result-compared-to-original-c)
 - [5. Count of Macros Definition and Usage](#5-count-of-macros-definition-and-usage)
 - [6. Coverage Test](#6-coverage-test)
@@ -59,22 +48,6 @@
     - [6.1.3. Measuring Coverage for Custom Test Suite: bzip2 Rust Decompress Function](#613-measuring-coverage-for-custom-test-suite-bzip2-rust-decompress-function)
     - [6.1.4. Combined Coverage Results for bzip2](#614-combined-coverage-results-for-bzip2)
   - [6.2. Table 1.2 Rosetta Coverage Test Generation](#62-table-12-rosetta-coverage-test-generation)
-- [7. Cogntive Complexity Test](#7-cogntive-complexity-test)
-  - [7.1. bzip2 Complexity Test](#71-bzip2-complexity-test)
-  - [7.2. Rosetta Code Complexity Test](#72-rosetta-code-complexity-test)
-    - [7.2.1. Drawing Violin Graph for both bzip2 and Rosetta code](#721-drawing-violin-graph-for-both-bzip2-and-rosetta-code)
-      - [7.2.1.1. How to Execute:](#7211-how-to-execute)
-- [8. Unsafety Analysis for bzip2-rustmap-gpt and Rosetta-rustmap-gpt](#8-unsafety-analysis-for-bzip2-rustmap-gpt-and-rosetta-rustmap-gpt)
-    - [8.0.1. Bzip2 unsafety categorization](#801-bzip2-unsafety-categorization)
-- [9. Code Rewrite Pattern Samples](#9-code-rewrite-pattern-samples)
-  - [9.1. Global Variable Lazy Static](#91-global-variable-lazy-static)
-  - [9.2. Pointer Aliasing without Endiness Concern](#92-pointer-aliasing-without-endiness-concern)
-  - [9.3. Pointer Aliasing with Endiness Concern](#93-pointer-aliasing-with-endiness-concern)
-    - [9.3.1. C Code Implementation:](#931-c-code-implementation)
-    - [9.3.2. Rust Code Implementation:](#932-rust-code-implementation)
-    - [9.3.3. Summary of Differences:](#933-summary-of-differences)
-    - [9.3.4. Summary of Differences:](#934-summary-of-differences)
-  - [9.4. Illustrate Necessity to rewrite Complex Macro and how to rewrite C `switch-case` to Rust `while match`](#94-illustrate-necessity-to-rewrite-complex-macro-and-how-to-rewrite-c-switch-case-to-rust-while-match)
 
 
 # 1. Introducation
@@ -89,42 +62,8 @@ We will demonstrate how to perform the Coverage Test, Complexity Test, Functiona
 - [rosetta code](https://rosettacode.org/)
 
 
-
-#  2.  Scaffolding Boilerplate Generation (example of bzip2)
-
-> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
->
-
-  
-## 2.1. Step 0: Preparation for Scaffolding
-copy c-code/bzip2 to scaffolding_test directory
-```bash
-cp -r c-code/bzip2 scaffolding_test/
-```
-
-## 2.2. Step 1: add save preprocessed file *.i during `make`   
-
-```bash
-cd scaffolding_test/bzip2
-# replace Makefile with the one that can save temp files
-cp -r Makefile-save-temps Makefile
-```
-
-### 2.2.1. Remove directives from *.i
- 
-```bash
-for file in *.i; do awk '!/^#[ \t]*[0-9]+[ \t]+"/' "$file" > "${file}.tmp" && mv "${file}.tmp" "$file"; done
-
-```
-
-### 2.2.2.  Rename `bzip2recover.i` to `bzip2recover.i.bk`
-
-Since we only focus on bzip2 executable binary, we need to exclude the bzip2recover.i
-( Caveat: if the binary has more than one executable, we should exclude the unnecessary one )
-
-
    
-## 2.3.  Dynamically applied Runtime Function Call Graph
+## 2.1.  Dynamically applied Runtime Function Call Graph
 As we write in paper, we try to run original C program and observe the calling relationship.
 
 
@@ -136,14 +75,14 @@ We have added `-pg` flag to Makefile in `./bzip2-1.0.8/Makefile` this will help 
 CFLAGS=-Wall -Winline -O2 -g $(BIGFILES) -pg
 LDFLAGS+= -pg
 ```
-make sure the flag `-pg` in CFLAGS and LDFLAGS in `c-code/bzip2-1.0.8/Makefile`
+make sure the flag `-pg` in CFLAGS and LDFLAGS in `c-code/bzip2-1.0.8-macro/Makefile`
 
 2. Run the program to generate the `gmon.out` file
 ```bash
-cd c-code/bzip2-1.0.8
+cd c-code/bzip2-1.0.8-macro
 make clean
 make
-./bzip2 -1 < sample1.ref > sample1.rb2
+./bzip2 -1 < testcases/sample1.ref > testcases/sample1.rb2
 ```
 
 3. Generate the analysis report gprof.out using Gprof
@@ -152,31 +91,30 @@ gprof bzip2 gmon.out > gprof.out
 ```
 4. Generate the Dynamic call graph `call_graph.png` using Gprof2Dot and dot:
 ```bash
-sudo apt-get install gprof graphviz -y
-python3 -m venv myenv
-source myenv/bin/activate
-python3 -m pip install gprof2dot 
 
 gprof2dot -f prof gprof.out | dot -Tpng -o dynamic_call_graph.png
 
 ```
 
-## 2.4. Generate Function Static Call Graph 
+## 2.2. Generate Function Static Call Graph 
 
 
-### 2.4.1. Use Static cflow
+### 2.2.1. Use Static cflow
 
 When using the cflow tool for a C project, it's generally recommended to have only one main function in the project. cflow is designed to analyze function call relationships in C programs and generates a call graph. If there are multiple main functions, cflow might face difficulties, as the main function typically serves as the entry point of a program. For projects with multiple main functions, like those containing independent sub-projects, you might need to run cflow separately for each part or adjust the project structure for effective analysis. In summary, having a single main function is the best practice for using cflow, unless you have specific needs and strategies to handle multiple instances. 
  
 ```bash
-python3 cflow_generation.py /root/rustmap/bzip2-real-test
+python3 cflow_generation.py /root/rustmap/c-code/bzip2-1.0.8-i
 ```
+You can find 'c-code/bzip2-1.0.8-macro/scg.dot' and 'c-code/bzip2-1.0.8-macro/scg.svg' .
 
 
-### 2.4.2. Step 4: Generate RustMap Scaffolding
+### 2.2.2. Generate RustMap Scaffolding
 ```bash
-python3 extract.py /root/rustmap/bzip2-real-test
+python3 extract.py /root/rustmap/c-code/bzip2-1.0.8-i
 ```
+The Scaffolding is generated and saved to [scaffolding.json](c-code/bzip2-1.0.8-macro/scg.dot)
+
 
 
 # 3. Prompts
@@ -227,8 +165,8 @@ See the examples of compilation errors in the directory: `prompt-templates/compi
       */
 }
 ```
-Please check the detailed Example in `./prompt-templates/inconsistency-solution`
-
+<!-- Please check the detailed Example in `./prompt-templates/inconsistency-solution` -->
+<!-- 
 # 4. Functional Test
 ## 4.1. Functional Test of bzip2
 > The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
@@ -292,10 +230,10 @@ diff random_5000_chars.txt rec00001random_5000_chars.txt > diff_random_5000_char
 
 # If the resultant diff is zero we did
 ```
+ -->
 
-
-## 4.2. Functional Test of Rosetta Code
-### 4.2.1. Batch Execution of Rosetta Code
+## 4.1. Functional Test of Rosetta Code
+### 4.1.1. Batch Execution of Rosetta Code
 Since there are attached testcases in original Roseta Code, we will directly execute the translated Roseta Code and Compare the result with original C Roseta Code
 ```bash
 bash ./c-code/Rosetta-125/Rosetta-125.sh > original_roseta_result.log
@@ -371,7 +309,7 @@ bash /root/rustmap/c-code/Rosetta-125/gcc-Rosetta-code.sh
 ```
 View the result in `/root/rustmap/c-code/Rosetta-125/coverage_report/index.html` for Table 1 Rosetta Code
 ![](paper_pic/Table-Coverage-Rosetta.jpg)
-
+<!-- 
 # 7. Cogntive Complexity Test
 
 > The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
@@ -623,4 +561,4 @@ In this folder, you can see that the `.c` switch case has a fall-through state. 
 You can clearly see the code explosion in `decompress.i` and `c2rust-decompress.rs`, so finding the correct way to rewrite it is extremely important.
 
 See the code under `/root/rustmap/code_patterns/complex_switch_fall_through_complex_macros` to illustrate 
-
+ -->

@@ -1,0 +1,514 @@
+digraph G {
+rankdir="LR";
+    main [label="IntNative main (IntNative argc, Char *argv[])
+bzip2.c:1787"]
+    main -> fprintf
+    main -> fopen
+    main -> fread
+    main -> BZ2_bzBuffToBuffCompress
+    main -> flip_bit
+    main -> BZ2_bzBuffToBuffDecompress
+    main -> usage
+    main -> exit
+    main -> fopen
+    main -> printf
+    main -> perror
+    main -> BZ2_bzdopen
+    main -> fileno
+    main -> BZ2_bzopen
+    main -> BZ2_bzread
+    main -> fwrite
+    main -> BZ2_bzclose
+    main -> fclose
+    main -> fread
+    main -> BZ2_bzwrite
+    main -> putchar
+    main -> srandom
+    main -> setbuffer
+    main -> random
+    main -> printf
+    main -> fflush
+    main -> strncpy
+    main -> fprintf
+    main -> exit
+    main -> strlen
+    main -> strcpy
+    main -> fopen
+    main -> bsOpenReadStream
+    main -> bsGetBit
+    main -> tooManyBlocks
+    main -> bsClose
+    main -> bsPutBit
+    main -> bsPutUChar
+    main -> bsPutUInt32
+    main -> strrchr
+    main -> sprintf
+    main -> strcat
+    main -> endsInBz2
+    main -> bsOpenWriteStream
+    main -> configError
+    main -> signal
+    main -> mySIGSEGVorSIGBUScatcher
+    main -> copyFileName
+    main -> addFlagsFromEnvVar
+    main -> snocString
+    main -> ISFLAG
+    main -> strlen
+    main -> strstr
+    main -> license
+    main -> usage
+    main -> exit
+    main -> fprintf
+    main -> redundant
+    main -> strncmp
+    main -> mySignalCatcher
+    main -> compress
+    main -> uncompress
+    main -> setExit
+    main -> testf
+    main -> free
+    fprintf [label="fprintf()"]
+    fopen [label="fopen()"]
+    fread [label="fread()"]
+    BZ2_bzBuffToBuffCompress [label="BZ2_bzBuffToBuffCompress()"]
+    flip_bit [label="void flip_bit (int bit)
+unzcrash.c:64"]
+    BZ2_bzBuffToBuffDecompress [label="BZ2_bzBuffToBuffDecompress()"]
+    usage [label="void usage (void)
+dlltest.c:64"]
+    usage -> puts
+    puts [label="puts()"]
+    exit [label="exit()"]
+    fopen [label="fopen()"]
+    printf [label="printf()"]
+    perror [label="perror()"]
+    BZ2_bzdopen [label="BZ2_bzdopen()"]
+    fileno [label="fileno()"]
+    BZ2_bzopen [label="BZ2_bzopen()"]
+    BZ2_bzread [label="BZ2_bzread()"]
+    fwrite [label="fwrite()"]
+    BZ2_bzclose [label="BZ2_bzclose()"]
+    fclose [label="fclose()"]
+    fread [label="fread()"]
+    BZ2_bzwrite [label="BZ2_bzwrite()"]
+    putchar [label="putchar()"]
+    srandom [label="srandom()"]
+    setbuffer [label="void setbuffer (FILE *__restrict __stream, char *__restrict __buf, size_t __size)
+/usr/include/stdio.h:338"]
+    random [label="random()"]
+    printf [label="printf()"]
+    fflush [label="fflush()"]
+    strncpy [label="char *strncpy (char *__restrict __dest, const char *__restrict __src, size_t __n)
+/usr/include/string.h:144"]
+    fprintf [label="fprintf()"]
+    exit [label="exit()"]
+    strlen [label="strlen()"]
+    strcpy [label="char *strcpy (char *__restrict __dest, const char *__restrict __src)
+/usr/include/string.h:141"]
+    fopen [label="fopen()"]
+    bsOpenReadStream [label="BitStream *bsOpenReadStream (FILE *stream)
+bzip2recover.c:153"]
+    bsOpenReadStream -> malloc
+    bsOpenReadStream -> mallocFail
+    malloc [label="malloc()"]
+    mallocFail [label="void mallocFail (Int32 n)
+bzip2recover.c:110"]
+    mallocFail -> fprintf
+    mallocFail -> exit
+    bsGetBit [label="Int32 bsGetBit (BitStream *bs)
+bzip2recover.c:198"]
+    bsGetBit -> getc
+    bsGetBit -> readError
+    getc [label="getc()"]
+    readError [label="void readError (void)
+bzip2recover.c:84"]
+    readError -> fprintf
+    readError -> perror
+    readError -> exit
+    perror [label="perror()"]
+    tooManyBlocks [label="void tooManyBlocks (Int32 max_handled_blocks)
+bzip2recover.c:122"]
+    tooManyBlocks -> fprintf
+    tooManyBlocks -> exit
+    bsClose [label="void bsClose (BitStream *bs)
+bzip2recover.c:217"]
+    bsClose -> putc
+    bsClose -> writeError
+    bsClose -> fflush
+    bsClose -> fclose
+    bsClose -> readError
+    bsClose -> free
+    putc [label="putc()"]
+    writeError [label="void writeError (void)
+bzip2recover.c:97"]
+    writeError -> fprintf
+    writeError -> perror
+    writeError -> exit
+    fflush [label="fflush()"]
+    fclose [label="fclose()"]
+    free [label="free()"]
+    bsPutBit [label="void bsPutBit (BitStream *bs, Int32 bit)
+bzip2recover.c:179"]
+    bsPutBit -> putc
+    bsPutBit -> writeError
+    bsPutUChar [label="void bsPutUChar (BitStream *bs, UChar c)
+bzip2recover.c:241"]
+    bsPutUChar -> bsPutBit
+    bsPutUInt32 [label="void bsPutUInt32 (BitStream *bs, UInt32 c)
+bzip2recover.c:250"]
+    bsPutUInt32 -> bsPutBit
+    strrchr [label="char *strrchr (const char *__s, int __c)
+/usr/include/string.h:273"]
+    sprintf [label="int sprintf (char *__restrict __s, const char *__restrict __format, ...)
+/usr/include/stdio.h:358"]
+    strcat [label="char *strcat (char *__restrict __dest, const char *__restrict __src)
+/usr/include/string.h:149"]
+    endsInBz2 [label="Bool endsInBz2 (Char *name)
+bzip2recover.c:260"]
+    endsInBz2 -> strlen
+    bsOpenWriteStream [label="BitStream *bsOpenWriteStream (FILE *stream)
+bzip2recover.c:166"]
+    bsOpenWriteStream -> malloc
+    bsOpenWriteStream -> mallocFail
+    configError [label="void configError (void)
+bzip2.c:893"]
+    configError -> fprintf
+    configError -> setExit
+    configError -> exit
+    fprintf [label="fprintf()"]
+    setExit [label="void setExit (Int32 v)
+bzip2.c:660"]
+    exit [label="exit()"]
+    signal [label="__sighandler_t signal (int __sig, __sighandler_t __handler)
+/usr/include/signal.h:88"]
+    mySIGSEGVorSIGBUScatcher [label="void mySIGSEGVorSIGBUScatcher (IntNative n)
+bzip2.c:825"]
+    mySIGSEGVorSIGBUScatcher -> fprintf
+    mySIGSEGVorSIGBUScatcher -> showFileNames
+    mySIGSEGVorSIGBUScatcher -> cleanUpAndFail
+    mySIGSEGVorSIGBUScatcher -> cadvise
+    showFileNames [label="void showFileNames (void)
+bzip2.c:683"]
+    showFileNames -> fprintf
+    cleanUpAndFail [label="void cleanUpAndFail (Int32 ec)
+bzip2.c:696"]
+    cleanUpAndFail -> stat
+    cleanUpAndFail -> fprintf
+    cleanUpAndFail -> fclose
+    cleanUpAndFail -> remove
+    cleanUpAndFail -> setExit
+    cleanUpAndFail -> exit
+    stat [label="int stat (const char *__restrict __file, struct stat *__restrict __buf)
+/usr/include/x86_64-linux-gnu/sys/stat.h:205"]
+    fclose [label="fclose()"]
+    remove [label="remove()"]
+    cadvise [label="void cadvise (void)
+bzip2.c:668"]
+    cadvise -> fprintf
+    copyFileName [label="void copyFileName (Char *to, Char *from)
+bzip2.c:928"]
+    copyFileName -> strlen
+    copyFileName -> fprintf
+    copyFileName -> setExit
+    copyFileName -> exit
+    copyFileName -> strncpy
+    strlen [label="strlen()"]
+    strncpy [label="char *strncpy (char *__restrict __dest, const char *__restrict __src, size_t __n)
+/usr/include/string.h:144"]
+    addFlagsFromEnvVar [label="void addFlagsFromEnvVar (Cell **argList, Char *varName)
+bzip2.c:1756"]
+    addFlagsFromEnvVar -> getenv
+    addFlagsFromEnvVar -> snocString
+    getenv [label="getenv()"]
+    snocString [label="Cell *snocString (Cell *root, Char *name)
+bzip2.c:1738"]
+    snocString -> mkCell
+    snocString -> myMalloc
+    snocString -> strlen
+    snocString -> strcpy
+    snocString -> snocString
+    mkCell [label="Cell *mkCell (void)
+bzip2.c:1725"]
+    mkCell -> myMalloc
+    myMalloc [label="void *myMalloc (Int32 n)
+bzip2.c:1713"]
+    myMalloc -> malloc
+    myMalloc -> outOfMemory
+    malloc [label="malloc()"]
+    outOfMemory [label="void outOfMemory (void)
+bzip2.c:881"]
+    outOfMemory -> fprintf
+    outOfMemory -> showFileNames
+    outOfMemory -> cleanUpAndFail
+    strcpy [label="char *strcpy (char *__restrict __dest, const char *__restrict __src)
+/usr/include/string.h:141"]
+    ISFLAG [label="inline Bool ISFLAG (Cell *aa, const Char *s)
+bzip2.c:1783"]
+    ISFLAG -> strcmp
+    strcmp [label="int strcmp (const char *__s1, const char *__s2)
+/usr/include/string.h:156"]
+    strstr [label="char *strstr (const char *__haystack, const char *__needle)
+/usr/include/string.h:350"]
+    license [label="void license (void)
+bzip2.c:1610"]
+    license -> fprintf
+    license -> BZ2_bzlibVersion
+    BZ2_bzlibVersion [label="BZ2_bzlibVersion()"]
+    usage [label="void usage (Char *fullProgName)
+bzip2.c:1635"]
+    usage -> fprintf
+    usage -> BZ2_bzlibVersion
+    redundant [label="void redundant (Char *flag)
+bzip2.c:1679"]
+    redundant -> fprintf
+    strncmp [label="int strncmp (const char *__s1, const char *__s2, size_t __n)
+/usr/include/string.h:159"]
+    mySignalCatcher [label="void mySignalCatcher (IntNative n)
+bzip2.c:814"]
+    mySignalCatcher -> fprintf
+    mySignalCatcher -> cleanUpAndFail
+    compress [label="void compress (Char *name)
+bzip2.c:1142"]
+    compress -> panic
+    compress -> copyFileName
+    compress -> strcat
+    compress -> containsDubiousChars
+    compress -> fprintf
+    compress -> setExit
+    compress -> fileExists
+    compress -> strerror
+    compress -> hasSuffix
+    compress -> stat
+    compress -> notAStandardFile
+    compress -> remove
+    compress -> countHardLinks
+    compress -> saveInputFileMetaInfo
+    compress -> isatty
+    compress -> fileno
+    compress -> fopen
+    compress -> fclose
+    compress -> fopen_output_safely
+    compress -> pad
+    compress -> fflush
+    compress -> compressStream
+    compress -> applySavedTimeInfoToOutputFile
+    compress -> ERROR_IF_NOT_ZERO
+    panic [label="void panic (const Char *s)
+bzip2.c:755"]
+    panic -> fprintf
+    panic -> showFileNames
+    panic -> cleanUpAndFail
+    strcat [label="char *strcat (char *__restrict __dest, const char *__restrict __src)
+/usr/include/string.h:149"]
+    containsDubiousChars [label="Bool containsDubiousChars (Char *name)
+bzip2.c:1092"]
+    fileExists [label="Bool fileExists (Char *name)
+bzip2.c:949"]
+    fileExists -> fopen
+    fileExists -> fclose
+    fopen [label="fopen()"]
+    strerror [label="strerror()"]
+    hasSuffix [label="Bool hasSuffix (Char *s, const Char *suffix)
+bzip2.c:1119"]
+    hasSuffix -> strlen
+    hasSuffix -> strcmp
+    notAStandardFile [label="Bool notAStandardFile (Char *name)
+bzip2.c:990"]
+    notAStandardFile -> lstat
+    lstat [label="int lstat (const char *__restrict __file, struct stat *__restrict __buf)
+/usr/include/x86_64-linux-gnu/sys/stat.h:313"]
+    countHardLinks [label="Int32 countHardLinks (Char *name)
+bzip2.c:1007"]
+    countHardLinks -> lstat
+    saveInputFileMetaInfo [label="void saveInputFileMetaInfo (Char *srcName)
+bzip2.c:1047"]
+    saveInputFileMetaInfo -> stat
+    saveInputFileMetaInfo -> ERROR_IF_NOT_ZERO
+    ERROR_IF_NOT_ZERO [label="inline void ERROR_IF_NOT_ZERO (int i)
+bzip2.c:228"]
+    ERROR_IF_NOT_ZERO -> ioError
+    ioError [label="void ioError (void)
+bzip2.c:800"]
+    ioError -> fprintf
+    ioError -> perror
+    ioError -> showFileNames
+    ioError -> cleanUpAndFail
+    perror [label="perror()"]
+    isatty [label="isatty()"]
+    fileno [label="fileno()"]
+    fopen_output_safely [label="FILE *fopen_output_safely (Char *name, const char *mode)
+bzip2.c:969"]
+    fopen_output_safely -> open
+    fopen_output_safely -> fdopen
+    fopen_output_safely -> close
+    open [label="int open (const char *__file, int __oflag, ...)
+/usr/include/fcntl.h:181"]
+    fdopen [label="fdopen()"]
+    close [label="close()"]
+    pad [label="void pad (Char *s)
+bzip2.c:917"]
+    pad -> strlen
+    pad -> fprintf
+    fflush [label="fflush()"]
+    compressStream [label="void compressStream (FILE *stream, FILE *zStream)
+bzip2.c:338"]
+    compressStream -> ferror
+    compressStream -> BZ2_bzWriteOpen
+    compressStream -> fprintf
+    compressStream -> myfeof
+    compressStream -> fread
+    compressStream -> BZ2_bzWrite
+    compressStream -> BZ2_bzWriteClose64
+    compressStream -> fflush
+    compressStream -> fileno
+    compressStream -> applySavedFileAttrToOutputFile
+    compressStream -> fclose
+    compressStream -> uInt64_from_UInt32s
+    compressStream -> uInt64_to_double
+    compressStream -> uInt64_toAscii
+    compressStream -> configError
+    compressStream -> outOfMemory
+    compressStream -> ioError
+    compressStream -> panic
+    ferror [label="ferror()"]
+    BZ2_bzWriteOpen [label="BZ2_bzWriteOpen()"]
+    myfeof [label="Bool myfeof (FILE *f)
+bzip2.c:327"]
+    myfeof -> fgetc
+    myfeof -> ungetc
+    fgetc [label="fgetc()"]
+    ungetc [label="ungetc()"]
+    fread [label="fread()"]
+    BZ2_bzWrite [label="BZ2_bzWrite()"]
+    BZ2_bzWriteClose64 [label="BZ2_bzWriteClose64()"]
+    applySavedFileAttrToOutputFile [label="void applySavedFileAttrToOutputFile (IntNative fd)
+bzip2.c:1074"]
+    applySavedFileAttrToOutputFile -> fchmod
+    applySavedFileAttrToOutputFile -> ERROR_IF_NOT_ZERO
+    applySavedFileAttrToOutputFile -> fchown
+    fchmod [label="int fchmod (int __fd, __mode_t __mode)
+/usr/include/x86_64-linux-gnu/sys/stat.h:365"]
+    fchown [label="int fchown (int __fd, __uid_t __owner, __gid_t __group)
+/usr/include/unistd.h:498"]
+    uInt64_from_UInt32s [label="void uInt64_from_UInt32s (UInt64 *n, UInt32 lo32, UInt32 hi32)
+bzip2.c:247"]
+    uInt64_to_double [label="double uInt64_to_double (UInt64 *n)
+bzip2.c:261"]
+    uInt64_toAscii [label="void uInt64_toAscii (char *outbuf, UInt64 *n)
+bzip2.c:304"]
+    uInt64_toAscii -> uInt64_qrm10
+    uInt64_toAscii -> uInt64_isZero
+    uInt64_qrm10 [label="Int32 uInt64_qrm10 (UInt64 *n)
+bzip2.c:286"]
+    uInt64_isZero [label="Bool uInt64_isZero (UInt64 *n)
+bzip2.c:275"]
+    applySavedTimeInfoToOutputFile [label="void applySavedTimeInfoToOutputFile (Char *dstName)
+bzip2.c:1059"]
+    applySavedTimeInfoToOutputFile -> utime
+    applySavedTimeInfoToOutputFile -> ERROR_IF_NOT_ZERO
+    utime [label="int utime (const char *__file, const struct utimbuf *__file_times)
+/usr/include/utime.h:50"]
+    uncompress [label="void uncompress (Char *name)
+bzip2.c:1323"]
+    uncompress -> panic
+    uncompress -> copyFileName
+    uncompress -> mapSuffix
+    uncompress -> strcat
+    uncompress -> containsDubiousChars
+    uncompress -> fprintf
+    uncompress -> setExit
+    uncompress -> fileExists
+    uncompress -> strerror
+    uncompress -> stat
+    uncompress -> notAStandardFile
+    uncompress -> remove
+    uncompress -> countHardLinks
+    uncompress -> saveInputFileMetaInfo
+    uncompress -> isatty
+    uncompress -> fileno
+    uncompress -> fopen
+    uncompress -> fclose
+    uncompress -> fopen_output_safely
+    uncompress -> pad
+    uncompress -> fflush
+    uncompress -> uncompressStream
+    uncompress -> applySavedTimeInfoToOutputFile
+    uncompress -> ERROR_IF_NOT_ZERO
+    mapSuffix [label="Bool mapSuffix (Char *name, const Char *oldSuffix, const Char *newSuffix)
+bzip2.c:1129"]
+    mapSuffix -> hasSuffix
+    mapSuffix -> strlen
+    mapSuffix -> strcat
+    uncompressStream [label="Bool uncompressStream (FILE *zStream, FILE *stream)
+bzip2.c:442"]
+    uncompressStream -> ferror
+    uncompressStream -> BZ2_bzReadOpen
+    uncompressStream -> BZ2_bzRead
+    uncompressStream -> fwrite
+    uncompressStream -> BZ2_bzReadGetUnused
+    uncompressStream -> panic
+    uncompressStream -> BZ2_bzReadClose
+    uncompressStream -> myfeof
+    uncompressStream -> fileno
+    uncompressStream -> applySavedFileAttrToOutputFile
+    uncompressStream -> fclose
+    uncompressStream -> fflush
+    uncompressStream -> fprintf
+    uncompressStream -> rewind
+    uncompressStream -> fread
+    uncompressStream -> configError
+    uncompressStream -> ioError
+    uncompressStream -> crcError
+    uncompressStream -> outOfMemory
+    uncompressStream -> compressedStreamEOF
+    BZ2_bzReadOpen [label="BZ2_bzReadOpen()"]
+    BZ2_bzRead [label="BZ2_bzRead()"]
+    fwrite [label="fwrite()"]
+    BZ2_bzReadGetUnused [label="BZ2_bzReadGetUnused()"]
+    BZ2_bzReadClose [label="BZ2_bzReadClose()"]
+    rewind [label="rewind()"]
+    crcError [label="void crcError (void)
+bzip2.c:770"]
+    crcError -> fprintf
+    crcError -> showFileNames
+    crcError -> cadvise
+    crcError -> cleanUpAndFail
+    compressedStreamEOF [label="void compressedStreamEOF (void)
+bzip2.c:783"]
+    compressedStreamEOF -> fprintf
+    compressedStreamEOF -> perror
+    compressedStreamEOF -> showFileNames
+    compressedStreamEOF -> cadvise
+    compressedStreamEOF -> cleanUpAndFail
+    testf [label="void testf (Char *name)
+bzip2.c:1521"]
+    testf -> panic
+    testf -> copyFileName
+    testf -> containsDubiousChars
+    testf -> fprintf
+    testf -> setExit
+    testf -> fileExists
+    testf -> strerror
+    testf -> stat
+    testf -> isatty
+    testf -> fileno
+    testf -> fopen
+    testf -> pad
+    testf -> fflush
+    testf -> testStream
+    testStream [label="Bool testStream (FILE *zStream)
+bzip2.c:563"]
+    testStream -> ferror
+    testStream -> BZ2_bzReadOpen
+    testStream -> BZ2_bzRead
+    testStream -> BZ2_bzReadGetUnused
+    testStream -> panic
+    testStream -> BZ2_bzReadClose
+    testStream -> myfeof
+    testStream -> fclose
+    testStream -> fprintf
+    testStream -> configError
+    testStream -> ioError
+    testStream -> outOfMemory
+    free [label="free()"]
+}
