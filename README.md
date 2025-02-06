@@ -4,7 +4,7 @@
 - [C code for bzip2 after converting macros](c-code/bzip2-1.0.8-macro)
 - [Preprocessed C code for bzip2 after converting macros](c-code/bzip2-1.0.8-i)
 - [C code for rosseta](c-code/rosseta-125)
-- [RustMap Generated bzip2 ](rust-code/bzip2-gpt)
+- [RustMap Generated bzip2 ](rust-code/bzip2_rs_gpt)
 - [RustMap Generated rosseta code](rust-code/rosetta_code_gpt)
 - [C2Rust Generated bzip2](rust-code/bzip2-c2rust)
 ## Dataset
