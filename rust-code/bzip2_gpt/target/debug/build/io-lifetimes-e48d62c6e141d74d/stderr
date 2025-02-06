@@ -1,0 +1,18 @@
+error[E0554]: `#![feature]` may not be used on the stable release channel
+ --> <anon>:1:1
+  |
+1 | #![feature(rustc_attrs)]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: the feature `rustc_attrs` is internal to the compiler or standard library
+ --> <anon>:1:12
+  |
+1 | #![feature(rustc_attrs)]
+  |            ^^^^^^^^^^^
+  |
+  = note: using it is strongly discouraged
+  = note: `#[warn(internal_features)]` on by default
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0554`.

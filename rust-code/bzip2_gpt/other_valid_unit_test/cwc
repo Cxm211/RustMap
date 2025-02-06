@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# 检查参数数量
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <your_program_name_without_extension>"
+    exit 1
+fi
+
+PROGRAM_NAME="$1"
+gcc -fprofile-arcs -ftest-coverage ${PROGRAM_NAME}.c -o ${PROGRAM_NAME} -lcunit
+
+# 输出成功或失败信息
+if [ "$?" -eq 0 ]; then
+    echo "Compilation successful."
+
+    # 运行程序来生成.gcda文件
+    ./${PROGRAM_NAME}
+
+    # 生成代码覆盖率报告
+    gcov ${PROGRAM_NAME}.c
+
+    # 打印出代码覆盖率报告
+    cat ${PROGRAM_NAME}.c.gcov
+else
+    echo "Compilation failed."
+fi

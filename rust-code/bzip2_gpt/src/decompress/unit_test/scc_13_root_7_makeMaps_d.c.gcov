@@ -1,0 +1,190 @@
+        -:    0:Source:scc_13_root_7_makeMaps_d.c
+        -:    0:Graph:scc_13_root_7_makeMaps_d.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:// use crate::global_vars::bzip2_c1::{DState};
+        -:    2:
+        -:    3:
+        -:    4:// makeMaps_d ( DState* s )
+        -:    5:#include <stdio.h>
+        -:    6:#include <string.h>
+        -:    7:#include <CUnit/Basic.h>
+        -:    8:typedef char Char;
+        -:    9:typedef unsigned char Bool;
+        -:   10:typedef unsigned char UChar;
+        -:   11:typedef int Int32;
+        -:   12:typedef unsigned int UInt32;
+        -:   13:typedef short Int16;
+        -:   14:typedef unsigned short UInt16;
+        -:   15:
+        -:   16:typedef
+        -:   17:   struct {
+        -:   18:      char *next_in;
+        -:   19:      unsigned int avail_in;
+        -:   20:      unsigned int total_in_lo32;
+        -:   21:      unsigned int total_in_hi32;
+        -:   22:
+        -:   23:      char *next_out;
+        -:   24:      unsigned int avail_out;
+        -:   25:      unsigned int total_out_lo32;
+        -:   26:      unsigned int total_out_hi32;
+        -:   27:
+        -:   28:      void *state;
+        -:   29:
+        -:   30:      void *(*bzalloc)(void *,int,int);
+        -:   31:      void (*bzfree)(void *,void *);
+        -:   32:      void *opaque;
+        -:   33:   }
+        -:   34:   bz_stream;
+        -:   35:
+        -:   36:typedef
+        -:   37:   struct {
+        -:   38:
+        -:   39:      bz_stream* strm;
+        -:   40:
+        -:   41:
+        -:   42:      Int32 state;
+        -:   43:
+        -:   44:
+        -:   45:      UChar state_out_ch;
+        -:   46:      Int32 state_out_len;
+        -:   47:      Bool blockRandomised;
+        -:   48:      Int32 rNToGo; Int32 rTPos;
+        -:   49:
+        -:   50:
+        -:   51:      UInt32 bsBuff;
+        -:   52:      Int32 bsLive;
+        -:   53:
+        -:   54:
+        -:   55:      Int32 blockSize100k;
+        -:   56:      Bool smallDecompress;
+        -:   57:      Int32 currBlockNo;
+        -:   58:      Int32 verbosity;
+        -:   59:
+        -:   60:
+        -:   61:      Int32 origPtr;
+        -:   62:      UInt32 tPos;
+        -:   63:      Int32 k0;
+        -:   64:      Int32 unzftab[256];
+        -:   65:      Int32 nblock_used;
+        -:   66:      Int32 cftab[257];
+        -:   67:      Int32 cftabCopy[257];
+        -:   68:
+        -:   69:
+        -:   70:      UInt32 *tt;// 这也是一个裸指针，需要特别小心处理
+        -:   71:
+        -:   72:
+        -:   73:      UInt16 *ll16; // 同上
+        -:   74:      UChar *ll4; // 同上
+        -:   75:
+        -:   76:
+        -:   77:      UInt32 storedBlockCRC;
+        -:   78:      UInt32 storedCombinedCRC;
+        -:   79:      UInt32 calculatedBlockCRC;
+        -:   80:      UInt32 calculatedCombinedCRC;
+        -:   81:
+        -:   82:
+        -:   83:      Int32 nInUse;
+        -:   84:      Bool inUse[256];
+        -:   85:      Bool inUse16[16];
+        -:   86:      UChar seqToUnseq[256];
+        -:   87:
+        -:   88:
+        -:   89:      UChar mtfa [4096];
+        -:   90:      Int32 mtfbase[256 / 16];
+        -:   91:      UChar selector [(2 + (900000 / 50))];
+        -:   92:      UChar selectorMtf[(2 + (900000 / 50))];
+        -:   93:      UChar len [6][258];
+        -:   94:
+        -:   95:      Int32 limit [6][258];
+        -:   96:      Int32 base [6][258];
+        -:   97:      Int32 perm [6][258];
+        -:   98:      Int32 minLens[6];
+        -:   99:
+        -:  100:
+        -:  101:      Int32 save_i;
+        -:  102:      Int32 save_j;
+        -:  103:      Int32 save_t;
+        -:  104:      Int32 save_alphaSize;
+        -:  105:      Int32 save_nGroups;
+        -:  106:      Int32 save_nSelectors;
+        -:  107:      Int32 save_EOB;
+        -:  108:      Int32 save_groupNo;
+        -:  109:      Int32 save_groupPos;
+        -:  110:      Int32 save_nextSym;
+        -:  111:      Int32 save_nblockMAX;
+        -:  112:      Int32 save_nblock;
+        -:  113:      Int32 save_es;
+        -:  114:      Int32 save_N;
+        -:  115:      Int32 save_curr;
+        -:  116:      Int32 save_zt;
+        -:  117:      Int32 save_zn;
+        -:  118:      Int32 save_zvec;
+        -:  119:      Int32 save_zj;
+        -:  120:      Int32 save_gSel;
+        -:  121:      Int32 save_gMinlen;
+        -:  122:      Int32* save_gLimit;
+        -:  123:      Int32* save_gBase;
+        -:  124:      Int32* save_gPerm;
+        -:  125:
+        -:  126:   }
+        -:  127:   DState;
+        -:  128:
+        -:  129://    函数的主要目的是对数组 inUse 进行遍历，每当遇到 true 值时，就将当前的索引值存储到 seqToUnseq 数组中，并更新 nInUse 的计数。
+        -:  130:static
+    #####:  131:void makeMaps_d ( DState* s )
+        -:  132:{
+        -:  133:   Int32 i;
+    #####:  134:   s->nInUse = 0;
+    #####:  135:   for (i = 0; i < 256; i++)
+    #####:  136:      if (s->inUse[i]) {
+    #####:  137:         s->seqToUnseq[s->nInUse] = i;
+    #####:  138:         s->nInUse++;
+        -:  139:      }
+    #####:  140:}
+        -:  141:
+    #####:  142:void test_makeMaps_d(void) {
+        -:  143:    DState ds;
+        -:  144:
+        -:  145:    // 使用测试值初始化结构
+    #####:  146:    for (int i = 0; i < 256; i++) {
+    #####:  147:        ds.inUse[i] = (i % 2 == 0) ? 1 : 0;  // 假设偶数索引正在使用
+    #####:  148:        ds.seqToUnseq[i] = 0;  // 清除先前的值
+        -:  149:    }
+        -:  150:
+    #####:  151:    makeMaps_d(&ds);
+        -:  152:
+        -:  153:    // 断言
+    #####:  154:    CU_ASSERT_EQUAL(ds.nInUse, 128);  // 256的一半（偶数）正在使用中
+        -:  155:
+    #####:  156:    for (int i = 0; i < ds.nInUse; i++) {
+    #####:  157:        CU_ASSERT_EQUAL(ds.seqToUnseq[i], 2 * i);  // 验证我们存储了偶数
+        -:  158:    }
+    #####:  159:}
+        -:  160:
+    #####:  161:int main() {
+        -:  162:    // 初始化CUnit测试注册表
+    #####:  163:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:  164:        return CU_get_error();
+        -:  165:
+        -:  166:    // 向注册表添加套件
+    #####:  167:    CU_pSuite pSuite = NULL;
+    #####:  168:    pSuite = CU_add_suite("makeMaps_d_TestSuite", NULL, NULL);
+    #####:  169:    if (NULL == pSuite) {
+    #####:  170:        CU_cleanup_registry();
+    #####:  171:        return CU_get_error();
+        -:  172:    }
+        -:  173:
+        -:  174:    // 在套件中添加测试函数
+    #####:  175:    if ((NULL == CU_add_test(pSuite, "test_makeMaps_d", test_makeMaps_d))) {
+    #####:  176:        CU_cleanup_registry();
+    #####:  177:        return CU_get_error();
+        -:  178:    }
+        -:  179:
+        -:  180:    // 使用CUnit基本接口运行所有测试
+    #####:  181:    CU_basic_set_mode(CU_BRM_VERBOSE);
+    #####:  182:    CU_basic_run_tests();
+    #####:  183:    CU_cleanup_registry();
+        -:  184:    
+    #####:  185:    return CU_get_error();
+        -:  186:}

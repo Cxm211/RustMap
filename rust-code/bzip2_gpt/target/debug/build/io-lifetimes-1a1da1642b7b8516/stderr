@@ -1,0 +1,9 @@
+error[E0554]: `#![feature]` may not be used on the stable release channel
+ --> <anon>:1:1
+  |
+1 | #![feature(rustc_attrs)]
+  | ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0554`.
