@@ -12,8 +12,12 @@
 - [rosseta coverage test](key_datasets/merged_coverage_test_bzip2.csv)
 - [bzip2 complexity consolidated data](key_datasets/bzip2_complexity.csv)
 - [rosseta complexity individual data](key_datasets/rosseta-readability-stats.csv)
-- [rosseta complexity consolidated data data](key_datasets/rosseta-consolidated-stats.csv)
+- [rosseta complexity consolidated data data](key_datasets/rosseta-consolidated-stats.csv)  
 
+## Example of Macro Handling
+- [Sample Translations of Numerical Macros](README_example.md#sample-translations-of-numerical-macros)
+- [Sample Translations of Complex Macros](README_example.md#sample-translations-of-complex-macros)
+- [Sample Translations of Unhandled Macros](README_example.md#sample-translations-of-unhandled-macros)
 
 ## prompt templates
 - [Prompt to Translate Macro in C](prompt-templates/macro-translation.txt)
@@ -49,7 +53,7 @@
     - [6.1.3. Measuring Coverage for Custom Test Suite: bzip2 Rust Decompress Function](#613-measuring-coverage-for-custom-test-suite-bzip2-rust-decompress-function)
     - [6.1.4. Combined Coverage Results for bzip2](#614-combined-coverage-results-for-bzip2)
   - [6.2. Table 1.2 Rosetta Coverage Test Generation](#62-table-12-rosetta-coverage-test-generation)
-
+- [7. Macro Handling](#7-macro-handling)
 
 # 1. Introducation
 The purpose of this artifact is to reproduce the experimental results we achieved in the paper "RustMap: Towards Project-Scale C to Rust Migration via LLM."
@@ -311,6 +315,10 @@ bash /root/rustmap/c-code/Rosetta-125/gcc-Rosetta-code.sh
 ```
 View the result in `/root/rustmap/c-code/Rosetta-125/coverage_report/index.html` for Table 1 Rosetta Code
 ![](paper_pic/Table-Coverage-Rosetta.jpg)
+
+# 7. Macro Handling
+[This section](./README_example.md) provides examples of different types of macro translations, showcasing how various C macros are transformed into more structured and maintainable formats in both C and Rust. These examples illustrate the process of converting numerical macros, complex macros, and unhandled macros, ensuring better readability, type safety, and platform compatibility. By following these references, readers can explore detailed case studies and understand the rationale behind each transformation.
+
 <!-- 
 # 7. Cogntive Complexity Test
 
