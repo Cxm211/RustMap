@@ -1,1 +1,10 @@
-After the conversion, the following errors occurred when compiling the entire project:
+After the translation, the following errors occurred when compiling the entire project:
+error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
+ --> src/main.rs:4:14
+  |
+3 |     let r1 = &s;
+  |               - immutable borrow occurs here
+4 |     let r2 = &mut s;
+  |              ^^^^^^ mutable borrow occurs here
+5 |     println!("{}", r1);
+  |                    -- immutable borrow later used here
