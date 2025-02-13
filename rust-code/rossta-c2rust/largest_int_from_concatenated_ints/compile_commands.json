@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/largest_int_from_concatenated_ints",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/largest_int_from_concatenated_ints/main.c"
+  }
+]

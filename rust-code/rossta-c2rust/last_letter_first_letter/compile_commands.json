@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/last_letter_first_letter",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/last_letter_first_letter/main.c"
+  }
+]

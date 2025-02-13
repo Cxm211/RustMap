@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/horners_rule_for_polynomial_evaluation",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/horners_rule_for_polynomial_evaluation/main.c"
+  }
+]
