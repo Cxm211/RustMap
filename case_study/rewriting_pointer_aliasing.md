@@ -52,7 +52,7 @@ fallbackSort(/* ... */, (*s).arr2, /* ... */);
 
 ## Rewrite Pointer Aliasing in RustMap
 RustMap replaces C pointer aliasing in a safer and idiomatic way that uses vectors and conversion functions. First, when prompting LLM with the struct definition in C, we also ask LLM to infer the suitable vector type for each pointer when converting it to Rust. For
-example, Figure 8a shows that the pointers are converted to use safe collections
+example, the code above shows that the pointers are converted to use safe collections
 like `Vec<u8>` and `Vec<u32>`. However, note that both `arr2` and `zbits` are commented out, because they point to the same memory as `block` in the original C, and we can use just one vector to represent all three. We also used LLM to identify potential aliasing among all pointers in the given code during prompting. Then, to mimic the memory operations done via aliased pointers in the original C program, we also prompt LLM to construct specific functions for each aliasing pointer to read from and write to the aliased memory. The code below show-case such functions for the `arr2` and `zbits` pointers, respectively. The internal workings of the functions vary, depending on whether they are concerned of endianness.
 
 ### Sample C code of Pointer Aliasing in RustMap
