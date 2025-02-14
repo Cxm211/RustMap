@@ -5,7 +5,7 @@
 - [Preprocessed C code for bzip2 after handling macros](c-code/bzip2-1.0.8-i)
 - [C code for rosseta](c-code/rosseta-125)
 - [RustMap Generated bzip2 ](rust-code/bzip2_rs_gpt)
-- [RustMap Generated rosseta code](rust-code/rosetta_code_gpt)
+- [RustMap Generated rosseta code](rust-code/rosetta_code_gpt/125-rosetta-code-gpt/)
 - [C2Rust Generated bzip2](rust-code/bzip2-c2rust)
 ## Dataset
 - [bzip2 coverage test](key_datasets/merged_coverage_test_bzip2.csv)
