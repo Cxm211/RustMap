@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-23 05:59:49</td>
+            <td class="headerValue">2025-02-14 12:16:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -377,57 +377,57 @@
 <a name="315"><span class="lineNum">     315 </span>            : </a>
 <a name="316"><span class="lineNum">     316 </span>            : /*---------------------------------------------*/</a>
 <a name="317"><span class="lineNum">     317 </span>            : static </a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         91 : Bool myfeof ( FILE* f )</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        182 : Bool myfeof ( FILE* f )</span></a>
 <a name="319"><span class="lineNum">     319 </span>            : {</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         91 :    Int32 c = fgetc ( f );</span></a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         91 :    if (c == EOF) return True;</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         88 :    ungetc ( c, f );</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         88 :    return False;</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">        182 :    Int32 c = fgetc ( f );</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        182 :    if (c == EOF) return True;</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        176 :    ungetc ( c, f );</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">        176 :    return False;</span></a>
 <a name="324"><span class="lineNum">     324 </span>            : }</a>
 <a name="325"><span class="lineNum">     325 </span>            : </a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            : /*---------------------------------------------*/</a>
 <a name="328"><span class="lineNum">     328 </span>            : static </a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          3 : void compressStream ( FILE *stream, FILE *zStream )</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          6 : void compressStream ( FILE *stream, FILE *zStream )</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : {</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          3 :    BZFILE* bzf = NULL;</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          3 :    UChar   ibuf[5000];</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          3 :    Int32   nIbuf;</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          3 :    UInt32  nbytes_in_lo32, nbytes_in_hi32;</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          3 :    UInt32  nbytes_out_lo32, nbytes_out_hi32;</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          3 :    Int32   bzerr, bzerr_dummy, ret;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          6 :    BZFILE* bzf = NULL;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          6 :    UChar   ibuf[5000];</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          6 :    Int32   nIbuf;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          6 :    UInt32  nbytes_in_lo32, nbytes_in_hi32;</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          6 :    UInt32  nbytes_out_lo32, nbytes_out_hi32;</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          6 :    Int32   bzerr, bzerr_dummy, ret;</span></a>
 <a name="337"><span class="lineNum">     337 </span>            : </a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          3 :    SET_BINARY_MODE(stream);</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          3 :    SET_BINARY_MODE(zStream);</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          6 :    SET_BINARY_MODE(stream);</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">          6 :    SET_BINARY_MODE(zStream);</span></a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          3 :    if (ferror(stream)) goto errhandler_io;</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          3 :    if (ferror(zStream)) goto errhandler_io;</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">          6 :    if (ferror(stream)) goto errhandler_io;</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">          6 :    if (ferror(zStream)) goto errhandler_io;</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 :    bzf = BZ2_bzWriteOpen ( &amp;bzerr, zStream, </span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          6 :    bzf = BZ2_bzWriteOpen ( &amp;bzerr, zStream, </span></a>
 <a name="345"><span class="lineNum">     345 </span>            :                            blockSize100k, verbosity, workFactor );   </a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          3 :    if (bzerr != BZ_OK) goto errhandler;</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          6 :    if (bzerr != BZ_OK) goto errhandler;</span></a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          3 :    if (verbosity &gt;= 2) fprintf ( stderr, &quot;\n&quot; );</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          6 :    if (verbosity &gt;= 2) fprintf ( stderr, &quot;\n&quot; );</span></a>
 <a name="349"><span class="lineNum">     349 </span>            : </a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">         91 :    while (True) {</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">        182 :    while (True) {</span></a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         91 :       if (myfeof(stream)) break;</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">         88 :       nIbuf = fread ( ibuf, sizeof(UChar), 5000, stream );</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         88 :       if (ferror(stream)) goto errhandler_io;</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         88 :       if (nIbuf &gt; 0) BZ2_bzWrite ( &amp;bzerr, bzf, (void*)ibuf, nIbuf );</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         88 :       if (bzerr != BZ_OK) goto errhandler;</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">        182 :       if (myfeof(stream)) break;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">        176 :       nIbuf = fread ( ibuf, sizeof(UChar), 5000, stream );</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">        176 :       if (ferror(stream)) goto errhandler_io;</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">        176 :       if (nIbuf &gt; 0) BZ2_bzWrite ( &amp;bzerr, bzf, (void*)ibuf, nIbuf );</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        176 :       if (bzerr != BZ_OK) goto errhandler;</span></a>
 <a name="357"><span class="lineNum">     357 </span>            : </a>
 <a name="358"><span class="lineNum">     358 </span>            :    }</a>
 <a name="359"><span class="lineNum">     359 </span>            : </a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          3 :    BZ2_bzWriteClose64 ( &amp;bzerr, bzf, 0, </span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          6 :    BZ2_bzWriteClose64 ( &amp;bzerr, bzf, 0, </span></a>
 <a name="361"><span class="lineNum">     361 </span>            :                         &amp;nbytes_in_lo32, &amp;nbytes_in_hi32,</a>
 <a name="362"><span class="lineNum">     362 </span>            :                         &amp;nbytes_out_lo32, &amp;nbytes_out_hi32 );</a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          3 :    if (bzerr != BZ_OK) goto errhandler;</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          6 :    if (bzerr != BZ_OK) goto errhandler;</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          3 :    if (ferror(zStream)) goto errhandler_io;</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          3 :    ret = fflush ( zStream );</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          3 :    if (ret == EOF) goto errhandler_io;</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          3 :    if (zStream != stdout) {</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">          6 :    if (ferror(zStream)) goto errhandler_io;</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          6 :    ret = fflush ( zStream );</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">          6 :    if (ret == EOF) goto errhandler_io;</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">          6 :    if (zStream != stdout) {</span></a>
 <a name="369"><span class="lineNum">     369 </span><span class="lineNoCov">          0 :       Int32 fd = fileno ( zStream );</span></a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineNoCov">          0 :       if (fd &lt; 0) goto errhandler_io;</span></a>
 <a name="371"><span class="lineNum">     371 </span><span class="lineNoCov">          0 :       applySavedFileAttrToOutputFile ( fd );</span></a>
@@ -435,12 +435,12 @@
 <a name="373"><span class="lineNum">     373 </span><span class="lineNoCov">          0 :       outputHandleJustInCase = NULL;</span></a>
 <a name="374"><span class="lineNum">     374 </span><span class="lineNoCov">          0 :       if (ret == EOF) goto errhandler_io;</span></a>
 <a name="375"><span class="lineNum">     375 </span>            :    }</a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          3 :    outputHandleJustInCase = NULL;</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          3 :    if (ferror(stream)) goto errhandler_io;</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          3 :    ret = fclose ( stream );</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          3 :    if (ret == EOF) goto errhandler_io;</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">          6 :    outputHandleJustInCase = NULL;</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          6 :    if (ferror(stream)) goto errhandler_io;</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          6 :    ret = fclose ( stream );</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          6 :    if (ret == EOF) goto errhandler_io;</span></a>
 <a name="380"><span class="lineNum">     380 </span>            : </a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          3 :    if (verbosity &gt;= 1) {</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          6 :    if (verbosity &gt;= 1) {</span></a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineNoCov">          0 :       if (nbytes_in_lo32 == 0 &amp;&amp; nbytes_in_hi32 == 0) {</span></a>
 <a name="383"><span class="lineNum">     383 </span><span class="lineNoCov">          0 :          fprintf ( stderr, &quot; no data compressed.\n&quot;);</span></a>
 <a name="384"><span class="lineNum">     384 </span>            :       } else {</a>
@@ -466,7 +466,7 @@
 <a name="404"><span class="lineNum">     404 </span>            :       }</a>
 <a name="405"><span class="lineNum">     405 </span>            :    }</a>
 <a name="406"><span class="lineNum">     406 </span>            : </a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          3 :    return;</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          6 :    return;</span></a>
 <a name="408"><span class="lineNum">     408 </span>            : </a>
 <a name="409"><span class="lineNum">     409 </span><span class="lineNoCov">          0 :    errhandler:</span></a>
 <a name="410"><span class="lineNum">     410 </span><span class="lineNoCov">          0 :    BZ2_bzWriteClose64 ( &amp;bzerr_dummy, bzf, 1, </span></a>
@@ -978,9 +978,9 @@
 <a name="916"><span class="lineNum">     916 </span>            : </a>
 <a name="917"><span class="lineNum">     917 </span>            : /*---------------------------------------------*/</a>
 <a name="918"><span class="lineNum">     918 </span>            : static </a>
-<a name="919"><span class="lineNum">     919 </span><span class="lineCov">         15 : void copyFileName ( Char* to, Char* from ) </span></a>
+<a name="919"><span class="lineNum">     919 </span><span class="lineCov">         30 : void copyFileName ( Char* to, Char* from ) </span></a>
 <a name="920"><span class="lineNum">     920 </span>            : {</a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineCov">         15 :    if ( strlen(from) &gt; FILE_NAME_LEN-10 )  {</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">         30 :    if ( strlen(from) &gt; FILE_NAME_LEN-10 )  {</span></a>
 <a name="922"><span class="lineNum">     922 </span><span class="lineNoCov">          0 :       fprintf (</span></a>
 <a name="923"><span class="lineNum">     923 </span>            :          stderr,</a>
 <a name="924"><span class="lineNum">     924 </span>            :          &quot;bzip2: file name\n`%s'\n&quot;</a>
@@ -992,9 +992,9 @@
 <a name="930"><span class="lineNum">     930 </span><span class="lineNoCov">          0 :       exit(exitValue);</span></a>
 <a name="931"><span class="lineNum">     931 </span>            :    }</a>
 <a name="932"><span class="lineNum">     932 </span>            : </a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">         15 :   strncpy(to,from,FILE_NAME_LEN-10);</span></a>
-<a name="934"><span class="lineNum">     934 </span><span class="lineCov">         15 :   to[FILE_NAME_LEN-10]='\0';</span></a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineCov">         15 : }</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">         30 :   strncpy(to,from,FILE_NAME_LEN-10);</span></a>
+<a name="934"><span class="lineNum">     934 </span><span class="lineCov">         30 :   to[FILE_NAME_LEN-10]='\0';</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">         30 : }</span></a>
 <a name="936"><span class="lineNum">     936 </span>            : </a>
 <a name="937"><span class="lineNum">     937 </span>            : </a>
 <a name="938"><span class="lineNum">     938 </span>            : /*---------------------------------------------*/</a>
@@ -1169,12 +1169,12 @@
 <a name="1107"><span class="lineNum">    1107 </span>            :    = { &quot;&quot;, &quot;&quot;, &quot;.tar&quot;, &quot;.tar&quot; };</a>
 <a name="1108"><span class="lineNum">    1108 </span>            : </a>
 <a name="1109"><span class="lineNum">    1109 </span>            : static </a>
-<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">         12 : Bool hasSuffix ( Char* s, const Char* suffix )</span></a>
+<a name="1110"><span class="lineNum">    1110 </span><span class="lineCov">         24 : Bool hasSuffix ( Char* s, const Char* suffix )</span></a>
 <a name="1111"><span class="lineNum">    1111 </span>            : {</a>
-<a name="1112"><span class="lineNum">    1112 </span><span class="lineCov">         12 :    Int32 ns = strlen(s);</span></a>
-<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">         12 :    Int32 nx = strlen(suffix);</span></a>
-<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">         12 :    if (ns &lt; nx) return False;</span></a>
-<a name="1115"><span class="lineNum">    1115 </span><span class="lineCov">         12 :    if (strcmp(s + ns - nx, suffix) == 0) return True;</span></a>
+<a name="1112"><span class="lineNum">    1112 </span><span class="lineCov">         24 :    Int32 ns = strlen(s);</span></a>
+<a name="1113"><span class="lineNum">    1113 </span><span class="lineCov">         24 :    Int32 nx = strlen(suffix);</span></a>
+<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">         24 :    if (ns &lt; nx) return False;</span></a>
+<a name="1115"><span class="lineNum">    1115 </span><span class="lineCov">         24 :    if (strcmp(s + ns - nx, suffix) == 0) return True;</span></a>
 <a name="1116"><span class="lineNum">    1116 </span>            :    return False;</a>
 <a name="1117"><span class="lineNum">    1117 </span>            : }</a>
 <a name="1118"><span class="lineNum">    1118 </span>            : </a>
@@ -1192,23 +1192,23 @@
 <a name="1130"><span class="lineNum">    1130 </span>            : </a>
 <a name="1131"><span class="lineNum">    1131 </span>            : /*---------------------------------------------*/</a>
 <a name="1132"><span class="lineNum">    1132 </span>            : static </a>
-<a name="1133"><span class="lineNum">    1133 </span><span class="lineCov">          3 : void compress ( Char *name )</span></a>
+<a name="1133"><span class="lineNum">    1133 </span><span class="lineCov">          6 : void compress ( Char *name )</span></a>
 <a name="1134"><span class="lineNum">    1134 </span>            : {</a>
-<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">          3 :    FILE  *inStr;</span></a>
-<a name="1136"><span class="lineNum">    1136 </span><span class="lineCov">          3 :    FILE  *outStr;</span></a>
-<a name="1137"><span class="lineNum">    1137 </span><span class="lineCov">          3 :    Int32 n, i;</span></a>
-<a name="1138"><span class="lineNum">    1138 </span><span class="lineCov">          3 :    struct MY_STAT statBuf;</span></a>
+<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">          6 :    FILE  *inStr;</span></a>
+<a name="1136"><span class="lineNum">    1136 </span><span class="lineCov">          6 :    FILE  *outStr;</span></a>
+<a name="1137"><span class="lineNum">    1137 </span><span class="lineCov">          6 :    Int32 n, i;</span></a>
+<a name="1138"><span class="lineNum">    1138 </span><span class="lineCov">          6 :    struct MY_STAT statBuf;</span></a>
 <a name="1139"><span class="lineNum">    1139 </span>            : </a>
-<a name="1140"><span class="lineNum">    1140 </span><span class="lineCov">          3 :    deleteOutputOnInterrupt = False;</span></a>
+<a name="1140"><span class="lineNum">    1140 </span><span class="lineCov">          6 :    deleteOutputOnInterrupt = False;</span></a>
 <a name="1141"><span class="lineNum">    1141 </span>            : </a>
-<a name="1142"><span class="lineNum">    1142 </span><span class="lineCov">          3 :    if (name == NULL &amp;&amp; srcMode != SM_I2O)</span></a>
+<a name="1142"><span class="lineNum">    1142 </span><span class="lineCov">          6 :    if (name == NULL &amp;&amp; srcMode != SM_I2O)</span></a>
 <a name="1143"><span class="lineNum">    1143 </span><span class="lineNoCov">          0 :       panic ( &quot;compress: bad modes\n&quot; );</span></a>
 <a name="1144"><span class="lineNum">    1144 </span>            : </a>
-<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">          3 :    switch (srcMode) {</span></a>
-<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">          3 :       case SM_I2O: </span></a>
-<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">          3 :          copyFileName ( inName, (Char*)&quot;(stdin)&quot; );</span></a>
-<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">          3 :          copyFileName ( outName, (Char*)&quot;(stdout)&quot; ); </span></a>
-<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">          3 :          break;</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">          6 :    switch (srcMode) {</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">          6 :       case SM_I2O: </span></a>
+<a name="1147"><span class="lineNum">    1147 </span><span class="lineCov">          6 :          copyFileName ( inName, (Char*)&quot;(stdin)&quot; );</span></a>
+<a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">          6 :          copyFileName ( outName, (Char*)&quot;(stdout)&quot; ); </span></a>
+<a name="1149"><span class="lineNum">    1149 </span><span class="lineCov">          6 :          break;</span></a>
 <a name="1150"><span class="lineNum">    1150 </span><span class="lineNoCov">          0 :       case SM_F2F: </span></a>
 <a name="1151"><span class="lineNum">    1151 </span><span class="lineNoCov">          0 :          copyFileName ( inName, name );</span></a>
 <a name="1152"><span class="lineNum">    1152 </span><span class="lineNoCov">          0 :          copyFileName ( outName, name );</span></a>
@@ -1220,21 +1220,21 @@
 <a name="1158"><span class="lineNum">    1158 </span><span class="lineNoCov">          0 :          break;</span></a>
 <a name="1159"><span class="lineNum">    1159 </span>            :    }</a>
 <a name="1160"><span class="lineNum">    1160 </span>            : </a>
-<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">          3 :    if ( srcMode != SM_I2O &amp;&amp; containsDubiousChars ( inName ) ) {</span></a>
+<a name="1161"><span class="lineNum">    1161 </span><span class="lineCov">          6 :    if ( srcMode != SM_I2O &amp;&amp; containsDubiousChars ( inName ) ) {</span></a>
 <a name="1162"><span class="lineNum">    1162 </span>            :       if (noisy)</a>
 <a name="1163"><span class="lineNum">    1163 </span>            :       fprintf ( stderr, &quot;%s: There are no files matching `%s'.\n&quot;,</a>
 <a name="1164"><span class="lineNum">    1164 </span>            :                 progName, inName );</a>
 <a name="1165"><span class="lineNum">    1165 </span>            :       setExit(1);</a>
 <a name="1166"><span class="lineNum">    1166 </span><span class="lineNoCov">          0 :       return;</span></a>
 <a name="1167"><span class="lineNum">    1167 </span>            :    }</a>
-<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">          3 :    if ( srcMode != SM_I2O &amp;&amp; !fileExists ( inName ) ) {</span></a>
+<a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">          6 :    if ( srcMode != SM_I2O &amp;&amp; !fileExists ( inName ) ) {</span></a>
 <a name="1169"><span class="lineNum">    1169 </span><span class="lineNoCov">          0 :       fprintf ( stderr, &quot;%s: Can't open input file %s: %s.\n&quot;,</span></a>
 <a name="1170"><span class="lineNum">    1170 </span><span class="lineNoCov">          0 :                 progName, inName, strerror(errno) );</span></a>
 <a name="1171"><span class="lineNum">    1171 </span><span class="lineNoCov">          0 :       setExit(1);</span></a>
 <a name="1172"><span class="lineNum">    1172 </span><span class="lineNoCov">          0 :       return;</span></a>
 <a name="1173"><span class="lineNum">    1173 </span>            :    }</a>
-<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">         15 :    for (i = 0; i &lt; BZ_N_SUFFIX_PAIRS; i++) {</span></a>
-<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">         12 :       if (hasSuffix(inName, zSuffix[i])) {</span></a>
+<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">         30 :    for (i = 0; i &lt; BZ_N_SUFFIX_PAIRS; i++) {</span></a>
+<a name="1175"><span class="lineNum">    1175 </span><span class="lineCov">         24 :       if (hasSuffix(inName, zSuffix[i])) {</span></a>
 <a name="1176"><span class="lineNum">    1176 </span><span class="lineNoCov">          0 :          if (noisy)</span></a>
 <a name="1177"><span class="lineNum">    1177 </span><span class="lineNoCov">          0 :          fprintf ( stderr, </span></a>
 <a name="1178"><span class="lineNum">    1178 </span>            :                    &quot;%s: Input file %s already has %s suffix.\n&quot;,</a>
@@ -1243,7 +1243,7 @@
 <a name="1181"><span class="lineNum">    1181 </span><span class="lineNoCov">          0 :          return;</span></a>
 <a name="1182"><span class="lineNum">    1182 </span>            :       }</a>
 <a name="1183"><span class="lineNum">    1183 </span>            :    }</a>
-<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F || srcMode == SM_F2O ) {</span></a>
+<a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F || srcMode == SM_F2O ) {</span></a>
 <a name="1185"><span class="lineNum">    1185 </span><span class="lineNoCov">          0 :       MY_STAT(inName, &amp;statBuf);</span></a>
 <a name="1186"><span class="lineNum">    1186 </span><span class="lineNoCov">          0 :       if ( MY_S_ISDIR(statBuf.st_mode) ) {</span></a>
 <a name="1187"><span class="lineNum">    1187 </span><span class="lineNoCov">          0 :          fprintf( stderr,</span></a>
@@ -1253,14 +1253,14 @@
 <a name="1191"><span class="lineNum">    1191 </span><span class="lineNoCov">          0 :          return;</span></a>
 <a name="1192"><span class="lineNum">    1192 </span>            :       }</a>
 <a name="1193"><span class="lineNum">    1193 </span>            :    }</a>
-<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F &amp;&amp; !forceOverwrite &amp;&amp; notAStandardFile ( inName )) {</span></a>
+<a name="1194"><span class="lineNum">    1194 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F &amp;&amp; !forceOverwrite &amp;&amp; notAStandardFile ( inName )) {</span></a>
 <a name="1195"><span class="lineNum">    1195 </span><span class="lineNoCov">          0 :       if (noisy)</span></a>
 <a name="1196"><span class="lineNum">    1196 </span><span class="lineNoCov">          0 :       fprintf ( stderr, &quot;%s: Input file %s is not a normal file.\n&quot;,</span></a>
 <a name="1197"><span class="lineNum">    1197 </span>            :                 progName, inName );</a>
 <a name="1198"><span class="lineNum">    1198 </span><span class="lineNoCov">          0 :       setExit(1);</span></a>
 <a name="1199"><span class="lineNum">    1199 </span><span class="lineNoCov">          0 :       return;</span></a>
 <a name="1200"><span class="lineNum">    1200 </span>            :    }</a>
-<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F &amp;&amp; fileExists ( outName ) ) {</span></a>
+<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F &amp;&amp; fileExists ( outName ) ) {</span></a>
 <a name="1202"><span class="lineNum">    1202 </span><span class="lineNoCov">          0 :       if (forceOverwrite) {</span></a>
 <a name="1203"><span class="lineNum">    1203 </span><span class="lineNoCov">          0 :          remove(outName);</span></a>
 <a name="1204"><span class="lineNum">    1204 </span>            :       } else {</a>
@@ -1270,7 +1270,7 @@
 <a name="1208"><span class="lineNum">    1208 </span><span class="lineNoCov">          0 :          return;</span></a>
 <a name="1209"><span class="lineNum">    1209 </span>            :       }</a>
 <a name="1210"><span class="lineNum">    1210 </span>            :    }</a>
-<a name="1211"><span class="lineNum">    1211 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F &amp;&amp; !forceOverwrite &amp;&amp;</span></a>
+<a name="1211"><span class="lineNum">    1211 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F &amp;&amp; !forceOverwrite &amp;&amp;</span></a>
 <a name="1212"><span class="lineNum">    1212 </span><span class="lineNoCov">          0 :         (n=countHardLinks ( inName )) &gt; 0) {</span></a>
 <a name="1213"><span class="lineNum">    1213 </span><span class="lineNoCov">          0 :       fprintf ( stderr, &quot;%s: Input file %s has %d other link%s.\n&quot;,</span></a>
 <a name="1214"><span class="lineNum">    1214 </span>            :                 progName, inName, n, n &gt; 1 ? &quot;s&quot; : &quot;&quot; );</a>
@@ -1278,18 +1278,18 @@
 <a name="1216"><span class="lineNum">    1216 </span><span class="lineNoCov">          0 :       return;</span></a>
 <a name="1217"><span class="lineNum">    1217 </span>            :    }</a>
 <a name="1218"><span class="lineNum">    1218 </span>            : </a>
-<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F ) {</span></a>
+<a name="1219"><span class="lineNum">    1219 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F ) {</span></a>
 <a name="1220"><span class="lineNum">    1220 </span>            :       /* Save the file's meta-info before we open it.  Doing it later</a>
 <a name="1221"><span class="lineNum">    1221 </span>            :          means we mess up the access times. */</a>
 <a name="1222"><span class="lineNum">    1222 </span><span class="lineNoCov">          0 :       saveInputFileMetaInfo ( inName );</span></a>
 <a name="1223"><span class="lineNum">    1223 </span>            :    }</a>
 <a name="1224"><span class="lineNum">    1224 </span>            : </a>
-<a name="1225"><span class="lineNum">    1225 </span><span class="lineCov">          3 :    switch ( srcMode ) {</span></a>
+<a name="1225"><span class="lineNum">    1225 </span><span class="lineCov">          6 :    switch ( srcMode ) {</span></a>
 <a name="1226"><span class="lineNum">    1226 </span>            : </a>
-<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">          3 :       case SM_I2O:</span></a>
-<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">          3 :          inStr = stdin;</span></a>
-<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">          3 :          outStr = stdout;</span></a>
-<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">          3 :          if ( isatty ( fileno ( stdout ) ) ) {</span></a>
+<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">          6 :       case SM_I2O:</span></a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">          6 :          inStr = stdin;</span></a>
+<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">          6 :          outStr = stdout;</span></a>
+<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">          6 :          if ( isatty ( fileno ( stdout ) ) ) {</span></a>
 <a name="1231"><span class="lineNum">    1231 </span><span class="lineNoCov">          0 :             fprintf ( stderr,</span></a>
 <a name="1232"><span class="lineNum">    1232 </span>            :                       &quot;%s: I won't write compressed data to a terminal.\n&quot;,</a>
 <a name="1233"><span class="lineNum">    1233 </span>            :                       progName );</a>
@@ -1342,23 +1342,23 @@
 <a name="1280"><span class="lineNum">    1280 </span>            : </a>
 <a name="1281"><span class="lineNum">    1281 </span><span class="lineNoCov">          0 :       default:</span></a>
 <a name="1282"><span class="lineNum">    1282 </span><span class="lineNoCov">          0 :          panic ( &quot;compress: bad srcMode&quot; );</span></a>
-<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">          3 :          break;</span></a>
+<a name="1283"><span class="lineNum">    1283 </span><span class="lineCov">          6 :          break;</span></a>
 <a name="1284"><span class="lineNum">    1284 </span>            :    }</a>
 <a name="1285"><span class="lineNum">    1285 </span>            : </a>
-<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">          3 :    if (verbosity &gt;= 1) {</span></a>
+<a name="1286"><span class="lineNum">    1286 </span><span class="lineCov">          6 :    if (verbosity &gt;= 1) {</span></a>
 <a name="1287"><span class="lineNum">    1287 </span><span class="lineNoCov">          0 :       fprintf ( stderr,  &quot;  %s: &quot;, inName );</span></a>
 <a name="1288"><span class="lineNum">    1288 </span><span class="lineNoCov">          0 :       pad ( inName );</span></a>
 <a name="1289"><span class="lineNum">    1289 </span><span class="lineNoCov">          0 :       fflush ( stderr );</span></a>
 <a name="1290"><span class="lineNum">    1290 </span>            :    }</a>
 <a name="1291"><span class="lineNum">    1291 </span>            : </a>
 <a name="1292"><span class="lineNum">    1292 </span>            :    /*--- Now the input and output handles are sane.  Do the Biz. ---*/</a>
-<a name="1293"><span class="lineNum">    1293 </span><span class="lineCov">          3 :    outputHandleJustInCase = outStr;</span></a>
-<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">          3 :    deleteOutputOnInterrupt = True;</span></a>
-<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">          3 :    compressStream ( inStr, outStr );</span></a>
-<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">          3 :    outputHandleJustInCase = NULL;</span></a>
+<a name="1293"><span class="lineNum">    1293 </span><span class="lineCov">          6 :    outputHandleJustInCase = outStr;</span></a>
+<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">          6 :    deleteOutputOnInterrupt = True;</span></a>
+<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">          6 :    compressStream ( inStr, outStr );</span></a>
+<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">          6 :    outputHandleJustInCase = NULL;</span></a>
 <a name="1297"><span class="lineNum">    1297 </span>            : </a>
 <a name="1298"><span class="lineNum">    1298 </span>            :    /*--- If there was an I/O error, we won't get here. ---*/</a>
-<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">          3 :    if ( srcMode == SM_F2F ) {</span></a>
+<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">          6 :    if ( srcMode == SM_F2F ) {</span></a>
 <a name="1300"><span class="lineNum">    1300 </span><span class="lineNoCov">          0 :       applySavedTimeInfoToOutputFile ( outName );</span></a>
 <a name="1301"><span class="lineNum">    1301 </span><span class="lineNoCov">          0 :       deleteOutputOnInterrupt = False;</span></a>
 <a name="1302"><span class="lineNum">    1302 </span><span class="lineNoCov">          0 :       if ( !keepInputFiles ) {</span></a>
@@ -1367,7 +1367,7 @@
 <a name="1305"><span class="lineNum">    1305 </span>            :       }</a>
 <a name="1306"><span class="lineNum">    1306 </span>            :    }</a>
 <a name="1307"><span class="lineNum">    1307 </span>            : </a>
-<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">          3 :    deleteOutputOnInterrupt = False;</span></a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">          6 :    deleteOutputOnInterrupt = False;</span></a>
 <a name="1309"><span class="lineNum">    1309 </span>            : }</a>
 <a name="1310"><span class="lineNum">    1310 </span>            : </a>
 <a name="1311"><span class="lineNum">    1311 </span>            : </a>
@@ -1763,38 +1763,38 @@
 <a name="1701"><span class="lineNum">    1701 </span>            : </a>
 <a name="1702"><span class="lineNum">    1702 </span>            : /*---------------------------------------------*/</a>
 <a name="1703"><span class="lineNum">    1703 </span>            : static </a>
-<a name="1704"><span class="lineNum">    1704 </span><span class="lineCov">          6 : void *myMalloc ( Int32 n )</span></a>
+<a name="1704"><span class="lineNum">    1704 </span><span class="lineCov">         12 : void *myMalloc ( Int32 n )</span></a>
 <a name="1705"><span class="lineNum">    1705 </span>            : {</a>
-<a name="1706"><span class="lineNum">    1706 </span><span class="lineCov">          6 :    void* p;</span></a>
+<a name="1706"><span class="lineNum">    1706 </span><span class="lineCov">         12 :    void* p;</span></a>
 <a name="1707"><span class="lineNum">    1707 </span>            : </a>
-<a name="1708"><span class="lineNum">    1708 </span><span class="lineCov">          6 :    p = malloc ( (size_t)n );</span></a>
-<a name="1709"><span class="lineNum">    1709 </span><span class="lineCov">          6 :    if (p == NULL) outOfMemory ();</span></a>
-<a name="1710"><span class="lineNum">    1710 </span><span class="lineCov">          6 :    return p;</span></a>
+<a name="1708"><span class="lineNum">    1708 </span><span class="lineCov">         12 :    p = malloc ( (size_t)n );</span></a>
+<a name="1709"><span class="lineNum">    1709 </span><span class="lineCov">         12 :    if (p == NULL) outOfMemory ();</span></a>
+<a name="1710"><span class="lineNum">    1710 </span><span class="lineCov">         12 :    return p;</span></a>
 <a name="1711"><span class="lineNum">    1711 </span>            : }</a>
 <a name="1712"><span class="lineNum">    1712 </span>            : </a>
 <a name="1713"><span class="lineNum">    1713 </span>            : </a>
 <a name="1714"><span class="lineNum">    1714 </span>            : /*---------------------------------------------*/</a>
 <a name="1715"><span class="lineNum">    1715 </span>            : static </a>
-<a name="1716"><span class="lineNum">    1716 </span><span class="lineCov">          3 : Cell *mkCell ( void )</span></a>
+<a name="1716"><span class="lineNum">    1716 </span><span class="lineCov">          6 : Cell *mkCell ( void )</span></a>
 <a name="1717"><span class="lineNum">    1717 </span>            : {</a>
-<a name="1718"><span class="lineNum">    1718 </span><span class="lineCov">          3 :    Cell *c;</span></a>
+<a name="1718"><span class="lineNum">    1718 </span><span class="lineCov">          6 :    Cell *c;</span></a>
 <a name="1719"><span class="lineNum">    1719 </span>            : </a>
-<a name="1720"><span class="lineNum">    1720 </span><span class="lineCov">          6 :    c = (Cell*) myMalloc ( sizeof ( Cell ) );</span></a>
-<a name="1721"><span class="lineNum">    1721 </span><span class="lineCov">          3 :    c-&gt;name = NULL;</span></a>
-<a name="1722"><span class="lineNum">    1722 </span><span class="lineCov">          3 :    c-&gt;link = NULL;</span></a>
-<a name="1723"><span class="lineNum">    1723 </span><span class="lineCov">          3 :    return c;</span></a>
+<a name="1720"><span class="lineNum">    1720 </span><span class="lineCov">         12 :    c = (Cell*) myMalloc ( sizeof ( Cell ) );</span></a>
+<a name="1721"><span class="lineNum">    1721 </span><span class="lineCov">          6 :    c-&gt;name = NULL;</span></a>
+<a name="1722"><span class="lineNum">    1722 </span><span class="lineCov">          6 :    c-&gt;link = NULL;</span></a>
+<a name="1723"><span class="lineNum">    1723 </span><span class="lineCov">          6 :    return c;</span></a>
 <a name="1724"><span class="lineNum">    1724 </span>            : }</a>
 <a name="1725"><span class="lineNum">    1725 </span>            : </a>
 <a name="1726"><span class="lineNum">    1726 </span>            : </a>
 <a name="1727"><span class="lineNum">    1727 </span>            : /*---------------------------------------------*/</a>
 <a name="1728"><span class="lineNum">    1728 </span>            : static </a>
-<a name="1729"><span class="lineNum">    1729 </span><span class="lineCov">          3 : Cell *snocString ( Cell *root, Char *name )</span></a>
+<a name="1729"><span class="lineNum">    1729 </span><span class="lineCov">          6 : Cell *snocString ( Cell *root, Char *name )</span></a>
 <a name="1730"><span class="lineNum">    1730 </span>            : {</a>
-<a name="1731"><span class="lineNum">    1731 </span><span class="lineCov">          3 :    if (root == NULL) {</span></a>
-<a name="1732"><span class="lineNum">    1732 </span><span class="lineCov">          3 :       Cell *tmp = mkCell();</span></a>
-<a name="1733"><span class="lineNum">    1733 </span><span class="lineCov">          3 :       tmp-&gt;name = (Char*) myMalloc ( 5 + strlen(name) );</span></a>
-<a name="1734"><span class="lineNum">    1734 </span><span class="lineCov">          3 :       strcpy ( tmp-&gt;name, name );</span></a>
-<a name="1735"><span class="lineNum">    1735 </span><span class="lineCov">          3 :       return tmp;</span></a>
+<a name="1731"><span class="lineNum">    1731 </span><span class="lineCov">          6 :    if (root == NULL) {</span></a>
+<a name="1732"><span class="lineNum">    1732 </span><span class="lineCov">          6 :       Cell *tmp = mkCell();</span></a>
+<a name="1733"><span class="lineNum">    1733 </span><span class="lineCov">          6 :       tmp-&gt;name = (Char*) myMalloc ( 5 + strlen(name) );</span></a>
+<a name="1734"><span class="lineNum">    1734 </span><span class="lineCov">          6 :       strcpy ( tmp-&gt;name, name );</span></a>
+<a name="1735"><span class="lineNum">    1735 </span><span class="lineCov">          6 :       return tmp;</span></a>
 <a name="1736"><span class="lineNum">    1736 </span>            :    } else {</a>
 <a name="1737"><span class="lineNum">    1737 </span>            :       Cell *tmp = root;</a>
 <a name="1738"><span class="lineNum">    1738 </span><span class="lineNoCov">          0 :       while (tmp-&gt;link != NULL) tmp = tmp-&gt;link;</span></a>
@@ -1806,13 +1806,13 @@
 <a name="1744"><span class="lineNum">    1744 </span>            : </a>
 <a name="1745"><span class="lineNum">    1745 </span>            : /*---------------------------------------------*/</a>
 <a name="1746"><span class="lineNum">    1746 </span>            : static </a>
-<a name="1747"><span class="lineNum">    1747 </span><span class="lineCov">          6 : void addFlagsFromEnvVar ( Cell** argList, Char* varName ) </span></a>
+<a name="1747"><span class="lineNum">    1747 </span><span class="lineCov">         12 : void addFlagsFromEnvVar ( Cell** argList, Char* varName ) </span></a>
 <a name="1748"><span class="lineNum">    1748 </span>            : {</a>
-<a name="1749"><span class="lineNum">    1749 </span><span class="lineCov">          6 :    Int32 i, j, k;</span></a>
-<a name="1750"><span class="lineNum">    1750 </span><span class="lineCov">          6 :    Char *envbase, *p;</span></a>
+<a name="1749"><span class="lineNum">    1749 </span><span class="lineCov">         12 :    Int32 i, j, k;</span></a>
+<a name="1750"><span class="lineNum">    1750 </span><span class="lineCov">         12 :    Char *envbase, *p;</span></a>
 <a name="1751"><span class="lineNum">    1751 </span>            : </a>
-<a name="1752"><span class="lineNum">    1752 </span><span class="lineCov">          6 :    envbase = getenv(varName);</span></a>
-<a name="1753"><span class="lineNum">    1753 </span><span class="lineCov">          6 :    if (envbase != NULL) {</span></a>
+<a name="1752"><span class="lineNum">    1752 </span><span class="lineCov">         12 :    envbase = getenv(varName);</span></a>
+<a name="1753"><span class="lineNum">    1753 </span><span class="lineCov">         12 :    if (envbase != NULL) {</span></a>
 <a name="1754"><span class="lineNum">    1754 </span>            :       p = envbase;</a>
 <a name="1755"><span class="lineNum">    1755 </span>            :       i = 0;</a>
 <a name="1756"><span class="lineNum">    1756 </span><span class="lineNoCov">          0 :       while (True) {</span></a>
@@ -1829,77 +1829,77 @@
 <a name="1767"><span class="lineNum">    1767 </span>            :          }</a>
 <a name="1768"><span class="lineNum">    1768 </span>            :       }</a>
 <a name="1769"><span class="lineNum">    1769 </span>            :    }</a>
-<a name="1770"><span class="lineNum">    1770 </span><span class="lineCov">          6 : }</span></a>
+<a name="1770"><span class="lineNum">    1770 </span><span class="lineCov">         12 : }</span></a>
 <a name="1771"><span class="lineNum">    1771 </span>            : </a>
 <a name="1772"><span class="lineNum">    1772 </span>            : </a>
 <a name="1773"><span class="lineNum">    1773 </span>            : /*---------------------------------------------*/</a>
 <a name="1774"><span class="lineNum">    1774 </span>            : #define ISFLAG(s) (strcmp(aa-&gt;name, (s))==0)</a>
 <a name="1775"><span class="lineNum">    1775 </span>            : </a>
-<a name="1776"><span class="lineNum">    1776 </span><span class="lineCov">          3 : IntNative main ( IntNative argc, Char *argv[] )</span></a>
+<a name="1776"><span class="lineNum">    1776 </span><span class="lineCov">          6 : IntNative main ( IntNative argc, Char *argv[] )</span></a>
 <a name="1777"><span class="lineNum">    1777 </span>            : {</a>
-<a name="1778"><span class="lineNum">    1778 </span><span class="lineCov">          3 :    Int32  i, j;</span></a>
-<a name="1779"><span class="lineNum">    1779 </span><span class="lineCov">          3 :    Char   *tmp;</span></a>
-<a name="1780"><span class="lineNum">    1780 </span><span class="lineCov">          3 :    Cell   *argList;</span></a>
-<a name="1781"><span class="lineNum">    1781 </span><span class="lineCov">          3 :    Cell   *aa;</span></a>
-<a name="1782"><span class="lineNum">    1782 </span><span class="lineCov">          3 :    Bool   decode;</span></a>
+<a name="1778"><span class="lineNum">    1778 </span><span class="lineCov">          6 :    Int32  i, j;</span></a>
+<a name="1779"><span class="lineNum">    1779 </span><span class="lineCov">          6 :    Char   *tmp;</span></a>
+<a name="1780"><span class="lineNum">    1780 </span><span class="lineCov">          6 :    Cell   *argList;</span></a>
+<a name="1781"><span class="lineNum">    1781 </span><span class="lineCov">          6 :    Cell   *aa;</span></a>
+<a name="1782"><span class="lineNum">    1782 </span><span class="lineCov">          6 :    Bool   decode;</span></a>
 <a name="1783"><span class="lineNum">    1783 </span>            : </a>
 <a name="1784"><span class="lineNum">    1784 </span>            :    /*-- Be really really really paranoid :-) --*/</a>
-<a name="1785"><span class="lineNum">    1785 </span><span class="lineCov">          3 :    if (sizeof(Int32) != 4 || sizeof(UInt32) != 4  ||</span></a>
+<a name="1785"><span class="lineNum">    1785 </span><span class="lineCov">          6 :    if (sizeof(Int32) != 4 || sizeof(UInt32) != 4  ||</span></a>
 <a name="1786"><span class="lineNum">    1786 </span>            :        sizeof(Int16) != 2 || sizeof(UInt16) != 2  ||</a>
 <a name="1787"><span class="lineNum">    1787 </span>            :        sizeof(Char)  != 1 || sizeof(UChar)  != 1)</a>
 <a name="1788"><span class="lineNum">    1788 </span>            :       configError();</a>
 <a name="1789"><span class="lineNum">    1789 </span>            : </a>
 <a name="1790"><span class="lineNum">    1790 </span>            :    /*-- Initialise --*/</a>
-<a name="1791"><span class="lineNum">    1791 </span><span class="lineCov">          3 :    outputHandleJustInCase  = NULL;</span></a>
-<a name="1792"><span class="lineNum">    1792 </span><span class="lineCov">          3 :    smallMode               = False;</span></a>
-<a name="1793"><span class="lineNum">    1793 </span><span class="lineCov">          3 :    keepInputFiles          = False;</span></a>
-<a name="1794"><span class="lineNum">    1794 </span><span class="lineCov">          3 :    forceOverwrite          = False;</span></a>
-<a name="1795"><span class="lineNum">    1795 </span><span class="lineCov">          3 :    noisy                   = True;</span></a>
-<a name="1796"><span class="lineNum">    1796 </span><span class="lineCov">          3 :    verbosity               = 0;</span></a>
-<a name="1797"><span class="lineNum">    1797 </span><span class="lineCov">          3 :    blockSize100k           = 9;</span></a>
-<a name="1798"><span class="lineNum">    1798 </span><span class="lineCov">          3 :    testFailsExist          = False;</span></a>
-<a name="1799"><span class="lineNum">    1799 </span><span class="lineCov">          3 :    unzFailsExist           = False;</span></a>
-<a name="1800"><span class="lineNum">    1800 </span><span class="lineCov">          3 :    numFileNames            = 0;</span></a>
-<a name="1801"><span class="lineNum">    1801 </span><span class="lineCov">          3 :    numFilesProcessed       = 0;</span></a>
-<a name="1802"><span class="lineNum">    1802 </span><span class="lineCov">          3 :    workFactor              = 30;</span></a>
-<a name="1803"><span class="lineNum">    1803 </span><span class="lineCov">          3 :    deleteOutputOnInterrupt = False;</span></a>
-<a name="1804"><span class="lineNum">    1804 </span><span class="lineCov">          3 :    exitValue               = 0;</span></a>
-<a name="1805"><span class="lineNum">    1805 </span><span class="lineCov">          3 :    i = j = 0; /* avoid bogus warning from egcs-1.1.X */</span></a>
+<a name="1791"><span class="lineNum">    1791 </span><span class="lineCov">          6 :    outputHandleJustInCase  = NULL;</span></a>
+<a name="1792"><span class="lineNum">    1792 </span><span class="lineCov">          6 :    smallMode               = False;</span></a>
+<a name="1793"><span class="lineNum">    1793 </span><span class="lineCov">          6 :    keepInputFiles          = False;</span></a>
+<a name="1794"><span class="lineNum">    1794 </span><span class="lineCov">          6 :    forceOverwrite          = False;</span></a>
+<a name="1795"><span class="lineNum">    1795 </span><span class="lineCov">          6 :    noisy                   = True;</span></a>
+<a name="1796"><span class="lineNum">    1796 </span><span class="lineCov">          6 :    verbosity               = 0;</span></a>
+<a name="1797"><span class="lineNum">    1797 </span><span class="lineCov">          6 :    blockSize100k           = 9;</span></a>
+<a name="1798"><span class="lineNum">    1798 </span><span class="lineCov">          6 :    testFailsExist          = False;</span></a>
+<a name="1799"><span class="lineNum">    1799 </span><span class="lineCov">          6 :    unzFailsExist           = False;</span></a>
+<a name="1800"><span class="lineNum">    1800 </span><span class="lineCov">          6 :    numFileNames            = 0;</span></a>
+<a name="1801"><span class="lineNum">    1801 </span><span class="lineCov">          6 :    numFilesProcessed       = 0;</span></a>
+<a name="1802"><span class="lineNum">    1802 </span><span class="lineCov">          6 :    workFactor              = 30;</span></a>
+<a name="1803"><span class="lineNum">    1803 </span><span class="lineCov">          6 :    deleteOutputOnInterrupt = False;</span></a>
+<a name="1804"><span class="lineNum">    1804 </span><span class="lineCov">          6 :    exitValue               = 0;</span></a>
+<a name="1805"><span class="lineNum">    1805 </span><span class="lineCov">          6 :    i = j = 0; /* avoid bogus warning from egcs-1.1.X */</span></a>
 <a name="1806"><span class="lineNum">    1806 </span>            : </a>
 <a name="1807"><span class="lineNum">    1807 </span>            :    /*-- Set up signal handlers for mem access errors --*/</a>
-<a name="1808"><span class="lineNum">    1808 </span><span class="lineCov">          3 :    signal (SIGSEGV, mySIGSEGVorSIGBUScatcher);</span></a>
+<a name="1808"><span class="lineNum">    1808 </span><span class="lineCov">          6 :    signal (SIGSEGV, mySIGSEGVorSIGBUScatcher);</span></a>
 <a name="1809"><span class="lineNum">    1809 </span>            : #  if BZ_UNIX</a>
 <a name="1810"><span class="lineNum">    1810 </span>            : #  ifndef __DJGPP__</a>
-<a name="1811"><span class="lineNum">    1811 </span><span class="lineCov">          3 :    signal (SIGBUS,  mySIGSEGVorSIGBUScatcher);</span></a>
+<a name="1811"><span class="lineNum">    1811 </span><span class="lineCov">          6 :    signal (SIGBUS,  mySIGSEGVorSIGBUScatcher);</span></a>
 <a name="1812"><span class="lineNum">    1812 </span>            : #  endif</a>
 <a name="1813"><span class="lineNum">    1813 </span>            : #  endif</a>
 <a name="1814"><span class="lineNum">    1814 </span>            : </a>
-<a name="1815"><span class="lineNum">    1815 </span><span class="lineCov">          3 :    copyFileName ( inName,  (Char*)&quot;(none)&quot; );</span></a>
-<a name="1816"><span class="lineNum">    1816 </span><span class="lineCov">          3 :    copyFileName ( outName, (Char*)&quot;(none)&quot; );</span></a>
+<a name="1815"><span class="lineNum">    1815 </span><span class="lineCov">          6 :    copyFileName ( inName,  (Char*)&quot;(none)&quot; );</span></a>
+<a name="1816"><span class="lineNum">    1816 </span><span class="lineCov">          6 :    copyFileName ( outName, (Char*)&quot;(none)&quot; );</span></a>
 <a name="1817"><span class="lineNum">    1817 </span>            : </a>
-<a name="1818"><span class="lineNum">    1818 </span><span class="lineCov">          3 :    copyFileName ( progNameReally, argv[0] );</span></a>
-<a name="1819"><span class="lineNum">    1819 </span><span class="lineCov">          3 :    progName = &amp;progNameReally[0];</span></a>
-<a name="1820"><span class="lineNum">    1820 </span><span class="lineCov">         24 :    for (tmp = &amp;progNameReally[0]; *tmp != '\0'; tmp++)</span></a>
-<a name="1821"><span class="lineNum">    1821 </span><span class="lineCov">         21 :       if (*tmp == PATH_SEP) progName = tmp + 1;</span></a>
+<a name="1818"><span class="lineNum">    1818 </span><span class="lineCov">          6 :    copyFileName ( progNameReally, argv[0] );</span></a>
+<a name="1819"><span class="lineNum">    1819 </span><span class="lineCov">          6 :    progName = &amp;progNameReally[0];</span></a>
+<a name="1820"><span class="lineNum">    1820 </span><span class="lineCov">         48 :    for (tmp = &amp;progNameReally[0]; *tmp != '\0'; tmp++)</span></a>
+<a name="1821"><span class="lineNum">    1821 </span><span class="lineCov">         42 :       if (*tmp == PATH_SEP) progName = tmp + 1;</span></a>
 <a name="1822"><span class="lineNum">    1822 </span>            : </a>
 <a name="1823"><span class="lineNum">    1823 </span>            : </a>
 <a name="1824"><span class="lineNum">    1824 </span>            :    /*-- Copy flags from env var BZIP2, and </a>
 <a name="1825"><span class="lineNum">    1825 </span>            :         expand filename wildcards in arg list.</a>
 <a name="1826"><span class="lineNum">    1826 </span>            :    --*/</a>
-<a name="1827"><span class="lineNum">    1827 </span><span class="lineCov">          3 :    argList = NULL;</span></a>
-<a name="1828"><span class="lineNum">    1828 </span><span class="lineCov">          3 :    addFlagsFromEnvVar ( &amp;argList,  (Char*)&quot;BZIP2&quot; );</span></a>
-<a name="1829"><span class="lineNum">    1829 </span><span class="lineCov">          3 :    addFlagsFromEnvVar ( &amp;argList,  (Char*)&quot;BZIP&quot; );</span></a>
-<a name="1830"><span class="lineNum">    1830 </span><span class="lineCov">          9 :    for (i = 1; i &lt;= argc-1; i++)</span></a>
-<a name="1831"><span class="lineNum">    1831 </span><span class="lineCov">          3 :       APPEND_FILESPEC(argList, argv[i]);</span></a>
+<a name="1827"><span class="lineNum">    1827 </span><span class="lineCov">          6 :    argList = NULL;</span></a>
+<a name="1828"><span class="lineNum">    1828 </span><span class="lineCov">          6 :    addFlagsFromEnvVar ( &amp;argList,  (Char*)&quot;BZIP2&quot; );</span></a>
+<a name="1829"><span class="lineNum">    1829 </span><span class="lineCov">          6 :    addFlagsFromEnvVar ( &amp;argList,  (Char*)&quot;BZIP&quot; );</span></a>
+<a name="1830"><span class="lineNum">    1830 </span><span class="lineCov">         18 :    for (i = 1; i &lt;= argc-1; i++)</span></a>
+<a name="1831"><span class="lineNum">    1831 </span><span class="lineCov">          6 :       APPEND_FILESPEC(argList, argv[i]);</span></a>
 <a name="1832"><span class="lineNum">    1832 </span>            : </a>
 <a name="1833"><span class="lineNum">    1833 </span>            : </a>
 <a name="1834"><span class="lineNum">    1834 </span>            :    /*-- Find the length of the longest filename --*/</a>
-<a name="1835"><span class="lineNum">    1835 </span><span class="lineCov">          3 :    longestFileName = 7;</span></a>
-<a name="1836"><span class="lineNum">    1836 </span><span class="lineCov">          3 :    numFileNames    = 0;</span></a>
-<a name="1837"><span class="lineNum">    1837 </span><span class="lineCov">          3 :    decode          = True;</span></a>
-<a name="1838"><span class="lineNum">    1838 </span><span class="lineCov">          6 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
-<a name="1839"><span class="lineNum">    1839 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--&quot;)) { decode = False; continue; }</span></a>
-<a name="1840"><span class="lineNum">    1840 </span><span class="lineCov">          3 :       if (aa-&gt;name[0] == '-' &amp;&amp; decode) continue;</span></a>
+<a name="1835"><span class="lineNum">    1835 </span><span class="lineCov">          6 :    longestFileName = 7;</span></a>
+<a name="1836"><span class="lineNum">    1836 </span><span class="lineCov">          6 :    numFileNames    = 0;</span></a>
+<a name="1837"><span class="lineNum">    1837 </span><span class="lineCov">          6 :    decode          = True;</span></a>
+<a name="1838"><span class="lineNum">    1838 </span><span class="lineCov">         12 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
+<a name="1839"><span class="lineNum">    1839 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--&quot;)) { decode = False; continue; }</span></a>
+<a name="1840"><span class="lineNum">    1840 </span><span class="lineCov">          6 :       if (aa-&gt;name[0] == '-' &amp;&amp; decode) continue;</span></a>
 <a name="1841"><span class="lineNum">    1841 </span><span class="lineNoCov">          0 :       numFileNames++;</span></a>
 <a name="1842"><span class="lineNum">    1842 </span><span class="lineNoCov">          0 :       if (longestFileName &lt; (Int32)strlen(aa-&gt;name) )</span></a>
 <a name="1843"><span class="lineNum">    1843 </span><span class="lineNoCov">          0 :          longestFileName = (Int32)strlen(aa-&gt;name);</span></a>
@@ -1907,33 +1907,33 @@
 <a name="1845"><span class="lineNum">    1845 </span>            : </a>
 <a name="1846"><span class="lineNum">    1846 </span>            : </a>
 <a name="1847"><span class="lineNum">    1847 </span>            :    /*-- Determine source modes; flag handling may change this too. --*/</a>
-<a name="1848"><span class="lineNum">    1848 </span><span class="lineCov">          3 :    if (numFileNames == 0)</span></a>
-<a name="1849"><span class="lineNum">    1849 </span><span class="lineCov">          3 :       srcMode = SM_I2O; else srcMode = SM_F2F;</span></a>
+<a name="1848"><span class="lineNum">    1848 </span><span class="lineCov">          6 :    if (numFileNames == 0)</span></a>
+<a name="1849"><span class="lineNum">    1849 </span><span class="lineCov">          6 :       srcMode = SM_I2O; else srcMode = SM_F2F;</span></a>
 <a name="1850"><span class="lineNum">    1850 </span>            : </a>
 <a name="1851"><span class="lineNum">    1851 </span>            : </a>
 <a name="1852"><span class="lineNum">    1852 </span>            :    /*-- Determine what to do (compress/uncompress/test/cat). --*/</a>
 <a name="1853"><span class="lineNum">    1853 </span>            :    /*-- Note that subsequent flag handling may change this. --*/</a>
-<a name="1854"><span class="lineNum">    1854 </span><span class="lineCov">          3 :    opMode = OM_Z;</span></a>
+<a name="1854"><span class="lineNum">    1854 </span><span class="lineCov">          6 :    opMode = OM_Z;</span></a>
 <a name="1855"><span class="lineNum">    1855 </span>            : </a>
-<a name="1856"><span class="lineNum">    1856 </span><span class="lineCov">          3 :    if ( (strstr ( progName, &quot;unzip&quot; ) != 0) ||</span></a>
-<a name="1857"><span class="lineNum">    1857 </span><span class="lineCov">          3 :         (strstr ( progName, &quot;UNZIP&quot; ) != 0) )</span></a>
+<a name="1856"><span class="lineNum">    1856 </span><span class="lineCov">          6 :    if ( (strstr ( progName, &quot;unzip&quot; ) != 0) ||</span></a>
+<a name="1857"><span class="lineNum">    1857 </span><span class="lineCov">          6 :         (strstr ( progName, &quot;UNZIP&quot; ) != 0) )</span></a>
 <a name="1858"><span class="lineNum">    1858 </span><span class="lineNoCov">          0 :       opMode = OM_UNZ;</span></a>
 <a name="1859"><span class="lineNum">    1859 </span>            : </a>
-<a name="1860"><span class="lineNum">    1860 </span><span class="lineCov">          3 :    if ( (strstr ( progName, &quot;z2cat&quot; ) != 0) ||</span></a>
-<a name="1861"><span class="lineNum">    1861 </span><span class="lineCov">          3 :         (strstr ( progName, &quot;Z2CAT&quot; ) != 0) ||</span></a>
-<a name="1862"><span class="lineNum">    1862 </span><span class="lineCov">          3 :         (strstr ( progName, &quot;zcat&quot; ) != 0)  ||</span></a>
-<a name="1863"><span class="lineNum">    1863 </span><span class="lineCov">          3 :         (strstr ( progName, &quot;ZCAT&quot; ) != 0) )  {</span></a>
+<a name="1860"><span class="lineNum">    1860 </span><span class="lineCov">          6 :    if ( (strstr ( progName, &quot;z2cat&quot; ) != 0) ||</span></a>
+<a name="1861"><span class="lineNum">    1861 </span><span class="lineCov">          6 :         (strstr ( progName, &quot;Z2CAT&quot; ) != 0) ||</span></a>
+<a name="1862"><span class="lineNum">    1862 </span><span class="lineCov">          6 :         (strstr ( progName, &quot;zcat&quot; ) != 0)  ||</span></a>
+<a name="1863"><span class="lineNum">    1863 </span><span class="lineCov">          6 :         (strstr ( progName, &quot;ZCAT&quot; ) != 0) )  {</span></a>
 <a name="1864"><span class="lineNum">    1864 </span><span class="lineNoCov">          0 :       opMode = OM_UNZ;</span></a>
 <a name="1865"><span class="lineNum">    1865 </span><span class="lineNoCov">          0 :       srcMode = (numFileNames == 0) ? SM_I2O : SM_F2O;</span></a>
 <a name="1866"><span class="lineNum">    1866 </span>            :    }</a>
 <a name="1867"><span class="lineNum">    1867 </span>            : </a>
 <a name="1868"><span class="lineNum">    1868 </span>            : </a>
 <a name="1869"><span class="lineNum">    1869 </span>            :    /*-- Look at the flags. --*/</a>
-<a name="1870"><span class="lineNum">    1870 </span><span class="lineCov">          6 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
-<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--&quot;)) break;</span></a>
-<a name="1872"><span class="lineNum">    1872 </span><span class="lineCov">          3 :       if (aa-&gt;name[0] == '-' &amp;&amp; aa-&gt;name[1] != '-') {</span></a>
-<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">          6 :          for (j = 1; aa-&gt;name[j] != '\0'; j++) {</span></a>
-<a name="1874"><span class="lineNum">    1874 </span><span class="lineCov">          3 :             switch (aa-&gt;name[j]) {</span></a>
+<a name="1870"><span class="lineNum">    1870 </span><span class="lineCov">         12 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
+<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--&quot;)) break;</span></a>
+<a name="1872"><span class="lineNum">    1872 </span><span class="lineCov">          6 :       if (aa-&gt;name[0] == '-' &amp;&amp; aa-&gt;name[1] != '-') {</span></a>
+<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">         12 :          for (j = 1; aa-&gt;name[j] != '\0'; j++) {</span></a>
+<a name="1874"><span class="lineNum">    1874 </span><span class="lineCov">          6 :             switch (aa-&gt;name[j]) {</span></a>
 <a name="1875"><span class="lineNum">    1875 </span><span class="lineNoCov">          0 :                case 'c': srcMode          = SM_F2O; break;</span></a>
 <a name="1876"><span class="lineNum">    1876 </span><span class="lineNoCov">          0 :                case 'd': opMode           = OM_UNZ; break;</span></a>
 <a name="1877"><span class="lineNum">    1877 </span><span class="lineNoCov">          0 :                case 'z': opMode           = OM_Z; break;</span></a>
@@ -1942,9 +1942,9 @@
 <a name="1880"><span class="lineNum">    1880 </span><span class="lineNoCov">          0 :                case 'k': keepInputFiles   = True; break;</span></a>
 <a name="1881"><span class="lineNum">    1881 </span><span class="lineNoCov">          0 :                case 's': smallMode        = True; break;</span></a>
 <a name="1882"><span class="lineNum">    1882 </span><span class="lineNoCov">          0 :                case 'q': noisy            = False; break;</span></a>
-<a name="1883"><span class="lineNum">    1883 </span><span class="lineCov">          1 :                case '1': blockSize100k    = 1; break;</span></a>
-<a name="1884"><span class="lineNum">    1884 </span><span class="lineCov">          1 :                case '2': blockSize100k    = 2; break;</span></a>
-<a name="1885"><span class="lineNum">    1885 </span><span class="lineCov">          1 :                case '3': blockSize100k    = 3; break;</span></a>
+<a name="1883"><span class="lineNum">    1883 </span><span class="lineCov">          2 :                case '1': blockSize100k    = 1; break;</span></a>
+<a name="1884"><span class="lineNum">    1884 </span><span class="lineCov">          2 :                case '2': blockSize100k    = 2; break;</span></a>
+<a name="1885"><span class="lineNum">    1885 </span><span class="lineCov">          2 :                case '3': blockSize100k    = 3; break;</span></a>
 <a name="1886"><span class="lineNum">    1886 </span><span class="lineNoCov">          0 :                case '4': blockSize100k    = 4; break;</span></a>
 <a name="1887"><span class="lineNum">    1887 </span><span class="lineNoCov">          0 :                case '5': blockSize100k    = 5; break;</span></a>
 <a name="1888"><span class="lineNum">    1888 </span><span class="lineNoCov">          0 :                case '6': blockSize100k    = 6; break;</span></a>
@@ -1961,56 +1961,56 @@
 <a name="1899"><span class="lineNum">    1899 </span>            :                                    progName, aa-&gt;name );</a>
 <a name="1900"><span class="lineNum">    1900 </span><span class="lineNoCov">          0 :                          usage ( progName );</span></a>
 <a name="1901"><span class="lineNum">    1901 </span><span class="lineNoCov">          0 :                          exit ( 1 );</span></a>
-<a name="1902"><span class="lineNum">    1902 </span><span class="lineCov">          3 :                          break;</span></a>
+<a name="1902"><span class="lineNum">    1902 </span><span class="lineCov">          6 :                          break;</span></a>
 <a name="1903"><span class="lineNum">    1903 </span>            :             }</a>
 <a name="1904"><span class="lineNum">    1904 </span>            :          }</a>
 <a name="1905"><span class="lineNum">    1905 </span>            :       }</a>
 <a name="1906"><span class="lineNum">    1906 </span>            :    }</a>
 <a name="1907"><span class="lineNum">    1907 </span>            :    </a>
 <a name="1908"><span class="lineNum">    1908 </span>            :    /*-- And again ... --*/</a>
-<a name="1909"><span class="lineNum">    1909 </span><span class="lineCov">          6 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
-<a name="1910"><span class="lineNum">    1910 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--&quot;)) break;</span></a>
-<a name="1911"><span class="lineNum">    1911 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--stdout&quot;))            srcMode          = SM_F2O;  else</span></a>
-<a name="1912"><span class="lineNum">    1912 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--decompress&quot;))        opMode           = OM_UNZ;  else</span></a>
-<a name="1913"><span class="lineNum">    1913 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--compress&quot;))          opMode           = OM_Z;    else</span></a>
-<a name="1914"><span class="lineNum">    1914 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--force&quot;))             forceOverwrite   = True;    else</span></a>
-<a name="1915"><span class="lineNum">    1915 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--test&quot;))              opMode           = OM_TEST; else</span></a>
-<a name="1916"><span class="lineNum">    1916 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--keep&quot;))              keepInputFiles   = True;    else</span></a>
-<a name="1917"><span class="lineNum">    1917 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--small&quot;))             smallMode        = True;    else</span></a>
-<a name="1918"><span class="lineNum">    1918 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--quiet&quot;))             noisy            = False;   else</span></a>
-<a name="1919"><span class="lineNum">    1919 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--version&quot;))           license();                  else</span></a>
-<a name="1920"><span class="lineNum">    1920 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--license&quot;))           license();                  else</span></a>
-<a name="1921"><span class="lineNum">    1921 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--exponential&quot;))       workFactor = 1;             else </span></a>
-<a name="1922"><span class="lineNum">    1922 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--repetitive-best&quot;))   redundant(aa-&gt;name);        else</span></a>
-<a name="1923"><span class="lineNum">    1923 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--repetitive-fast&quot;))   redundant(aa-&gt;name);        else</span></a>
-<a name="1924"><span class="lineNum">    1924 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--fast&quot;))              blockSize100k = 1;          else</span></a>
-<a name="1925"><span class="lineNum">    1925 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--best&quot;))              blockSize100k = 9;          else</span></a>
-<a name="1926"><span class="lineNum">    1926 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--verbose&quot;))           verbosity++;                else</span></a>
-<a name="1927"><span class="lineNum">    1927 </span><span class="lineCov">          3 :       if (ISFLAG(&quot;--help&quot;))              { usage ( progName ); exit ( 0 ); }</span></a>
+<a name="1909"><span class="lineNum">    1909 </span><span class="lineCov">         12 :    for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
+<a name="1910"><span class="lineNum">    1910 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--&quot;)) break;</span></a>
+<a name="1911"><span class="lineNum">    1911 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--stdout&quot;))            srcMode          = SM_F2O;  else</span></a>
+<a name="1912"><span class="lineNum">    1912 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--decompress&quot;))        opMode           = OM_UNZ;  else</span></a>
+<a name="1913"><span class="lineNum">    1913 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--compress&quot;))          opMode           = OM_Z;    else</span></a>
+<a name="1914"><span class="lineNum">    1914 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--force&quot;))             forceOverwrite   = True;    else</span></a>
+<a name="1915"><span class="lineNum">    1915 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--test&quot;))              opMode           = OM_TEST; else</span></a>
+<a name="1916"><span class="lineNum">    1916 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--keep&quot;))              keepInputFiles   = True;    else</span></a>
+<a name="1917"><span class="lineNum">    1917 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--small&quot;))             smallMode        = True;    else</span></a>
+<a name="1918"><span class="lineNum">    1918 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--quiet&quot;))             noisy            = False;   else</span></a>
+<a name="1919"><span class="lineNum">    1919 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--version&quot;))           license();                  else</span></a>
+<a name="1920"><span class="lineNum">    1920 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--license&quot;))           license();                  else</span></a>
+<a name="1921"><span class="lineNum">    1921 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--exponential&quot;))       workFactor = 1;             else </span></a>
+<a name="1922"><span class="lineNum">    1922 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--repetitive-best&quot;))   redundant(aa-&gt;name);        else</span></a>
+<a name="1923"><span class="lineNum">    1923 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--repetitive-fast&quot;))   redundant(aa-&gt;name);        else</span></a>
+<a name="1924"><span class="lineNum">    1924 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--fast&quot;))              blockSize100k = 1;          else</span></a>
+<a name="1925"><span class="lineNum">    1925 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--best&quot;))              blockSize100k = 9;          else</span></a>
+<a name="1926"><span class="lineNum">    1926 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--verbose&quot;))           verbosity++;                else</span></a>
+<a name="1927"><span class="lineNum">    1927 </span><span class="lineCov">          6 :       if (ISFLAG(&quot;--help&quot;))              { usage ( progName ); exit ( 0 ); }</span></a>
 <a name="1928"><span class="lineNum">    1928 </span>            :          else</a>
-<a name="1929"><span class="lineNum">    1929 </span><span class="lineCov">          3 :          if (strncmp ( aa-&gt;name, &quot;--&quot;, 2) == 0) {</span></a>
+<a name="1929"><span class="lineNum">    1929 </span><span class="lineCov">          6 :          if (strncmp ( aa-&gt;name, &quot;--&quot;, 2) == 0) {</span></a>
 <a name="1930"><span class="lineNum">    1930 </span><span class="lineNoCov">          0 :             fprintf ( stderr, &quot;%s: Bad flag `%s'\n&quot;, progName, aa-&gt;name );</span></a>
 <a name="1931"><span class="lineNum">    1931 </span><span class="lineNoCov">          0 :             usage ( progName );</span></a>
 <a name="1932"><span class="lineNum">    1932 </span><span class="lineNoCov">          0 :             exit ( 1 );</span></a>
 <a name="1933"><span class="lineNum">    1933 </span>            :          }</a>
 <a name="1934"><span class="lineNum">    1934 </span>            :    }</a>
 <a name="1935"><span class="lineNum">    1935 </span>            : </a>
-<a name="1936"><span class="lineNum">    1936 </span><span class="lineCov">          3 :    if (verbosity &gt; 4) verbosity = 4;</span></a>
-<a name="1937"><span class="lineNum">    1937 </span><span class="lineCov">          3 :    if (opMode == OM_Z &amp;&amp; smallMode &amp;&amp; blockSize100k &gt; 2) </span></a>
+<a name="1936"><span class="lineNum">    1936 </span><span class="lineCov">          6 :    if (verbosity &gt; 4) verbosity = 4;</span></a>
+<a name="1937"><span class="lineNum">    1937 </span><span class="lineCov">          6 :    if (opMode == OM_Z &amp;&amp; smallMode &amp;&amp; blockSize100k &gt; 2) </span></a>
 <a name="1938"><span class="lineNum">    1938 </span><span class="lineNoCov">          0 :       blockSize100k = 2;</span></a>
 <a name="1939"><span class="lineNum">    1939 </span>            : </a>
-<a name="1940"><span class="lineNum">    1940 </span><span class="lineCov">          3 :    if (opMode == OM_TEST &amp;&amp; srcMode == SM_F2O) {</span></a>
+<a name="1940"><span class="lineNum">    1940 </span><span class="lineCov">          6 :    if (opMode == OM_TEST &amp;&amp; srcMode == SM_F2O) {</span></a>
 <a name="1941"><span class="lineNum">    1941 </span><span class="lineNoCov">          0 :       fprintf ( stderr, &quot;%s: -c and -t cannot be used together.\n&quot;,</span></a>
 <a name="1942"><span class="lineNum">    1942 </span>            :                 progName );</a>
 <a name="1943"><span class="lineNum">    1943 </span><span class="lineNoCov">          0 :       exit ( 1 );</span></a>
 <a name="1944"><span class="lineNum">    1944 </span>            :    }</a>
 <a name="1945"><span class="lineNum">    1945 </span>            : </a>
-<a name="1946"><span class="lineNum">    1946 </span><span class="lineCov">          3 :    if (srcMode == SM_F2O &amp;&amp; numFileNames == 0)</span></a>
+<a name="1946"><span class="lineNum">    1946 </span><span class="lineCov">          6 :    if (srcMode == SM_F2O &amp;&amp; numFileNames == 0)</span></a>
 <a name="1947"><span class="lineNum">    1947 </span><span class="lineNoCov">          0 :       srcMode = SM_I2O;</span></a>
 <a name="1948"><span class="lineNum">    1948 </span>            : </a>
-<a name="1949"><span class="lineNum">    1949 </span><span class="lineCov">          3 :    if (opMode != OM_Z) blockSize100k = 0;</span></a>
+<a name="1949"><span class="lineNum">    1949 </span><span class="lineCov">          6 :    if (opMode != OM_Z) blockSize100k = 0;</span></a>
 <a name="1950"><span class="lineNum">    1950 </span>            : </a>
-<a name="1951"><span class="lineNum">    1951 </span><span class="lineCov">          3 :    if (srcMode == SM_F2F) {</span></a>
+<a name="1951"><span class="lineNum">    1951 </span><span class="lineCov">          6 :    if (srcMode == SM_F2F) {</span></a>
 <a name="1952"><span class="lineNum">    1952 </span><span class="lineNoCov">          0 :       signal (SIGINT,  mySignalCatcher);</span></a>
 <a name="1953"><span class="lineNum">    1953 </span><span class="lineNoCov">          0 :       signal (SIGTERM, mySignalCatcher);</span></a>
 <a name="1954"><span class="lineNum">    1954 </span>            : #     if BZ_UNIX</a>
@@ -2018,9 +2018,9 @@
 <a name="1956"><span class="lineNum">    1956 </span>            : #     endif</a>
 <a name="1957"><span class="lineNum">    1957 </span>            :    }</a>
 <a name="1958"><span class="lineNum">    1958 </span>            : </a>
-<a name="1959"><span class="lineNum">    1959 </span><span class="lineCov">          3 :    if (opMode == OM_Z) {</span></a>
-<a name="1960"><span class="lineNum">    1960 </span><span class="lineCov">          3 :      if (srcMode == SM_I2O) {</span></a>
-<a name="1961"><span class="lineNum">    1961 </span><span class="lineCov">          3 :         compress ( NULL );</span></a>
+<a name="1959"><span class="lineNum">    1959 </span><span class="lineCov">          6 :    if (opMode == OM_Z) {</span></a>
+<a name="1960"><span class="lineNum">    1960 </span><span class="lineCov">          6 :      if (srcMode == SM_I2O) {</span></a>
+<a name="1961"><span class="lineNum">    1961 </span><span class="lineCov">          6 :         compress ( NULL );</span></a>
 <a name="1962"><span class="lineNum">    1962 </span>            :      } else {</a>
 <a name="1963"><span class="lineNum">    1963 </span>            :         decode = True;</a>
 <a name="1964"><span class="lineNum">    1964 </span><span class="lineNoCov">          0 :         for (aa = argList; aa != NULL; aa = aa-&gt;link) {</span></a>
@@ -2082,14 +2082,14 @@
 <a name="2020"><span class="lineNum">    2020 </span>            :       (eg) Purify, Checker.  Serves no other useful purpose.</a>
 <a name="2021"><span class="lineNum">    2021 </span>            :    */</a>
 <a name="2022"><span class="lineNum">    2022 </span>            :    aa = argList;</a>
-<a name="2023"><span class="lineNum">    2023 </span><span class="lineCov">          6 :    while (aa != NULL) {</span></a>
-<a name="2024"><span class="lineNum">    2024 </span><span class="lineCov">          3 :       Cell* aa2 = aa-&gt;link;</span></a>
-<a name="2025"><span class="lineNum">    2025 </span><span class="lineCov">          3 :       if (aa-&gt;name != NULL) free(aa-&gt;name);</span></a>
-<a name="2026"><span class="lineNum">    2026 </span><span class="lineCov">          3 :       free(aa);</span></a>
-<a name="2027"><span class="lineNum">    2027 </span><span class="lineCov">          3 :       aa = aa2;</span></a>
+<a name="2023"><span class="lineNum">    2023 </span><span class="lineCov">         12 :    while (aa != NULL) {</span></a>
+<a name="2024"><span class="lineNum">    2024 </span><span class="lineCov">          6 :       Cell* aa2 = aa-&gt;link;</span></a>
+<a name="2025"><span class="lineNum">    2025 </span><span class="lineCov">          6 :       if (aa-&gt;name != NULL) free(aa-&gt;name);</span></a>
+<a name="2026"><span class="lineNum">    2026 </span><span class="lineCov">          6 :       free(aa);</span></a>
+<a name="2027"><span class="lineNum">    2027 </span><span class="lineCov">          6 :       aa = aa2;</span></a>
 <a name="2028"><span class="lineNum">    2028 </span>            :    }</a>
 <a name="2029"><span class="lineNum">    2029 </span>            : </a>
-<a name="2030"><span class="lineNum">    2030 </span><span class="lineCov">          3 :    return exitValue;</span></a>
+<a name="2030"><span class="lineNum">    2030 </span><span class="lineCov">          6 :    return exitValue;</span></a>
 <a name="2031"><span class="lineNum">    2031 </span>            : }</a>
 <a name="2032"><span class="lineNum">    2032 </span>            : </a>
 <a name="2033"><span class="lineNum">    2033 </span>            : </a>

@@ -1,8 +1,8 @@
 # Key Code and Dataset Catalogue 
 ## Code
 - [C code for bzip2](c-code/bzip2-1.0.8)
-- [C code for bzip2 after converting macros](c-code/bzip2-1.0.8-macro)
-- [Preprocessed C code for bzip2 after converting macros](c-code/bzip2-1.0.8-i)
+- [C code for bzip2 after handling macros](c-code/bzip2-1.0.8-macro)
+- [Preprocessed C code for bzip2 after handling macros](c-code/bzip2-1.0.8-i)
 - [C code for rosseta](c-code/rosseta-125)
 - [RustMap Generated bzip2 ](rust-code/bzip2_rs_gpt)
 - [RustMap Generated rosseta code](rust-code/rosetta_code_gpt)
@@ -32,18 +32,25 @@
   - [prompt templates](#prompt-templates)
 - [Detailed README.md](#detailed-readmemd)
 - [1. Introducation](#1-introducation)
-  - [1.1. version introduction](#11-version-introduction)
-  - [2.1.  Dynamically applied Runtime Function Call Graph](#21--dynamically-applied-runtime-function-call-graph)
-  - [2.2. Generate Function Static Call Graph](#22-generate-function-static-call-graph)
-    - [2.2.1. Use Static cflow](#221-use-static-cflow)
-    - [2.2.2. Generate RustMap Scaffolding](#222-generate-rustmap-scaffolding)
-- [2. Prompts](#2-prompts)
-  - [2.1. Prompt for directly applying LLM to translate](#21-prompt-for-directly-applying-llm-to-translate)
-  - [2.2. Prompt to Resolve Compilation Error](#22-prompt-to-resolve-compilation-error)
-  - [2.3. Prompt to resolve Inconsistency error.](#23-prompt-to-resolve-inconsistency-error)
+  - [1.1. Version Introduction](#11-version-introduction)
+- [2. Scaffolding Boilerplate Generation (example of bzip2)](#2-scaffolding-boilerplate-generation-example-of-bzip2)
+  - [2.1. Handle Macros](#21-handle-macros)
+  - [2.2. Dynamically applied Runtime Function Call Graph](#22-dynamically-applied-runtime-function-call-graph)
+  - [2.3. Generate Function Static Call Graph](#23-generate-function-static-call-graph)
+    - [2.3.1. Use Static cflow](#231-use-static-cflow)
+    - [2.3.2. Generate RustMap Scaffolding](#232-generate-rustmap-scaffolding)
+- [3. Prompts](#3-prompts)
+  - [3.1. Prompt for handling macros](#31-prompt-for-handling-macros)
+  - [3.2. Prompt for directly applying LLM to translate](#32-prompt-for-directly-applying-llm-to-translate)
+  - [3.3. Prompt to Resolve Compilation Error](#33-prompt-to-resolve-compilation-error)
+  - [3.4. Prompt to resolve Inconsistency error.](#34-prompt-to-resolve-inconsistency-error)
 - [4. Functional Test](#4-functional-test)
-  - [4.1 Functional Test of Rosetta Code](#41-functional-test-of-rosetta-code)
-    - [4.1.1 Batch Execution of Rosetta Code](#411-batch-execution-of-rosetta-code)
+  - [4.1. Functional Test of bzip2](#41-functional-test-of-bzip2)
+    - [4.1.1. Steps to build translated bzip2](#411-steps-to-build-translated-bzip2)
+    - [4.1.2. Functional Test](#412-functional-test)
+    - [4.1.3. Verification of RustMap bzip2 compress by uncompressing `.bz2`](#413-verification-of-rustmap-bzip2-compress-by-uncompressing-bz2)
+  - [4.2. Functional Test of Rosetta Code](#42-functional-test-of-rosetta-code)
+    - [4.2.1 Batch Execution of Rosetta Code](#421-batch-execution-of-rosetta-code)
     - [4.1.2. Verification of Rosetta running result compared to original C](#412-verification-of-rosetta-running-result-compared-to-original-c)
 - [5. Count of Macros Definition and Usage](#5-count-of-macros-definition-and-usage)
 - [6. Coverage Test](#6-coverage-test)
@@ -62,18 +69,26 @@ We will demonstrate how to perform the Coverage Test, Complexity Test, Functiona
 
 
 
-## 1.1. version introduction
+## 1.1. Version Introduction
 - [bzip2-1.0.8](https://gitlab.com/bzip2/bzip2/-/tree/bzip2-1.0.8?ref_type=tags)
 - [rosetta code](https://rosettacode.org/)
 
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/r/cxm211/rustmap-new
+# 2.  Scaffolding Boilerplate Generation (example of bzip2)
+As we write in paper, we will do Scaffolding pre-processing before applying LLM to translate the C code.
 
-   
-## 2.1.  Dynamically applied Runtime Function Call Graph
+## 2.1. Handle Macros
+We will handle the macros in the C code first. The detailed process is in paper, here we will show the [prompt template to handle the macros](prompt-templates/macro-translation.txt). 
+
+The c code after handling macros is in `c-code/bzip2-1.0.8-macro` and the preprocessed c code is in `c-code/bzip2-1.0.8-i`. The c code after handling macros will be used to generate the dynamic call graph. We will use the preprocessed c code to generate the static call graph and translate the C code to Rust code.
+
+
+## 2.2. Dynamically applied Runtime Function Call Graph
 As we write in paper, we try to run original C program and observe the calling relationship.
 
 
 Add the -pg option to CFLAGS and LDFLAGS: This is used to enable Gprof profiling during compilation and linking.
-We have added `-pg` flag to Makefile in `./bzip2-1.0.8/Makefile` this will help to generate 
+We have added `-pg` flag to Makefile in `./bzip2-1.0.8-macro/Makefile` this will help to generate 
 
 1. in Makefile add -pg, this is used to enable Gprof profiling during compilation and linking.
 ```bash
@@ -101,29 +116,45 @@ gprof2dot -f prof gprof.out | dot -Tpng -o dynamic_call_graph.png
 
 ```
 
-## 2.2. Generate Function Static Call Graph 
+## 2.3. Generate Function Static Call Graph 
 
 
-### 2.2.1. Use Static cflow
+### 2.3.1. Use Static cflow
 
 When using the cflow tool for a C project, it's generally recommended to have only one main function in the project. cflow is designed to analyze function call relationships in C programs and generates a call graph. If there are multiple main functions, cflow might face difficulties, as the main function typically serves as the entry point of a program. For projects with multiple main functions, like those containing independent sub-projects, you might need to run cflow separately for each part or adjust the project structure for effective analysis. In summary, having a single main function is the best practice for using cflow, unless you have specific needs and strategies to handle multiple instances. 
  
 ```bash
 python3 cflow_generation.py /root/rustmap/c-code/bzip2-1.0.8-i
 ```
-You can find 'c-code/bzip2-1.0.8-macro/scg.dot' and 'c-code/bzip2-1.0.8-macro/scg.svg' .
+You can find 'c-code/bzip2-1.0.8-i/scg.dot' and 'c-code/bzip2-1.0.8-i/scg.svg' .
 
 
-### 2.2.2. Generate RustMap Scaffolding
+### 2.3.2. Generate RustMap Scaffolding
 ```bash
 python3 extract.py /root/rustmap/c-code/bzip2-1.0.8-i
 ```
-The Scaffolding is generated and saved to [scaffolding.json](c-code/bzip2-1.0.8-macro/scg.dot)
+The Scaffolding is generated and saved to [scaffolding.json](c-code/bzip2-1.0.8-i/scaffolding.json)
 
 
 
-# 2. Prompts
-## 2.1. Prompt for directly applying LLM to translate
+# 3. Prompts
+## 3.1. Prompt for handling macros
+```text
+You will be provided with C code that contains some simple and complex macros. Your task is to convert these macros into non-macro equivalent code, ensuring the functionality and logic remain the same. You must replace the macro definitions with standard C code (such as inline functions or constant variables), but the way they are called or invoked should not change in the code. All code that is not part of a macro should remain unchanged. Generate compliable and complete code. 
+Requirements:
+1. For simple macros (e.g., constant values), replace them with appropriate const variables with same names.
+2. For macros with arguments (complex macros), replace them with functions while ensuring that return values, function name and functionality remain unchanged. If the parameter types of the converted function are unclear, refer to the later code for clarification. If the type remains unclear, do not convert the macro and highlight the uncertainty.
+3. If a macro is defined or undefined within a conditional compilation directive (e.g., #if, #ifdef, #ifndef), it should remain unchanged for all statements.
+4. Be mindful of any operator precedence or edge cases that could occur with macro expansions, and ensure the logic is preserved without altering the original functionality.
+5. If a macro has been replaced and is followed by an #undef directive, remove the #undef statement.
+6. If the macro applies to multiple data types, create multiple versions of the function for each applicable data type (using function overloading or type-specific function names as needed in C).
+7. If there are any uncertainties about how the macro should be converted or any potential ambiguity, ask for clarification before making the conversion.
+8. After converting the macros, output the entire modified code with both the converted macros and the unchanged non-macro code.
+9. If any undefined function or macros appears in future conversations, refer to the conversation history for context.
+
+```
+
+## 3.2. Prompt for directly applying LLM to translate
 ```bash
 
 If the C code references other vital functions or structures, ask mefirst and wait for my provided input.(ASK ME first)Convert the given code to idiomatic Rust, keeping its function. Useminimal unsafe traits. Don't translate unknown variables or functions, and avoid assumptions.(ASK ME frst)
@@ -144,13 +175,13 @@ I must reiterate: if you encounter unfamiliar variables or functionsduring trans
 
 
 ```
-## 2.2. Prompt to Resolve Compilation Error
+## 3.3. Prompt to Resolve Compilation Error
 Normally we will after our test generate compilation error, we will directly put the compilation error into ChatGPT-4
 See the examples of compilation errors in the directory: `prompt-templates/compilation-errors` We have listed some of compilation from our RustMap Translation of Rosetta Code
 
 
 
-## 2.3. Prompt to resolve Inconsistency error. 
+## 3.4. Prompt to resolve Inconsistency error. 
  please generate Rust code fragment here to have
   consistent states as the C code above
 ```bash
@@ -173,44 +204,50 @@ See the examples of compilation errors in the directory: `prompt-templates/compi
 <!-- Please check the detailed Example in `./prompt-templates/inconsistency-solution` -->
 
 # 4. Functional Test
-<!-- 
+
 ## 4.1. Functional Test of bzip2
-> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
+<!-- > The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
 >
-> 
-### 4.1.1. bzip2 executable binary generation
+>  -->
+### 4.1.1. Steps to build translated bzip2
 ```bash
-cd /root/rustmap/feasibility_study/bzip2_rs_gpt
-cargo build --release
+cd /root/rustmap/rust-code/bzip2_rs_gpt
+cargo build
 ```
-It will generate executable binary in `/root/rustmap/feasibility_study/bzip2_rs_gpt/target/release/bzip2_rs_gpt` this path
+It will generate executable binary in `/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt` this path
 
 
-### 4.1.2. test cases generations bzip2
+<!-- ### 4.1.2. test cases generations bzip2
 ```bash
-cd /root/rustmap/feasibility_study/bzip2_tests
+cd /root/rustmap/rust-code/bzip2_tests
 python3 random-test-case-generation.py
 ```
 This step will generate five small-scale text files: `random_1_chars.txt`, `random_10_chars.txt`, `random_100_chars.txt`, `random_1000_chars.txt`, `random_5000_chars.txt`
-Then we will use bzip2-rust binary to test the results.
+Then we will use bzip2-rust binary to test the results. -->
 
 
-### 4.1.3. Functional Test compress small-files
+### 4.1.2. Functional Test
 ```bash
-cd /root/rustmap/feasibility_study/bzip2_tests-finished-example
+cd /root/rustmap/rust-code/bzip2_testcases/
 
 # compress test cases and record its processing time
-{ echo "Running random_1_chars.txt"; time /root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_1_chars.txt; echo; echo "Running random_10_chars.txt"; time /root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_10_chars.txt; echo; echo "Running random_100_chars.txt"; time /root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_100_chars.txt; echo; echo "Running random_1000_chars.txt"; time /root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_1000_chars.txt; echo; echo "Running random_5000_chars.txt"; time /root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_5000_chars.txt; echo; } 2>&1 | tee
+{ 
+  echo "Running random_1_chars.txt"; time /root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_1_chars.txt;
+  echo "Running random_10_chars.txt"; time /root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_10_chars.txt;
+  echo "Running random_100_chars.txt"; time /root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_100_chars.txt;
+  echo "Running random_1000_chars.txt"; time /root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_1000_chars.txt;
+  echo "Running random_5000_chars.txt"; time /root/rustmap/rust-code/bzip2_rs_gpt/target/debug/bzip2_rs_gpt random_5000_chars.txt;
+} 2>&1 | tee output.log
 
-mv *.bz2 compress_output_bz2_files/
+
 ```
 
-you may will the generation time in here: /root/rustmap/feasibility_study/bzip2_tests/timings.txt
+you may will the generation time in here: /root/rustmap/rust-code/bzip2_testcases/timings.txt
 
 
-### 4.1.4. Verification of RustMap bzip2 compress by uncompressing `.bz2`
+### 4.1.3. Verification of RustMap bzip2 compress by uncompressing `.bz2`
 ```bash
-cd /root/rustmap/feasibility_study/bzip2_tests/compress_output_bz2_files
+cd /root/rustmap/rust-code/bzip2_testcases/
 bzip2recover random_1_chars.txt.bz2
 bzip2 -d rec00001random_1_chars.txt.bz2
 
@@ -234,27 +271,32 @@ diff random_100_chars.txt rec00001random_100_chars.txt > diff_random_100_chars.t
 diff random_1000_chars.txt rec00001random_1000_chars.txt > diff_random_1000_chars.txt
 diff random_5000_chars.txt rec00001random_5000_chars.txt > diff_random_5000_chars.txt
 
-# If the resultant diff is zero we did
-```
- -->
 
-## 4.1 Functional Test of Rosetta Code
-### 4.1.1 Batch Execution of Rosetta Code
+```
+
+
+## 4.2. Functional Test of Rosetta Code
+### 4.2.1 Batch Execution of Rosetta Code
 Since there are attached testcases in original Roseta Code, we will directly execute the translated Roseta Code and Compare the result with original C Roseta Code
 ```bash
-bash ./c-code/Rosetta-125/Rosetta-125.sh > original_roseta_result.log
-bash ./rust-code/Rosetta_code_gpt/125-Rosetta-code-gpt/125-Rosetta-rs.sh > rustmap_roseta_result.log
+cd /root/rustmap/c-code/rosseta-125/
+chmod +x ./rosetta-125.sh
+bash ./rosetta-125.sh > original_rosetta_result.log
+
+cd /root/rustmap/rust-code/rosetta_code_gpt/125-rosetta-code-gpt/
+chmod +x ./125-rosetta-rs.sh
+bash ./125-rosetta-rs.sh > rustmap_rosetta_result.log
 ```
 
-### 4.1.2. Verification of Rosetta running result compared to original C
+### 4.2.2. Verification of Rosetta running result compared to original C
 ```bash
-diff original_roseta_result.log rustmap_roseta_result.log 
+diff /root/rustmap/c-code/rosseta-125/original_rosetta_result.log /root/rustmap/rust-code/rosetta_code_gpt/125-rosetta-code-gpt/rustmap_rosetta_result.log > diff_rosetta_result.log
 ```
 
 
 # 5. Count of Macros Definition and Usage
 
-> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap-new/general
 > 
 ![](paper_pic/Macros-Counts.jpg)
 
@@ -266,7 +308,7 @@ We count the number of macros declaration and usage based on original bzip2 C, w
 We try to show the process to generate the Coverage Test Statistics in this section
 ![](./paper_pic/Coverage-Test-Result-bzip2-Rosetta.jpg)
 
-> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap/general
+> The following operational instructions can be executed in the Docker image https://hub.docker.com/repository/docker/cxm211/rustmap-new/general
 
 ## 6.1. Table 1.1: Calculating Coverage Test Ratio of Custom Test Case to bzip2 Test Suite
 we have added `coverage` flags in `Makefile` under `c-code/bzip2-1.0.8
@@ -279,7 +321,7 @@ cd /root/rustmap/c-code/bzip2-1.0.8
 # this command generate 
 make 
 ```
-View the result in `/root/rustmap/c-code/bzip2-1.0.8/out/bzip2-1.0.8/index.html` for Table 1 bzip2
+View the result in `/root/rustmap/c-code/bzip2-1.0.8/out/index.html` for Table 1 bzip2
 
 
 ### 6.1.2. Measuring Coverage for Custom Test Suite: bzip2 Rust Compress and Decompress Functions
@@ -311,13 +353,10 @@ View the Combined  Result in `bzip2-1.0.8/compress_out/bzip2-1.0.8/index.html`
 ## 6.2. Table 1.2 Rosetta Coverage Test Generation
 ```bash
 # This script iterates through all subdirectories in the current directory, compiles and runs the first C file found in each subdirectory, collects code coverage data, and finally generates an HTML coverage report.
-bash /root/rustmap/c-code/Rosetta-125/gcc-Rosetta-code.sh
+bash /root/rustmap/c-code/rosetta-125/gcc-Rosetta-code.sh
 ```
-View the result in `/root/rustmap/c-code/Rosetta-125/coverage_report/index.html` for Table 1 Rosetta Code
+View the result in `/root/rustmap/c-code/rosetta-125/coverage_report/index.html` for Table 1 Rosetta Code
 ![](paper_pic/Table-Coverage-Rosetta.jpg)
-
-# 7. Macro Handling
-[This section](./README_example.md) provides examples of different types of macro translations, showcasing how various C macros are transformed into more structured and maintainable formats in both C and Rust. These examples illustrate the process of converting numerical macros, complex macros, and unhandled macros, ensuring better readability, type safety, and platform compatibility. By following these references, readers can explore detailed case studies and understand the rationale behind each transformation.
 
 <!-- 
 # 7. Cogntive Complexity Test
@@ -570,5 +609,8 @@ In this folder, you can see that the `.c` switch case has a fall-through state. 
 
 You can clearly see the code explosion in `decompress.i` and `c2rust-decompress.rs`, so finding the correct way to rewrite it is extremely important.
 
-See the code under `/root/rustmap/code_patterns/complex_switch_fall_through_complex_macros` to illustrate 
- -->
+See the code under `/root/rustmap/code_patterns/complex_switch_fall_through_complex_macros` to illustrate  -->
+
+
+# 7. Macro Handling
+[This section](./README_example.md) provides examples of different types of macro translations, showcasing how various C macros are transformed into more structured and maintainable formats in both C and Rust. These examples illustrate the process of converting numerical macros, complex macros, and unhandled macros, ensuring better readability, type safety, and platform compatibility. By following these references, readers can explore detailed case studies and understand the rationale behind each transformation.

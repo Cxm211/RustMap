@@ -1,5 +1,5 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.c
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.gcno
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.gcno
         -:    0:Data:-
         -:    0:Runs:0
         -:    1:// use crate::blocksort::scc_30_root_20_mmed3::*;

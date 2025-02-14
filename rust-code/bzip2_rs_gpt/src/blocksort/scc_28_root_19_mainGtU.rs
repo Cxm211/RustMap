@@ -108,7 +108,7 @@ mod tests {
     
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (i1, i2, mut block, mut quadrant, nblock, budget) = read_dat_file("/root/rustmap/bzip2/params_mainGtU_1.dat")?;
+        let (i1, i2, mut block, mut quadrant, nblock, budget) = read_dat_file("/root/crown-rust/bzip2/params_mainGtU_1.dat")?;
 
         // println!("Before mainGtU:");
         let mut bugdget_as_i32  = budget as i32;

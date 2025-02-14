@@ -1,0 +1,2548 @@
+1c1
+< Running main.c in 100_doors/
+---
+> Compiling and running 100_doors-c.rs
+102c102
+< Running main.c in 4_rings_puzzle/
+---
+> Compiling and running 4_rings_puzzle-c.rs
+124c124
+< Running main.c in 99_bottles_of_beer/
+---
+> Compiling and running 99_bottles_of_beer-c.rs
+424,441c424,452
+< Running main.c in almost_prime/
+< k = 1: 2 3 5 7 11 13 17 19 23 29
+< k = 2: 4 6 9 10 14 15 21 22 25 26
+< k = 3: 8 12 18 20 27 28 30 42 44 45
+< k = 4: 16 24 36 40 54 56 60 81 84 88
+< k = 5: 32 48 72 80 108 112 120 162 168 176
+< Running main.c in apply_a_callback_to_an_array/
+< Compilation failed in apply_a_callback_to_an_array/
+< Running main.c in approximate_equility/
+< 100000000000000.015625, 100000000000000.015625 => 1
+< 100.010000, 100.011000 => 0
+< 1000000000.000000, 1000000000.000000 => 0
+< 0.001000, 0.001000 => 0
+< 0.000000, 0.000000 => 1
+< 2.000000, 2.000000 => 0
+< -2.000000, -2.000000 => 0
+< 3.141593, 3.141593 => 1
+< Running main.c in arithmetic_mean/
+---
+> Compiling and running almost_prime-c.rs
+> k = 1:  2 3 5 7 11 13 17 19 23 29
+> k = 2:  4 6 9 10 14 15 21 22 25 26
+> k = 3:  8 12 18 20 27 28 30 42 44 45
+> k = 4:  16 24 36 40 54 56 60 81 84 88
+> k = 5:  32 48 72 80 108 112 120 162 168 176
+> Compiling and running apply_a_callback_to_an_array-c.rs
+> (x-1)^0 = +1x^0
+> (x-1)^1 = +1x^1-1x^0
+> (x-1)^2 = +1x^2+0x^1+1x^0
+> (x-1)^3 = +1x^3-1x^2-1x^1-1x^0
+> (x-1)^4 = +1x^4-2x^3+0x^2+2x^1+1x^0
+> (x-1)^5 = +1x^5-3x^4+2x^3+2x^2-3x^1-1x^0
+> (x-1)^6 = +1x^6-4x^5+5x^4+0x^3-5x^2+4x^1+1x^0
+> (x-1)^7 = +1x^7-5x^6+9x^5-5x^4-5x^3+9x^2-5x^1-1x^0
+> (x-1)^8 = +1x^8-6x^7+14x^6-14x^5+0x^4+14x^3-14x^2+6x^1+1x^0
+> (x-1)^9 = +1x^9-7x^8+20x^7-28x^6+14x^5+14x^4-28x^3+20x^2-7x^1-1x^0
+> 
+> primes (never mind the 1):
+> Compiling and running approximate_equility-c.rs
+> 100000000000000.02, 100000000000000.02 => true
+> 100.01, 100.011 => false
+> 1000000000.0000002, 1000000000.0000001 => false
+> 0.001, 0.0010000001 => false
+> 0.000000000000000000000101, 0 => true
+> 2.0000000000000004, 2 => false
+> NaN, -2 => false
+> 3.141592653589793, 3.141592653589793 => true
+> Compiling and running arithmetic_mean-c.rs
+447,448c458,459
+< mean[] = nan
+< Running main.c in array_concatenation/
+---
+> mean[] = NaN
+> Compiling and running array_concatenation-c.rs
+459c470,471
+< Running main.c in array_length/
+---
+> Compiling and running array_length-c.rs
+> 1
+461c473,481
+< Running main.c in attractive_numbers/
+---
+> 3
+> 4
+> 5
+> 6
+> 7
+> 8
+> 9
+> 0
+> Compiling and running attractive_numbers-c.rs
+467,491c487,493
+< Running main.c in base64_decode_data/
+< VG8gZXJyIGlzIGh1bWFuLCBidXQgdG8gcmVhbGx5IGZvdWwgdGhpbmdzIHVwIHlvdSBuZWVkIGEgY29tcHV0ZXIuCiAgICAtLVBhdWwgUi5FaHJsaWNo
+< 
+< To err is human, but to really foul things up you need a computer.
+<     --Paul R.Ehrlich
+< 
+< Running main.c in bell_numbers/
+< First fifteen Bell numbers:
+<  1: 1
+<  2: 1
+<  3: 2
+<  4: 5
+<  5: 15
+<  6: 52
+<  7: 203
+<  8: 877
+<  9: 4140
+< 10: 21147
+< 11: 115975
+< 12: 678570
+< 13: 4213597
+< 14: 27644437
+< 15: 190899322
+< 
+< The first ten rows of Bell's triangle:
+---
+> Compiling and running base64_decode_data-c.rs
+> "VG8gZXJyIGlzIGh1bWFuLCBidXQgdG8gcmVhbGx5IGZvdWwgdGhpbmdzIHVwIHlvdSBuZWVkIGEgY29tcHV0ZXIuCiAgICAtLVBhdWwgUi5FaHJsaWNo"
+> "To err is human, but to really foul things up you need a computer.\n    --Paul R.Ehrlich"
+> Compiling and running bell_numbers-c.rs
+> Compilation failed for bell_numbers-c.rs
+> Compiling and running binary_search-c.rs
+> 0
+493,516c495,524
+< 1, 2
+< 2, 3, 5
+< 5, 7, 10, 15
+< 15, 20, 27, 37, 52
+< 52, 67, 87, 114, 151, 203
+< 203, 255, 322, 409, 523, 674, 877
+< 877, 1080, 1335, 1657, 2066, 2589, 3263, 4140
+< 4140, 5017, 6097, 7432, 9089, 11155, 13744, 17007, 21147
+< 21147, 25287, 30304, 36401, 43833, 52922, 64077, 77821, 94828, 115975
+< Running main.c in binary_search/
+< 2 is at index 4
+< 5 is at index -1
+< Running main.c in box_the_compass/
+<  1  North                     0.00
+<  2  North by east            16.87
+<  3  North-northeast          16.88
+<  4  Northeast by north       33.75
+<  5  Northeast                50.62
+<  6  Northeast by east        50.63
+<  7  East-northeast           67.50
+<  8  East by north            84.37
+<  9  East                     84.38
+< 10  East by south           101.25
+< 11  East-southeast          118.12
+---
+> 10
+> 11
+> 100
+> 101
+> 110
+> 111
+> 1000
+> 1001
+> 1010
+> 1011
+> 1100
+> 1101
+> 1110
+> 1111
+> 10000
+> 10001
+> 10010
+> 10011
+> Compiling and running box_the_compass-c.rs
+>  2  North by east           0.00
+>  3  North-northeast         16.87
+>  3  North-northeast         16.88
+>  5  Northeast               33.75
+>  6  Northeast by east       50.62
+>  6  Northeast by east       50.63
+>  8  East by north           67.50
+>  9  East                    84.37
+>  9  East                    84.38
+> 11  East-southeast          101.25
+> 12  Southeast by east       118.12
+518,519c526,527
+< 13  Southeast               135.00
+< 14  Southeast by south      151.87
+---
+> 14  Southeast by south      135.00
+> 15  South-southeast         151.87
+521,522c529,530
+< 16  South by east           168.75
+< 17  South                   185.62
+---
+> 17  South                   168.75
+> 18  South by west           185.62
+524,525c532,533
+< 19  South-southwest         202.50
+< 20  Southwest by south      219.37
+---
+> 20  Southwest by south      202.50
+> 21  Southwest               219.37
+527,528c535,536
+< 22  Southwest by west       236.25
+< 23  West-southwest          253.12
+---
+> 23  West-southwest          236.25
+> 24  West by south           253.12
+530,531c538,539
+< 25  West                    270.00
+< 26  West by north           286.87
+---
+> 26  West by north           270.00
+> 27  West-northwest          286.87
+533,534c541,542
+< 28  Northwest by west       303.75
+< 29  Northwest               320.62
+---
+> 29  Northwest               303.75
+> 30  Northwest by north      320.62
+536,537c544,545
+< 31  North-northwest         337.50
+< 32  North by west           354.37
+---
+> 32  North by west           337.50
+>  1  North                   354.37
+539,611c547,551
+< Running main.c in carmichael_3_strong_pseudoprimes/
+< 3 11 17
+< 5 29 73
+< 5 17 29
+< 5 13 17
+< 7 19 67
+< 7 31 73
+< 7 13 31
+< 7 23 41
+< 7 73 103
+< 7 13 19
+< 13 61 397
+< 13 37 241
+< 13 97 421
+< 13 37 97
+< 13 37 61
+< 17 41 233
+< 17 353 1201
+< 19 43 409
+< 19 199 271
+< 23 199 353
+< 29 113 1093
+< 29 197 953
+< 31 991 15361
+< 31 61 631
+< 31 151 1171
+< 31 61 271
+< 31 61 211
+< 31 271 601
+< 31 181 331
+< 37 109 2017
+< 37 73 541
+< 37 613 1621
+< 37 73 181
+< 37 73 109
+< 41 1721 35281
+< 41 881 12041
+< 41 101 461
+< 41 241 761
+< 41 241 521
+< 41 73 137
+< 41 61 101
+< 43 631 13567
+< 43 271 5827
+< 43 127 2731
+< 43 127 1093
+< 43 211 757
+< 43 631 1597
+< 43 127 211
+< 43 211 337
+< 43 433 643
+< 43 547 673
+< 43 3361 3907
+< 47 3359 6073
+< 47 1151 1933
+< 47 3727 5153
+< 53 157 2081
+< 53 79 599
+< 53 157 521
+< 59 1451 2089
+< 61 421 12841
+< 61 181 5521
+< 61 1301 19841
+< 61 277 2113
+< 61 181 1381
+< 61 541 3001
+< 61 661 2521
+< 61 271 571
+< 61 241 421
+< 61 3361 4021
+< Running main.c in casting_out_nines/
+< Compilation failed in casting_out_nines/
+< Running main.c in catalan_numbers/
+---
+> Compiling and running carmichael_3_strong_pseudoprimes-c.rs
+> Compilation failed for carmichael_3_strong_pseudoprimes-c.rs
+> Compiling and running casting_out_nines-c.rs
+> Compilation failed for casting_out_nines-c.rs
+> Compiling and running catalan_numbers-c.rs
+629c569
+< Running main.c in catamorphism/
+---
+> Compiling and running catamorphism-c.rs
+633,665c573,603
+< Running main.c in chaocipher/
+< The original plaintext is : WELLDONEISBETTERTHANWELLSAID
+< 
+< The left and right alphabets after each permutation during encryption are :
+< 
+< HXUCZVAMDSLKPEFJRIGTWOBNYQ  PTLNBQDEOYSFAVZKGJRIHWXUMC
+< ONYQHXUCZVAMDBSLKPEFJRIGTW  XUCPTLNBQDEOYMSFAVZKGJRIHW
+< ADBSLKPEFJRIGMTWONYQHXUCZV  OYSFAVZKGJRIHMWXUCPTLNBQDE
+< HUCZVADBSLKPEXFJRIGMTWONYQ  NBDEOYSFAVZKGQJRIHMWXUCPTL
+< QUCZVADBSLKPEHXFJRIGMTWONY  NBEOYSFAVZKGQDJRIHMWXUCPTL
+< HFJRIGMTWONYQXUCZVADBSLKPE  JRHMWXUCPTLNBIEOYSFAVZKGQD
+< CVADBSLKPEHFJZRIGMTWONYQXU  YSAVZKGQDJRHMFWXUCPTLNBIEO
+< NQXUCVADBSLKPYEHFJZRIGMTWO  BIOYSAVZKGQDJERHMFWXUCPTLN
+< YHFJZRIGMTWONEQXUCVADBSLKP  RHFWXUCPTLNBIMOYSAVZKGQDJE
+< NQXUCVADBSLKPEYHFJZRIGMTWO  MOSAVZKGQDJERYHFWXUCPTLNBI
+< XCVADBSLKPEYHUFJZRIGMTWONQ  AVKGQDJERYHFWZXUCPTLNBIMOS
+< TONQXCVADBSLKWPEYHUFJZRIGM  IMSAVKGQDJERYOHFWZXUCPTLNB
+< SKWPEYHUFJZRILGMTONQXCVADB  RYHFWZXUCPTLNOBIMSAVKGQDJE
+< ZILGMTONQXCVARDBSKWPEYHUFJ  LNBIMSAVKGQDJOERYHFWZXUCPT
+< JILGMTONQXCVAZRDBSKWPEYHUF  LNIMSAVKGQDJOBERYHFWZXUCPT
+< RBSKWPEYHUFJIDLGMTONQXCVAZ  RYFWZXUCPTLNIHMSAVKGQDJOBE
+< RSKWPEYHUFJIDBLGMTONQXCVAZ  YFZXUCPTLNIHMWSAVKGQDJOBER
+< HFJIDBLGMTONQUXCVAZRSKWPEY  LNHMWSAVKGQDJIOBERYFZXUCPT
+< JDBLGMTONQUXCIVAZRSKWPEYHF  MWAVKGQDJIOBESRYFZXUCPTLNH
+< BGMTONQUXCIVALZRSKWPEYHFJD  VKQDJIOBESRYFGZXUCPTLNHMWA
+< YFJDBGMTONQUXHCIVALZRSKWPE  HMAVKQDJIOBESWRYFGZXUCPTLN
+< HIVALZRSKWPEYCFJDBGMTONQUX  RYGZXUCPTLNHMFAVKQDJIOBESW
+< QXHIVALZRSKWPUEYCFJDBGMTON  SWYGZXUCPTLNHRMFAVKQDJIOBE
+< KPUEYCFJDBGMTWONQXHIVALZRS  NHMFAVKQDJIOBRESWYGZXUCPTL
+< SPUEYCFJDBGMTKWONQXHIVALZR  NHFAVKQDJIOBRMESWYGZXUCPTL
+< OQXHIVALZRSPUNEYCFJDBGMTKW  WYZXUCPTLNHFAGVKQDJIOBRMES
+< UEYCFJDBGMTKWNOQXHIVALZRSP  GVQDJIOBRMESWKYZXUCPTLNHFA
+< JBGMTKWNOQXHIDVALZRSPUEYCF  OBMESWKYZXUCPRTLNHFAGVQDJI
+---
+> Compiling and running chaocipher-c.rs
+> The original plaintext is: WELLDONEISBETTERTHANWELLSAID
+> The left and right alphabets after each permutation during encryption are:
+> ['H', 'X', 'U', 'C', 'Z', 'V', 'A', 'M', 'D', 'S', 'L', 'K', 'P', 'E', 'F', 'J', 'R', 'I', 'G', 'T', 'W', 'O', 'B', 'N', 'Y', 'Q']  ['P', 'T', 'L', 'N', 'B', 'Q', 'D', 'E', 'O', 'Y', 'S', 'F', 'A', 'V', 'Z', 'K', 'G', 'J', 'R', 'I', 'H', 'W', 'X', 'U', 'M', 'C']
+> ['B', 'D', 'Y', 'Q', 'H', 'X', 'U', 'C', 'Z', 'V', 'A', 'M', 'N', 'S', 'L', 'K', 'P', 'E', 'F', 'J', 'R', 'I', 'G', 'T', 'W', 'O']  ['I', 'X', 'E', 'M', 'C', 'P', 'T', 'L', 'N', 'B', 'Q', 'D', 'U', 'O', 'Y', 'S', 'F', 'A', 'V', 'Z', 'K', 'G', 'J', 'R', 'W', 'H']
+> ['Q', 'K', 'X', 'U', 'C', 'Z', 'V', 'A', 'M', 'N', 'S', 'L', 'H', 'P', 'E', 'F', 'J', 'R', 'I', 'G', 'T', 'W', 'O', 'B', 'D', 'Y']  ['I', 'M', 'Y', 'P', 'T', 'L', 'N', 'B', 'Q', 'D', 'U', 'O', 'C', 'S', 'F', 'A', 'V', 'Z', 'K', 'G', 'J', 'R', 'W', 'H', 'E', 'X']
+> ['V', 'I', 'M', 'N', 'S', 'L', 'H', 'P', 'E', 'F', 'J', 'R', 'A', 'G', 'T', 'W', 'O', 'B', 'D', 'Y', 'Q', 'K', 'X', 'U', 'C', 'Z']  ['P', 'N', 'Z', 'Q', 'D', 'U', 'O', 'C', 'S', 'F', 'A', 'V', 'B', 'K', 'G', 'J', 'R', 'W', 'H', 'E', 'X', 'I', 'M', 'Y', 'L', 'T']
+> ['Z', 'R', 'I', 'M', 'N', 'S', 'L', 'H', 'P', 'E', 'F', 'J', 'V', 'A', 'G', 'T', 'W', 'O', 'B', 'D', 'Y', 'Q', 'K', 'X', 'U', 'C']  ['M', 'T', 'A', 'N', 'Z', 'Q', 'D', 'U', 'O', 'C', 'S', 'F', 'P', 'V', 'B', 'K', 'G', 'J', 'R', 'W', 'H', 'E', 'X', 'I', 'L', 'Y']
+> ['H', 'D', 'E', 'F', 'J', 'V', 'A', 'G', 'T', 'W', 'O', 'B', 'P', 'Y', 'Q', 'K', 'X', 'U', 'C', 'Z', 'R', 'I', 'M', 'N', 'S', 'L']  ['Z', 'U', 'R', 'C', 'S', 'F', 'P', 'V', 'B', 'K', 'G', 'J', 'O', 'W', 'H', 'E', 'X', 'I', 'L', 'Y', 'M', 'T', 'A', 'N', 'D', 'Q']
+> ['Y', 'L', 'K', 'X', 'U', 'C', 'Z', 'R', 'I', 'M', 'N', 'S', 'Q', 'H', 'D', 'E', 'F', 'J', 'V', 'A', 'G', 'T', 'W', 'O', 'B', 'P']  ['G', 'W', 'D', 'E', 'X', 'I', 'L', 'Y', 'M', 'T', 'A', 'N', 'H', 'Q', 'Z', 'U', 'R', 'C', 'S', 'F', 'P', 'V', 'B', 'K', 'O', 'J']
+> ['Q', 'B', 'D', 'E', 'F', 'J', 'V', 'A', 'G', 'T', 'W', 'O', 'H', 'P', 'Y', 'L', 'K', 'X', 'U', 'C', 'Z', 'R', 'I', 'M', 'N', 'S']  ['T', 'H', 'K', 'Z', 'U', 'R', 'C', 'S', 'F', 'P', 'V', 'B', 'Q', 'O', 'J', 'G', 'W', 'D', 'E', 'X', 'I', 'L', 'Y', 'M', 'N', 'A']
+> ['C', 'J', 'R', 'I', 'M', 'N', 'S', 'Q', 'B', 'D', 'E', 'F', 'Z', 'V', 'A', 'G', 'T', 'W', 'O', 'H', 'P', 'Y', 'L', 'K', 'X', 'U']  ['W', 'X', 'U', 'L', 'Y', 'M', 'N', 'A', 'T', 'H', 'K', 'Z', 'I', 'R', 'C', 'S', 'F', 'P', 'V', 'B', 'Q', 'O', 'J', 'G', 'E', 'D']
+> ['V', 'U', 'G', 'T', 'W', 'O', 'H', 'P', 'Y', 'L', 'K', 'X', 'A', 'C', 'J', 'R', 'I', 'M', 'N', 'S', 'Q', 'B', 'D', 'E', 'F', 'Z']  ['K', 'R', 'E', 'S', 'F', 'P', 'V', 'B', 'Q', 'O', 'J', 'G', 'C', 'D', 'W', 'X', 'U', 'L', 'Y', 'M', 'N', 'A', 'T', 'H', 'I', 'Z']
+> ['W', 'I', 'H', 'P', 'Y', 'L', 'K', 'X', 'A', 'C', 'J', 'R', 'O', 'M', 'N', 'S', 'Q', 'B', 'D', 'E', 'F', 'Z', 'V', 'U', 'G', 'T']  ['R', 'F', 'X', 'V', 'B', 'Q', 'O', 'J', 'G', 'C', 'D', 'W', 'P', 'U', 'L', 'Y', 'M', 'N', 'A', 'T', 'H', 'I', 'Z', 'K', 'S', 'E']
+> ['L', 'B', 'X', 'A', 'C', 'J', 'R', 'O', 'M', 'N', 'S', 'Q', 'K', 'D', 'E', 'F', 'Z', 'V', 'U', 'G', 'T', 'W', 'I', 'H', 'P', 'Y']  ['X', 'Q', 'M', 'J', 'G', 'C', 'D', 'W', 'P', 'U', 'L', 'Y', 'O', 'N', 'A', 'T', 'H', 'I', 'Z', 'K', 'S', 'E', 'R', 'F', 'B', 'V']
+> ['I', 'M', 'P', 'Y', 'L', 'B', 'X', 'A', 'C', 'J', 'R', 'O', 'H', 'N', 'S', 'Q', 'K', 'D', 'E', 'F', 'Z', 'V', 'U', 'G', 'T', 'W']  ['K', 'R', 'W', 'B', 'V', 'X', 'Q', 'M', 'J', 'G', 'C', 'D', 'F', 'P', 'U', 'L', 'Y', 'O', 'N', 'A', 'T', 'H', 'I', 'Z', 'E', 'S']
+> ['V', 'A', 'G', 'T', 'W', 'I', 'M', 'P', 'Y', 'L', 'B', 'X', 'U', 'C', 'J', 'R', 'O', 'H', 'N', 'S', 'Q', 'K', 'D', 'E', 'F', 'Z']  ['N', 'H', 'Q', 'Z', 'E', 'S', 'K', 'R', 'W', 'B', 'V', 'X', 'I', 'M', 'J', 'G', 'C', 'D', 'F', 'P', 'U', 'L', 'Y', 'O', 'T', 'A']
+> ['Z', 'X', 'A', 'G', 'T', 'W', 'I', 'M', 'P', 'Y', 'L', 'B', 'V', 'U', 'C', 'J', 'R', 'O', 'H', 'N', 'S', 'Q', 'K', 'D', 'E', 'F']  ['Y', 'A', 'V', 'H', 'Q', 'Z', 'E', 'S', 'K', 'R', 'W', 'B', 'N', 'X', 'I', 'M', 'J', 'G', 'C', 'D', 'F', 'P', 'U', 'L', 'T', 'O']
+> ['M', 'N', 'Y', 'L', 'B', 'V', 'U', 'C', 'J', 'R', 'O', 'H', 'P', 'S', 'Q', 'K', 'D', 'E', 'F', 'Z', 'X', 'A', 'G', 'T', 'W', 'I']  ['Q', 'S', 'C', 'R', 'W', 'B', 'N', 'X', 'I', 'M', 'J', 'G', 'K', 'D', 'F', 'P', 'U', 'L', 'T', 'O', 'Y', 'A', 'V', 'H', 'E', 'Z']
+> ['B', 'D', 'U', 'C', 'J', 'R', 'O', 'H', 'P', 'S', 'Q', 'K', 'V', 'E', 'F', 'Z', 'X', 'A', 'G', 'T', 'W', 'I', 'M', 'N', 'Y', 'L']  ['S', 'W', 'P', 'N', 'X', 'I', 'M', 'J', 'G', 'K', 'D', 'F', 'B', 'U', 'L', 'T', 'O', 'Y', 'A', 'V', 'H', 'E', 'Z', 'Q', 'R', 'C']
+> ['X', 'U', 'G', 'T', 'W', 'I', 'M', 'N', 'Y', 'L', 'B', 'D', 'A', 'C', 'J', 'R', 'O', 'H', 'P', 'S', 'Q', 'K', 'V', 'E', 'F', 'Z']  ['U', 'O', 'W', 'A', 'V', 'H', 'E', 'Z', 'Q', 'R', 'C', 'S', 'Y', 'P', 'N', 'X', 'I', 'M', 'J', 'G', 'K', 'D', 'F', 'B', 'T', 'L']
+> ['M', 'P', 'Y', 'L', 'B', 'D', 'A', 'C', 'J', 'R', 'O', 'H', 'N', 'S', 'Q', 'K', 'V', 'E', 'F', 'Z', 'X', 'U', 'G', 'T', 'W', 'I']  ['A', 'E', 'M', 'Q', 'R', 'C', 'S', 'Y', 'P', 'N', 'X', 'I', 'Z', 'J', 'G', 'K', 'D', 'F', 'B', 'T', 'L', 'U', 'O', 'W', 'H', 'V']
+> ['P', 'S', 'L', 'B', 'D', 'A', 'C', 'J', 'R', 'O', 'H', 'N', 'Y', 'Q', 'K', 'V', 'E', 'F', 'Z', 'X', 'U', 'G', 'T', 'W', 'I', 'M']  ['H', 'E', 'Z', 'Q', 'R', 'C', 'S', 'Y', 'P', 'N', 'X', 'I', 'M', 'J', 'G', 'K', 'D', 'F', 'B', 'T', 'L', 'U', 'O', 'W', 'A', 'V']
+> ['H', 'T', 'Y', 'Q', 'K', 'V', 'E', 'F', 'Z', 'X', 'U', 'G', 'N', 'W', 'I', 'M', 'P', 'S', 'L', 'B', 'D', 'A', 'C', 'J', 'R', 'O']  ['Y', 'X', 'U', 'M', 'J', 'G', 'K', 'D', 'F', 'B', 'T', 'L', 'I', 'O', 'W', 'A', 'V', 'H', 'E', 'Z', 'Q', 'R', 'C', 'S', 'N', 'P']
+> ['M', 'T', 'S', 'L', 'B', 'D', 'A', 'C', 'J', 'R', 'O', 'H', 'P', 'Y', 'Q', 'K', 'V', 'E', 'F', 'Z', 'X', 'U', 'G', 'N', 'W', 'I']  ['I', 'A', 'Y', 'H', 'E', 'Z', 'Q', 'R', 'C', 'S', 'N', 'P', 'V', 'X', 'U', 'M', 'J', 'G', 'K', 'D', 'F', 'B', 'T', 'L', 'W', 'O']
+> ['D', 'E', 'C', 'J', 'R', 'O', 'H', 'P', 'Y', 'Q', 'K', 'V', 'A', 'F', 'Z', 'X', 'U', 'G', 'N', 'W', 'I', 'M', 'T', 'S', 'L', 'B']  ['Y', 'Z', 'J', 'R', 'C', 'S', 'N', 'P', 'V', 'X', 'U', 'M', 'Q', 'G', 'K', 'D', 'F', 'B', 'T', 'L', 'W', 'O', 'I', 'A', 'E', 'H']
+> ['I', 'H', 'T', 'S', 'L', 'B', 'D', 'E', 'C', 'J', 'R', 'O', 'M', 'P', 'Y', 'Q', 'K', 'V', 'A', 'F', 'Z', 'X', 'U', 'G', 'N', 'W']  ['B', 'W', 'S', 'I', 'A', 'E', 'H', 'Y', 'Z', 'J', 'R', 'C', 'O', 'N', 'P', 'V', 'X', 'U', 'M', 'Q', 'G', 'K', 'D', 'F', 'L', 'T']
+> ['W', 'O', 'H', 'T', 'S', 'L', 'B', 'D', 'E', 'C', 'J', 'R', 'I', 'M', 'P', 'Y', 'Q', 'K', 'V', 'A', 'F', 'Z', 'X', 'U', 'G', 'N']  ['D', 'T', 'R', 'W', 'S', 'I', 'A', 'E', 'H', 'Y', 'Z', 'J', 'B', 'C', 'O', 'N', 'P', 'V', 'X', 'U', 'M', 'Q', 'G', 'K', 'L', 'F']
+> ['L', 'K', 'D', 'E', 'C', 'J', 'R', 'I', 'M', 'P', 'Y', 'Q', 'B', 'V', 'A', 'F', 'Z', 'X', 'U', 'G', 'N', 'W', 'O', 'H', 'T', 'S']  ['R', 'I', 'P', 'E', 'H', 'Y', 'Z', 'J', 'B', 'C', 'O', 'N', 'A', 'V', 'X', 'U', 'M', 'Q', 'G', 'K', 'L', 'F', 'D', 'T', 'S', 'W']
+> ['V', 'S', 'F', 'Z', 'X', 'U', 'G', 'N', 'W', 'O', 'H', 'T', 'A', 'L', 'K', 'D', 'E', 'C', 'J', 'R', 'I', 'M', 'P', 'Y', 'Q', 'B']  ['O', 'V', 'S', 'U', 'M', 'Q', 'G', 'K', 'L', 'F', 'D', 'T', 'X', 'W', 'R', 'I', 'P', 'E', 'H', 'Y', 'Z', 'J', 'B', 'C', 'A', 'N']
+> ['E', 'F', 'J', 'R', 'I', 'M', 'P', 'Y', 'Q', 'B', 'V', 'S', 'C', 'Z', 'X', 'U', 'G', 'N', 'W', 'O', 'H', 'T', 'A', 'L', 'K', 'D']  ['W', 'P', 'V', 'H', 'Y', 'Z', 'J', 'B', 'C', 'A', 'N', 'O', 'E', 'S', 'U', 'M', 'Q', 'G', 'K', 'L', 'F', 'D', 'T', 'X', 'I', 'R']
+667c605
+< The ciphertext is : OAHQHCNYNXTSZJRRHJBYHQKSOUJY
+---
+> The ciphertext is: OYZCLPSUZTYWZFILZIMOIBWNSBDT
+669,670c607,608
+< The recovered plaintext is : WELLDONEISBETTERTHANWELLSAID
+< Running main.c in character_codes/
+---
+> The recovered plaintext is: WELLDONEISBETTERTHANWELLSAID
+> Compiling and running character_codes-c.rs
+673,675c611,613
+< Running main.c in chinese_remainder_theorem/
+< 23
+< Running main.c in chinese_zodiac/
+---
+> Compiling and running chinese_remainder_theorem-c.rs
+> Compilation failed for chinese_remainder_theorem-c.rs
+> Compiling and running chinese_zodiac-c.rs
+682,686c620,651
+< Running main.c in cholesky_decomposition/
+< Compilation failed in cholesky_decomposition/
+< Running main.c in circles_of_given_radius_through_two_points/
+< Compilation failed in circles_of_given_radius_through_two_points/
+< Running main.c in combinations/
+---
+> Compiling and running cholesky_decomposition-c.rs
+> 5.00000 0.00000 0.00000 
+> 3.00000 3.00000 0.00000 
+> -1.00000 1.00000 3.00000 
+> 
+> 4.24264 0.00000 0.00000 0.00000 
+> 5.18545 6.56591 0.00000 0.00000 
+> 12.72792 3.04604 1.64974 0.00000 
+> 9.89949 1.62455 1.84971 1.39262 
+> Compiling and running circles_of_given_radius_through_two_points-c.rs
+> 
+> Case 1)
+> 
+> Two circles are possible.
+> Circle C1 with center (1.8631, 1.9742), radius 2.0000 and Circle C2 with center (-0.8632, -0.7521), radius 2.0000
+> 
+> Case 2)
+> 
+> Given points are opposite ends of a diameter of the circle with center (0.0000, 1.0000) and radius 1.0000
+> 
+> Case 3)
+> 
+> Infinitely many circles can be drawn through (0.1234, 0.9876)
+> 
+> Case 4)
+> 
+> Given points are farther away from each other than a diameter of a circle with radius 0.5000
+> 
+> Case 5)
+> 
+> No circles can be drawn through (0.1234, 0.9876)
+> Compiling and running combinations-c.rs
+697c662
+< Running main.c in comma_quibbling/
+---
+> Compiling and running comma_quibbling-c.rs
+703,705c668,670
+< Running main.c in command_line_arguments/
+< This program is named ./main.
+< Running main.c in compile_time_calculation/
+---
+> Compiling and running command_line_arguments-c.rs
+> This program is named ./command_line_arguments-c.
+> Compiling and running compile_time_calculation-c.rs
+707c672
+< Running main.c in count_in_factors/
+---
+> Compiling and running count_in_factors-c.rs
+1707c1672
+< Running main.c in cramers_rule/
+---
+> Compiling and running cramers_rule-c.rs
+1712,1714c1677,1679
+< Running main.c in crc32/
+< 414FA339
+< Running main.c in damm_algorithm/
+---
+> Compiling and running crc32-c.rs
+> Compilation failed for crc32-c.rs
+> Compiling and running damm_algorithm-c.rs
+1716,1718c1681,1683
+< Running main.c in department_number/
+< Police     Sanitation         Fire
+< ----------------------------------
+---
+> Compiling and running department_number-c.rs
+> Police	Sanitation	Fire
+> ----------------------------
+1732,1735c1697,1700
+< 6		5		1Running main.c in dice_game_probabilities/
+< 0.5731440767829815
+< 0.6427886287176273
+< Running main.c in dot_product/
+---
+> 6		5		1
+> Compiling and running dice_game_probabilities-c.rs
+> Compilation failed for dice_game_probabilities-c.rs
+> Compiling and running dot_product-c.rs
+1737,1749c1702,1717
+< Running main.c in draw_a_sphere/
+< Compilation failed in draw_a_sphere/
+< Running main.c in emirp_primes/
+<  13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
+< Running main.c in euler_method/
+< Compilation failed in euler_method/
+< Running main.c in evaluate_binomial_coefficients/
+< 10
+< 131282408400
+< 11923179284862717872
+< Running main.c in exponential/
+< Compilation failed in exponential/
+< Running main.c in extreme_floating_point_values/
+---
+> Compiling and running draw_a_sphere-c.rs
+> Compilation failed for draw_a_sphere-c.rs
+> Compiling and running emirp_primes-c.rs
+> Compilation failed for emirp_primes-c.rs
+> Compiling and running euler_method-c.rs
+>     Time:        0      10      20      30      40      50      60      70      80      90     100
+> Analytic: 
+>  100.000  59.727  39.728  29.797  24.865  22.416  21.200  20.596  20.296  20.147  20.073
+>  Step  2:  100.000  57.634  37.704  28.328  23.918  21.843  20.867  20.408  20.192  20.090  20.042
+>  Step  5:  100.000  53.800  34.280  26.034  22.549  21.077  20.455  20.192  20.081  20.034  20.014
+>  Step 10:  100.000  44.000  27.200  22.160  20.648  20.194  20.058  20.017  20.005  20.002  20.000
+> Compiling and running evaluate_binomial_coefficients-c.rs
+> Compilation failed for evaluate_binomial_coefficients-c.rs
+> Compiling and running exponential-c.rs
+> Compilation failed for exponential-c.rs
+> Compiling and running extreme_floating_point_values-c.rs
+1752,1753c1720,1721
+< negative zero: -0.000000
+< not a number: nan
+---
+> negative zero: -0
+> not a number: NaN
+1756,1757c1724,1725
+< +inf + -inf = nan
+< 0.0 * +inf = nan
+---
+> +inf + -inf = NaN
+> 0.0 * +inf = NaN
+1759,1760c1727,1728
+< NaN + 1.0 = nan
+< NaN + NaN = nan
+---
+> NaN + 1.0 = NaN
+> NaN + NaN = NaN
+1763c1731
+< Running main.c in factors_of_a_mersenne_number/
+---
+> Compiling and running factors_of_a_mersenne_number-c.rs
+1765c1733
+< Running main.c in fairshare_between_two_and_more/
+---
+> Compiling and running fairshare_between_two_and_more-c.rs
+1776c1744
+< Running main.c in farey_sequence/
+---
+> Compiling and running farey_sequence-c.rs
+1800c1768
+< Running main.c in fibonacci_n_step_number_sequences/
+---
+> Compiling and running fibonacci_n_step_number_sequences-c.rs
+1804a1773
+> 
+1805a1775
+> 
+1806a1777
+> 
+1807a1779
+> 
+1808a1781
+> 
+1809a1783
+> 
+1810a1785
+> 
+1811a1787
+> 
+1813,1844c1789,1859
+< 55		149		208		76Running main.c in fibonacci_word/
+< Compilation failed in fibonacci_word/
+< Running main.c in floyds_triangle/
+<  1
+<  2  3
+<  4  5  6
+<  7  8  9 10
+< 11 12 13 14 15
+<  1
+<  2  3
+<  4  5  6
+<  7  8  9 10
+< 11 12 13 14 15
+< 16 17 18 19 20 21
+< 22 23 24 25 26 27 28
+< 29 30 31 32 33 34 35 36
+< 37 38 39 40 41 42 43 44  45
+< 46 47 48 49 50 51 52 53  54  55
+< 56 57 58 59 60 61 62 63  64  65  66
+< 67 68 69 70 71 72 73 74  75  76  77  78
+< 79 80 81 82 83 84 85 86  87  88  89  90  91
+< 92 93 94 95 96 97 98 99 100 101 102 103 104 105
+< Running main.c in formatted_numeric_output/
+<     -7.125
+<      7.125
+<  7.125    
+<  -0007.125
+<  00007.125
+<  7.125    
+< Running main.c in function_composition/
+< Compilation failed in function_composition/
+< Running main.c in fusc_sequence/
+---
+> 
+> 55		149		208		76
+> Compiling and running fibonacci_word-c.rs
+> N  Length     Entropy              Word                                    
+> 1  1          0.000000000000000000 1                                       
+> 2  1          0.000000000000000000 0                                       
+> 3  2          1.000000000000000000 01                                      
+> 4  3          0.918295834054489557 010                                     
+> 5  5          0.970950594454668581 01001                                   
+> 6  8          0.954434002924965053 01001010                                
+> 7  13         0.961236604722875865 0100101001001                           
+> 8  21         0.958711882977131835 010010100100101001010                   
+> 9  34         0.959686893774216898 0100101001001010010100100101001001      
+> 10 55         0.959316032054377654 ...
+> 11 89         0.959457915838669573 ...
+> 12 144        0.959403754221022975 ...
+> 13 233        0.959424446955986610 ...
+> 14 377        0.959416543740440830 ...
+> 15 610        0.959419562603144094 ...
+> 16 987        0.959418409515224280 ...
+> 17 1597       0.959418849957809794 ...
+> 18 2584       0.959418681724032107 ...
+> 19 4181       0.959418745983663834 ...
+> 20 6765       0.959418721438675459 ...
+> 21 10946      0.959418730814027731 ...
+> 22 17711      0.959418727232961954 ...
+> 23 28657      0.959418728600807347 ...
+> 24 46368      0.959418728078336835 ...
+> 25 75025      0.959418728277902866 ...
+> 26 121393     0.959418728201675397 ...
+> 27 196418     0.959418728230791773 ...
+> 28 317811     0.959418728219670225 ...
+> 29 514229     0.959418728223918382 ...
+> 30 832040     0.959418728222295791 ...
+> 31 1346269    0.959418728222915518 ...
+> 32 2178309    0.959418728222678929 ...
+> 33 3524578    0.959418728222769079 ...
+> 34 5702887    0.959418728222734662 ...
+> 35 9227465    0.959418728222747874 ...
+> 36 14930352   0.959418728222742767 ...
+> 37 24157817   0.959418728222744654 ...
+> Compiling and running floyds_triangle-c.rs
+> 11
+> 12 13
+> 14 15 16
+> 17 18 19 20
+> 21 22 23 24 25
+> 92
+> 93 94
+> 95 96 97
+> 98 99 100 101
+> 102 103 104 105 106
+> 107 108 109 110 111 112
+> 113 114 115 116 117 118 119
+> 120 121 122 123 124 125 126 127
+> 128 129 130 131 132 133 134 135 136
+> 137 138 139 140 141 142 143 144 145 146
+> 147 148 149 150 151 152 153 154 155 156 157
+> 158 159 160 161 162 163 164 165 166 167 168 169
+> 170 171 172 173 174 175 176 177 178 179 180 181 182
+> 183 184 185 186 187 188 189 190 191 192 193 194 195 196
+> Compiling and running formatted_numeric_output-c.rs
+>    -7.125
+>     7.125
+> 7.125    
+> 000-7.125
+> 00007.125
+> 7.1250000
+> Compiling and running function_composition-c.rs
+> 0.5
+> Compiling and running fusc_sequence-c.rs
+1846,1906c1861,1922
+<     0           0
+<     1           1
+<     2           1
+<     3           2
+<     4           1
+<     5           3
+<     6           2
+<     7           3
+<     8           1
+<     9           4
+<    10           3
+<    11           5
+<    12           2
+<    13           5
+<    14           3
+<    15           4
+<    16           1
+<    17           5
+<    18           4
+<    19           7
+<    20           3
+<    21           8
+<    22           5
+<    23           7
+<    24           2
+<    25           7
+<    26           5
+<    27           8
+<    28           3
+<    29           7
+<    30           4
+<    31           5
+<    32           1
+<    33           6
+<    34           5
+<    35           9
+<    36           4
+<    37          11
+<    38           7
+<    39          10
+<    40           3
+<    41          11
+<    42           8
+<    43          13
+<    44           5
+<    45          12
+<    46           7
+<    47           9
+<    48           2
+<    49           9
+<    50           7
+<    51          12
+<    52           5
+<    53          13
+<    54           8
+<    55          11
+<    56           3
+<    57          10
+<    58           7
+<    59          11
+<    60           4Running main.c in gaussian_elimination/
+---
+>     0            0
+>     1            1
+>     2            1
+>     3            2
+>     4            1
+>     5            3
+>     6            2
+>     7            3
+>     8            1
+>     9            4
+>    10            3
+>    11            5
+>    12            2
+>    13            5
+>    14            3
+>    15            4
+>    16            1
+>    17            5
+>    18            4
+>    19            7
+>    20            3
+>    21            8
+>    22            5
+>    23            7
+>    24            2
+>    25            7
+>    26            5
+>    27            8
+>    28            3
+>    29            7
+>    30            4
+>    31            5
+>    32            1
+>    33            6
+>    34            5
+>    35            9
+>    36            4
+>    37           11
+>    38            7
+>    39           10
+>    40            3
+>    41           11
+>    42            8
+>    43           13
+>    44            5
+>    45           12
+>    46            7
+>    47            9
+>    48            2
+>    49            9
+>    50            7
+>    51           12
+>    52            5
+>    53           13
+>    54            8
+>    55           11
+>    56            3
+>    57           10
+>    58            7
+>    59           11
+>    60            4
+> Compiling and running gaussian_elimination-c.rs
+1908,1913c1924,1929
+< 1.60279
+< -1.6132
+< 1.24549
+< -0.49099
+< 0.0657607
+< Running main.c in general_fizzbuzz/
+---
+> 1.6027903945020885
+> -1.6132030599054827
+> 1.2454941213713593
+> -0.4909897195846276
+> 0.06576069617522803
+> Compiling and running general_fizzbuzz-c.rs
+1933,1976c1949
+< Running main.c in generate_random_chess_position/
+<  n  .  b  .  .  .  .  . 
+<  .  .  .  p  .  b  .  R 
+<  p  .  .  .  .  .  p  . 
+<  q  .  .  P  .  .  .  k 
+<  .  .  .  .  .  .  .  p 
+<  .  p  N  .  K  r  P  . 
+<  p  .  .  .  p  .  .  . 
+<  .  .  .  .  n  .  .  . 
+< n1b5/3p1b1R/p5p1/q2P3k/7p/1pN1KrP1/p3p3/4n3/ w - - 0 1
+< Running main.c in gray_code/
+<  0 : 00000 => 00000 => 00000 :  0
+<  1 : 00001 => 00001 => 00001 :  1
+<  2 : 00010 => 00011 => 00010 :  2
+<  3 : 00011 => 00010 => 00011 :  3
+<  4 : 00100 => 00110 => 00100 :  4
+<  5 : 00101 => 00111 => 00101 :  5
+<  6 : 00110 => 00101 => 00110 :  6
+<  7 : 00111 => 00100 => 00111 :  7
+<  8 : 01000 => 01100 => 01000 :  8
+<  9 : 01001 => 01101 => 01001 :  9
+< 10 : 01010 => 01111 => 01010 : 10
+< 11 : 01011 => 01110 => 01011 : 11
+< 12 : 01100 => 01010 => 01100 : 12
+< 13 : 01101 => 01011 => 01101 : 13
+< 14 : 01110 => 01001 => 01110 : 14
+< 15 : 01111 => 01000 => 01111 : 15
+< 16 : 10000 => 11000 => 10000 : 16
+< 17 : 10001 => 11001 => 10001 : 17
+< 18 : 10010 => 11011 => 10010 : 18
+< 19 : 10011 => 11010 => 10011 : 19
+< 20 : 10100 => 11110 => 10100 : 20
+< 21 : 10101 => 11111 => 10101 : 21
+< 22 : 10110 => 11101 => 10110 : 22
+< 23 : 10111 => 11100 => 10111 : 23
+< 24 : 11000 => 10100 => 11000 : 24
+< 25 : 11001 => 10101 => 11001 : 25
+< 26 : 11010 => 10111 => 11010 : 26
+< 27 : 11011 => 10110 => 11011 : 27
+< 28 : 11100 => 10010 => 11100 : 28
+< 29 : 11101 => 10011 => 11101 : 29
+< 30 : 11110 => 10001 => 11110 : 30
+< 31 : 11111 => 10000 => 11111 : 31
+< Running main.c in greatest_subsequential_sum/
+---
+> Compiling and running generate_random_chess_position-c.rs
+1979,1982c1952,1958
+< Running main.c in hailstone_sequence/
+< [ 27, 82, 41, 124, ...., 8, 4, 2, 1] len=112
+< Max 351 at j= 77031
+< Running main.c in hamming_numbers/
+---
+> Compiling and running gray_code-c.rs
+> Compilation failed for gray_code-c.rs
+> Compiling and running greatest_subsequential_sum-c.rs
+> Max sum = 15
+> 3 5 6 -2 -1 4 
+> Compiling and running hailstone_sequence-c.rs
+> Compiling and running hamming_numbers-c.rs
+2004,2006c1980,1982
+< Running main.c in haversine_formula/
+< Compilation failed in haversine_formula/
+< Running main.c in hofstadter_q_sequence/
+---
+> Compiling and running haversine_formula-c.rs
+> Compilation failed for haversine_formula-c.rs
+> Compiling and running hofstadter_q_sequence-c.rs
+2010c1986
+< Running main.c in horners_rule_for_polynomial_evaluation/
+---
+> Compiling and running horners_rule_for_polynomial_evaluation-c.rs
+2012c1988
+< Running main.c in host_introspection/
+---
+> Compiling and running host_introspection-c.rs
+2015,2032c1991,1993
+< Running main.c in increment_a_numerical_string/
+< text: +0
+<   ->: +1
+< text: -1
+<   ->: 0
+< text: -41
+<   ->: -40
+< text: +41
+<   ->: +42
+< text: 999
+<   ->: 1000
+< text: +999
+<   ->: 1000
+< text: 109999999999999999999999999999999999999999
+<   ->: 110000000000000000000000000000000000000000
+< text: -100000000000000000000000000000000000000000000
+<   ->: -99999999999999999999999999999999999999999999
+< Running main.c in infinity/
+---
+> Compiling and running increment_a_numerical_string-c.rs
+> Compilation failed for increment_a_numerical_string-c.rs
+> Compiling and running infinity-c.rs
+2034,2035c1995,1996
+< Running main.c in isbn13_check_digit/
+< 978-1734314502: good
+---
+> Compiling and running isbn13_check_digit-c.rs
+> 978-1734314502: bad
+2037c1998
+< 978-1788399081: good
+---
+> 978-1788399081: bad
+2039,2060c2000,2002
+< Running main.c in iterated_digits_squaring/
+< 1->10^1: 7
+< 1->10^2: 80
+< 1->10^3: 857
+< 1->10^4: 8558
+< 1->10^5: 85623
+< 1->10^6: 856929
+< 1->10^7: 8581146
+< 1->10^8: 85744333
+< 1->10^9: 854325192
+< 1->10^10: 8507390852
+< 1->10^11: 84908800643
+< 1->10^12: 850878696414
+< 1->10^13: 8556721999130
+< 1->10^14: 86229146720315
+< 1->10^15: 869339034137667
+< 1->10^16: 8754780882739336
+< 1->10^17: 87975303595231975
+< 1->10^18: 881773944919974509
+< 1->10^19: 8816770037940618762
+< counter overflow for 10^20
+< Running main.c in jacobi_symbol/
+---
+> Compiling and running iterated_digits_squaring-c.rs
+> 1->10^1: 2536415057799
+> Compiling and running jacobi_symbol-c.rs
+2074,2079c2016,2020
+< Running main.c in jortsort/
+< Did you forgot to turn on your brain?! This array is already sorted!
+< Running main.c in josephus_problem/
+< n = 41, k = 3, final survivor: 30
+< n = 9876543210987654321, k = 12031, three survivors: 6892710366467541051 1946357796579138992 3554846299321782413
+< Running main.c in knapsack_problem_0_1/
+---
+> Compiling and running jortsort-c.rs
+> Compilation failed for jortsort-c.rs
+> Compiling and running josephus_problem-c.rs
+> Compilation failed for josephus_problem-c.rs
+> Compiling and running knapsack_problem_0_1-c.rs
+2081,2099c2022,2025
+< compass                   13    35
+< water                    153   200
+< sandwich                  50   160
+< glucose                   15    60
+< banana                    27    60
+< suntan cream              11    70
+< waterproof trousers       42    70
+< waterproof overclothes    43    75
+< note-case                 22    80
+< sunglasses                 7    20
+< socks                      4    50
+< totals:                  396  1030
+< Running main.c in knapsack_problem_continuous/
+< take all salami
+< take all ham
+< take all brawn
+< take all greaves
+< take 3.5kg of 3.7 kg of welt
+< Running main.c in largest_int_from_concatenated_ints/
+---
+> totals:                    9   150
+> Compiling and running knapsack_problem_continuous-c.rs
+> take all beef
+> Compiling and running largest_int_from_concatenated_ints-c.rs
+2102,2110c2028,2030
+< Running main.c in last_letter_first_letter/
+< Maximum path length: 23
+< Paths of that length: 1248
+< Example path of that length:
+<   machamp petilil landorus scrafty yamask kricketune emboar 
+<   registeel loudred darmanitan nosepass simisear relicanth heatmor 
+<   rufflet trapinch haxorus seaking girafarig gabite exeggcute 
+<   emolga audino 
+< Running main.c in leap_year/
+---
+> Compiling and running last_letter_first_letter-c.rs
+> Compilation failed for last_letter_first_letter-c.rs
+> Compiling and running leap_year-c.rs
+2116c2036
+< Running main.c in least_common_multiple/
+---
+> Compiling and running least_common_multiple-c.rs
+2118,2120c2038,2040
+< Running main.c in levenshtein_distance/
+< distance between `rosettacode' and `raisethysword': 8
+< Running main.c in loop_over_multiple_arrays_simultaneously/
+---
+> Compiling and running levenshtein_distance-c.rs
+> distance between `rosettacode` and `raisethysword`: 8
+> Compiling and running loop_over_multiple_arrays_simultaneously-c.rs
+2124,2156c2044,2051
+< Running main.c in lu_decomposition/
+< A = [        1         3         5
+<              2         4         7
+<              1         1         0 ]
+< L = [        1         0         0
+<            0.5         1         0
+<            0.5        -1         1 ]
+< U = [        2         4         7
+<              0         1       1.5
+<              0         0        -2 ]
+< P = [        0         1         0
+<              1         0         0
+<              0         0         1 ]
+< 
+< A = [       11         9        24         2
+<              1         5         2         6
+<              3        17        18         1
+<              2         5         7         1 ]
+< L = [        1         0         0         0
+<         0.2727         1         0         0
+<        0.09091    0.2875         1         0
+<         0.1818    0.2312  0.003597         1 ]
+< U = [       11         9        24         2
+<              0     14.55     11.45    0.4545
+<              0         0    -3.475     5.688
+<              0         0         0    0.5108 ]
+< P = [        1         0         0         0
+<              0         0         1         0
+<              0         1         0         0
+<              0         0         0         1 ]
+< Running main.c in luhn_test_of_credit_card_numbers/
+<      49927398716	ok
+<      49927398717	not ok
+---
+> Compiling and running lu_decomposition-c.rs
+> 49927398716     	ok
+> 49927398717     	not ok
+> 1234567812345678	not ok
+> 1234567812345670	ok
+> Compiling and running luhn_test_of_credit_card_numbers-c.rs
+> 49927398716     	ok
+> 49927398717     	not ok
+2159,2163c2054,2060
+< Running main.c in machine_code/
+< 21845
+< Running main.c in magic_squares_of_doubly_even_order/
+< Usage : ./main <integer specifying rows in magic square>Running main.c in magic_squares_of_singly_even_order/
+< Usage : ./main <integer specifying rows in magic square>Running main.c in magnanimous_numbers/
+---
+> Compiling and running machine_code-c.rs
+> 19
+> Compiling and running magic_squares_of_doubly_even_order-c.rs
+> Usage : ./magic_squares_of_doubly_even_order-c <integer specifying rows in magic square>
+> Compiling and running magic_squares_of_singly_even_order-c.rs
+> Compilation failed for magic_squares_of_singly_even_order-c.rs
+> Compiling and running magnanimous_numbers-c.rs
+2175c2072
+< Running main.c in map_range/
+---
+> Compiling and running map_range-c.rs
+2184,2186c2081,2083
+< f(7) = -0.3
+< f(8) = -0.2
+< f(9) = -0.1
+---
+> f(7) = -0.30000000000000004
+> f(8) = -0.19999999999999996
+> f(9) = -0.09999999999999998
+2188,2201c2085,2087
+< Running main.c in matrix_chain_multiplication/
+< Dims  : [5, 6, 3, 1]
+< Order : (A(BC))
+< Cost  : 48
+< 
+< Dims  : [1, 5, 25, 30, 100, 70, 2, 1, 100, 250, 1, 1000, 2]
+< Order : ((((((((AB)C)D)E)F)G)(H(IJ)))(KL))
+< Cost  : 38120
+< 
+< Dims  : [1000, 1, 500, 12, 1, 700, 2500, 3, 2, 5, 14, 10]
+< Order : (A((((((BC)D)(((EF)G)H))I)J)K))
+< Cost  : 1773740
+< 
+< Running main.c in matrix_transposition/
+---
+> Compiling and running matrix_chain_multiplication-c.rs
+> Dims  : [[5, 6, 3, 1]]
+> Compiling and running matrix_transposition-c.rs
+2207c2093
+< Running main.c in mcnuggets_problem/
+---
+> Compiling and running mcnuggets_problem-c.rs
+2209,2211c2095,2101
+< Running main.c in mean_angle/
+< Compilation failed in mean_angle/
+< Running main.c in middle_three_digits/
+---
+> Compiling and running mean_angle-c.rs
+> 
+> Mean Angle for 1st set: -0.00000000000002745176884498468 degrees
+> Mean Angle for 2nd set: -90 degrees
+> Mean Angle for 3rd set: 19.999999999999996 degrees
+> 
+> Compiling and running middle_three_digits-c.rs
+2230,2251c2120,2134
+< Running main.c in modular_inverse/
+< 1969
+< Running main.c in monty_hall_problem/
+< 
+< After 3000000 games, I won 1998943 by switching.  That is 66.631433%. Running main.c in multiplication_tables/
+<   1   2   3   4   5   6   7   8   9  10  11  12
+< ------------------------------------------------+
+<   1   2   3   4   5   6   7   8   9  10  11  12 | 1
+<       4   6   8  10  12  14  16  18  20  22  24 | 2
+<           9  12  15  18  21  24  27  30  33  36 | 3
+<              16  20  24  28  32  36  40  44  48 | 4
+<                  25  30  35  40  45  50  55  60 | 5
+<                      36  42  48  54  60  66  72 | 6
+<                          49  56  63  70  77  84 | 7
+<                              64  72  80  88  96 | 8
+<                                  81  90  99 108 | 9
+<                                     100 110 120 | 10
+<                                         121 132 | 11
+<                                             144 | 12
+< Running main.c in munchausen_numbers/
+< Compilation failed in munchausen_numbers/
+< Running main.c in mutual_recursion/
+---
+> Compiling and running modular_inverse-c.rs
+> Compilation failed for modular_inverse-c.rs
+> Compiling and running monty_hall_problem-c.rs
+> broood: [0, 0, 0, 0, 0, 0]
+> Incorrect :(
+> bananaaa: [0, 0, 0, 0, 0, 0, 0, 0]
+> Incorrect :(
+> hiphophiphop: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+> Incorrect :(
+> Compiling and running multiplication_tables-c.rs
+> Compilation failed for multiplication_tables-c.rs
+> Compiling and running munchausen_numbers-c.rs
+> 1
+> 3435
+> Compiling and running mutual_recursion-c.rs
+2254c2137
+< Running main.c in n_plus_one_half/
+---
+> Compiling and running n_plus_one_half-c.rs
+2256,3284c2139,2152
+< Running main.c in n_queens_problem/
+< 
+< No. 1
+< -----
+< Q . . . 
+<  . .Q. .
+< . . . .Q
+<  . . Q .
+< . Q . . 
+<  . . .Q.
+< .Q. . . 
+<  . Q . .
+< 
+< No. 2
+< -----
+< Q . . . 
+<  . . Q .
+< . . . .Q
+<  .Q. . .
+< . . . Q 
+<  . Q . .
+< .Q. . . 
+<  . .Q. .
+< 
+< No. 3
+< -----
+< Q . . . 
+<  . . .Q.
+< . .Q. . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< . . Q . 
+<  .Q. . .
+< 
+< No. 4
+< -----
+< Q . . . 
+<  . . .Q.
+< . . Q . 
+<  . . . Q
+< .Q. . . 
+<  . Q . .
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 5
+< -----
+< .Q. . . 
+<  . Q . .
+< . . .Q. 
+<  . . . Q
+< . Q . . 
+< Q. . . .
+< . . . Q 
+<  . .Q. .
+< 
+< No. 6
+< -----
+< .Q. . . 
+<  . .Q. .
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . . . Q
+< . . .Q. 
+<  . Q . .
+< 
+< No. 7
+< -----
+< .Q. . . 
+<  . .Q. .
+< . . . Q 
+<  . Q . .
+< Q . . . 
+<  . . . Q
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 8
+< -----
+< .Q. . . 
+<  . . Q .
+< Q . . . 
+<  . . .Q.
+< . .Q. . 
+<  . . . Q
+< . Q . . 
+<  . .Q. .
+< 
+< No. 9
+< -----
+< .Q. . . 
+<  . . Q .
+< . . . .Q
+<  .Q. . .
+< Q . . . 
+<  . Q . .
+< . . . Q 
+<  . .Q. .
+< 
+< No. 10
+< -----
+< .Q. . . 
+<  . . .Q.
+< . Q . . 
+<  . . Q .
+< . . . .Q
+<  . .Q. .
+< Q . . . 
+<  . Q . .
+< 
+< No. 11
+< -----
+< .Q. . . 
+<  . . .Q.
+< . . Q . 
+<  . . . Q
+< Q . . . 
+<  . Q . .
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 12
+< -----
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+< Q. . . .
+< . Q . . 
+<  . .Q. .
+< . . . Q 
+<  . Q . .
+< 
+< No. 13
+< -----
+< . Q . . 
+< Q. . . .
+< . . . Q 
+<  . .Q. .
+< . . . .Q
+<  Q . . .
+< . .Q. . 
+<  . . Q .
+< 
+< No. 14
+< -----
+< . Q . . 
+<  . .Q. .
+< .Q. . . 
+<  . . . Q
+< Q . . . 
+<  . . .Q.
+< . .Q. . 
+<  . . Q .
+< 
+< No. 15
+< -----
+< . Q . . 
+<  . .Q. .
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+<  . Q . .
+< . . . Q 
+< Q. . . .
+< 
+< No. 16
+< -----
+< . Q . . 
+<  . .Q. .
+< . . . Q 
+< Q. . . .
+< . .Q. . 
+<  Q . . .
+< . . . .Q
+<  . . Q .
+< 
+< No. 17
+< -----
+< . Q . . 
+<  . .Q. .
+< . . . .Q
+<  . Q . .
+< Q . . . 
+<  . . .Q.
+< .Q. . . 
+<  . . Q .
+< 
+< No. 18
+< -----
+< . Q . . 
+<  . . Q .
+< .Q. . . 
+<  . .Q. .
+< . . . .Q
+< Q. . . .
+< . . . Q 
+<  . Q . .
+< 
+< No. 19
+< -----
+< . Q . . 
+<  . . Q .
+< .Q. . . 
+<  . . .Q.
+< Q . . . 
+<  . Q . .
+< . . . .Q
+<  . .Q. .
+< 
+< No. 20
+< -----
+< . Q . . 
+<  . . Q .
+< .Q. . . 
+<  . . .Q.
+< . . Q . 
+< Q. . . .
+< . . . .Q
+<  . Q . .
+< 
+< No. 21
+< -----
+< . Q . . 
+<  . . Q .
+< . .Q. . 
+< Q. . . .
+< . . . .Q
+<  . .Q. .
+< . . . Q 
+<  Q . . .
+< 
+< No. 22
+< -----
+< . Q . . 
+<  . . Q .
+< . .Q. . 
+<  Q . . .
+< . . . .Q
+<  . .Q. .
+< . . . Q 
+< Q. . . .
+< 
+< No. 23
+< -----
+< . Q . . 
+<  . . Q .
+< . . . .Q
+< Q. . . .
+< . .Q. . 
+<  . . .Q.
+< . . Q . 
+<  Q . . .
+< 
+< No. 24
+< -----
+< . Q . . 
+<  . . Q .
+< . . . .Q
+< Q. . . .
+< . . Q . 
+<  . . .Q.
+< .Q. . . 
+<  . Q . .
+< 
+< No. 25
+< -----
+< . Q . . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< . .Q. . 
+< Q. . . .
+< . . . Q 
+<  . .Q. .
+< 
+< No. 26
+< -----
+< . Q . . 
+<  . . .Q.
+< .Q. . . 
+<  . . . Q
+< . . Q . 
+< Q. . . .
+< . .Q. . 
+<  . . Q .
+< 
+< No. 27
+< -----
+< . Q . . 
+<  . . .Q.
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+<  . Q . .
+< Q . . . 
+<  . .Q. .
+< 
+< No. 28
+< -----
+< . Q . . 
+<  . . . Q
+< . .Q. . 
+<  . . .Q.
+< Q . . . 
+<  . . Q .
+< .Q. . . 
+<  . .Q. .
+< 
+< No. 29
+< -----
+< . .Q. . 
+< Q. . . .
+< . . Q . 
+<  . . . Q
+< .Q. . . 
+<  . . .Q.
+< . Q . . 
+<  . . Q .
+< 
+< No. 30
+< -----
+< . .Q. . 
+< Q. . . .
+< . . Q . 
+<  . . . Q
+< . . .Q. 
+<  .Q. . .
+< . . . Q 
+<  Q . . .
+< 
+< No. 31
+< -----
+< . .Q. . 
+<  Q . . .
+< . . Q . 
+<  . . . Q
+< . . .Q. 
+< Q. . . .
+< . Q . . 
+<  . . .Q.
+< 
+< No. 32
+< -----
+< . .Q. . 
+<  Q . . .
+< . . . Q 
+<  .Q. . .
+< . . .Q. 
+<  . . . Q
+< Q . . . 
+<  . .Q. .
+< 
+< No. 33
+< -----
+< . .Q. . 
+<  Q . . .
+< . . . Q 
+<  .Q. . .
+< . . .Q. 
+<  . . . Q
+< . . Q . 
+< Q. . . .
+< 
+< No. 34
+< -----
+< . .Q. . 
+<  Q . . .
+< . . . Q 
+<  . .Q. .
+< Q . . . 
+<  . . . Q
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 35
+< -----
+< . .Q. . 
+<  Q . . .
+< . . . .Q
+<  . .Q. .
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . . Q .
+< 
+< No. 36
+< -----
+< . .Q. . 
+<  Q . . .
+< . . . .Q
+<  . . Q .
+< Q . . . 
+<  .Q. . .
+< . . Q . 
+<  . . .Q.
+< 
+< No. 37
+< -----
+< . .Q. . 
+<  . . Q .
+< Q . . . 
+<  . .Q. .
+< .Q. . . 
+<  . . . Q
+< . Q . . 
+<  . . .Q.
+< 
+< No. 38
+< -----
+< . .Q. . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . .Q. .
+< 
+< No. 39
+< -----
+< . .Q. . 
+<  . . Q .
+< . . . .Q
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< . . Q . 
+<  Q . . .
+< 
+< No. 40
+< -----
+< . .Q. . 
+<  . . .Q.
+< Q . . . 
+<  . . . Q
+< . . Q . 
+<  Q . . .
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 41
+< -----
+< . .Q. . 
+<  . . .Q.
+< . Q . . 
+<  . . . Q
+< .Q. . . 
+<  . .Q. .
+< Q . . . 
+<  . . Q .
+< 
+< No. 42
+< -----
+< . .Q. . 
+<  . . .Q.
+< . . Q . 
+<  Q . . .
+< . . .Q. 
+< Q. . . .
+< . Q . . 
+<  . . . Q
+< 
+< No. 43
+< -----
+< . .Q. . 
+<  . . .Q.
+< . . Q . 
+<  .Q. . .
+< Q . . . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< 
+< No. 44
+< -----
+< . .Q. . 
+<  . . . Q
+< Q . . . 
+<  .Q. . .
+< . . .Q. 
+<  Q . . .
+< . . . Q 
+<  . .Q. .
+< 
+< No. 45
+< -----
+< . .Q. . 
+<  . . . Q
+< Q . . . 
+<  . .Q. .
+< . . . Q 
+<  Q . . .
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 46
+< -----
+< . .Q. . 
+<  . . . Q
+< . . Q . 
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< .Q. . . 
+<  . . Q .
+< 
+< No. 47
+< -----
+< . . Q . 
+< Q. . . .
+< . .Q. . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< . . . Q 
+<  .Q. . .
+< 
+< No. 48
+< -----
+< . . Q . 
+< Q. . . .
+< . . . .Q
+<  . Q . .
+< .Q. . . 
+<  . . .Q.
+< . Q . . 
+<  . . Q .
+< 
+< No. 49
+< -----
+< . . Q . 
+< Q. . . .
+< . . . .Q
+<  . . Q .
+< . Q . . 
+<  . . .Q.
+< .Q. . . 
+<  . Q . .
+< 
+< No. 50
+< -----
+< . . Q . 
+<  Q . . .
+< . .Q. . 
+<  . . Q .
+< . . . .Q
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< 
+< No. 51
+< -----
+< . . Q . 
+<  Q . . .
+< . .Q. . 
+<  . . .Q.
+< . Q . . 
+<  . . . Q
+< . . .Q. 
+< Q. . . .
+< 
+< No. 52
+< -----
+< . . Q . 
+<  Q . . .
+< . . .Q. 
+< Q. . . .
+< . . . Q 
+<  . Q . .
+< . . . .Q
+<  .Q. . .
+< 
+< No. 53
+< -----
+< . . Q . 
+<  Q . . .
+< . . . .Q
+< Q. . . .
+< . .Q. . 
+<  . . .Q.
+< . Q . . 
+<  . . Q .
+< 
+< No. 54
+< -----
+< . . Q . 
+<  .Q. . .
+< Q . . . 
+<  . . Q .
+< . . . .Q
+<  Q . . .
+< . .Q. . 
+<  . . .Q.
+< 
+< No. 55
+< -----
+< . . Q . 
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+<  . Q . .
+< 
+< No. 56
+< -----
+< . . Q . 
+<  .Q. . .
+< . . . .Q
+<  . Q . .
+< . . . Q 
+< Q. . . .
+< . . .Q. 
+<  Q . . .
+< 
+< No. 57
+< -----
+< . . Q . 
+<  . . .Q.
+< Q . . . 
+<  .Q. . .
+< . . . .Q
+<  . . Q .
+< . .Q. . 
+<  Q . . .
+< 
+< No. 58
+< -----
+< . . Q . 
+<  . . .Q.
+< Q . . . 
+<  . Q . .
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 59
+< -----
+< . . Q . 
+<  . . .Q.
+< .Q. . . 
+<  . Q . .
+< . . . .Q
+< Q. . . .
+< . Q . . 
+<  . . Q .
+< 
+< No. 60
+< -----
+< . . Q . 
+<  . . .Q.
+< .Q. . . 
+<  . . Q .
+< . Q . . 
+< Q. . . .
+< . .Q. . 
+<  . . . Q
+< 
+< No. 61
+< -----
+< . . Q . 
+<  . . .Q.
+< .Q. . . 
+<  . . Q .
+< . Q . . 
+< Q. . . .
+< . . . .Q
+<  . Q . .
+< 
+< No. 62
+< -----
+< . . Q . 
+<  . . .Q.
+< . .Q. . 
+< Q. . . .
+< . Q . . 
+<  . . . Q
+< . . .Q. 
+<  Q . . .
+< 
+< No. 63
+< -----
+< . . Q . 
+<  . . . Q
+< . .Q. . 
+< Q. . . .
+< . Q . . 
+<  . . Q .
+< .Q. . . 
+<  . . .Q.
+< 
+< No. 64
+< -----
+< . . Q . 
+<  . . . Q
+< . .Q. . 
+< Q. . . .
+< . . . Q 
+<  Q . . .
+< . . .Q. 
+<  .Q. . .
+< 
+< No. 65
+< -----
+< . . .Q. 
+< Q. . . .
+< . . Q . 
+<  Q . . .
+< . . . .Q
+<  .Q. . .
+< . . . Q 
+<  . Q . .
+< 
+< No. 66
+< -----
+< . . .Q. 
+<  Q . . .
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . .Q. .
+< . . . .Q
+<  . Q . .
+< 
+< No. 67
+< -----
+< . . .Q. 
+<  Q . . .
+< . . . Q 
+< Q. . . .
+< . .Q. . 
+<  . . . Q
+< . . Q . 
+<  .Q. . .
+< 
+< No. 68
+< -----
+< . . .Q. 
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< . . Q . 
+<  . . . Q
+< .Q. . . 
+<  . Q . .
+< 
+< No. 69
+< -----
+< . . .Q. 
+<  .Q. . .
+< Q . . . 
+<  . . . Q
+< . .Q. . 
+<  Q . . .
+< . . . Q 
+<  . .Q. .
+< 
+< No. 70
+< -----
+< . . .Q. 
+<  .Q. . .
+< Q . . . 
+<  . . . Q
+< . . Q . 
+<  Q . . .
+< . .Q. . 
+<  . . .Q.
+< 
+< No. 71
+< -----
+< . . .Q. 
+<  .Q. . .
+< . . Q . 
+<  . . .Q.
+< Q . . . 
+<  . Q . .
+< .Q. . . 
+<  . . . Q
+< 
+< No. 72
+< -----
+< . . .Q. 
+<  .Q. . .
+< . . Q . 
+<  . . . Q
+< Q . . . 
+<  . Q . .
+< .Q. . . 
+<  . . .Q.
+< 
+< No. 73
+< -----
+< . . .Q. 
+<  .Q. . .
+< . . . Q 
+<  Q . . .
+< . .Q. . 
+<  . . . Q
+< Q . . . 
+<  . .Q. .
+< 
+< No. 74
+< -----
+< . . .Q. 
+<  .Q. . .
+< . . . Q 
+<  Q . . .
+< . . . .Q
+<  . .Q. .
+< Q . . . 
+<  . Q . .
+< 
+< No. 75
+< -----
+< . . .Q. 
+<  .Q. . .
+< . . . Q 
+<  . Q . .
+< Q . . . 
+<  . . . Q
+< .Q. . . 
+<  . .Q. .
+< 
+< No. 76
+< -----
+< . . .Q. 
+<  . Q . .
+< Q . . . 
+<  . .Q. .
+< . . . .Q
+<  Q . . .
+< . . . Q 
+<  .Q. . .
+< 
+< No. 77
+< -----
+< . . .Q. 
+<  . Q . .
+< .Q. . . 
+<  . . . Q
+< . . Q . 
+<  . . .Q.
+< Q . . . 
+<  .Q. . .
+< 
+< No. 78
+< -----
+< . . .Q. 
+<  . Q . .
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . .Q. .
+< .Q. . . 
+<  . . . Q
+< 
+< No. 79
+< -----
+< . . .Q. 
+<  . Q . .
+< . . . Q 
+< Q. . . .
+< . . . .Q
+<  Q . . .
+< . . Q . 
+<  .Q. . .
+< 
+< No. 80
+< -----
+< . . .Q. 
+<  . . . Q
+< .Q. . . 
+<  . Q . .
+< Q . . . 
+<  . . .Q.
+< . . Q . 
+<  .Q. . .
+< 
+< No. 81
+< -----
+< . . . Q 
+< Q. . . .
+< . Q . . 
+<  . . . Q
+< . . .Q. 
+<  . Q . .
+< .Q. . . 
+<  . .Q. .
+< 
+< No. 82
+< -----
+< . . . Q 
+<  Q . . .
+< . .Q. . 
+< Q. . . .
+< . . . .Q
+<  . .Q. .
+< . Q . . 
+<  . . Q .
+< 
+< No. 83
+< -----
+< . . . Q 
+<  Q . . .
+< . . .Q. 
+<  .Q. . .
+< Q . . . 
+<  . Q . .
+< . . . .Q
+<  . .Q. .
+< 
+< No. 84
+< -----
+< . . . Q 
+<  .Q. . .
+< Q . . . 
+<  . . Q .
+< . . . .Q
+<  . .Q. .
+< .Q. . . 
+<  . Q . .
+< 
+< No. 85
+< -----
+< . . . Q 
+<  .Q. . .
+< . . . .Q
+<  Q . . .
+< . . Q . 
+< Q. . . .
+< . . .Q. 
+<  . Q . .
+< 
+< No. 86
+< -----
+< . . . Q 
+<  . Q . .
+< .Q. . . 
+<  . .Q. .
+< . . . .Q
+< Q. . . .
+< . Q . . 
+<  . . Q .
+< 
+< No. 87
+< -----
+< . . . Q 
+<  . Q . .
+< .Q. . . 
+<  . . . Q
+< . . .Q. 
+< Q. . . .
+< . Q . . 
+<  . .Q. .
+< 
+< No. 88
+< -----
+< . . . Q 
+<  . .Q. .
+< . Q . . 
+< Q. . . .
+< . . .Q. 
+<  . . . Q
+< .Q. . . 
+<  . Q . .
+< 
+< No. 89
+< -----
+< . . . .Q
+<  Q . . .
+< . .Q. . 
+< Q. . . .
+< . . . Q 
+<  . .Q. .
+< . Q . . 
+<  . . Q .
+< 
+< No. 90
+< -----
+< . . . .Q
+<  Q . . .
+< . . Q . 
+<  .Q. . .
+< Q . . . 
+<  . . .Q.
+< . .Q. . 
+<  . . Q .
+< 
+< No. 91
+< -----
+< . . . .Q
+<  .Q. . .
+< Q . . . 
+<  . . Q .
+< .Q. . . 
+<  . .Q. .
+< . . . Q 
+<  . Q . .
+< 
+< No. 92
+< -----
+< . . . .Q
+<  . Q . .
+< Q . . . 
+<  .Q. . .
+< . . .Q. 
+<  Q . . .
+< . . . Q 
+<  . .Q. .
+< Running main.c in negative_base_numbers/
+<           10 encoded in base  -2 =        11110
+<        11110 decoded in base  -2 =           10
+< 
+<          146 encoded in base  -3 =        21102
+<        21102 decoded in base  -3 =          146
+< 
+<           15 encoded in base -10 =          195
+<          195 decoded in base -10 =           15
+< 
+<           12 encoded in base -62 =            C
+<            C decoded in base -62 =           12
+< 
+< Running main.c in next_highest_int_from_digits/
+< 0 -> 0
+< 9 -> 0
+---
+> Compiling and running n_queens_problem-c.rs
+> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+> Compiling and running negative_base_numbers-c.rs
+>           10 encoded in base  -2 = 11110       
+> 11110        decoded in base  -2 =           10
+>          146 encoded in base  -3 = 21102       
+> 21102        decoded in base  -3 =          146
+>           15 encoded in base -10 = 195         
+> 195          decoded in base -10 =           15
+>           12 encoded in base -62 = C           
+> C            decoded in base -62 =           12
+> Compiling and running next_highest_int_from_digits-c.rs
+> 0 -> None
+> 9 -> None
+3286c2154
+< 21 -> 0
+---
+> 21 -> None
+3292c2160
+< Running main.c in nimber_arithmetic/
+---
+> Compiling and running nimber_arithmetic-c.rs
+3294c2162
+< --- -------------------------------------------------
+---
+> ----------------------------------------------------
+3313c2181
+< --- -------------------------------------------------
+---
+> ----------------------------------------------------
+3333,3340c2201,2203
+< Running main.c in nth/
+< Set [0,25]:
+< 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
+< Set [250,265]:
+< 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+< Set [1000,1025]:
+< 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+< Running main.c in null_object/
+---
+> Compiling and running nth-c.rs
+> Compilation failed for nth-c.rs
+> Compiling and running null_object-c.rs
+3342,3365c2205,2281
+< Running main.c in number_names/
+< minus forty-two
+< one thousand, nine hundred eighty-four
+< ten thousand, 
+< one thousand, and twenty-four
+< one trillion, one billion, one million, one thousand, and one
+< one hundred twenty-three million four hundred fifty-six thousand seven hundred eighty-nine trillion trillion trillion trillion, twelve billion three hundred forty-five million six hundred seventy-eight thousand nine hundredand one trillion trillion trillion, two hundred thirty-four billion five hundred sixty-seven million eight hundred ninety thousand one hundred twenty-three trillion trillion, four hundred fifty-six billion seven hundred eighty-nine million twelve thousand three hundred forty-five trillion, six hundred seventy-eight billion, nine hundred million, and one
+< Running main.c in numerical_integration/
+< Compilation failed in numerical_integration/
+< Running main.c in one_dimensional_cellular_automata/
+< ###_##_#_#_#_#__#__
+< #_#####_#_#_#______
+< _##___##_#_#_______
+< _##___###_#________
+< _##___#_##_________
+< _##____###_________
+< _##____#_#_________
+< _##_____#__________
+< _##________________
+< Running main.c in one_of_n_lines_in_a_file/
+< 100561 99814 99816 99721 99244 99772 100790 100072 99997 100213
+< Running main.c in perfect_numbers/
+< Compilation failed in perfect_numbers/
+< Running main.c in phrase_reversals/
+---
+> Compiling and running number_names-c.rs
+> three hundred and twenty-one
+> Compiling and running numerical_integration-c.rs
+> leftrect [0, 1] num: 0.4985010000000003, an: 1
+> rightrect [0, 1] num: 0.49950000000000033, an: 1
+> midrect [0, 1] num: 0.4990005000000004, an: 1
+> trapezium [0, 1] num: 0.5000000000000001, an: 1
+> simpson [0, 1] num: 0.5, an: 1
+> 
+> leftrect [0, 1] num: inf, an: -inf
+> rightrect [0, 1] num: 7.48447086055035, an: -inf
+> midrect [0, 1] num: 8.870264846420083, an: -inf
+> trapezium [0, 1] num: inf, an: -inf
+> simpson [0, 1] num: inf, an: -inf
+> 
+> leftrect [0, 1] num: 0.24850324700100054, an: 1
+> rightrect [0, 1] num: 0.24950025000000053, an: 1
+> midrect [0, 1] num: 0.2490013742501257, an: 1
+> trapezium [0, 1] num: 0.25000025000000003, an: 1
+> simpson [0, 1] num: 0.25000000000000017, an: 1
+> 
+> Compiling and running one_dimensional_cellular_automata-c.rs
+> Compilation failed for one_dimensional_cellular_automata-c.rs
+> Compiling and running one_of_n_lines_in_a_file-c.rs
+> There was an old lady who swallowed a fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a spider
+> That wiggled and jiggled and tickled inside her
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a bird
+> How absurd, to swallow a bird
+> She swallowed the bird to catch the spider
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a cat
+> Imagine that. She swallowed a cat
+> She swallowed the cat to catch the bird
+> She swallowed the bird to catch the spider
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a dog
+> What a hog to swallow a dog
+> She swallowed the dog to catch the cat
+> She swallowed the cat to catch the bird
+> She swallowed the bird to catch the spider
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a goat
+> She just opened her throat and swallowed that goat
+> She swallowed the goat to catch the dog
+> She swallowed the dog to catch the cat
+> She swallowed the cat to catch the bird
+> She swallowed the bird to catch the spider
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a cow
+> I don't know how she swallowed that cow
+> She swallowed the cow to catch the goat
+> She swallowed the goat to catch the dog
+> She swallowed the dog to catch the cat
+> She swallowed the cat to catch the bird
+> She swallowed the bird to catch the spider
+> She swallowed the spider to catch the fly
+> I don't know why she swallowed that fly.
+> Perhaps she'll die
+> There was an old lady who swallowed a horse
+> She's dead of course
+> Compiling and running perfect_numbers-c.rs
+> Enter an argument. Example 1234 or dcba:
+> Compiling and running phrase_reversals-c.rs
+3370,3476c2286,2290
+< Running main.c in population_count/
+< 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
+< evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+< odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+< Running main.c in price_fraction/
+< 0.00 0.10
+< 0.01 0.10
+< 0.02 0.10
+< 0.03 0.10
+< 0.04 0.10
+< 0.05 0.10
+< 0.06 0.18
+< 0.07 0.18
+< 0.08 0.18
+< 0.09 0.18
+< 0.10 0.18
+< 0.11 0.26
+< 0.12 0.26
+< 0.13 0.26
+< 0.14 0.26
+< 0.15 0.26
+< 0.16 0.32
+< 0.17 0.32
+< 0.18 0.32
+< 0.19 0.32
+< 0.20 0.32
+< 0.21 0.38
+< 0.22 0.38
+< 0.23 0.38
+< 0.24 0.38
+< 0.25 0.38
+< 0.26 0.44
+< 0.27 0.44
+< 0.28 0.44
+< 0.29 0.44
+< 0.30 0.44
+< 0.31 0.50
+< 0.32 0.50
+< 0.33 0.50
+< 0.34 0.50
+< 0.35 0.50
+< 0.36 0.54
+< 0.37 0.54
+< 0.38 0.54
+< 0.39 0.54
+< 0.40 0.54
+< 0.41 0.58
+< 0.42 0.58
+< 0.43 0.58
+< 0.44 0.58
+< 0.45 0.58
+< 0.46 0.62
+< 0.47 0.62
+< 0.48 0.62
+< 0.49 0.62
+< 0.50 0.62
+< 0.51 0.66
+< 0.52 0.66
+< 0.53 0.66
+< 0.54 0.66
+< 0.55 0.66
+< 0.56 0.70
+< 0.57 0.70
+< 0.58 0.70
+< 0.59 0.70
+< 0.60 0.70
+< 0.61 0.74
+< 0.62 0.74
+< 0.63 0.74
+< 0.64 0.74
+< 0.65 0.74
+< 0.66 0.78
+< 0.67 0.78
+< 0.68 0.78
+< 0.69 0.78
+< 0.70 0.78
+< 0.71 0.82
+< 0.72 0.82
+< 0.73 0.82
+< 0.74 0.82
+< 0.75 0.82
+< 0.76 0.86
+< 0.77 0.86
+< 0.78 0.86
+< 0.79 0.86
+< 0.80 0.86
+< 0.81 0.90
+< 0.82 0.90
+< 0.83 0.90
+< 0.84 0.90
+< 0.85 0.90
+< 0.86 0.94
+< 0.87 0.94
+< 0.88 0.94
+< 0.89 0.94
+< 0.90 0.94
+< 0.91 0.98
+< 0.92 0.98
+< 0.93 0.98
+< 0.94 0.98
+< 0.95 0.98
+< 0.96 1.00
+< 0.97 1.00
+< 0.98 1.00
+< 0.99 1.00
+< 1.00 1.00
+< Running main.c in proper_divisors/
+---
+> Compiling and running population_count-c.rs
+> Compilation failed for population_count-c.rs
+> Compiling and running price_fraction-c.rs
+> Compilation failed for price_fraction-c.rs
+> Compiling and running proper_divisors-c.rs
+3488,3590c2302,2312
+< Running main.c in pythagorean_quadruples/
+< 1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+< Running main.c in pythagorean_triples/
+< Up to 10: 0 triples, 0 primitives.
+< Up to 100: 17 triples, 7 primitives.
+< Up to 1000: 325 triples, 70 primitives.
+< Up to 10000: 4858 triples, 703 primitives.
+< Up to 100000: 64741 triples, 7026 primitives.
+< Up to 1000000: 808950 triples, 70229 primitives.
+< Up to 10000000: 9706567 triples, 702309 primitives.
+< Up to 100000000: 113236940 triples, 7023027 primitives.
+< Running main.c in quickselect_algorithm/
+< 0: 0
+< 1: 1
+< 2: 2
+< 3: 3
+< 4: 4
+< 5: 5
+< 6: 6
+< 7: 7
+< 8: 8
+< 9: 9
+< Running main.c in range_expansion/
+< -3 -2 -1 3 4 5 7 8 9 10 11 17 18 19 20 
+< Ok
+< -6 -5 -4 -3 -2 -1 0 1 2 3 
+< Syntax error at --1,3-5,7-11,14,15,17-20
+< Running main.c in range_extraction/
+< 0-2,4,6-8,11,12,14-25,27-33,35-39
+< Running main.c in rational/
+< 6
+< 28
+< 496
+< 8128
+< Running main.c in repeat/
+< Example
+< Example
+< Example
+< Example
+< Running main.c in repeat_a_string/
+< hahahahaha
+< Running main.c in roman_numerals_decode/
+< MCmxC	1990
+< MMVIII	2008
+< MDClXVI	1666
+< MCXLUJ	1146
+< Running main.c in root_mean_square/
+< Compilation failed in root_mean_square/
+< Running main.c in roots_of_unity/
+< Compilation failed in roots_of_unity/
+< Running main.c in runge_kutta_method/
+< Compilation failed in runge_kutta_method/
+< Running main.c in set/
+< a is: 0 3 6 9
+< 	0 in set a
+< 	1 not in set a
+< 	2 not in set a
+< 	3 in set a
+< 	4 not in set a
+< b is: 3 5 6 9 10
+< union(a, b) is: 0 3 5 6 9 10
+< c = common(a, b) is: 3 6 9
+< a - b is: 0
+< b - a is: 5 10
+< b is not a subset of a
+< c is a subset of a
+< union(a, b) - common(a, b) equals union(a - b, b - a)
+< Running main.c in sexy_primes/
+< Number of sexy prime pairs less than 1000035 = 16386
+< The last 5 are:
+<   [[999371 999377 ]] [999431 999437 ]] [999721 999727 ]] [999763 999769 ]] [999953 999959 ]] ]
+< 
+< Number of sexy prime triplets less than 1000035 = 2900
+< The last 5 are:
+<   [[997427 997433 997439 ]] [997541 997547 997553 ]] [998071 998077 998083 ]] [998617 998623 998629 ]] [998737 998743 998749 ]] ]
+< 
+< Number of sexy prime quadruplets less than 1000035 = 325
+< The last 5 are:
+<   [[977351 977357 977363 977369 ]] [983771 983777 983783 983789 ]] [986131 986137 986143 986149 ]] [990371 990377 990383 990389 ]] [997091 997097 997103 997109 ]] ]
+< 
+< Number of sexy prime quintuplets less than 1000035 = 1
+< The last 1 is:
+<   [[5 11 17 23 29 ]] ]
+< 
+< Number of unsexy primes less than 1000035 = 48627
+< The last 10 are:
+<   [[999853 999863 999883 999907 999917 999931 999961 999979 999983 1000003 ]]
+< Running main.c in short_circuit_evaluation/
+< I am a
+< false && true = false
+< 
+< I am a
+< true || false = true
+< 
+< I am a
+< I am b
+< true && false = false
+< 
+< I am a
+< I am b
+< false || false = false
+< 
+< Script execution completed.
+---
+> Compiling and running pythagorean_quadruples-c.rs
+> Compilation failed for pythagorean_quadruples-c.rs
+> Compiling and running pythagorean_triples-c.rs
+> Compilation failed for pythagorean_triples-c.rs
+> Compiling and running quickselect_algorithm-c.rs
+> Compilation failed for quickselect_algorithm-c.rs
+> Compiling and running range_expansion-c.rs
+> Compilation failed for range_expansion-c.rs
+> Compiling and running range_extraction-c.rs
+> Compilation failed for range_extraction-c.rs
+> Compiling and running rational-c.rs

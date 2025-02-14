@@ -155,7 +155,7 @@ mod tests {
     #[test]
     fn test_read_dat_file() -> Result<()> {
         let start = Instant::now();
-        let (mut fmap, eclass, loSt, hiSt) = read_dat_file("/root/rustmap/bzip2/params_fallbackQSort3_1.dat").unwrap();
+        let (mut fmap, eclass, loSt, hiSt) = read_dat_file("/root/crown-rust/bzip2/params_fallbackQSort3_1.dat").unwrap();
         let duration = start.elapsed();
         // println!("read_dat_file took: {:?}", duration);
         let start = Instant::now();
@@ -164,10 +164,10 @@ mod tests {
         // println!("fallback_qsort_3 took: {:?}", duration);
             
         // 调用排序函数
-        // let (mut fmap, eclass, loSt, hiSt) = read_dat_file("/root/rustmap/bzip2/params_fallbackQSort3_2.dat")?;
+        // let (mut fmap, eclass, loSt, hiSt) = read_dat_file("/root/crown-rust/bzip2/params_fallbackQSort3_2.dat")?;
 
          // 从文件读取第二组参数（预期结果）
-         let (expected_fmap, expected_eclass, expected_loSt, expected_hiSt) = read_dat_file("/root/rustmap/bzip2/params_fallbackQSort3_2.dat")?;
+         let (expected_fmap, expected_eclass, expected_loSt, expected_hiSt) = read_dat_file("/root/crown-rust/bzip2/params_fallbackQSort3_2.dat")?;
 
          // println!("loSt: {}", loSt);
          // println!("hiSt: {}", hiSt);

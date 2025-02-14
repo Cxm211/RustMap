@@ -146,7 +146,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut ptr, mut block, mut quadrant, nblock, lo, hi, d, budget) = read_dat_file("/root/rustmap/bzip2/params_mainSimpleSort_1.dat")?;
+        let (mut ptr, mut block, mut quadrant, nblock, lo, hi, d, budget) = read_dat_file("/root/crown-rust/bzip2/params_mainSimpleSort_1.dat")?;
 
         // assert_eq!(nblock, 98170);
         // assert_eq!(lo, 59890);

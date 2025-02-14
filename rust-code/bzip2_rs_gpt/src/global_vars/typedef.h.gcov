@@ -1,6 +1,6 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/typedef.h
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcno
-        -:    0:Data:/root/rustmap/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/typedef.h
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda
         -:    0:Runs:1
         -:    1:#ifndef TYPEDEF_H_INCLUDED
         -:    2:#define TYPEDEF_H_INCLUDED

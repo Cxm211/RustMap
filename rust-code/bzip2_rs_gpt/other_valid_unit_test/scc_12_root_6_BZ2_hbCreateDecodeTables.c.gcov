@@ -1,6 +1,6 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.c
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcno
-        -:    0:Data:/root/rustmap/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcda
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcda
         -:    0:Runs:0
         -:    1:
         -:    2:// BZ2_hbCreateDecodeTables ( Int32*, Int32*, Int32*, UChar*,

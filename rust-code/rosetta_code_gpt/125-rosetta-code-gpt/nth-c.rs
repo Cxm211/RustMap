@@ -27,4 +27,4 @@ fn main() {
     for i in 1000..1026 {
         print!("{} ", add_suffix(i));
     }
-}
+    println

@@ -1,4 +1,4 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.c
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.c
         -:    0:Graph:scc_59_root_40_notAStandardFile.gcno
         -:    0:Data:scc_59_root_40_notAStandardFile.gcda
         -:    0:Runs:1
@@ -63,7 +63,7 @@
         -:   59:
         1:   60:int main() {
         1:   61:    CU_pSuite pSuite = NULL;
-        1:   62:    remove("/root/rustmap/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda");
+        1:   62:    remove("/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda");
         -:   63:
         -:   64:    // 初始化CUnit库
         1:   65:    if (CUE_SUCCESS != CU_initialize_registry())

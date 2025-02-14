@@ -1,7 +1,0 @@
-cargo:rerun-if-changed=build.rs
-cargo:rerun-if-env-changed=CARGO_CFG_TARGET_ARCH
-cargo:rustc-cfg=linux_raw
-cargo:rerun-if-changed=src/imp/linux_raw/arch/outline/debug/librustix_outline_x86_64.a
-cargo:rustc-link-search=src/imp/linux_raw/arch/outline/debug
-cargo:rustc-link-lib=static=rustix_outline_x86_64
-cargo:rerun-if-env-changed=CARGO_CFG_RUSTIX_USE_LIBC

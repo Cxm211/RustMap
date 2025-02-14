@@ -197,7 +197,7 @@ mod tests {
 
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut ptr, block, mut quadrant, nblock, lo, hi, d, budget_option) = read_dat_file("/root/rustmap/bzip2/params_mainQSort3_1.dat")?;
+        let (mut ptr, block, mut quadrant, nblock, lo, hi, d, budget_option) = read_dat_file("/root/crown-rust/bzip2/params_mainQSort3_1.dat")?;
 
         let mut budget = match budget_option {
             Some(value) => value as Int32,

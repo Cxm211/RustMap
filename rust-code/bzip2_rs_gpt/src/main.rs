@@ -356,9 +356,9 @@ mod tests {
         let simulated_args = vec![
             String::from("./bzip2"),
             String::from("-k"),
-            String::from("/root/rustmap/bzip2_rs_gpt/11Nov.txt"),
-            // String::from("/root/rustmap/bzip2_rs_gpt/sample1.ref"),
-            // String::from("/root/rustmap/bzip2_rs_gpt/abc.txt"),
+            String::from("/root/crown-rust/bzip2_rs_gpt/11Nov.txt"),
+            // String::from("/root/crown-rust/bzip2_rs_gpt/sample1.ref"),
+            // String::from("/root/crown-rust/bzip2_rs_gpt/abc.txt"),
         ];
             // String::from("-1"),
             // String::from("< sample1.ref"),

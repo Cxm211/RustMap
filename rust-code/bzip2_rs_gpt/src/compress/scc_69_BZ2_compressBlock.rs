@@ -141,7 +141,7 @@ fn update_arr2(estate: &mut EState) {
 pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
     // println!("开始压缩数据块");
     // print_estate(s, "73_compressBlock_BEFORE_71_BZ_FINALISE_CRC_rust.json");
-    // execute_command("cat 73_compressBlock_BEFORE_71_BZ_FINALISE_CRC_rust.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_enter.rs.json");
+    // execute_command("cat 73_compressBlock_BEFORE_71_BZ_FINALISE_CRC_rust.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_enter.rs.json");
     // my_sleep(1000);
     if s.nblock > 0 {
         // println!("正在处理数据块，块号：{}", s.blockNo);
@@ -192,7 +192,7 @@ pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
     update_zbits(s);
 
     // print_estate(s, "73_zbitsD_rs.json");
-    // execute_command("cat 73_zbitsD_rs.json | cut -c 1-100 > /root/rustmap/73_zbits.rs.json");
+    // execute_command("cat 73_zbitsD_rs.json | cut -c 1-100 > /root/crown-rust/73_zbits.rs.json");
       
     /* 💡💡💡
         在 Rust 中，将 s.arr2 中的一部分转换为 Vec<u8> 的形式并不像在 C 中那样直接。
@@ -237,18 +237,18 @@ pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
         bs_put_uchar(s, 0x42); // 'B'
 
         // print_estate(s, "73_ADa_rs.json");
-        // execute_command("cat 73_ADa_rs.json | cut -c 1-100 > /root/rustmap/73_A.rs.txt");
+        // execute_command("cat 73_ADa_rs.json | cut -c 1-100 > /root/crown-rust/73_A.rs.txt");
         bs_put_uchar(s, 0x5a); // 'Z'
 
         // print_estate(s, "73_BDa_rs.json");
-        // execute_command("cat 73_BDa_rs.json | cut -c 1-100 > /root/rustmap/73_B.rs.txt");
+        // execute_command("cat 73_BDa_rs.json | cut -c 1-100 > /root/crown-rust/73_B.rs.txt");
         bs_put_uchar(s, 0x68); // 'h'
 
         // print_estate(s, "73_CDa_rs.json");
-        // execute_command("cat 73_CDa_rs.json | cut -c 1-100 > /root/rustmap/73_C.rs.txt");
+        // execute_command("cat 73_CDa_rs.json | cut -c 1-100 > /root/crown-rust/73_C.rs.txt");
         bs_put_uchar(s, 0x30 + s.blockSize100k as u8); // '0' + blockSize100k
         // print_estate(s, "73_bN1Da_rs.json");
-        // execute_command("cat 73_bN1Da_rs.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_bN1.rs.txt");
+        // execute_command("cat 73_bN1Da_rs.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_bN1.rs.txt");
         // println!("bzip2文件头写入完成");
     }
     //没区别🐦和🦀️
@@ -269,14 +269,14 @@ pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
         // println!("输出块的CRC和原始指针完成");
 
         // print_estate(s, "73_qian_MTF_DA_rs.json");
-        // execute_command("cat 73_qian_MTF_DA_rs.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_qian_MTF_rs.txt");
+        // execute_command("cat 73_qian_MTF_DA_rs.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_qian_MTF_rs.txt");
         // 生成和发送MTF值
         // // println!("生成和发送MTF值");
         // let mut ptr_before_gmtf = unsafe { Vec::from_raw_parts(s.ptr.unwrap(), (s.nblock + 34) as usize, s.nblock as usize) };
         // // println!("ptr_before_gmtf: {:?}",ptr_before_gmtf);
         generate_mtf_values(s);
         // print_estate(s, "73_G_DA_rs.json");
-        // execute_command("cat 73_G_DA_rs.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_G_rs.txt");
+        // execute_command("cat 73_G_DA_rs.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_G_rs.txt");
         // 绝对无误
         // 🔥 s.bsLive == 25 🔥 
         sendMTFValues(s);
@@ -286,7 +286,7 @@ pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
     }
 
     // print_estate(s, "73_S_DA_rs.json");
-    // execute_command("cat 73_S_DA_rs.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_S_rs.txt");
+    // execute_command("cat 73_S_DA_rs.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_S_rs.txt");
     // 如果是最后一个数据块
     if is_last_block {
         // println!("处理最后一个数据块"); // s.bsLive==9
@@ -310,7 +310,7 @@ pub fn bz2_compress_block(s: &mut EState, is_last_block: bool) {
     }
 
     // print_estate(s, "73_jieshuDA.rs.json");
-    // execute_command("cat 73_jieshuDA.rs.json | cut -c 1-100 > /root/rustmap/bzip2_rs_gpt/73_jieshu.rs.txt");
+    // execute_command("cat 73_jieshuDA.rs.json | cut -c 1-100 > /root/crown-rust/bzip2_rs_gpt/73_jieshu.rs.txt");
 
     // println!("数据块压缩流程结束");
 }

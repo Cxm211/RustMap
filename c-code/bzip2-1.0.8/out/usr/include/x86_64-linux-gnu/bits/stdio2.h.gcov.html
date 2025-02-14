@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-09-23 05:59:49</td>
+            <td class="headerValue">2025-02-14 12:16:12</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -347,12 +347,12 @@
 <a name="285"><span class="lineNum">     285 </span>            :                        &quot;of destination buffer&quot;);</a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            : __fortify_function __wur size_t</a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         88 : fread (void *__restrict __ptr, size_t __size, size_t __n,</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        176 : fread (void *__restrict __ptr, size_t __size, size_t __n,</span></a>
 <a name="289"><span class="lineNum">     289 </span>            :        FILE *__restrict __stream)</a>
 <a name="290"><span class="lineNum">     290 </span>            : {</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">         88 :   size_t sz = __glibc_objsize0 (__ptr);</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">         88 :   if (__glibc_safe_or_unknown_len (__n, __size, sz))</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         88 :     return __fread_alias (__ptr, __size, __n, __stream);</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">        176 :   size_t sz = __glibc_objsize0 (__ptr);</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">        176 :   if (__glibc_safe_or_unknown_len (__n, __size, sz))</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">        176 :     return __fread_alias (__ptr, __size, __n, __stream);</span></a>
 <a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :   if (__glibc_unsafe_len (__n, __size, sz))</span></a>
 <a name="295"><span class="lineNum">     295 </span><span class="lineNoCov">          0 :     return __fread_chk_warn (__ptr, sz, __size, __n, __stream);</span></a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineNoCov">          0 :   return __fread_chk (__ptr, sz, __size, __n, __stream);</span></a>

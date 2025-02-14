@@ -182,7 +182,7 @@ pub fn main_sort(
         quadrant[idx] = 0;
     }
     
-    // save_array_to_file(&block, "/root/rustmap/bzip2/block_rust.txt");
+    // save_array_to_file(&block, "/root/crown-rust/bzip2/block_rust.txt");
     // println!("save block_rust array to file and sleep 12s........................");
     if verb >= 4 {
         eprintln!("        bucket sorting ...");
@@ -204,7 +204,7 @@ pub fn main_sort(
     // 此时需要确保s,j,ftab,ptr和C中代码一致
     // println!("s: {}; j: {}", s, j);
     // save_array_to_file(ftab, "ftab_qian_t5_rust.txt");
-    // save_array_to_file(ptr, "/root/rustmap/ptr_before_title5.txt");
+    // save_array_to_file(ptr, "/root/crown-rust/ptr_before_title5.txt");
     // println!("~~~~~~~~~~~~~~~~~~~~  前title5 ~~~~~~~~~~~~~~~~~~~~");
     while i >= 3 {
         s = (s >> 8) | ((block[i] as u16) << 8);
@@ -230,7 +230,7 @@ pub fn main_sort(
         i -= 4;
         // }
     }
-    // save_array_to_file(ptr, "/root/rustmap/ptr_finish_title5.txt");
+    // save_array_to_file(ptr, "/root/crown-rust/ptr_finish_title5.txt");
     my_sleep(12);
     // println!("~~~~~~~~~~~~~~~~~~~~  后title5 ptr ~~~~~~~~~~~~~~~~~~~~");
 
@@ -253,7 +253,7 @@ pub fn main_sort(
             i -= 1;
         }
     }
-    // save_array_to_file(ptr, "/root/rustmap/d_qian_156_ptr.txt");
+    // save_array_to_file(ptr, "/root/crown-rust/d_qian_156_ptr.txt");
     // 97613
     my_sleep(5);
 
@@ -309,7 +309,7 @@ pub fn main_sort(
                             eprintln!("        qsort [0x{}, 0x{}]   done {}   this {}", ss, j, num_q_sorted, (hi as i32) - (lo as i32) + 1);
                         }
                         if i == 156 {
-                            // save_array_to_file(ptr, "/root/rustmap/d_qian_156_ptr.txt");
+                            // save_array_to_file(ptr, "/root/crown-rust/d_qian_156_ptr.txt");
                             // println!("main_q_sort3前进行打印 .........."); // ❌发现报错处❌
                         }
     // 🔥🔥🔥🔥🔥@@@@@@@@@@@@@@@@@@@@@@@  子标题5：调用mainQSort3进行排序 @@@@@@@@@@@@@@@@@@@@@@@🔥🔥🔥🔥🔥  
@@ -428,9 +428,9 @@ pub fn main_sort(
         // }
         // print_255(block, "🦀️block");
         // if i == 156 {
-        //     // save_array_to_file(block, "/root/rustmap/d_156_block_rust.txt");
+        //     // save_array_to_file(block, "/root/crown-rust/d_156_block_rust.txt");
         //     // println!("Before CE 关键第二forLoop save d_156_block_rust.txt ..........");
-        //     // save_array_to_file(ptr, "/root/rustmap/d_156_ptr_rust.txt");
+        //     // save_array_to_file(ptr, "/root/crown-rust/d_156_ptr_rust.txt");
         //     // println!("Before CE 关键第二forLoop save d_156_ptr_rust.txt ..........");
         //     my_sleep(12);
         // }
@@ -564,7 +564,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut ptr, mut block, mut quadrant, mut ftab, nblock, mut budget) = read_dat_file("/root/rustmap/bzip2/params_mainSort_1.dat")?;
+        let (mut ptr, mut block, mut quadrant, mut ftab, nblock, mut budget) = read_dat_file("/root/crown-rust/bzip2/params_mainSort_1.dat")?;
         // println!("Before mainSort:");
         let lo = 0; // 或者其他默认值
         let hi = ptr.len() - 1; // 或者其他默认值

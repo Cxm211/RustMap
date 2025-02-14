@@ -314,7 +314,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut fmap,  mut eclass, mut bhtab, nblock, verb) = read_dat_file("/root/rustmap/bzip2/params_fallbackSort_3.dat")?;
+        let (mut fmap,  mut eclass, mut bhtab, nblock, verb) = read_dat_file("/root/crown-rust/bzip2/params_fallbackSort_3.dat")?;
         fallback_sort(&mut fmap, &mut eclass, &mut bhtab, nblock, verb); // 修改这里，加上 &
         // let mut file = File::create(Path::new("result.txt"))?;
         // // Write each variable to the file
@@ -328,7 +328,7 @@ mod tests {
         // 调用排序函数
 
          // 从文件读取第二组参数（预期结果）
-        let (expected_fmap, expected_eclass, expected_bhtab, expected_nblock, expected_verb) = read_dat_file("/root/rustmap/bzip2/params_fallbackSort_4.dat")?;
+        let (expected_fmap, expected_eclass, expected_bhtab, expected_nblock, expected_verb) = read_dat_file("/root/crown-rust/bzip2/params_fallbackSort_4.dat")?;
 
         //  // println!("loSt: {}", loSt);
         //  // println!("hiSt: {}", hiSt);

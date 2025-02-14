@@ -1,4 +1,4 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort✅.c
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort✅.c
         -:    0:Graph:scc_29_mainSimpleSort✅.gcno
         -:    0:Data:scc_29_mainSimpleSort✅.gcda
         -:    0:Runs:1
@@ -132,7 +132,7 @@
         -:  128:}
         -:  129:
         1:  130:void test_mainSimpleSort() {
-        1:  131:    FILE* file = fopen("/root/rustmap/bzip2/params_mainSimpleSort_1.dat", "r");
+        1:  131:    FILE* file = fopen("/root/crown-rust/bzip2/params_mainSimpleSort_1.dat", "r");
         1:  132:    if (!file) {
     #####:  133:        perror("打开params_mainSimpleSort_1.dat失败");
     #####:  134:        return;

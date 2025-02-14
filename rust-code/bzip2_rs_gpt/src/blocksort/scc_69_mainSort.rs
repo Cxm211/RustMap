@@ -550,7 +550,7 @@ mod tests {
     use super::*;
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut ptr, mut block, mut quadrant, mut ftab, nblock, verb, mut budget) = read_dat_file("/root/rustmap/bzip2/params_mainSort_1.dat")?;
+        let (mut ptr, mut block, mut quadrant, mut ftab, nblock, verb, mut budget) = read_dat_file("/root/crown-rust/bzip2/params_mainSort_1.dat")?;
         // println!("Before mainSort:");
         let lo = 0; // 或者其他默认值
         let hi = ptr.len() - 1; // 或者其他默认值

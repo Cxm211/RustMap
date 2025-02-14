@@ -1,6 +1,6 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.c
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcno
-        -:    0:Data:/root/rustmap/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcda
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcda
         -:    0:Runs:1
         -:    1:// use crate::global_vars::bzip2_c1::{EState};
         -:    2:#include  "../typedef.h"

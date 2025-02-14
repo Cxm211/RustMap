@@ -1,6 +1,6 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.c
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.gcno
-        -:    0:Data:/root/rustmap/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.gcda
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.gcda
         -:    0:Runs:1
         -:    1:
         -:    2:#include "../typedef.h"

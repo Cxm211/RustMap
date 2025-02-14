@@ -1,6 +1,6 @@
-        -:    0:Source:/root/rustmap/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.c
-        -:    0:Graph:/root/rustmap/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.gcno
-        -:    0:Data:/root/rustmap/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.gcda
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_14_root_8_BZ2_indexIntoF.gcda
         -:    0:Runs:1
         -:    1:
         -:    2:// BZ2_indexIntoF ( Int32, Int32* )

@@ -125,7 +125,7 @@ int read_array_hex_values(FILE *file, UInt32* arr) {
 }
 
 void test_mainSimpleSort() {
-    FILE* file = fopen("/root/rustmap/bzip2/params_mainSimpleSort_1.dat", "r");
+    FILE* file = fopen("/root/crown-rust/bzip2/params_mainSimpleSort_1.dat", "r");
     if (!file) {
         perror("打开params_mainSimpleSort_1.dat失败");
         return;

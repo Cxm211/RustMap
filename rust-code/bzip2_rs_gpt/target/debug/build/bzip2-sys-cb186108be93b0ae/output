@@ -42,19 +42,19 @@ cargo:rerun-if-env-changed=HOST_CFLAGS
 HOST_CFLAGS = None
 cargo:rerun-if-env-changed=CFLAGS
 CFLAGS = None
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/blocksort.o" "-c" "bzip2-1.0.8/blocksort.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/blocksort.o" "-c" "bzip2-1.0.8/blocksort.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/huffman.o" "-c" "bzip2-1.0.8/huffman.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/huffman.o" "-c" "bzip2-1.0.8/huffman.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/crctable.o" "-c" "bzip2-1.0.8/crctable.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/crctable.o" "-c" "bzip2-1.0.8/crctable.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/randtable.o" "-c" "bzip2-1.0.8/randtable.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/randtable.o" "-c" "bzip2-1.0.8/randtable.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/compress.o" "-c" "bzip2-1.0.8/compress.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/compress.o" "-c" "bzip2-1.0.8/compress.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/decompress.o" "-c" "bzip2-1.0.8/decompress.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/decompress.o" "-c" "bzip2-1.0.8/decompress.c"
 exit status: 0
-running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/bzlib.o" "-c" "bzip2-1.0.8/bzlib.c"
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-4" "-fno-omit-frame-pointer" "-m64" "-I" "bzip2-1.0.8" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/bzlib.o" "-c" "bzip2-1.0.8/bzlib.c"
 exit status: 0
 cargo:rerun-if-env-changed=AR_x86_64-unknown-linux-gnu
 AR_x86_64-unknown-linux-gnu = None
@@ -72,11 +72,11 @@ cargo:rerun-if-env-changed=HOST_ARFLAGS
 HOST_ARFLAGS = None
 cargo:rerun-if-env-changed=ARFLAGS
 ARFLAGS = None
-running: ZERO_AR_DATE="1" "ar" "cq" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/libbz2.a" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/blocksort.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/huffman.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/crctable.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/randtable.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/compress.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/decompress.o" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/bzlib.o"
+running: ZERO_AR_DATE="1" "ar" "cq" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/libbz2.a" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/blocksort.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/huffman.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/crctable.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/randtable.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/compress.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/decompress.o" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/bzip2-1.0.8/bzlib.o"
 exit status: 0
-running: "ar" "s" "/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/libbz2.a"
+running: "ar" "s" "/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib/libbz2.a"
 exit status: 0
 cargo:rustc-link-lib=static=bz2
-cargo:rustc-link-search=native=/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib
-cargo:root=/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out
-cargo:include=/root/rustmap/feasibility_study/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/include
+cargo:rustc-link-search=native=/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/lib
+cargo:root=/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out
+cargo:include=/root/rustmap/rust-code/bzip2_rs_gpt/target/debug/build/bzip2-sys-cb186108be93b0ae/out/include

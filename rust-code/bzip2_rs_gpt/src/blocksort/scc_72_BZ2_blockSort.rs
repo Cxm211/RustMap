@@ -433,7 +433,7 @@ mod tests {
     use crate::global_vars::bzip2_c1::EState;
     #[test]
     fn test_read_dat_file() -> Result<()> {
-        let (mut bzStream, mut estate) =  read_dat_file("/root/rustmap/bzip2/72_before_blockSort_EState_c.txt")?;
+        let (mut bzStream, mut estate) =  read_dat_file("/root/crown-rust/bzip2/72_before_blockSort_EState_c.txt")?;
         block_sort(&mut estate);
         // // println!("loSt{}",loSt);
         // // println!("hiSt{}",hiSt);

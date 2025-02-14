@@ -146,9 +146,9 @@ mod tests {
     // 测试compress函数处理有效输入的能力
     #[test]
     fn test_compress_valid_input() {
-        // let input_filename = "/root/rustmap/bzip2/sample1.ref";
+        // let input_filename = "/root/crown-rust/bzip2/sample1.ref";
         // let output_filename = "output.txt";
-        let input_filename = "/root/rustmap/bzip2-backup/11Nov.txt";
+        let input_filename = "/root/crown-rust/bzip2-backup/11Nov.txt";
                 // 创建一个输入文件用于测试
         let mut file = File::create(input_filename).unwrap();
         writeln!(file, "1").unwrap();
