@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/extreme_floating_point_values",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/extreme_floating_point_values/main.c"
+  }
+]

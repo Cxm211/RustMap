@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/one_dimensional_cellular_automata",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/one_dimensional_cellular_automata/main.c"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "main.c"
+    ],
+    "directory": "/home/c00834010/dev/crusts-benchmarks/latest/matrix_chain_multiplication",
+    "file": "/home/c00834010/dev/crusts-benchmarks/latest/matrix_chain_multiplication/main.c"
+  }
+]
