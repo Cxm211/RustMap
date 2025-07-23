@@ -614,3 +614,8 @@ See the code under `/root/rustmap/code_patterns/complex_switch_fall_through_comp
 
 # 7. Macro Handling
 [This section](./README_example.md) provides examples of different types of macro translations, showcasing how various C macros are transformed into more structured and maintainable formats in both C and Rust. These examples illustrate the process of converting numerical macros, complex macros, and unhandled macros, ensuring better readability, type safety, and platform compatibility. By following these references, readers can explore detailed case studies and understand the rationale behind each transformation.
+
+# License
+
+This project is licensed under the Apache License 2.0.  
+See the [LICENSE](LICENSE) file for more details.
