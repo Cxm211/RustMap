@@ -360,7 +360,17 @@ View the result in `/root/rustmap/c-code/rosetta-125/coverage_report/index.html`
 
 # 7. Cogntive Complexity Test
 
-## 7.1. Compute Cognitive Complexity
+## 7.1 Install `rust-code-analysis-cli`
+
+To install the CLI tool for computing cognitive complexity, run:
+
+```bash
+cargo install rust-code-analysis-cli
+```
+
+This will install the CLI globally and make it available as rust-code-analysis-cli.
+
+## 7.2. Compute Cognitive Complexity
 To analyze the cognitive complexity of each function, first run:
 ```bash
 cd cognitive_study
@@ -380,7 +390,7 @@ This will generate four CSV files, each containing the complexity values for one
 Each file includes the cognitive complexity scores at the function or file level, depending on the project.
 
 
-## 7.2. Visualize Results
+## 7.3. Visualize Results
 To generate violin plots comparing complexity across different tools and datasets, run:
 
 ```bash
