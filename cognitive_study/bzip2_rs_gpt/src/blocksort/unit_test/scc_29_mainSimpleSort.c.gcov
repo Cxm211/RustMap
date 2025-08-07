@@ -1,0 +1,157 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.c
+        -:    0:Graph:scc_68_mainQSort3.gcno
+        -:    0:Data:scc_68_mainQSort3.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::blocksort::scc_30_root_20_mmed3::*;
+        -:    2:// use crate::global_vars::bzip2_c6::{incs-blocksort.i};
+        -:    3:#include <stdio.h>
+        -:    4:#include "../typedef.h"
+        -:    5:#include "./scc_28_root_19_mainGtU.c"
+        -:    6:// 预定义的希尔排序增量序列
+        -:    7:static Int32 incs[14] = { 1, 4, 13, 40, 121, 364, 1093, 3280,
+        -:    8:                   9841, 29524, 88573, 265720,
+        -:    9:                   797161, 2391484 };
+        -:   10:
+        1:   11:static void mainSimpleSort ( UInt32* ptr,       // 待排序数组
+        -:   12:                             UChar* block,      // 包含字符的块
+        -:   13:                             UInt16* quadrant,  // 四分区数组
+        -:   14:                             Int32 nblock,      // 块的大小
+        -:   15:                             Int32 lo,          // 排序开始的索引
+        -:   16:                             Int32 hi,          // 排序结束的索引
+        -:   17:                             Int32 d,           // 索引的偏移量
+        -:   18:                             Int32* budget )    // 预算（可能与循环迭代次数有关）
+        -:   19:{
+        -:   20:   Int32 i, j, h, bigN, hp;
+        -:   21:   UInt32 v;
+        -:   22:
+        -:   23:   // 计算待排序的元素数量
+        1:   24:   bigN = hi - lo + 1;
+        -:   25:   // 如果元素数量小于2，则不需要排序
+       1*:   26:   if (bigN < 2) return;
+        -:   27:
+        -:   28:   // 根据待排序元素的数量，选择合适的增量
+        1:   29:   hp = 0;
+        2:   30:   while (incs[hp] < bigN) hp++;
+        1:   31:   hp--;
+        -:   32:
+        -:   33:   // 对每一个增量进行希尔排序
+        2:   34:   for (; hp >= 0; hp--) {
+        1:   35:      h = incs[hp];
+        -:   36:
+        1:   37:      i = lo + h;
+        -:   38:      while (true) {
+        -:   39:
+        -:   40:         // 如果超出上限则跳出循环
+       1*:   41:         if (i > hi) break;
+        1:   42:         v = ptr[i];
+        1:   43:         j = i;
+        -:   44:
+        -:   45:         // 进行插入排序的一部分
+        1:   46:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   47:            ptr[j] = ptr[j-h];
+    #####:   48:            j = j - h;
+    #####:   49:            if (j <= (lo + h - 1)) break;
+        -:   50:         }
+        1:   51:         ptr[j] = v;
+        1:   52:         i++;
+        -:   53:
+        -:   54:         // 以下两个部分与上面的代码块类似，是为了提高效率
+       1*:   55:         if (i > hi) break;
+        1:   56:         v = ptr[i];
+        1:   57:         j = i;
+        1:   58:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   59:            ptr[j] = ptr[j-h];
+    #####:   60:            j = j - h;
+    #####:   61:            if (j <= (lo + h - 1)) break;
+        -:   62:         }
+        1:   63:         ptr[j] = v;
+        1:   64:         i++;
+        -:   65:
+        1:   66:         if (i > hi) break;
+    #####:   67:         v = ptr[i];
+    #####:   68:         j = i;
+    #####:   69:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   70:            ptr[j] = ptr[j-h];
+    #####:   71:            j = j - h;
+    #####:   72:            if (j <= (lo + h - 1)) break;
+        -:   73:         }
+    #####:   74:         ptr[j] = v;
+    #####:   75:         i++;
+        -:   76:
+        -:   77:         // 如果预算小于0，则返回
+    #####:   78:         if (*budget < 0) return;
+        -:   79:      }
+        -:   80:   }
+        -:   81:}
+        -:   82:
+    #####:   83:void test_mainSimpleSort() {
+        -:   84:    UInt32 ptr[100000];
+        -:   85:    UChar block[100000];
+        -:   86:    UInt16 quadrant[100000];
+    #####:   87:    Int32 nblock = 98170;
+    #####:   88:    Int32 d = 2;  // 从你提供的数据中推测
+        -:   89:
+        -:   90:    // 第一个测试用例
+    #####:   91:    Int32 budget1 = 883530;
+    #####:   92:    ptr[19465] = 19465;
+    #####:   93:    ptr[19564] = 19564;
+    #####:   94:    mainSimpleSort(ptr, block, quadrant, nblock, 19465, 19564, d, &budget1);
+    #####:   95:    CU_ASSERT_EQUAL(ptr[19465], 19465); 
+    #####:   96:    CU_ASSERT_EQUAL(ptr[19564], 19564);
+    #####:   97:    CU_ASSERT_EQUAL(budget1, 883530);
+        -:   98:
+        -:   99:    // 第二个测试用例
+        -:  100:   //  Int32 budget2 = 883530;
+        -:  101:   //  ptr[76460] = 76460;
+        -:  102:   //  ptr[97757] = 97757;
+        -:  103:   //  mainSimpleSort(ptr, block, quadrant, nblock, 76460, 97757, d, &budget2);
+        -:  104:   //  CU_ASSERT_EQUAL(ptr[76460], 76460);
+        -:  105:   //  CU_ASSERT_EQUAL(ptr[97757], 97532);
+        -:  106:   //  CU_ASSERT_EQUAL(budget2, 883530);
+        -:  107:
+        -:  108:    // 第三个测试用例
+        -:  109:   //  Int32 budget3 = 883530;
+        -:  110:   //  ptr[34144] = 34213;  // 注意，这里和你提供的数据是相反的
+        -:  111:   //  ptr[34213] = 34144;
+        -:  112:   //  mainSimpleSort(ptr, block, quadrant, nblock, 34144, 34213, d, &budget3);
+        -:  113:   //  CU_ASSERT_EQUAL(ptr[34144], 34144);
+        -:  114:   //  CU_ASSERT_EQUAL(ptr[34213], 34144);
+        -:  115:   //  CU_ASSERT_EQUAL(budget3, 883530);
+        -:  116:
+        -:  117:    // 第四个测试用例
+        -:  118:   //  Int32 budget4 = 883530;
+        -:  119:   //  ptr[20159] = 20846;  // 注意，这里和你提供的数据是相反的
+        -:  120:   //  ptr[20846] = 20159;
+        -:  121:   //  mainSimpleSort(ptr, block, quadrant, nblock, 20159, 20846, d, &budget4);
+        -:  122:   //  CU_ASSERT_EQUAL(ptr[20159], 20846);
+        -:  123:   //  CU_ASSERT_EQUAL(ptr[20846], 20159);
+        -:  124:   //  CU_ASSERT_EQUAL(budget4, 883530);
+    #####:  125:}
+        -:  126:
+        -:  127:
+        -:  128:// int main() {
+        -:  129://     CU_pSuite pSuite = NULL;
+        -:  130:
+        -:  131://     /* 初始化CUnit测试注册 */
+        -:  132://     if (CUE_SUCCESS != CU_initialize_registry())
+        -:  133://         return CU_get_error();
+        -:  134:
+        -:  135://     /* 向注册表中添加一个套件 */
+        -:  136://     pSuite = CU_add_suite("MainSimpleSort_Suite", NULL, NULL);
+        -:  137://     if (NULL == pSuite) {
+        -:  138://         CU_cleanup_registry();
+        -:  139://         return CU_get_error();
+        -:  140://     }
+        -:  141:
+        -:  142://     /* 向套件中添加测试 */
+        -:  143://     if (NULL == CU_add_test(pSuite, "test_mainSimpleSort", test_mainSimpleSort)) {
+        -:  144://         CU_cleanup_registry();
+        -:  145://         return CU_get_error();
+        -:  146://     }
+        -:  147:
+        -:  148://     /* 使用CUnit基础接口运行所有测试 */
+        -:  149://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:  150://     CU_basic_run_tests();
+        -:  151://     CU_cleanup_registry();
+        -:  152://     return CU_get_error();
+        -:  153:// }

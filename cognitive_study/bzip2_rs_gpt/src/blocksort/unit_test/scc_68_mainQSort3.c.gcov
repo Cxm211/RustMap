@@ -1,0 +1,251 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_68_mainQSort3.c
+        -:    0:Graph:scc_68_mainQSort3.gcno
+        -:    0:Data:scc_68_mainQSort3.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <CUnit/Basic.h>
+        -:    5:#include "../blocksort/scc_29_mainSimpleSort.c"
+        -:    6:#include "../blocksort/scc_30_root_20_mmed3.c"
+        -:    7:#include "../bzlib/scc_62_BZ2_bz__AssertH__fail.c"
+        -:    8:// ptr: 这是一个需要排序的索引数组。数组的元素代表的是数据块的位置。
+        -:    9:// block: 这是实际的数据块，它包含要排序的数据。
+        -:   10:// quadrant: 这可能是一个辅助数组，用于优化排序。
+        -:   11:// nblock: 数据块的大小。
+        -:   12:// lo 和 hi: 这是ptr数组中我们要排序的部分的开始和结束索引。
+        -:   13:// d: 这可能是一个偏移，用于在数据块中比较数据。
+        -:   14:// budget: 这是一个指针，指向一个整数，可能用于限制或跟踪排序操作的次数。
+        -:   15:
+        -:   16:
+        -:   17:// 改变了什么:
+        -:   18:// 从你给出的打印输出中，我们可以观察到：
+        -:   19:
+        -:   20:// ptr的特定位置（如ptr[lo]和ptr[hi]）在函数调用后可能会改变，这意味着ptr数组在这些位置上的元素已经被排序。
+        -:   21:// budget有时会改变，这可能意味着在排序过程中，budget被用作计数或跟踪。
+        -:   22:// 以给出的打印输出为例：
+        -:   23:
+        -:   24:// 第一个mainSimpleSort调用，ptr[lo]从177730变为179245，而budget从1799620降低到1799616。
+        -:   25:// 第二和第三个mainSimpleSort调用中，ptr[lo]和ptr[hi]并没有改变，而budget也没有改变。
+        -:   26:// 这意味着在第一个mainSimpleSort调用中，排序确实发生了，并且某些操作消耗了budget。但在接下来的两次调用中，没有发生排序，这可能是因为数据已经是排序状态或者其他条件阻止了排序。
+        -:   27:static
+        1:   28:void mainQSort3 ( UInt32* ptr,
+        -:   29:                  UChar* block,
+        -:   30:                  UInt16* quadrant,
+        -:   31:                  Int32 nblock,
+        -:   32:                  Int32 loSt,
+        -:   33:                  Int32 hiSt,
+        -:   34:                  Int32 dSt,
+        -:   35:                  Int32* budget )
+        -:   36:{
+        -:   37:   Int32 unLo, unHi, ltLo, gtHi, n, m, med;
+        -:   38:   Int32 sp, lo, hi, d;
+        -:   39:
+        -:   40:   Int32 stackLo[100];
+        -:   41:   Int32 stackHi[100];
+        -:   42:   Int32 stackD [100];
+        -:   43:
+        -:   44:   Int32 nextLo[3];
+        -:   45:   Int32 nextHi[3];
+        -:   46:   Int32 nextD [3];
+        -:   47:
+        1:   48:   sp = 0;
+        1:   49:   { stackLo[sp] = loSt; stackHi[sp] = hiSt; stackD [sp] = dSt; sp++; };
+        -:   50:     // 当栈不为空时继续处理
+        2:   51:   while (sp > 0) {
+        -:   52:    // 断言栈大小
+       1*:   53:      { if (!(sp < 100 - 2)) BZ2_bz__AssertH__fail ( 1001 ); };
+        -:   54:        // 从栈中弹出一个元素
+        1:   55:      { sp--; lo = stackLo[sp]; hi = stackHi[sp]; d = stackD [sp]; };
+        -:   56:       // 对于小数组或深度过大的情况，使用简单排序
+       1*:   57:      if (hi - lo < 20 ||
+        -:   58:          d > (2 + 12)) {
+        1:   59:         mainSimpleSort ( ptr, block, quadrant, nblock, lo, hi, d, budget );
+       1*:   60:         if (*budget < 0) return;
+        1:   61:         continue;
+        -:   62:      }
+        -:   63:
+        -:   64:    // 选择中值进行三向切分的快速排序  
+    #####:   65:      med = (Int32)
+    #####:   66:            mmed3 ( block[ptr[ lo ]+d],
+    #####:   67:                    block[ptr[ hi ]+d],
+    #####:   68:                    block[ptr[ (lo+hi)>>1 ]+d] );
+        -:   69:    // 初始化边界
+    #####:   70:      unLo = ltLo = lo;
+    #####:   71:      unHi = gtHi = hi;
+        -:   72:        // 开始三向切分
+    #####:   73:      while (((Bool)1)) {
+        -:   74:         while (((Bool)1)) {
+    #####:   75:            if (unLo > unHi) break;
+    #####:   76:            n = ((Int32)block[ptr[unLo]+d]) - med;
+    #####:   77:            if (n == 0) {
+    #####:   78:               { Int32 zztmp = ptr[unLo]; ptr[unLo] = ptr[ltLo]; ptr[ltLo] = zztmp; };
+    #####:   79:               ltLo++; unLo++; continue;
+        -:   80:            };
+    #####:   81:            if (n > 0) break;
+    #####:   82:            unLo++;
+        -:   83:         }
+        -:   84:         while (((Bool)1)) {
+    #####:   85:            if (unLo > unHi) break;
+    #####:   86:            n = ((Int32)block[ptr[unHi]+d]) - med;
+    #####:   87:            if (n == 0) {
+    #####:   88:               { Int32 zztmp = ptr[unHi]; ptr[unHi] = ptr[gtHi]; ptr[gtHi] = zztmp; };
+    #####:   89:               gtHi--; unHi--; continue;
+        -:   90:            };
+    #####:   91:            if (n < 0) break;
+    #####:   92:            unHi--;
+        -:   93:         }
+    #####:   94:         if (unLo > unHi) break;
+    #####:   95:         { Int32 zztmp = ptr[unLo]; ptr[unLo] = ptr[unHi]; ptr[unHi] = zztmp; }; unLo++; unHi--;
+        -:   96:      }
+        -:   97:
+        -:   98:      ;
+        -:   99:
+    #####:  100:      if (gtHi < ltLo) {
+    #####:  101:         { stackLo[sp] = lo; stackHi[sp] = hi; stackD [sp] = d+1; sp++; };
+    #####:  102:         continue;
+        -:  103:      }
+        -:  104:
+    #####:  105:      n = ((ltLo-lo) < (unLo-ltLo)) ? (ltLo-lo) : (unLo-ltLo); { Int32 yyp1 = (lo); Int32 yyp2 = (unLo-n); Int32 yyn = (n); while (yyn > 0) { { Int32 zztmp = ptr[yyp1]; ptr[yyp1] = ptr[yyp2]; ptr[yyp2] = zztmp; }; yyp1++; yyp2++; yyn--; } };
+    #####:  106:      m = ((hi-gtHi) < (gtHi-unHi)) ? (hi-gtHi) : (gtHi-unHi); { Int32 yyp1 = (unLo); Int32 yyp2 = (hi-m+1); Int32 yyn = (m); while (yyn > 0) { { Int32 zztmp = ptr[yyp1]; ptr[yyp1] = ptr[yyp2]; ptr[yyp2] = zztmp; }; yyp1++; yyp2++; yyn--; } };
+        -:  107:
+    #####:  108:      n = lo + unLo - ltLo - 1;
+    #####:  109:      m = hi - (gtHi - unHi) + 1;
+        -:  110:
+    #####:  111:      nextLo[0] = lo; nextHi[0] = n; nextD[0] = d;
+    #####:  112:      nextLo[1] = m; nextHi[1] = hi; nextD[1] = d;
+    #####:  113:      nextLo[2] = n+1; nextHi[2] = m-1; nextD[2] = d+1;
+        -:  114:
+    #####:  115:      if ((nextHi[0]-nextLo[0]) < (nextHi[1]-nextLo[1])) { Int32 tz; tz = nextLo[0]; nextLo[0] = nextLo[1]; nextLo[1] = tz; tz = nextHi[0]; nextHi[0] = nextHi[1]; nextHi[1] = tz; tz = nextD [0]; nextD [0] = nextD [1]; nextD [1] = tz; };
+    #####:  116:      if ((nextHi[1]-nextLo[1]) < (nextHi[2]-nextLo[2])) { Int32 tz; tz = nextLo[1]; nextLo[1] = nextLo[2]; nextLo[2] = tz; tz = nextHi[1]; nextHi[1] = nextHi[2]; nextHi[2] = tz; tz = nextD [1]; nextD [1] = nextD [2]; nextD [2] = tz; };
+    #####:  117:      if ((nextHi[0]-nextLo[0]) < (nextHi[1]-nextLo[1])) { Int32 tz; tz = nextLo[0]; nextLo[0] = nextLo[1]; nextLo[1] = tz; tz = nextHi[0]; nextHi[0] = nextHi[1]; nextHi[1] = tz; tz = nextD [0]; nextD [0] = nextD [1]; nextD [1] = tz; };
+        -:  118:
+        -:  119:      ;
+        -:  120:      ;
+        -:  121:         // 将新的范围压入栈
+    #####:  122:      { stackLo[sp] = nextLo[0]; stackHi[sp] = nextHi[0]; stackD [sp] = nextD[0]; sp++; };
+    #####:  123:      { stackLo[sp] = nextLo[1]; stackHi[sp] = nextHi[1]; stackD [sp] = nextD[1]; sp++; };
+    #####:  124:      { stackLo[sp] = nextLo[2]; stackHi[sp] = nextHi[2]; stackD [sp] = nextD[2]; sp++; };
+        -:  125:   }
+        -:  126:}
+        -:  127:
+        -:  128:// Test function for mainQSort3
+        -:  129:// Test function for mainQSort3
+        1:  130:void test_mainQSort3(void) {
+        -:  131:    // Allocating and initializing arrays
+        1:  132:    UInt32 ptr[100000] = {0}; // Assuming maximum size as 100000 for this example
+        1:  133:    UChar  block[100000] = {0};
+        1:  134:    UInt16 quadrant[100000] = {0};
+        1:  135:    Int32  nblock = 98170;
+        1:  136:    Int32  budget = 883530;
+        -:  137:
+        1:  138:    ptr[93563] = 70054;
+        1:  139:    ptr[93564] = 70095;
+        1:  140:    ptr[93565] = 70175;
+        -:  141:
+        -:  142:    // Call the function
+        1:  143:    mainQSort3(ptr, block, quadrant, nblock, 93563, 93565, 2, &budget);
+        -:  144:
+        -:  145:    // Assertions to check the result and print values if they don't match
+        1:  146:    if (ptr[93563] != 70054) {
+    #####:  147:        printf("❌ ptr[93563]: Expected = 70054, Actual = %d\n", ptr[93563]);
+        -:  148:    } else {
+        1:  149:        printf("✅ ptr[93563]: Matched\n");
+        -:  150:    }
+        -:  151:
+        1:  152:    if (ptr[93564] != 70095) {
+    #####:  153:        printf("❌ ptr[93564]: Expected = 70095, Actual = %d\n", ptr[93564]);
+        -:  154:    } else {
+        1:  155:        printf("✅ ptr[93564]: Matched\n");
+        -:  156:    }
+        -:  157:
+        1:  158:    if (ptr[93565] != 70175) {
+    #####:  159:        printf("❌ ptr[93565]: Expected = 70175, Actual = %d\n", ptr[93565]);
+        -:  160:    } else {
+        1:  161:        printf("✅ ptr[93565]: Matched\n");
+        -:  162:    }
+        1:  163:}
+        -:  164:
+        -:  165:
+        1:  166:int main() {
+        -:  167:    // Initialize CUnit test registry
+        1:  168:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:  169:        return CU_get_error();
+        -:  170:
+        -:  171:    // Add a suite to the registry
+        1:  172:    CU_pSuite suite = CU_add_suite("MainQSort3_Test", NULL, NULL);
+        1:  173:    if (NULL == suite) {
+    #####:  174:        CU_cleanup_registry();
+    #####:  175:        return CU_get_error();
+        -:  176:    }
+        -:  177:
+        -:  178:    // Add the test to the suite
+        1:  179:    if (NULL == CU_add_test(suite, "test of mainQSort3()", test_mainQSort3)) {
+    #####:  180:        CU_cleanup_registry();
+    #####:  181:        return CU_get_error();
+        -:  182:    }
+        -:  183:
+        -:  184:    // Run all tests in the suite
+        1:  185:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:  186:    CU_basic_run_tests();
+        -:  187:
+        1:  188:    CU_cleanup_registry();
+        1:  189:    return CU_get_error();
+        -:  190:}
+        -:  191:
+        -:  192:// void test_mainQSort3(void) {
+        -:  193://    UInt32 array[1000];
+        -:  194://    UChar block[1000];
+        -:  195://    UInt16 quadrant[1000];
+        -:  196://    Int32 nblock = 1000;
+        -:  197:   
+        -:  198://    // 生成一个主要包含0-5的随机数组
+        -:  199://    for (int i = 0; i < 1000; i++) {
+        -:  200://       array[i] = rand() % 6;
+        -:  201://       block[i] = array[i];
+        -:  202://    }
+        -:  203:   
+        -:  204://    Int32 budget = 1000; // 假设预算
+        -:  205://    mainQSort3(array, block, quadrant, nblock, 0, 999, 0, &budget);
+        -:  206:   
+        -:  207://    // 确保数组已排序
+        -:  208://    for (int i = 1; i < 1000; i++) {
+        -:  209://       CU_ASSERT(array[i - 1] <= array[i]);
+        -:  210://    }
+        -:  211:// }
+        -:  212:
+        -:  213:// int init_suite(void) {
+        -:  214://    return 0;
+        -:  215:// }
+        -:  216:
+        -:  217:// int clean_suite(void) {
+        -:  218://    return 0;
+        -:  219:// }
+        -:  220:
+        -:  221:// int main() {
+        -:  222://    CU_pSuite pSuite = NULL;
+        -:  223:
+        -:  224://    /* 初始化CUnit库 */
+        -:  225://    if (CUE_SUCCESS != CU_initialize_registry())
+        -:  226://       return CU_get_error();
+        -:  227:
+        -:  228://    /* 添加一个suite到registry */
+        -:  229://    pSuite = CU_add_suite("mainQSort3_test_suite", init_suite, clean_suite);
+        -:  230://    if (NULL == pSuite) {
+        -:  231://       CU_cleanup_registry();
+        -:  232://       return CU_get_error();
+        -:  233://    }
+        -:  234:
+        -:  235://    /* 添加测试用例到suite */
+        -:  236://    if (NULL == CU_add_test(pSuite, "test_mainQSort3", test_mainQSort3)) {
+        -:  237://       CU_cleanup_registry();
+        -:  238://       return CU_get_error();
+        -:  239://    }
+        -:  240:
+        -:  241://    // 运行所有测试用例
+        -:  242://    CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:  243://    CU_basic_run_tests();
+        -:  244://    CU_cleanup_registry();
+        -:  245:   
+        -:  246://    return CU_get_error();
+        -:  247:// }

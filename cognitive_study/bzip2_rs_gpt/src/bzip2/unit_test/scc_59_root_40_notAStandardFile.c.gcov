@@ -1,0 +1,90 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.c
+        -:    0:Graph:scc_59_root_40_notAStandardFile.gcno
+        -:    0:Data:scc_59_root_40_notAStandardFile.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:
+        -:    3:// 检查给定名称的文件是否是一个标准的文件。
+        -:    4:static
+    #####:    5:Bool notAStandardFile ( Char* name )
+        -:    6:{
+        -:    7:   IntNative i;
+        -:    8:   struct stat statBuf;
+        -:    9:
+        -:   10:   // 尝试获取文件的状态信息。
+    #####:   11:   i = lstat ( name, &statBuf );
+        -:   12:   // 如果lstat返回错误，表示它不是标准文件。
+    #####:   13:   if (i != 0) return ((Bool)1);
+        -:   14:   // 如果文件的模式表示它是一个标准的文件，返回false。
+    #####:   15:   if ( (statBuf.st_mode & 0170000) == (0100000)) return ((Bool)0);
+        -:   16:   // 在其他情况下返回true。
+    #####:   17:   return ((Bool)1);
+        -:   18:}
+        -:   19:
+        -:   20:#include <CUnit/Basic.h>
+        -:   21:#include <sys/types.h>
+        -:   22:#include <sys/stat.h>
+        -:   23:#include <unistd.h>
+        -:   24:#include <fcntl.h>
+        -:   25:
+        -:   26:// 前置条件：设置测试环境，例如创建测试文件。
+        1:   27:void setup(void) {
+        -:   28:    // 创建一个标准文件
+        1:   29:    int fd = open("standardFile.txt", O_CREAT | O_WRONLY, 0644);
+        1:   30:    if (fd == -1) {
+        -:   31:        // 如果文件创建失败，输出错误信息
+    #####:   32:        perror("Error creating standardFile.txt");
+    #####:   33:        exit(1);  // 退出程序
+        -:   34:    }
+        1:   35:    close(fd);
+        -:   36:
+        -:   37:    // 附加的检查：确保我们可以读取文件
+        1:   38:    fd = open("standardFile.txt", O_RDONLY);
+        1:   39:    if (fd == -1) {
+    #####:   40:        perror("Error accessing standardFile.txt");
+    #####:   41:        exit(1);
+        -:   42:    }
+        1:   43:    close(fd);
+        1:   44:}
+        -:   45:
+        -:   46:
+        -:   47:
+        -:   48:// 后置条件：清除测试环境，例如删除测试文件。
+    #####:   49:void teardown(void) {
+    #####:   50:    remove("standardFile.txt");
+    #####:   51:}
+        -:   52:
+        -:   53:// 测试 notAStandardFile 函数
+    #####:   54:void test_notAStandardFile(void) {
+        -:   55:    // 断言：standardFile.txt 是一个标准文件，因此应该返回 false
+    #####:   56:    CU_ASSERT_EQUAL(notAStandardFile("standardFile.txt"), 0);
+        -:   57:    // 可以继续添加其他测试案例...
+    #####:   58:}
+        -:   59:
+        1:   60:int main() {
+        1:   61:    CU_pSuite pSuite = NULL;
+        1:   62:    remove("/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda");
+        -:   63:
+        -:   64:    // 初始化CUnit库
+        1:   65:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   66:        return CU_get_error();
+        -:   67:
+        -:   68:    // 添加一个Suite到测试注册表
+        1:   69:    pSuite = CU_add_suite("notAStandardFile_test_suite", setup, teardown);
+        1:   70:    if (NULL == pSuite) {
+    #####:   71:        CU_cleanup_registry();
+    #####:   72:        return CU_get_error();
+        -:   73:    }
+        -:   74:
+        -:   75:    // 在Suite中添加测试用例
+        1:   76:    if ((NULL == CU_add_test(pSuite, "test_notAStandardFile", test_notAStandardFile))) {
+    #####:   77:        CU_cleanup_registry();
+    #####:   78:        return CU_get_error();
+        -:   79:    }
+        -:   80:
+        -:   81:    // 运行所有测试
+        1:   82:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   83:    CU_basic_run_tests();
+        1:   84:    CU_cleanup_registry();
+        1:   85:    return CU_get_error();
+        -:   86:}

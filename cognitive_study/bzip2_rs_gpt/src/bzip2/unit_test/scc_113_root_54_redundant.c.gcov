@@ -1,0 +1,67 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_113_root_54_redundant.c
+        -:    0:Graph:scc_113_root_54_redundant.gcno
+        -:    0:Data:scc_113_root_54_redundant.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdbool.h>
+        -:    4:#include <stdarg.h>  // 引入stdarg.h头文件
+        -:    5:#include <string.h>
+        -:    6:#include <CUnit/CUnit.h>
+        -:    7:#include <CUnit/Basic.h>
+        -:    8:
+        -:    9:// 全局变量，用于模拟fprintf的行为
+        -:   10:bool mock_fprintf_called = false;
+        -:   11:char captured_msg[1024];
+        -:   12:
+        -:   13:// 模拟fprintf函数
+        1:   14:int mock_fprintf(FILE *stream, const char *format, ...) {
+        1:   15:    mock_fprintf_called = true;
+        -:   16:    va_list args;
+        1:   17:    va_start(args, format);
+        1:   18:    vsprintf(captured_msg, format, args);
+        1:   19:    va_end(args);
+        1:   20:    return 0;
+        -:   21:}
+        -:   22:
+        -:   23:// 使用宏替换的方式模拟fprintf
+        -:   24:#define fprintf mock_fprintf
+        -:   25:
+        -:   26:
+        -:   27:static
+        1:   28:void redundant ( Char* flag )
+        -:   29:{
+        1:   30:   fprintf (
+        -:   31:     stderr,
+        -:   32:      "%s: %s is redundant in versions 0.9.5 and above\n",
+        -:   33:      progName, flag );
+        1:   34:}
+        -:   35:
+        1:   36:void test_redundant(void) {
+        -:   37:
+        -:   38:    // char progName[1024] = "testProg";  // 初始化progName
+        -:   39:    // 为progName赋一个测试值
+        1:   40:    strcpy(progName, "testProg");
+        -:   41:
+        -:   42:    // 调用函数
+        1:   43:    redundant("testFlag");
+        -:   44:    
+        -:   45:    // 确保fprintf被调用
+        1:   46:    CU_ASSERT_TRUE(mock_fprintf_called);
+        -:   47:    
+        -:   48:    // 确保打印的信息正确
+        1:   49:    CU_ASSERT_STRING_EQUAL(captured_msg, "testProg: testFlag is redundant in versions 0.9.5 and above\n");
+        1:   50:}
+        -:   51:
+        1:   52:int main(void) {
+        1:   53:    CU_initialize_registry();
+        -:   54:    
+        1:   55:    CU_pSuite suite1 = CU_add_suite("RedundantTests", 0, 0);
+        1:   56:    CU_add_test(suite1, "test_redundant", test_redundant);
+        -:   57:    
+        1:   58:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   59:    CU_basic_run_tests();
+        1:   60:    CU_cleanup_registry();
+        -:   61:    
+        1:   62:    return 0;
+        -:   63:}

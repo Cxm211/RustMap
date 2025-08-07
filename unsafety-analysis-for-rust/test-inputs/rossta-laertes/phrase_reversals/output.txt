@@ -1,4 +1,0 @@
-Original:       "rosetta code phrase reversal"
-Reversed:       "lasrever esarhp edoc attesor"
-Reversed words: "attesor edoc esarhp lasrever"
-Reversed order: "reversal phrase code rosetta"

@@ -1,0 +1,194 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_28_root_19_mainGtU.c
+        -:    0:Graph:scc_28_root_19_mainGtU.gcno
+        -:    0:Data:scc_28_root_19_mainGtU.gcda
+        -:    0:Runs:1
+        -:    1:
+        -:    2:#include "../typedef.h"
+        -:    3:// 目的是比较block数组中两个位置（i1和i2）的子序列。这个比较是在BWT（Burrows-Wheeler transform）数据压缩算法中使用的，主要用于排序前缀。
+        -:    4:// 函数的具体行为是逐个比较两个子序列的字符，直到找到一个不相等的字符或达到预算限制为止。
+        -:    5:static
+        -:    6:__inline__
+        1:    7:Bool mainGtU ( UInt32 i1,  // 第一个索引
+        -:    8:               UInt32 i2,  // 第二个索引
+        -:    9:               UChar* block,  // 包含字符的块
+        -:   10:               UInt16* quadrant, // 四分区数组
+        -:   11:               UInt32 nblock,  // 块的大小
+        -:   12:               Int32* budget ) // 预算（可能与循环迭代次数有关
+        -:   13:{
+        -:   14:   Int32 k;
+        -:   15:   UChar c1, c2;
+        -:   16:   UInt16 s1, s2;
+       13:   17:    for (int j = 0; j < 12; j++) {
+       12:   18:      c1 = block[i1]; c2 = block[i2];
+        -:   19:      // 如果在某个位置发现字符不同，则根据这些字符的大小返回布尔值。
+      12*:   20:      if (c1 != c2) return (c1 > c2);
+       12:   21:      i1++; i2++;
+        -:   22:   }
+        1:   23:   k = nblock + 8;
+        -:   24:
+        -:   25:   do {
+        -:   26:      // 同样的逻辑，但在这里，我们还要比较quadrant中的值。
+       25:   27:      for (int j = 0; j < 8; j++) {
+       23:   28:         c1 = block[i1]; c2 = block[i2];
+      23*:   29:         if (c1 != c2) return (c1 > c2);
+       23:   30:         s1 = quadrant[i1]; s2 = quadrant[i2];
+       23:   31:         if (s1 != s2) return (s1 > s2);
+       22:   32:         i1++; i2++;
+        -:   33:     
+        -:   34:    // 更新索引，如果超出块的大小，则回到块的开头。 
+      22*:   35:      if (i1 >= nblock) i1 -= nblock;
+      22*:   36:      if (i2 >= nblock) i2 -= nblock;
+        -:   37:      }
+        -:   38:
+        2:   39:       k -= 8;       // 更新k的值
+        2:   40:      (*budget)--;  // 更新预算值。这可能用于外部函数限制这个函数的迭代次数。
+        -:   41:   }
+        2:   42:      while (k >= 0);// 当k非负时，继续循环
+        -:   43:   // 如果函数到达这里，说明两个字符串是相同的。
+        -:   44:   // 返回False表示它们是相等的
+    #####:   45:   return ((Bool)0);
+        -:   46:}
+        -:   47:
+        -:   48:#include <CUnit/Basic.h>
+        -:   49:
+        -:   50:// 声明函数
+        -:   51:// static __inline__ Bool mainGtU ( UInt32, UInt32, UChar*, UInt16*, UInt32, Int32* );
+        -:   52:
+        -:   53:#include <assert.h>
+        -:   54:// ... 其他必要的头文件 ...
+        -:   55:#include <CUnit/CUnit.h>
+        -:   56:
+        1:   57:void test_mainGtU_from_file() {
+        1:   58:    int counter = 1;
+        -:   59:    char filename[100];
+        1:   60:    snprintf(filename, sizeof(filename), "params_mainGtU_%d.dat", counter);
+        -:   61:
+        1:   62:    FILE* file = fopen(filename, "r");
+        1:   63:    if (!file) {
+    #####:   64:        CU_FAIL("Error opening file for reading.");
+    #####:   65:        return;
+        -:   66:    }
+        -:   67:
+        -:   68:    UInt32 i1, i2, nblock;
+        -:   69:    Int32 budget;
+        -:   70:
+        1:   71:    if (fscanf(file, "i1: %u\n", &i1) != 1) {
+    #####:   72:        CU_FAIL("Failed to read i1.");
+    #####:   73:        fclose(file);
+    #####:   74:        return;
+        -:   75:    }
+        1:   76:    printf("Read i1: %u\n", i1);
+        -:   77:
+        1:   78:    if (fscanf(file, "i2: %u\n", &i2) != 1) {
+    #####:   79:        CU_FAIL("Failed to read i2.");
+    #####:   80:        fclose(file);
+    #####:   81:        return;
+        -:   82:    }
+        1:   83:    printf("Read i2: %u\n", i2);
+        -:   84:
+        -:   85:    // 忽略直到左方括号读取block数组
+        8:   86:    while(fgetc(file) != '[');
+        -:   87:    UChar block[100000];  // assuming maximum size
+        1:   88:    UInt32 idx = 0;
+    98170:   89:    while (1) {
+        -:   90:        unsigned int val;
+    98171:   91:        if (idx) fgetc(file); // 跳过逗号
+    98171:   92:        if (fscanf(file, "%02X", &val) != 1) break;
+    98170:   93:        block[idx++] = val;
+        -:   94:    }
+        -:   95:
+        -:   96:    // 忽略直到下一个左方括号读取quadrant数组
+       11:   97:    while(fgetc(file) != '[');
+        -:   98:    UInt16 quadrant[100000];  // assuming maximum size
+        1:   99:    idx = 0;
+    98170:  100:    while (1) {
+        -:  101:        unsigned int val;
+    98171:  102:        if (idx) fgetc(file); // 跳过逗号
+    98171:  103:        if (fscanf(file, "%hu", &val) != 1) break;
+    98170:  104:        quadrant[idx++] = val;
+        -:  105:    }
+        -:  106:
+        1:  107:    if (fscanf(file, "nblock: %u\n", &nblock) != 1) {
+    #####:  108:        CU_FAIL("Failed to read nblock.");
+    #####:  109:        fclose(file);
+    #####:  110:        return;
+        -:  111:    }
+        1:  112:    printf("Read nblock: %u\n", nblock);
+        -:  113:
+        1:  114:    if (fscanf(file, "budget: %d\n", &budget) != 1) {
+    #####:  115:        CU_FAIL("Failed to read budget.");
+    #####:  116:        fclose(file);
+    #####:  117:        return;
+        -:  118:    }
+        1:  119:    printf("Read budget: %d\n", budget);
+        -:  120:
+        1:  121:    fclose(file);
+        -:  122:
+        -:  123:    // 打印函数调用前的值
+        1:  124:    printf("Before calling mainGtU:\n");
+        1:  125:    printf("i1: %u, i2: %u, budget: %d\n", i1, i2, budget);
+        -:  126:
+        1:  127:    Bool result = mainGtU(i1, i2, block, quadrant, nblock, &budget);
+        -:  128:
+        -:  129:    // 打印函数调用后的值
+        1:  130:    printf("After calling mainGtU:\n");
+        1:  131:    printf("i1: %u, i2: %u, budget: %d\n", i1, i2, budget);
+        -:  132:
+        -:  133:    // 使用CUnit断言进行检查
+        1:  134:    CU_ASSERT_EQUAL(i1, "期待值");  // 请替换"期待值"
+        1:  135:    CU_ASSERT_EQUAL(i2, "期待值");  // 请替换"期待值"
+        1:  136:    CU_ASSERT_EQUAL(budget, "期待值");  // 请替换"期待值"
+        -:  137:    // 根据需要添加其他断言
+        -:  138:}
+        -:  139:
+        -:  140:
+        -:  141:
+        -:  142:
+        1:  143:int main() {
+        1:  144:    CU_initialize_registry();
+        1:  145:    CU_add_suite("mainGtU_test", NULL, NULL);
+        1:  146:    CU_add_test(CU_get_suite("mainGtU_test"), "test_mainGtU", test_mainGtU_from_file);
+        1:  147:    CU_basic_run_tests();
+        1:  148:    CU_cleanup_registry();
+        1:  149:    return CU_get_error();
+        -:  150:}
+        -:  151:
+        -:  152:// void test_mainGtU(void) {
+        -:  153://     UInt32 nblock = 98170;
+        -:  154://     UChar block[nblock + 20];  
+        -:  155://     UInt16 quadrant[nblock + 20];
+        -:  156://     Int32 budget = 883445;
+        -:  157:    
+        -:  158://     // 使用循环来初始化block和quadrant数组
+        -:  159://     for (UInt32 i = 0; i < nblock + 20; i++) {
+        -:  160://         block[i] = 0;
+        -:  161://         quadrant[i] = 0;
+        -:  162://     }
+        -:  163:
+        -:  164://     // 基于你给的例子：
+        -:  165://     assert(mainGtU(90047, 91194, block, quadrant, nblock, &budget) == FALSE);
+        -:  166://        if(budget != 871172) {
+        -:  167://         printf("Expected budget: 871172, but got: %d\n", budget);
+        -:  168://     }
+        -:  169://     assert(budget == 871172);  // 根据函数的逻辑，budget值应该递减1
+        -:  170:
+        -:  171://     // 根据新提供的情况添加的测试用例：
+        -:  172://     Int32 budget2 = 883290;
+        -:  173://     assert(mainGtU(53306, 38287, block, quadrant, nblock, &budget2) == FALSE);
+        -:  174://     if(budget2 != 871017) {
+        -:  175://         printf("Expected budget: 883290, but got: %d\n", budget2);
+        -:  176://     }
+        -:  177://     assert(budget2 == 871017);  // 根据给定的输出，budget值应该保持不变
+        -:  178:    
+        -:  179://     // 在此处，你可以添加更多的断言来测试其他情况
+        -:  180:// }
+        -:  181:
+        -:  182:
+        -:  183:// // int main() {
+        -:  184:// //     CU_initialize_registry();
+        -:  185:// //     CU_add_suite("mainGtU_test", NULL, NULL);
+        -:  186:// //     CU_add_test(CU_get_suite("mainGtU_test"), "test_mainGtU", test_mainGtU);
+        -:  187:// //     CU_basic_run_tests();
+        -:  188:// //     CU_cleanup_registry();
+        -:  189:// //     return CU_get_error();
+        -:  190:// // }

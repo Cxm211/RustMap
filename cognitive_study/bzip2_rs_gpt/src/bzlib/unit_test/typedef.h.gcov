@@ -1,0 +1,372 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/typedef.h
+        -:    0:Graph:scc_11_BZ2_bzReadClose.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:#ifndef TYPEDEF_H_INCLUDED
+        -:    2:#define TYPEDEF_H_INCLUDED
+        -:    3:#pragma once
+        -:    4:
+        -:    5:// 以下是您的头文件内容
+        -:    6:// ...
+        -:    7:
+        -:    8:// 以下是您的头文件内容
+        -:    9:// ...
+        -:   10:
+        -:   11:
+        -:   12:#include <stdlib.h> // 为了使用 malloc, calloc
+        -:   13:#include <string.h> // 为了使用 memset
+        -:   14:#include <stdbool.h>
+        -:   15:#include <stdio.h>    // 为fprintf和stderr
+        -:   16:#include <assert.h>   // 为assert
+        -:   17:#include <sys/stat.h>
+        -:   18:#ifndef TRUE
+        -:   19:#define TRUE 1
+        -:   20:#endif
+        -:   21:
+        -:   22:#ifndef FALSE
+        -:   23:#define FALSE 0
+        -:   24:#endif
+        -:   25:
+        -:   26:
+        -:   27:typedef char Char;
+        -:   28:typedef unsigned char Bool;
+        -:   29:typedef unsigned char UChar;
+        -:   30:typedef int Int32;
+        -:   31:typedef unsigned int UInt32;
+        -:   32:typedef short Int16;
+        -:   33:typedef unsigned short UInt16;
+        -:   34:typedef int IntNative;
+        -:   35:typedef unsigned long long int MaybeUInt64;
+        -:   36:
+        -:   37:// compress + uncompress
+        -:   38:const Char* zSuffix[4]
+        -:   39:   = { ".bz2", ".bz", ".tbz2", ".tbz" };
+        -:   40:// uncompress
+        -:   41:const Char* unzSuffix[4]
+        -:   42:   = { "", "", ".tar", ".tar" };
+        -:   43:
+        -:   44:
+        -:   45:Int32 longestFileName;
+        -:   46:Char inName [1034];
+        -:   47:Char outName[1034];
+        -:   48:Char tmpName[1034];
+        -:   49:FILE *outputHandleJustInCase;
+        -:   50:
+        -:   51:// FILE* handle;:
+        -:   52:// 这是一个文件指针，通常用于表示打开的文件的句柄。使用这个指针，你可以对文件进行读取或写入等操作。
+        -:   53:// Int32 buffer;:
+        -:   54:// 这是一个名为buffer的32位整数（很可能是int类型）。从其名称来看，它可能用于存储某种缓冲数据，具体是什么取决于BitStream的上下文。考虑到这是一个位流，buffer可能用于暂存即将写入或刚刚读取的位。
+        -:   55:// Int32 buffLive;:
+        -:   56:// 另一个32位整数，叫做buffLive。从名字上可以推断，它可能表示buffer中当前有效的位数。例如，如果你逐位地写入数据，当你写入3位后，buffLive可能就是3。
+        -:   57:// Char mode;:
+        -:   58:// 这是一个字符型数据，表示“模式”。不知道具体的上下文，但常见的模式包括读取（'R'）、写入（'W'）等。这个字段可能用于确定BitStream的当前状态或操作模式。
+        -:   59:// 总体来说，BitStream结构体似乎是为了处理位级别的文件操作而设计的。它使用一个文件句柄进行文件操作，有一个缓冲区来存储位，并且还跟踪了缓冲区中的有效位数和当前的操作模式。
+        -:   60:typedef
+        -:   61:   struct {
+        -:   62:      FILE* handle;
+        -:   63:      Int32 buffer;
+        -:   64:      Int32 buffLive;
+        -:   65:      Char mode;
+        -:   66:   }
+        -:   67:   BitStream;
+        -:   68:Int32 BZ2_rNums[512];
+        -:   69:UInt32 BZ2_crc32Table[256];
+        -:   70:Int32 longestFileName;
+        -:   71:
+        -:   72:Char inFileName[2000];
+        -:   73:Char outFileName[2000];
+        -:   74:Char progName[2000];
+        -:   75:
+        -:   76:MaybeUInt64 bytesOut = 0;
+        -:   77:MaybeUInt64 bytesIn = 0;
+        -:   78:Char progNameReally[1034];
+        -:   79:FILE *outputHandleJustInCase;
+        -:   80:Int32 workFactor;
+        -:   81:Int32 srcMode;
+        -:   82:struct stat statBuf;
+        -:   83:
+        -:   84:
+        -:   85:Int32 verbosity;
+        -:   86:Bool keepInputFiles, smallMode, deleteOutputOnInterrupt;
+        -:   87:Bool forceOverwrite, testFailsExist, unzFailsExist, noisy;
+        -:   88:Int32 numFileNames, numFilesProcessed, blockSize100k;
+        -:   89:Int32 exitValue;
+        -:   90:Int32 opMode;
+        -:   91:Int32 srcMode;
+        -:   92:
+        -:   93:
+        -:   94:typedef
+        -:   95:   struct { UChar b[8]; }
+        -:   96:   UInt64;
+        -:   97:
+        -:   98:typedef
+        -:   99:   struct {
+        -:  100:      char *next_in;
+        -:  101:      unsigned int avail_in;
+        -:  102:      unsigned int total_in_lo32;
+        -:  103:      unsigned int total_in_hi32;
+        -:  104:
+        -:  105:      char *next_out;
+        -:  106:      unsigned int avail_out;
+        -:  107:      unsigned int total_out_lo32;
+        -:  108:      unsigned int total_out_hi32;
+        -:  109:
+        -:  110:      void *state;
+        -:  111:
+        -:  112:      void *(*bzalloc)(void *,int,int);
+        -:  113:      void (*bzfree)(void *,void *);
+        -:  114:      void *opaque;
+        -:  115:   }
+        -:  116:   bz_stream;
+        -:  117:
+        -:  118:   
+    #####:  119:bz_stream bz_stream_default() {
+    #####:  120:    bz_stream strm = {
+        -:  121:        .next_in = NULL,
+        -:  122:        .avail_in = 0,
+        -:  123:        .total_in_lo32 = 0,
+        -:  124:        .total_in_hi32 = 0,
+        -:  125:        .next_out = NULL,
+        -:  126:        .avail_out = 0,
+        -:  127:        .total_out_lo32 = 0,
+        -:  128:        .total_out_hi32 = 0,
+        -:  129:        .state = NULL,
+        -:  130:        .bzalloc = NULL,
+        -:  131:        .bzfree = NULL,
+        -:  132:        .opaque = NULL
+        -:  133:    };
+    #####:  134:    return strm;
+        -:  135:}
+        -:  136:
+        -:  137:
+        -:  138:
+        -:  139:
+        -:  140:
+        -:  141:
+        -:  142:
+        -:  143:typedef
+        -:  144:   struct {
+        -:  145:
+        -:  146:      bz_stream* strm;
+        -:  147:
+        -:  148:
+        -:  149:      Int32 state;
+        -:  150:
+        -:  151:
+        -:  152:      UChar state_out_ch;
+        -:  153:      Int32 state_out_len;
+        -:  154:      Bool blockRandomised;
+        -:  155:      Int32 rNToGo; Int32 rTPos;
+        -:  156:
+        -:  157:
+        -:  158:      UInt32 bsBuff;
+        -:  159:      Int32 bsLive;
+        -:  160:
+        -:  161:
+        -:  162:      Int32 blockSize100k;
+        -:  163:      Bool smallDecompress;
+        -:  164:      Int32 currBlockNo;
+        -:  165:      Int32 verbosity;
+        -:  166:
+        -:  167:
+        -:  168:      Int32 origPtr;
+        -:  169:      UInt32 tPos;
+        -:  170:      Int32 k0;
+        -:  171:      Int32 unzftab[256];
+        -:  172:      Int32 nblock_used;
+        -:  173:      Int32 cftab[257];
+        -:  174:      Int32 cftabCopy[257];
+        -:  175:
+        -:  176:
+        -:  177:      UInt32 *tt;
+        -:  178:
+        -:  179:
+        -:  180:      UInt16 *ll16;
+        -:  181:      UChar *ll4;
+        -:  182:
+        -:  183:
+        -:  184:      UInt32 storedBlockCRC;
+        -:  185:      UInt32 storedCombinedCRC;
+        -:  186:      UInt32 calculatedBlockCRC;
+        -:  187:      UInt32 calculatedCombinedCRC;
+        -:  188:
+        -:  189:
+        -:  190:      Int32 nInUse;
+        -:  191:      Bool inUse[256];
+        -:  192:      Bool inUse16[16];
+        -:  193:      UChar seqToUnseq[256];
+        -:  194:
+        -:  195:
+        -:  196:      UChar mtfa [4096];
+        -:  197:      Int32 mtfbase[256 / 16];
+        -:  198:      UChar selector [(2 + (900000 / 50))];
+        -:  199:      UChar selectorMtf[(2 + (900000 / 50))];
+        -:  200:      UChar len [6][258];
+        -:  201:
+        -:  202:      Int32 limit [6][258];
+        -:  203:      Int32 base [6][258];
+        -:  204:      Int32 perm [6][258];
+        -:  205:      Int32 minLens[6];
+        -:  206:
+        -:  207:
+        -:  208:      Int32 save_i;
+        -:  209:      Int32 save_j;
+        -:  210:      Int32 save_t;
+        -:  211:      Int32 save_alphaSize;
+        -:  212:      Int32 save_nGroups;
+        -:  213:      Int32 save_nSelectors;
+        -:  214:      Int32 save_EOB;
+        -:  215:      Int32 save_groupNo;
+        -:  216:      Int32 save_groupPos;
+        -:  217:      Int32 save_nextSym;
+        -:  218:      Int32 save_nblockMAX;
+        -:  219:      Int32 save_nblock;
+        -:  220:      Int32 save_es;
+        -:  221:      Int32 save_N;
+        -:  222:      Int32 save_curr;
+        -:  223:      Int32 save_zt;
+        -:  224:      Int32 save_zn;
+        -:  225:      Int32 save_zvec;
+        -:  226:      Int32 save_zj;
+        -:  227:      Int32 save_gSel;
+        -:  228:      Int32 save_gMinlen;
+        -:  229:      Int32* save_gLimit;
+        -:  230:      Int32* save_gBase;
+        -:  231:      Int32* save_gPerm;
+        -:  232:
+        -:  233:   }
+        -:  234:   DState;
+        -:  235:
+        -:  236:
+        -:  237:typedef
+        -:  238:   struct {
+        -:  239:
+        -:  240:      bz_stream* strm;
+        -:  241:
+        -:  242:
+        -:  243:
+        -:  244:      Int32 mode;
+        -:  245:      Int32 state;
+        -:  246:
+        -:  247:
+        -:  248:      UInt32 avail_in_expect;
+        -:  249:
+        -:  250:
+        -:  251:      UInt32* arr1;
+        -:  252:      UInt32* arr2;
+        -:  253:      UInt32* ftab;
+        -:  254:      Int32 origPtr;
+        -:  255:
+        -:  256:
+        -:  257:      UInt32* ptr;
+        -:  258:      UChar* block;
+        -:  259:      UInt16* mtfv;
+        -:  260:      UChar* zbits;
+        -:  261:
+        -:  262:
+        -:  263:      Int32 workFactor;
+        -:  264:
+        -:  265:
+        -:  266:      UInt32 state_in_ch;
+        -:  267:      Int32 state_in_len;
+        -:  268:      Int32 rNToGo; Int32 rTPos;
+        -:  269:
+        -:  270:
+        -:  271:      Int32 nblock;
+        -:  272:      Int32 nblockMAX;
+        -:  273:      Int32 numZ;
+        -:  274:      Int32 state_out_pos;
+        -:  275:
+        -:  276:
+        -:  277:      Int32 nInUse;
+        -:  278:      Bool inUse[256];
+        -:  279:      UChar unseqToSeq[256];
+        -:  280:
+        -:  281:
+        -:  282:      UInt32 bsBuff;
+        -:  283:      Int32 bsLive;
+        -:  284:
+        -:  285:
+        -:  286:      UInt32 blockCRC;
+        -:  287:      UInt32 combinedCRC;
+        -:  288:
+        -:  289:
+        -:  290:      Int32 verbosity;
+        -:  291:      Int32 blockNo;
+        -:  292:      Int32 blockSize100k;
+        -:  293:
+        -:  294:
+        -:  295:      Int32 nMTF;
+        -:  296:      Int32 mtfFreq [258];
+        -:  297:      UChar selector [(2 + (900000 / 50))];
+        -:  298:      UChar selectorMtf[(2 + (900000 / 50))];
+        -:  299:
+        -:  300:      UChar len [6][258];
+        -:  301:      Int32 code [6][258];
+        -:  302:      Int32 rfreq [6][258];
+        -:  303:
+        -:  304:      UInt32 len_pack[258][4];
+        -:  305:
+        -:  306:   }
+        -:  307:   EState;
+    #####:  308:EState EState_default() {
+    #####:  309:    EState s = {
+        -:  310:        .strm = NULL,
+        -:  311:        .mode = 0,
+        -:  312:        .state = 0,
+        -:  313:        .avail_in_expect = 0,
+        -:  314:        .arr1 = NULL,
+        -:  315:        .arr2 = NULL,
+        -:  316:        .ftab = NULL,
+        -:  317:        .origPtr = 0,
+        -:  318:        .ptr = NULL,
+        -:  319:        .block = NULL,
+        -:  320:        .mtfv = NULL,
+        -:  321:        .zbits = NULL,
+        -:  322:        .workFactor = 0,
+        -:  323:        .state_in_ch = 0,
+        -:  324:        .state_in_len = 0,
+        -:  325:        .rNToGo = 0,
+        -:  326:        .rTPos = 0,
+        -:  327:        .nblock = 0,
+        -:  328:        .nblockMAX = 0,
+        -:  329:        .numZ = 0,
+        -:  330:        .state_out_pos = 0,
+        -:  331:        .bsBuff = 0,
+        -:  332:        .bsLive = 0,
+        -:  333:        .blockCRC = 0,
+        -:  334:        .combinedCRC = 0,
+        -:  335:        .verbosity = 0,
+        -:  336:        .blockNo = 0,
+        -:  337:        .blockSize100k = 0,
+        -:  338:        .nMTF = 0,
+        -:  339:        .nInUse = 0,
+        -:  340:        .inUse = {false},
+        -:  341:        .unseqToSeq = {0},
+        -:  342:        .mtfFreq = {0},
+        -:  343:        .selector = {0},
+        -:  344:        .selectorMtf = {0},
+        -:  345:        .len = {{0}},
+        -:  346:        .code = {{0}},
+        -:  347:        .rfreq = {{0}},
+        -:  348:        .len_pack = {{0}}
+        -:  349:    };
+    #####:  350:    return s;
+        -:  351:}
+        -:  352:
+        -:  353:static
+        -:  354:struct stat fileMetaInfo;
+        -:  355:typedef void BZFILE; 
+        -:  356:typedef
+        -:  357:   struct {
+        -:  358:      FILE* handle;
+        -:  359:      Char buf[5000];
+        -:  360:      Int32 bufN;
+        -:  361:      Bool writing;
+        -:  362:      bz_stream strm;
+        -:  363:      Int32 lastErr;
+        -:  364:      Bool initialisedOk;
+        -:  365:   }
+        -:  366:   bzFile;
+        -:  367:
+        -:  368:   #endif // TYPEDEF_H_INCLUDED

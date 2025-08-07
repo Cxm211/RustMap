@@ -1,0 +1,122 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_62_BZ2_bz__AssertH__fail.c
+        -:    0:Graph:scc_68_mainQSort3.gcno
+        -:    0:Data:scc_68_mainQSort3.gcda
+        -:    0:Runs:1
+        -:    1:#include "./scc_61_root_42_BZ2_bzlibVersion.c"
+        -:    2:
+        -:    3:#include <stdio.h>
+        -:    4:#include <stdlib.h>
+    #####:    5:void BZ2_bz__AssertH__fail ( int errcode )
+        -:    6:{
+    #####:    7:   fprintf(
+        -:    8:          stderr
+        -:    9:                ,
+        -:   10:      "\n\nbzip2/libbzip2: internal error number %d.\n"
+        -:   11:      "This is a bug in bzip2/libbzip2, %s.\n"
+        -:   12:      "Please report it to: bzip2-devel@sourceware.org.  If this happened\n"
+        -:   13:      "when you were using some program which uses libbzip2 as a\n"
+        -:   14:      "component, you should also report this bug to the author(s)\n"
+        -:   15:      "of that program.  Please make an effort to report this bug;\n"
+        -:   16:      "timely and accurate bug reports eventually lead to higher\n"
+        -:   17:      "quality software.  Thanks.\n\n",
+        -:   18:      errcode,
+        -:   19:      BZ2_bzlibVersion()
+        -:   20:   );
+        -:   21:
+    #####:   22:   if (errcode == 1007) {
+    #####:   23:   fprintf(
+        -:   24:          stderr
+        -:   25:                ,
+        -:   26:      "\n*** A special note about internal error number 1007 ***\n"
+        -:   27:      "\n"
+        -:   28:      "Experience suggests that a common cause of i.e. 1007\n"
+        -:   29:      "is unreliable memory or other hardware.  The 1007 assertion\n"
+        -:   30:      "just happens to cross-check the results of huge numbers of\n"
+        -:   31:      "memory reads/writes, and so acts (unintendedly) as a stress\n"
+        -:   32:      "test of your memory system.\n"
+        -:   33:      "\n"
+        -:   34:      "I suggest the following: try compressing the file again,\n"
+        -:   35:      "possibly monitoring progress in detail with the -vv flag.\n"
+        -:   36:      "\n"
+        -:   37:      "* If the error cannot be reproduced, and/or happens at different\n"
+        -:   38:      "  points in compression, you may have a flaky memory system.\n"
+        -:   39:      "  Try a memory-test program.  I have used Memtest86\n"
+        -:   40:      "  (www.memtest86.com).  At the time of writing it is free (GPLd).\n"
+        -:   41:      "  Memtest86 tests memory much more thorougly than your BIOSs\n"
+        -:   42:      "  power-on test, and may find failures that the BIOS doesn't.\n"
+        -:   43:      "\n"
+        -:   44:      "* If the error can be repeatably reproduced, this is a bug in\n"
+        -:   45:      "  bzip2, and I would very much like to hear about it.  Please\n"
+        -:   46:      "  let me know, and, ideally, save a copy of the file causing the\n"
+        -:   47:      "  problem -- without which I will be unable to investigate it.\n"
+        -:   48:      "\n"
+        -:   49:   );
+        -:   50:   }
+        -:   51:
+    #####:   52:   exit(3);
+        -:   53:}
+        -:   54:
+        -:   55:
+        -:   56:#include <CUnit/CUnit.h>
+        -:   57:#include <CUnit/Basic.h>
+        -:   58:#include <stdio.h>
+        -:   59:#include <stdlib.h>
+        -:   60:#include <setjmp.h>
+        -:   61:
+        -:   62:// 跳转环境，用于在exit被调用时返回到测试函数
+        -:   63:jmp_buf test_env;
+        -:   64:
+        -:   65:// 为了测试，我们需要一个替代的exit函数
+        -:   66:void exit(int status) {
+    #####:   67:    longjmp(test_env, status);
+        -:   68:}
+        -:   69:
+        -:   70:// 测试函数
+    #####:   71:void test_BZ2_bz__AssertH__fail(void) {
+        -:   72:    // 1. 重定向stderr到临时文件
+    #####:   73:    FILE *tmp = freopen("temp.txt", "w", stderr);
+    #####:   74:    CU_ASSERT_PTR_NOT_NULL_FATAL(tmp);
+        -:   75:
+        -:   76:    // 2. 使用setjmp创建一个返回点，为了在exit被调用时能返回到这里
+    #####:   77:    int exit_status = setjmp(test_env);
+    #####:   78:    if (exit_status == 0) {
+        -:   79:        // 3. 如果是初次进入setjmp，调用目标函数
+    #####:   80:        BZ2_bz__AssertH__fail(1007);
+        -:   81:        // 如果函数没有调用exit, 那么以下的断言会被触发
+    #####:   82:        CU_FAIL("Function should have called exit");
+        -:   83:    } else {
+        -:   84:        // 4. 如果从longjmp返回（即exit被调用），检查退出状态是否符合预期
+    #####:   85:        CU_ASSERT_EQUAL(exit_status, 3);
+        -:   86:    }
+        -:   87:
+        -:   88:    // 5. 关闭文件以确保所有内容都被写入
+    #####:   89:    fclose(tmp);
+        -:   90:
+        -:   91:    // 6. 重新打开文件，准备读取内容
+    #####:   92:    tmp = fopen("temp.txt", "r");
+    #####:   93:    CU_ASSERT_PTR_NOT_NULL_FATAL(tmp);
+        -:   94:
+        -:   95:    // 7. 读取临时文件的内容到buffer
+        -:   96:    char buffer[2048]; // 假设错误消息不会超过这个大小
+    #####:   97:    fread(buffer, sizeof(char), 2047, tmp);
+    #####:   98:    buffer[2047] = '\0'; // 确保字符串以'\0'结束
+        -:   99:
+        -:  100:    // 8. 根据具体需求检查输出内容，确认错误消息是否正确写入了文件
+    #####:  101:    CU_ASSERT_PTR_NOT_NULL(strstr(buffer, "bzip2/libbzip2: internal error number 1007."));
+    #####:  102:    CU_ASSERT_PTR_NOT_NULL(strstr(buffer, "A special note about internal error number 1007"));
+        -:  103:
+        -:  104:    // 9. 清理操作：关闭临时文件并删除它
+    #####:  105:    fclose(tmp);
+    #####:  106:    remove("temp.txt");
+    #####:  107:}
+        -:  108:
+        -:  109:// int main() {
+        -:  110://     CU_initialize_registry();
+        -:  111://     CU_pSuite suite = CU_add_suite("TestSuite", NULL, NULL);
+        -:  112://     CU_add_test(suite, "test_BZ2_bz__AssertH__fail", test_BZ2_bz__AssertH__fail);
+        -:  113://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:  114://     CU_basic_run_tests();
+        -:  115://     CU_cleanup_registry();
+        -:  116://     return CU_get_error();
+        -:  117:// }
+        -:  118:

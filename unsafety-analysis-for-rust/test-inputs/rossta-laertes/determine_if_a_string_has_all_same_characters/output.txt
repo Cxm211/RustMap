@@ -1,3 +1,0 @@
-Input string : ""
-Length : 0
-All characters are identical.

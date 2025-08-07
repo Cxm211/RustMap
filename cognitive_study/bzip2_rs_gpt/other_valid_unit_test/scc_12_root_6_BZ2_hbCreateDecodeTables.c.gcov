@@ -1,0 +1,110 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/huffman/scc_12_root_6_BZ2_hbCreateDecodeTables.gcda
+        -:    0:Runs:0
+        -:    1:
+        -:    2:// BZ2_hbCreateDecodeTables ( Int32*, Int32*, Int32*, UChar*,
+        -:    3://                            Int32, Int32, Int32 )
+        -:    4:
+        -:    5:// BZ2_hbCreateDecodeTables ( Int32 *limit,
+        -:    6://                                 Int32 *base,
+        -:    7://                                 Int32 *perm,
+        -:    8://                                 UChar *length,
+        -:    9://                                 Int32 minLen,
+        -:   10://                                 Int32 maxLen,
+        -:   11://                                 Int32 alphaSize )
+        -:   12:// decoder.rs
+        -:   13:typedef unsigned char UChar;
+        -:   14:typedef int Int32;
+        -:   15:#include <stdio.h>
+        -:   16:#include <CUnit/Basic.h>
+        -:   17:
+    #####:   18:void BZ2_hbCreateDecodeTables ( Int32 *limit,
+        -:   19:                                Int32 *base,
+        -:   20:                                Int32 *perm,
+        -:   21:                                UChar *length,
+        -:   22:                                Int32 minLen,
+        -:   23:                                Int32 maxLen,
+        -:   24:                                Int32 alphaSize )
+        -:   25:{
+        -:   26:   Int32 pp, i, j, vec;
+        -:   27:
+    #####:   28:   pp = 0;
+        -:   29://    初始化perm数组：这个数组代表了一个排列或者说一个顺序。
+        -:   30:// 对于每一个length数组中的长度i（从minLen到maxLen），检查每一个alphaSize内的值j。
+        -:   31:// 如果length[j]与当前的i相匹配，那么perm数组的下一个位置就设置为j。
+        -:   32:// 这意味着perm数组会根据length数组中的符号长度被填充
+    #####:   33:   for (i = minLen; i <= maxLen; i++)
+    #####:   34:      for (j = 0; j < alphaSize; j++)
+    #####:   35:         if (length[j] == i) { perm[pp] = j; pp++; };
+        -:   36:
+    #####:   37:   for (i = 0; i < 23; i++) base[i] = 0;  // 2. 初始化base和limit数组：这两个数组都被初始化为0。
+    #####:   38:   for (i = 0; i < alphaSize; i++) base[length[i]+1]++;
+        -:   39:
+    #####:   40:   for (i = 1; i < 23; i++) base[i] += base[i-1];
+        -:   41:
+    #####:   42:   for (i = 0; i < 23; i++) limit[i] = 0; // 2. 初始化base和limit数组：这两个数组都被初始化为0。
+    #####:   43:   vec = 0;
+        -:   44:
+    #####:   45:   for (i = minLen; i <= maxLen; i++) {
+    #####:   46:      vec += (base[i+1] - base[i]); // 更新vec的值为base[i+1] - base[i]的和。
+    #####:   47:      limit[i] = vec-1; 
+    #####:   48:      vec <<= 1; // vec值翻倍。
+        -:   49:   }
+        -:   50:   // 5. 更新base数组：更新每个base[i]的值。
+    #####:   51:   for (i = minLen + 1; i <= maxLen; i++)
+    #####:   52:      base[i] = ((limit[i-1] + 1) << 1) - base[i];
+    #####:   53:}
+    #####:   54:void test_BZ2_hbCreateDecodeTables(void) {
+        -:   55:    // Set up test input
+    #####:   56:    Int32 limit[23] = {0};
+    #####:   57:    Int32 base[23] = {0};
+    #####:   58:    Int32 perm[23] = {0};
+    #####:   59:    UChar length[23] = {2, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8};
+    #####:   60:    Int32 minLen = 2;
+    #####:   61:    Int32 maxLen = 8;
+    #####:   62:    Int32 alphaSize = 23;
+        -:   63:
+    #####:   64:    BZ2_hbCreateDecodeTables(limit, base, perm, length, minLen, maxLen, alphaSize);
+        -:   65:
+        -:   66:    // Check the function's results against expected outputs
+    #####:   67:    Int32 expected_perm[23] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22};
+    #####:   68:    Int32 expected_base[23] = {0, 0, 0, 1, 5, 19, 51, 119, 259, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23};
+    #####:   69:    Int32 expected_limit[23] = {0, 0, 0, 3, 13, 31, 67, 139, 281, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        -:   70:
+    #####:   71:    for (int i = 0; i < 23; i++) {
+    #####:   72:        CU_ASSERT_EQUAL(perm[i], expected_perm[i]);
+    #####:   73:        CU_ASSERT_EQUAL(base[i], expected_base[i]);
+    #####:   74:        CU_ASSERT_EQUAL(limit[i], expected_limit[i]);
+        -:   75:    }
+    #####:   76:}
+        -:   77:
+    #####:   78:int main() {
+    #####:   79:    CU_pSuite pSuite = NULL;
+        -:   80:
+        -:   81:    /* Initialize the CUnit test registry */
+    #####:   82:    if (CU_initialize_registry() != CUE_SUCCESS) {
+    #####:   83:        return CU_get_error();
+        -:   84:    }
+        -:   85:
+        -:   86:    /* Add a suite to the registry */
+    #####:   87:    pSuite = CU_add_suite("BZ2_hbCreateDecodeTables_test", NULL, NULL);
+    #####:   88:    if (pSuite == NULL) {
+    #####:   89:        CU_cleanup_registry();
+    #####:   90:        return CU_get_error();
+        -:   91:    }
+        -:   92:
+        -:   93:    /* Add the test to the suite */
+    #####:   94:    if (CU_add_test(pSuite, "test_BZ2_hbCreateDecodeTables", test_BZ2_hbCreateDecodeTables) == NULL) {
+    #####:   95:        CU_cleanup_registry();
+    #####:   96:        return CU_get_error();
+        -:   97:    }
+        -:   98:
+        -:   99:    /* Run all tests using the CUnit Basic interface */
+    #####:  100:    CU_basic_set_mode(CU_BRM_VERBOSE);
+    #####:  101:    CU_basic_run_tests();
+    #####:  102:    CU_cleanup_registry();
+        -:  103:
+    #####:  104:    return CU_get_error();
+        -:  105:}
+        -:  106:

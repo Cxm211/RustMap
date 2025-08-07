@@ -1,0 +1,62 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_80_root_43_showFileNames.c
+        -:    0:Graph:scc_101_mkCell.gcno
+        -:    0:Data:scc_101_mkCell.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::global_vars::bzip2_c5::{inName, noisy, outName};
+        -:    2:
+        -:    3:#include "../typedef.h"
+        -:    4:// showFileNames ( void )
+        -:    5:Bool noisy;
+        -:    6:Char inName [1034];
+        -:    7:Char outName[1034];
+        -:    8:static
+    #####:    9:void showFileNames ( void )
+        -:   10:{
+    #####:   11:   if (noisy)
+    #####:   12:   fprintf (
+        -:   13:      
+        -:   14:     stderr
+        -:   15:           ,
+        -:   16:      "\tInput file = %s, output file = %s\n",
+        -:   17:      inName, outName
+        -:   18:   );
+    #####:   19:}
+        -:   20:
+        -:   21:#include <CUnit/CUnit.h>
+        -:   22:#include <CUnit/Basic.h>
+        -:   23:#include <string.h>
+        -:   24:
+        -:   25:// 假设您已经包含了必要的头文件和定义
+        -:   26:
+    #####:   27:void test_showFileNames_noisyTrue(void) {
+    #####:   28:    noisy = TRUE;  // 设置noisy为True
+    #####:   29:    strcpy(inName, "testInput.txt");  // 设置输入文件名
+    #####:   30:    strcpy(outName, "testOutput.txt"); // 设置输出文件名
+        -:   31:
+        -:   32:    // 这里我们无法直接检查stderr的输出，
+        -:   33:    // 但你可以手动运行并观察是否在stderr上正确输出了文件名。
+    #####:   34:    showFileNames();
+    #####:   35:}
+        -:   36:
+    #####:   37:void test_showFileNames_noisyFalse(void) {
+    #####:   38:    noisy = FALSE;  // 设置noisy为False
+        -:   39:
+        -:   40:    // 当noisy为False时，即使设置了文件名，函数也不应该有输出。
+        -:   41:    // 同样，你可以手动运行并观察stderr是否没有输出。
+    #####:   42:    showFileNames();
+    #####:   43:}
+        -:   44:
+        -:   45:// int main() {
+        -:   46://     CU_initialize_registry();
+        -:   47:
+        -:   48://     CU_pSuite suite = CU_add_suite("Test showFileNames", NULL, NULL);
+        -:   49:
+        -:   50://     CU_add_test(suite, "test_showFileNames_noisyTrue", test_showFileNames_noisyTrue);
+        -:   51://     CU_add_test(suite, "test_showFileNames_noisyFalse", test_showFileNames_noisyFalse);
+        -:   52:
+        -:   53://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   54://     CU_basic_run_tests();
+        -:   55:
+        -:   56://     CU_cleanup_registry();
+        -:   57://     return 0;
+        -:   58:// }

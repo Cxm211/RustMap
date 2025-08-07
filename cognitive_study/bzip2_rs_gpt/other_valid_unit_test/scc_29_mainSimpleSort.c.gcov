@@ -1,0 +1,138 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:// use crate::blocksort::scc_30_root_20_mmed3::*;
+        -:    2:// use crate::global_vars::bzip2_c6::{incs-blocksort.i};
+        -:    3:
+        -:    4:#include "../typedef.h"
+        -:    5:#include "./scc_28_root_19_mainGtU.c"
+        -:    6:// 预定义的希尔排序增量序列
+        -:    7:static Int32 incs[14] = { 1, 4, 13, 40, 121, 364, 1093, 3280,
+        -:    8:                   9841, 29524, 88573, 265720,
+        -:    9:                   797161, 2391484 };
+        -:   10:
+    #####:   11:static void mainSimpleSort ( UInt32* ptr,       // 待排序数组
+        -:   12:                             UChar* block,      // 包含字符的块
+        -:   13:                             UInt16* quadrant,  // 四分区数组
+        -:   14:                             Int32 nblock,      // 块的大小
+        -:   15:                             Int32 lo,          // 排序开始的索引
+        -:   16:                             Int32 hi,          // 排序结束的索引
+        -:   17:                             Int32 d,           // 索引的偏移量
+        -:   18:                             Int32* budget )    // 预算（可能与循环迭代次数有关）
+        -:   19:{
+        -:   20:   Int32 i, j, h, bigN, hp;
+        -:   21:   UInt32 v;
+        -:   22:
+        -:   23:   // 计算待排序的元素数量
+    #####:   24:   bigN = hi - lo + 1;
+        -:   25:   // 如果元素数量小于2，则不需要排序
+    #####:   26:   if (bigN < 2) return;
+        -:   27:
+        -:   28:   // 根据待排序元素的数量，选择合适的增量
+    #####:   29:   hp = 0;
+    #####:   30:   while (incs[hp] < bigN) hp++;
+    #####:   31:   hp--;
+        -:   32:
+        -:   33:   // 对每一个增量进行希尔排序
+    #####:   34:   for (; hp >= 0; hp--) {
+    #####:   35:      h = incs[hp];
+        -:   36:
+    #####:   37:      i = lo + h;
+        -:   38:      while (true) {
+        -:   39:
+        -:   40:         // 如果超出上限则跳出循环
+    #####:   41:         if (i > hi) break;
+    #####:   42:         v = ptr[i];
+    #####:   43:         j = i;
+        -:   44:
+        -:   45:         // 进行插入排序的一部分
+    #####:   46:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   47:            ptr[j] = ptr[j-h];
+    #####:   48:            j = j - h;
+    #####:   49:            if (j <= (lo + h - 1)) break;
+        -:   50:         }
+    #####:   51:         ptr[j] = v;
+    #####:   52:         i++;
+        -:   53:
+        -:   54:         // 以下两个部分与上面的代码块类似，是为了提高效率
+    #####:   55:         if (i > hi) break;
+    #####:   56:         v = ptr[i];
+    #####:   57:         j = i;
+    #####:   58:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   59:            ptr[j] = ptr[j-h];
+    #####:   60:            j = j - h;
+    #####:   61:            if (j <= (lo + h - 1)) break;
+        -:   62:         }
+    #####:   63:         ptr[j] = v;
+    #####:   64:         i++;
+        -:   65:
+    #####:   66:         if (i > hi) break;
+    #####:   67:         v = ptr[i];
+    #####:   68:         j = i;
+    #####:   69:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   70:            ptr[j] = ptr[j-h];
+    #####:   71:            j = j - h;
+    #####:   72:            if (j <= (lo + h - 1)) break;
+        -:   73:         }
+    #####:   74:         ptr[j] = v;
+    #####:   75:         i++;
+        -:   76:
+        -:   77:         // 如果预算小于0，则返回
+    #####:   78:         if (*budget < 0) return;
+        -:   79:      }
+        -:   80:   }
+        -:   81:}
+        -:   82:#include <stdio.h>
+        -:   83:#include <stdlib.h>
+        -:   84:#include <CUnit/Basic.h>
+        -:   85:
+        -:   86:#define ARRAY_SIZE 100
+        -:   87:
+        -:   88:// 预先定义的测试数组
+        -:   89:UInt32 test_array[ARRAY_SIZE];
+        -:   90:
+        -:   91:// 为测试初始化数组
+    #####:   92:void setup(void) {
+    #####:   93:    for (int i = 0; i < ARRAY_SIZE; i++) {
+    #####:   94:        test_array[i] = rand() % 1000;  // 取值范围为0-999
+        -:   95:    }
+    #####:   96:}
+        -:   97:
+        -:   98:// 测试mainSimpleSort是否正常工作
+    #####:   99:void test_mainSimpleSort(void) {
+    #####:  100:    setup();
+        -:  101:    
+    #####:  102:    mainSimpleSort(test_array, NULL, NULL, ARRAY_SIZE, 0, ARRAY_SIZE - 1, 0, NULL);
+        -:  103:
+    #####:  104:    for (int i = 1; i < ARRAY_SIZE; i++) {
+    #####:  105:        CU_ASSERT(test_array[i-1] <= test_array[i]);
+        -:  106:    }
+    #####:  107:}
+        -:  108:
+    #####:  109:int main() {
+        -:  110:    // 初始化CUnit测试注册表
+    #####:  111:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:  112:        return CU_get_error();
+        -:  113:
+        -:  114:    // 添加一个测试套件
+    #####:  115:    CU_pSuite pSuite = NULL;
+    #####:  116:    pSuite = CU_add_suite("Testing mainSimpleSort", NULL, NULL);
+    #####:  117:    if (NULL == pSuite) {
+    #####:  118:        CU_cleanup_registry();
+    #####:  119:        return CU_get_error();
+        -:  120:    }
+        -:  121:
+        -:  122:    // 在此套件中添加测试
+    #####:  123:    if (NULL == CU_add_test(pSuite, "test_mainSimpleSort", test_mainSimpleSort)) {
+    #####:  124:        CU_cleanup_registry();
+    #####:  125:        return CU_get_error();
+        -:  126:    }
+        -:  127:
+        -:  128:    // 使用基础UI运行测试
+    #####:  129:    CU_basic_set_mode(CU_BRM_VERBOSE);
+    #####:  130:    CU_basic_run_tests();
+    #####:  131:    CU_cleanup_registry();
+        -:  132:
+    #####:  133:    return CU_get_error();
+        -:  134:}

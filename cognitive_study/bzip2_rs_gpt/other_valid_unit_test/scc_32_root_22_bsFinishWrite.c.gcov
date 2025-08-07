@@ -1,0 +1,139 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_32_root_22_bsFinishWrite.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_32_root_22_bsFinishWrite.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:#include "../typedef.h"
+        -:    2:typedef
+        -:    3:   struct {
+        -:    4:
+        -:    5:      bz_stream* strm;
+        -:    6:
+        -:    7:
+        -:    8:
+        -:    9:      Int32 mode;
+        -:   10:      Int32 state;
+        -:   11:
+        -:   12:
+        -:   13:      UInt32 avail_in_expect;
+        -:   14:
+        -:   15:
+        -:   16:      UInt32* arr1;
+        -:   17:      UInt32* arr2;
+        -:   18:      UInt32* ftab;
+        -:   19:      Int32 origPtr;
+        -:   20:
+        -:   21:
+        -:   22:      UInt32* ptr;
+        -:   23:      UChar* block;
+        -:   24:      UInt16* mtfv;
+        -:   25:      UChar* zbits;
+        -:   26:
+        -:   27:
+        -:   28:      Int32 workFactor;
+        -:   29:
+        -:   30:
+        -:   31:      UInt32 state_in_ch;
+        -:   32:      Int32 state_in_len;
+        -:   33:      Int32 rNToGo; Int32 rTPos;
+        -:   34:
+        -:   35:
+        -:   36:      Int32 nblock;
+        -:   37:      Int32 nblockMAX;
+        -:   38:      Int32 numZ;
+        -:   39:      Int32 state_out_pos;
+        -:   40:
+        -:   41:
+        -:   42:      Int32 nInUse;
+        -:   43:      Bool inUse[256];
+        -:   44:      UChar unseqToSeq[256];
+        -:   45:
+        -:   46:
+        -:   47:      UInt32 bsBuff;
+        -:   48:      Int32 bsLive;
+        -:   49:
+        -:   50:
+        -:   51:      UInt32 blockCRC;
+        -:   52:      UInt32 combinedCRC;
+        -:   53:
+        -:   54:
+        -:   55:      Int32 verbosity;
+        -:   56:      Int32 blockNo;
+        -:   57:      Int32 blockSize100k;
+        -:   58:
+        -:   59:
+        -:   60:      Int32 nMTF;
+        -:   61:      Int32 mtfFreq [258];
+        -:   62:      UChar selector [(2 + (900000 / 50))];
+        -:   63:      UChar selectorMtf[(2 + (900000 / 50))];
+        -:   64:
+        -:   65:      UChar len [6][258];
+        -:   66:      Int32 code [6][258];
+        -:   67:      Int32 rfreq [6][258];
+        -:   68:
+        -:   69:      UInt32 len_pack[258][4];
+        -:   70:
+        -:   71:   }
+        -:   72:   EState;
+        -:   73:
+        -:   74:/**
+        -:   75: * 在写入二进制数据流结束时，处理并确保EState中的所有挂起的二进制数据都被写入到zbits中。
+        -:   76: * @param s 指向EState结构体实例的指针。
+        -:   77: */
+    #####:   78:static void bsFinishWrite ( EState* s ) {
+        -:   79:   // 当还有挂起的位未写入时，继续处理
+    #####:   80:   while (s->bsLive > 0) {
+        -:   81:      // 将bsBuff中的最高8位写入到zbits数组
+    #####:   82:      s->zbits[s->numZ] = (UChar)(s->bsBuff >> 24);
+        -:   83:      // 更新zbits的写入位置
+    #####:   84:      s->numZ++;
+        -:   85:      // 将bsBuff左移8位，以便处理下一个字节
+    #####:   86:      s->bsBuff <<= 8;
+        -:   87:      // 减少未处理的挂起位的数量
+    #####:   88:      s->bsLive -= 8;
+        -:   89:   }
+    #####:   90:}
+        -:   91:
+        -:   92:#include <CUnit/Basic.h>
+        -:   93:#include <stdio.h>
+        -:   94:
+        -:   95:// 假设你已经定义了上述的EState结构体和bsFinishWrite函数...
+        -:   96:
+    #####:   97:void test_bsFinishWrite(void) {
+        -:   98:   EState state;
+    #####:   99:   state.bsBuff = 0xA5A5A5A5; // 示例值
+    #####:  100:   state.bsLive = 16; // 示例值：表示还有16位未写入
+    #####:  101:   state.numZ = 0;
+    #####:  102:   bsFinishWrite(&state);
+        -:  103:   
+    #####:  104:   CU_ASSERT(state.zbits[0] == 0xA5);
+    #####:  105:   CU_ASSERT(state.zbits[1] == 0xA5);
+    #####:  106:   CU_ASSERT(state.bsLive == 0); // 检查所有挂起的位是否都已写入
+    #####:  107:}
+        -:  108:
+    #####:  109:int main(void) {
+    #####:  110:   CU_pSuite pSuite = NULL;
+        -:  111:
+        -:  112:   /* 初始化CUnit库 */
+    #####:  113:   if (CUE_SUCCESS != CU_initialize_registry())
+    #####:  114:      return CU_get_error();
+        -:  115:
+        -:  116:   /* 添加测试套件到注册中心 */
+    #####:  117:   pSuite = CU_add_suite("bsFinishWrite_test_suite", NULL, NULL);
+    #####:  118:   if (NULL == pSuite) {
+    #####:  119:      CU_cleanup_registry();
+    #####:  120:      return CU_get_error();
+        -:  121:   }
+        -:  122:
+        -:  123:   /* 添加测试函数到套件 */
+    #####:  124:   if (NULL == CU_add_test(pSuite, "test_bsFinishWrite", test_bsFinishWrite)) {
+    #####:  125:      CU_cleanup_registry();
+    #####:  126:      return CU_get_error();
+        -:  127:   }
+        -:  128:
+        -:  129:   /* 运行所有测试 */
+    #####:  130:   CU_basic_set_mode(CU_BRM_VERBOSE);
+    #####:  131:   CU_basic_run_tests();
+    #####:  132:   CU_cleanup_registry();
+        -:  133:
+    #####:  134:   return CU_get_error();
+        -:  135:}

@@ -1,7 +1,0 @@
-Maximum path length: 23
-Paths of that length: 1248
-Example path of that length:
-  machamp petilil landorus scrafty yamask kricketune emboar 
-  registeel loudred darmanitan nosepass simisear relicanth heatmor 
-  rufflet trapinch haxorus seaking girafarig gabite exeggcute 
-  emolga audino 

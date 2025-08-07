@@ -1,0 +1,78 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_91_cleanUpAndFail.c
+        -:    0:Graph:scc_91_cleanUpAndFail.gcno
+        -:    0:Data:scc_91_cleanUpAndFail.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include "./scc_90_root_52_setExit.c"
+        -:    3:// 清理并以指定的错误代码退出程序
+        -:    4:static
+    #####:    5:void cleanUpAndFail ( Int32 ec )
+        -:    6:{
+        -:    7:   IntNative retVal;
+        -:    8:   struct stat statBuf;
+        -:    9:
+        -:   10:   // 如果源文件是打开状态，操作模式不是3，并且在中断时需要删除输出文件
+    #####:   11:   if ( srcMode == 3 && opMode != 3 && deleteOutputOnInterrupt ) {
+        -:   12:      // 检查输入文件是否存在
+    #####:   13:      retVal = stat ( inName, &statBuf );
+        -:   14:
+        -:   15:      // 如果输入文件存在
+    #####:   16:      if (retVal == 0) {
+        -:   17:         // 如果开启了详细输出模式，打印删除输出文件的消息
+    #####:   18:         if (noisy)
+    #####:   19:            fprintf(stderr, "%s: Deleting output file %s, if it exists.\n", progName, outName);
+        -:   20:         
+        -:   21:         // 如果输出文件句柄已打开，关闭它
+    #####:   22:         if (outputHandleJustInCase != ((void *)0))
+    #####:   23:            fclose(outputHandleJustInCase);
+        -:   24:         
+        -:   25:         // 尝试删除输出文件
+    #####:   26:         retVal = remove(outName);
+        -:   27:         
+        -:   28:         // 如果删除失败，打印警告信息
+    #####:   29:         if (retVal != 0)
+    #####:   30:            fprintf(stderr, "%s: WARNING: deletion of output file (apparently) failed.\n", progName);
+        -:   31:      } else {
+        -:   32:         // 如果输入文件不存在，打印一系列的警告信息，建议用户对输出文件进行完整性测试
+    #####:   33:         fprintf(stderr, "%s: WARNING: deletion of output file suppressed\n", progName);
+    #####:   34:         fprintf(stderr, "%s:    since input file no longer exists.  Output file\n", progName);
+    #####:   35:         fprintf(stderr, "%s:    `%s' may be incomplete.\n", progName, outName);
+    #####:   36:         fprintf(stderr, "%s:    I suggest doing an integrity test (bzip2 -tv) of it.\n", progName);
+        -:   37:      }
+        -:   38:   }
+        -:   39:
+        -:   40:   // 如果开启了详细输出模式，并且有些文件尚未处理完，打印警告信息
+    #####:   41:   if (noisy && numFileNames > 0 && numFilesProcessed < numFileNames) {
+    #####:   42:      fprintf(stderr, "%s: WARNING: some files have not been processed:\n", progName);
+    #####:   43:      fprintf(stderr, "%s:    %d specified on command line, %d not processed yet.\n\n", progName, numFileNames, numFileNames - numFilesProcessed);
+        -:   44:   }
+        -:   45:
+        -:   46:   // 设置退出值并退出程序
+    #####:   47:   setExit(ec);
+    #####:   48:   exit(exitValue);
+        -:   49:}
+        -:   50:
+        -:   51:
+        -:   52:#include <CUnit/CUnit.h>
+        -:   53:#include <CUnit/Basic.h>
+        -:   54:
+        -:   55:// 测试cleanUpAndFail函数
+        1:   56:void test_cleanUpAndFail(void) {
+        -:   57:    // 由于cleanUpAndFail会导致程序退出，所以在实际测试中应避免直接调用它。
+        -:   58:    // 一个可能的做法是使用mocking技术来拦截并验证其输出或行为，或使用子进程执行它并检查返回值。
+        -:   59:    // 这里只提供一个简单的示例。
+        1:   60:    CU_FAIL("This test is just a placeholder and shouldn't be executed directly.");
+        1:   61:}
+        -:   62:
+        1:   63:int main(void) {
+        1:   64:    CU_initialize_registry();
+        -:   65:    
+        1:   66:    CU_pSuite suite1 = CU_add_suite("CleanupTests", 0, 0);
+        1:   67:    CU_add_test(suite1, "test_cleanUpAndFail", test_cleanUpAndFail);
+        -:   68:    
+        1:   69:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   70:    CU_basic_run_tests();
+        1:   71:    CU_cleanup_registry();
+        -:   72:    
+        1:   73:    return 0;
+        -:   74:}

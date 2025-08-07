@@ -1,1 +1,0 @@
-Maximum non-McNuggets number is 43

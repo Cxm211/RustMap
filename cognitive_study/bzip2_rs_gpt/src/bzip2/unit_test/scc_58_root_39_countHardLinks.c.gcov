@@ -1,0 +1,70 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_58_root_39_countHardLinks.c
+        -:    0:Graph:scc_58_root_39_countHardLinks.gcno
+        -:    0:Data:scc_58_root_39_countHardLinks.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::global_vars::bzip2_c5::{stat};
+        -:    2:
+        -:    3:#include "../typedef.h"
+        -:    4:#include <sys/stat.h>
+        -:    5:
+        -:    6:// 统计一个文件或目录的硬链接数量
+        -:    7:// 参数: name - 需要统计的文件或目录的名字
+        -:    8:// 返回值: 硬链接数量（减去文件本身的一个链接）
+        2:    9:static Int32 countHardLinks(Char* name)
+        -:   10:{
+        -:   11:    IntNative i;
+        -:   12:    struct stat statBuf; // 使用<sys/stat.h>头文件定义的stat结构体
+        -:   13:
+        2:   14:    i = lstat(name, &statBuf); // 获取文件或目录的状态信息
+       2*:   15:    if (i != 0) return 0;      // 如果lstat调用失败, 返回0
+        2:   16:    return (statBuf.st_nlink - 1); // 返回硬链接数量减去1（文件本身的一个链接）
+        -:   17:}
+        -:   18:
+        -:   19:
+        -:   20:#include <CUnit/Basic.h>
+        -:   21:#include <fcntl.h>
+        -:   22:#include <unistd.h>
+        -:   23:
+        1:   24:void test_countHardLinks(void) {
+        -:   25:    // 创建一个临时文件并测试其硬链接数
+        1:   26:    int fd = open("temp_file", O_CREAT | O_RDWR, 0777);
+        1:   27:    CU_ASSERT(fd != -1);
+        1:   28:    close(fd);
+        -:   29:
+        -:   30:    // 确保新创建的文件只有一个硬链接
+        1:   31:    CU_ASSERT(countHardLinks("temp_file") == 0);
+        -:   32:
+        -:   33:    // 创建硬链接
+        1:   34:    int result = link("temp_file", "temp_file_link");
+        1:   35:    CU_ASSERT(result == 0);
+        -:   36:
+        -:   37:    // 检查硬链接数量
+        1:   38:    CU_ASSERT(countHardLinks("temp_file") == 1);
+        -:   39:
+        -:   40:    // 清理
+        1:   41:    unlink("temp_file_link");
+        1:   42:    unlink("temp_file");
+        1:   43:}
+        -:   44:
+        1:   45:int main() {
+        1:   46:    CU_pSuite pSuite = NULL;
+        -:   47:
+        1:   48:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   49:        return CU_get_error();
+        -:   50:
+        1:   51:    pSuite = CU_add_suite("CountHardLinks Test Suite", NULL, NULL);
+        1:   52:    if (NULL == pSuite) {
+    #####:   53:        CU_cleanup_registry();
+    #####:   54:        return CU_get_error();
+        -:   55:    }
+        -:   56:
+        1:   57:    if (NULL == CU_add_test(pSuite, "test_countHardLinks", test_countHardLinks)) {
+    #####:   58:        CU_cleanup_registry();
+    #####:   59:        return CU_get_error();
+        -:   60:    }
+        -:   61:
+        1:   62:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   63:    CU_basic_run_tests();
+        1:   64:    CU_cleanup_registry();
+        1:   65:    return CU_get_error();
+        -:   66:}

@@ -1,0 +1,193 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort✅.c
+        -:    0:Graph:scc_29_mainSimpleSort✅.gcno
+        -:    0:Data:scc_29_mainSimpleSort✅.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::blocksort::scc_30_root_20_mmed3::*;
+        -:    2:// use crate::global_vars::bzip2_c6::{incs-blocksort.i};
+        -:    3:#include <stdio.h>
+        -:    4:#include "../typedef.h"
+        -:    5:#include "./scc_28_root_19_mainGtU✅.c"
+        -:    6:// 预定义的希尔排序增量序列
+        -:    7:static Int32 incs[14] = { 1, 4, 13, 40, 121, 364, 1093, 3280,
+        -:    8:                   9841, 29524, 88573, 265720,
+        -:    9:                   797161, 2391484 };
+        -:   10:
+        1:   11:static void mainSimpleSort ( UInt32* ptr,       // 待排序数组
+        -:   12:                             UChar* block,      // 包含字符的块
+        -:   13:                             UInt16* quadrant,  // 四分区数组
+        -:   14:                             Int32 nblock,      // 块的大小
+        -:   15:                             Int32 lo,          // 排序开始的索引
+        -:   16:                             Int32 hi,          // 排序结束的索引
+        -:   17:                             Int32 d,           // 索引的偏移量
+        -:   18:                             Int32* budget )    // 预算（可能与循环迭代次数有关）
+        -:   19:{
+        -:   20:   Int32 i, j, h, bigN, hp;
+        -:   21:   UInt32 v;
+        -:   22:
+        -:   23:   // 计算待排序的元素数量
+        1:   24:   bigN = hi - lo + 1;
+        -:   25:   // 如果元素数量小于2，则不需要排序
+       1*:   26:   if (bigN < 2) return;
+        -:   27:
+        -:   28:   // 根据待排序元素的数量，选择合适的增量
+        1:   29:   hp = 0;
+        2:   30:   while (incs[hp] < bigN) hp++;
+        1:   31:   hp--;
+        -:   32:
+        -:   33:   // 对每一个增量进行希尔排序
+        2:   34:   for (; hp >= 0; hp--) {
+        1:   35:      h = incs[hp];
+        -:   36:
+        1:   37:      i = lo + h;
+        -:   38:      while (true) {
+        -:   39:
+        -:   40:         // 如果超出上限则跳出循环
+       1*:   41:         if (i > hi) break;
+        1:   42:         v = ptr[i];
+        1:   43:         j = i;
+        -:   44:
+        -:   45:         // 进行插入排序的一部分
+        1:   46:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+        1:   47:            ptr[j] = ptr[j-h];
+        1:   48:            j = j - h;
+        1:   49:            if (j <= (lo + h - 1)) break;
+        -:   50:         }
+        1:   51:         ptr[j] = v;
+        1:   52:         i++;
+        -:   53:
+        -:   54:         // 以下两个部分与上面的代码块类似，是为了提高效率
+        1:   55:         if (i > hi) break;
+    #####:   56:         v = ptr[i];
+    #####:   57:         j = i;
+    #####:   58:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   59:            ptr[j] = ptr[j-h];
+    #####:   60:            j = j - h;
+    #####:   61:            if (j <= (lo + h - 1)) break;
+        -:   62:         }
+    #####:   63:         ptr[j] = v;
+    #####:   64:         i++;
+        -:   65:
+    #####:   66:         if (i > hi) break;
+    #####:   67:         v = ptr[i];
+    #####:   68:         j = i;
+    #####:   69:         while ( mainGtU(ptr[j-h]+d, v+d, block, quadrant, nblock, budget) ) {
+    #####:   70:            ptr[j] = ptr[j-h];
+    #####:   71:            j = j - h;
+    #####:   72:            if (j <= (lo + h - 1)) break;
+        -:   73:         }
+    #####:   74:         ptr[j] = v;
+    #####:   75:         i++;
+        -:   76:
+        -:   77:         // 如果预算小于0，则返回
+    #####:   78:         if (*budget < 0) return;
+        -:   79:      }
+        -:   80:   }
+        -:   81:}
+        -:   82:
+    #####:   83:int count_items(FILE *file) {
+    #####:   84:    int count = 0;
+        -:   85:
+    #####:   86:    while (true) {
+        -:   87:        char ch;
+    #####:   88:        if (fscanf(file, "%*[^,],") != 1) {
+    #####:   89:            break;
+        -:   90:        }
+    #####:   91:        count++;
+        -:   92:    }
+    #####:   93:    fseek(file, -1, SEEK_CUR);  // Step back to adjust for the final comma.
+    #####:   94:    return count;
+        -:   95:}
+        -:   96:
+        -:   97:
+        2:   98:int read_array_values(FILE *file, UInt32* arr) {
+        2:   99:    int count = 0;
+        2:  100:    fscanf(file, "["); 
+        -:  101:    while (true) {
+   158064:  102:        if (fscanf(file, "%u,", &arr[count]) != 1) {
+        -:  103:            // 尝试读取不带逗号的值，这可能是数组的最后一个值
+        2:  104:            if (fscanf(file, "%u", &arr[count]) != 1) {
+        2:  105:                break;
+        -:  106:            }
+        -:  107:        }
+   158062:  108:        count++;
+        -:  109:    }
+        2:  110:    fscanf(file, "]");
+        2:  111:    return count;
+        -:  112:}
+        -:  113:
+        1:  114:int read_array_hex_values(FILE *file, UInt32* arr) {
+        1:  115:    int count = 0;
+        1:  116:    fscanf(file, "["); 
+        -:  117:    while (true) {
+    98171:  118:        if (fscanf(file, "%x,", &arr[count]) != 1) {
+        -:  119:            // 尝试读取不带逗号的值，这可能是数组的最后一个值
+        1:  120:            if (fscanf(file, "%x", &arr[count]) != 1) {
+        1:  121:                break;
+        -:  122:            }
+        -:  123:        }
+    98170:  124:        count++;
+        -:  125:    }
+        1:  126:    fscanf(file, "]");
+        1:  127:    return count;
+        -:  128:}
+        -:  129:
+        1:  130:void test_mainSimpleSort() {
+        1:  131:    FILE* file = fopen("/root/crown-rust/bzip2/params_mainSimpleSort_1.dat", "r");
+        1:  132:    if (!file) {
+    #####:  133:        perror("打开params_mainSimpleSort_1.dat失败");
+    #####:  134:        return;
+        -:  135:    }
+        -:  136:
+        -:  137:    UInt32 ptr[100000], block[100000], quadrant[100000];
+        -:  138:
+        1:  139:    fscanf(file, "ptr: ");
+        1:  140:    read_array_values(file, ptr);
+        1:  141:    fscanf(file, " block: ");
+        1:  142:    read_array_hex_values(file, block);
+        1:  143:    fscanf(file, " quadrant: ");
+        1:  144:    read_array_values(file, quadrant);
+        -:  145:
+        -:  146:    // 修复了读取标量值的问题
+        -:  147:    UInt32 nblock, lo, hi, d, budget;
+        1:  148:    fscanf(file, " nblock: %u lo: %u hi: %u d: %u budget: %u", &nblock, &lo, &hi, &d, &budget);
+        -:  149:
+        1:  150:    printf("Read nblock: %u\n", nblock);
+        1:  151:    printf("Read ptr[%u]=%u\n", lo, ptr[lo]);
+        1:  152:    printf("Read ptr[%u]=%u\n", hi, ptr[hi]);
+        1:  153:    printf("Read d: %u\n", d);
+        1:  154:    printf("Read budget: %u\n", budget);
+        -:  155:
+        -:  156:
+        -:  157:    // 在所有打印结束之后，调用mainSimpleSort函数
+        1:  158:    mainSimpleSort(ptr, block, quadrant, nblock, lo, hi, d, &budget);
+        -:  159:
+        -:  160:    // 打印调用mainSimpleSort之后的ptr[lo]和ptr[hi]
+        1:  161:    printf("After mainSimpleSort:\n");
+        1:  162:    printf("ptr[%u]=%u\n", lo, ptr[lo]);
+        1:  163:    printf("ptr[%u]=%u\n", hi, ptr[hi]);
+        -:  164:
+        -:  165:
+        1:  166:    fclose(file);
+        -:  167:
+        -:  168:}
+        -:  169:
+        -:  170:
+        -:  171:// 🌟 Before mainSimpleSort:
+        -:  172:// 🌼 59890, ptr[lo]: 19782
+        -:  173:// 🌻 59891, ptr[hi]: 19913
+        -:  174:
+        -:  175:
+        -:  176:// 🌙 After mainSimpleSort:
+        -:  177:// 🌷 59890, ptr[lo]: 19913
+        -:  178:// 🌹 59891, ptr[hi]: 19782
+        -:  179:// 🍀 budget: 883530
+        -:  180:
+        -:  181:
+        1:  182:int main() {
+        1:  183:    CU_initialize_registry();
+        1:  184:    CU_add_suite("mainSimpleSort", NULL, NULL);
+        1:  185:    CU_add_test(CU_get_suite("mainSimpleSort"), "test_mainSimpleSort", test_mainSimpleSort);
+        1:  186:    CU_basic_run_tests();
+        1:  187:    CU_cleanup_registry();
+        1:  188:    return CU_get_error();
+        -:  189:}

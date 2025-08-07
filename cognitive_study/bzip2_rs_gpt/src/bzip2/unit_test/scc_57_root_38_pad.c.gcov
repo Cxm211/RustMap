@@ -1,0 +1,94 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_57_root_38_pad.c
+        -:    0:Graph:scc_57_root_38_pad.gcno
+        -:    0:Data:scc_57_root_38_pad.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::global_vars::bzip2_c5::{longestFileName};
+        -:    2:
+        -:    3:#include "../typedef.h"
+        -:    4:#include <CUnit/CUnit.h>
+        -:    5:#include <CUnit/Basic.h>
+        -:    6:// 该函数的目的是对齐字符串s的长度到longestFileName，通过向stderr打印空格实现对齐。
+        -:    7:static
+        1:    8:void pad ( Char *s )
+        -:    9:{
+        -:   10:   Int32 i;
+        -:   11:   // 如果s的长度已经大于或等于longestFileName，则直接返回，不做任何操作。
+       1*:   12:   if ( (Int32)strlen(s) >= longestFileName ) return;
+        -:   13:   
+        -:   14:   // 计算并打印需要的空格数量，使得s的长度对齐到longestFileName。
+        7:   15:   for (i = 1; i <= longestFileName - (Int32)strlen(s); i++)
+        6:   16:      fprintf(stderr, " ");
+        -:   17:}
+        -:   18:
+        -:   19:
+        -:   20:
+        1:   21:void test_pad() {
+        -:   22:    // 假设longestFileName为10用于测试。在真实环境中，您应该使用实际的longestFileName值。
+        1:   23:    longestFileName = 10; 
+        -:   24:
+        -:   25:    // 备份原始的stderr，以便之后恢复。
+        1:   26:    FILE* original_stderr = stderr;
+        -:   27:    
+        -:   28:    // 打开一个临时文件用于写入，并重定向stderr到该文件。
+        1:   29:    stderr = fopen("tmp.txt", "w");
+        1:   30:    if (stderr == NULL) {
+    #####:   31:        perror("无法打开临时文件");
+    #####:   32:        exit(EXIT_FAILURE);
+        -:   33:    }
+        -:   34:
+        -:   35:    // 调用pad函数来输出空格到重定向的stderr。
+        1:   36:    pad("test");
+        -:   37:    
+        -:   38:    // 关闭重定向的stderr。
+        1:   39:    fclose(stderr);
+        -:   40:    
+        -:   41:    // 恢复原始的stderr。
+        1:   42:    stderr = original_stderr;
+        -:   43:    
+        -:   44:    // 打开临时文件以读取内容。
+        1:   45:    FILE* tmp = fopen("tmp.txt", "r");
+        1:   46:    if (tmp == NULL) {
+    #####:   47:        perror("无法读取临时文件");
+    #####:   48:        exit(EXIT_FAILURE);
+        -:   49:    }
+        -:   50:    
+        -:   51:    Char buffer[11]; // 为读取的内容预留空间。
+        -:   52:    
+        -:   53:    // 读取文件内容。
+        1:   54:    size_t numRead = fread(buffer, sizeof(Char), 10, tmp);
+        -:   55:    
+        -:   56:    // 根据实际读取的内容设置空终止符。
+        1:   57:    buffer[numRead] = '\0';
+        -:   58:    
+        -:   59:    // 断言：检查读取的内容是否是6个空格。
+        1:   60:    CU_ASSERT_STRING_EQUAL(buffer, "      ");
+        -:   61:    
+        -:   62:    // 关闭临时文件。
+        1:   63:    fclose(tmp);
+        -:   64:    
+        -:   65:    // 删除临时文件。
+        1:   66:    remove("tmp.txt");
+        1:   67:}
+        -:   68:
+        -:   69:
+        1:   70:int main() {
+        1:   71:    CU_pSuite pSuite = NULL;
+        -:   72:
+        1:   73:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   74:        return CU_get_error();
+        -:   75:
+        1:   76:    pSuite = CU_add_suite("Suite_1", NULL, NULL);
+        1:   77:    if (NULL == pSuite) {
+    #####:   78:        CU_cleanup_registry();
+    #####:   79:        return CU_get_error();
+        -:   80:    }
+        -:   81:
+        1:   82:    if (NULL == CU_add_test(pSuite, "test of pad", test_pad)) {
+    #####:   83:        CU_cleanup_registry();
+    #####:   84:        return CU_get_error();
+        -:   85:    }
+        -:   86:
+        1:   87:    CU_basic_run_tests();
+        1:   88:    CU_cleanup_registry();
+        1:   89:    return CU_get_error();
+        -:   90:}

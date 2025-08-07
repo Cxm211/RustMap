@@ -1,0 +1,87 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_56_fopen_output_safely.c
+        -:    0:Graph:scc_56_fopen_output_safely.gcno
+        -:    0:Data:scc_56_fopen_output_safely.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:
+        -:    3:#include <CUnit/CUnit.h>
+        -:    4:#include <CUnit/Basic.h>
+        -:    5:// 安全地打开一个用于输出的文件
+        -:    6:
+        -:    7:static
+        1:    8:FILE* fopen_output_safely ( Char* name, const char* mode )
+        -:    9:{
+        -:   10:
+        -:   11:   FILE* fp;
+        -:   12:   IntNative fh;
+        1:   13:   fh = open(name, 
+        -:   14:                  01
+        -:   15:                          |
+        -:   16:                           0100
+        -:   17:                                  |
+        -:   18:                                   0200
+        -:   19:                                         , 
+        -:   20:                                           0200
+        -:   21:                                                  |
+        -:   22:                                                   0400
+        -:   23:                                                          );
+        1:   24:   if (fh == -1) return 
+    #####:   25:                       ((void *)0)
+        -:   26:                           ;
+        1:   27:   fp = fdopen(fh, mode);
+        1:   28:   if (fp == 
+        -:   29:            ((void *)0)
+    #####:   30:                ) close(fh);
+        1:   31:   return fp;
+        -:   32:
+        -:   33:
+        -:   34:
+        -:   35:}
+        -:   36:
+        -:   37:
+        -:   38:// 测试fopen_output_safely函数
+        1:   39:void test_fopen_output_safely() {
+        -:   40:    FILE* fp;
+        -:   41:
+        -:   42:    // 使用fopen_output_safely创建并打开文件
+        1:   43:    fp = fopen_output_safely("test.txt", "w");
+        1:   44:    CU_ASSERT_PTR_NOT_NULL(fp);  // 断言文件指针不为NULL，表示文件成功打开
+        1:   45:    if (fp != NULL) fclose(fp);
+        -:   46:
+        -:   47:    // 为确保文件确实被创建，我们再次使用fopen来打开它
+        1:   48:    fp = fopen("test.txt", "r");
+        1:   49:    CU_ASSERT_PTR_NOT_NULL(fp);  // 断言文件指针不为NULL，表示文件确实存在并被成功打开
+        1:   50:    if (fp != NULL) fclose(fp);
+        -:   51:
+        -:   52:    // 删除测试文件（可选，这样可以确保每次测试都是从一个清洁的状态开始）
+        1:   53:    remove("test.txt");
+        1:   54:}
+        -:   55:
+        -:   56:
+        1:   57:int main() {
+        1:   58:    CU_pSuite pSuite = NULL;
+        -:   59:
+        -:   60:    // 初始化CUnit库
+        1:   61:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   62:        return CU_get_error();
+        -:   63:
+        -:   64:    // 添加一个测试套件
+        1:   65:    pSuite = CU_add_suite("Suite_1", NULL, NULL);
+        1:   66:    if (NULL == pSuite) {
+    #####:   67:        CU_cleanup_registry();
+    #####:   68:        return CU_get_error();
+        -:   69:    }
+        -:   70:
+        -:   71:    // 在测试套件中添加测试用例
+        1:   72:    if (NULL == CU_add_test(pSuite, "test of fopen_output_safely", test_fopen_output_safely)) {
+    #####:   73:        CU_cleanup_registry();
+    #####:   74:        return CU_get_error();
+        -:   75:    }
+        -:   76:
+        -:   77:    // 运行所有测试
+        1:   78:    CU_basic_run_tests();
+        -:   79:
+        -:   80:    // 清理CUnit并退出
+        1:   81:    CU_cleanup_registry();
+        1:   82:    return CU_get_error();
+        -:   83:}

@@ -1,0 +1,64 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_30_root_20_mmed3.c
+        -:    0:Graph:scc_68_mainQSort3.gcno
+        -:    0:Data:scc_68_mainQSort3.gcda
+        -:    0:Runs:1
+        -:    1:
+        -:    2:#include "../typedef.h"
+        -:    3:/**
+        -:    4: * 获取三个UChar中的中间值。
+        -:    5: * @param a 第一个UChar。
+        -:    6: * @param b 第二个UChar。
+        -:    7: * @param c 第三个UChar。
+        -:    8: * @return 返回三者中的中间值。
+        -:    9: */
+    #####:   10:static __inline__ UChar mmed3 ( UChar a, UChar b, UChar c ) {
+        -:   11:   UChar t;  // 临时变量，用于交换
+    #####:   12:   if (a > b) { t = a; a = b; b = t; };  // 如果a>b，则交换它们
+    #####:   13:   if (b > c) {
+    #####:   14:      b = c;  // 如果b>c，则b的值变为c
+    #####:   15:      if (a > b) b = a;  // 如果a现在大于b，则b的值变为a
+        -:   16:   }
+    #####:   17:   return b;  // 返回中间的值
+        -:   18:}
+        -:   19:
+        -:   20:
+        -:   21:#include <CUnit/Basic.h>
+        -:   22:#include <stdio.h>
+        -:   23:
+        -:   24:// 假设你已经有了上面的mmed3函数定义...
+        -:   25:
+    #####:   26:void test_mmed3(void) {
+    #####:   27:   CU_ASSERT(mmed3(1,2,3) == 2);  // 中间值是2
+    #####:   28:   CU_ASSERT(mmed3(3,1,2) == 2);  // 中间值是2
+    #####:   29:   CU_ASSERT(mmed3(2,3,1) == 2);  // 中间值是2
+    #####:   30:   CU_ASSERT(mmed3(5,5,5) == 5);  // 所有值都相同
+    #####:   31:   CU_ASSERT(mmed3(0,255,128) == 128);  // 测试极限值
+    #####:   32:}
+        -:   33:
+        -:   34:// int main(void) {
+        -:   35://    CU_pSuite pSuite = NULL;
+        -:   36:
+        -:   37://    /* 初始化CUnit库 */
+        -:   38://    if (CUE_SUCCESS != CU_initialize_registry())
+        -:   39://       return CU_get_error();
+        -:   40:
+        -:   41://    /* 添加测试套件到注册中心 */
+        -:   42://    pSuite = CU_add_suite("mmed3_test_suite", NULL, NULL);
+        -:   43://    if (NULL == pSuite) {
+        -:   44://       CU_cleanup_registry();
+        -:   45://       return CU_get_error();
+        -:   46://    }
+        -:   47:
+        -:   48://    /* 添加测试函数到套件 */
+        -:   49://    if (NULL == CU_add_test(pSuite, "test_mmed3", test_mmed3)) {
+        -:   50://       CU_cleanup_registry();
+        -:   51://       return CU_get_error();
+        -:   52://    }
+        -:   53:
+        -:   54://    /* 运行所有测试 */
+        -:   55://    CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   56://    CU_basic_run_tests();
+        -:   57://    CU_cleanup_registry();
+        -:   58:
+        -:   59://    return CU_get_error();
+        -:   60:// }

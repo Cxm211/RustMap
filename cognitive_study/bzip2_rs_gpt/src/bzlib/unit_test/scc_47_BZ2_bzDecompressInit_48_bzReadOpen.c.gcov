@@ -1,0 +1,199 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_47_BZ2_bzDecompressInit_48_bzReadOpen.c
+        -:    0:Graph:scc_11_BZ2_bzReadClose.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:#include "../typedef.h"
+        -:    2:#include "./scc_44_root_30_default_bzfree.c"
+        -:    3:/**
+        -:    4: * 初始化bzip2解压流。
+        -:    5: *
+        -:    6: * @param strm       - 指向bz_stream结构的指针，该结构保存压缩或解压缩操作的状态。
+        -:    7: * @param verbosity  - 控制库输出多少辅助信息，范围为0到4。
+        -:    8: * @param small      - 控制解压缩操作是否使用较小的内存模型。
+        -:    9: *
+        -:   10: * @return 如果成功则返回0，如果失败则返回错误代码。
+        -:   11: */
+        -:   12:
+        -:   13:
+    #####:   14:int BZ2_bzDecompressInit
+        -:   15:                     ( bz_stream* strm,
+        -:   16:                       int verbosity,
+        -:   17:                       int small )
+        -:   18:{
+        -:   19:   DState* s;
+        -:   20:
+    #####:   21:   if (!bz_config_ok()) return (-9);
+        -:   22:
+    #####:   23:   if (strm == 
+        -:   24:              ((void *)0)
+    #####:   25:                  ) return (-2);
+    #####:   26:   if (small != 0 && small != 1) return (-2);
+    #####:   27:   if (verbosity < 0 || verbosity > 4) return (-2);
+        -:   28:
+    #####:   29:   if (strm->bzalloc == 
+        -:   30:                       ((void *)0)
+    #####:   31:                           ) strm->bzalloc = default_bzalloc;
+    #####:   32:   if (strm->bzfree == 
+        -:   33:                      ((void *)0)
+    #####:   34:                          ) strm->bzfree = default_bzfree;
+        -:   35:
+    #####:   36:   s = (strm->bzalloc)(strm->opaque,(sizeof(DState)),1);
+    #####:   37:   if (s == 
+        -:   38:           ((void *)0)
+    #####:   39:               ) return (-3);
+    #####:   40:   s->strm = strm;
+    #####:   41:   strm->state = s;
+    #####:   42:   s->state = 10;
+    #####:   43:   s->bsLive = 0;
+    #####:   44:   s->bsBuff = 0;
+    #####:   45:   s->calculatedCombinedCRC = 0;
+    #####:   46:   strm->total_in_lo32 = 0;
+    #####:   47:   strm->total_in_hi32 = 0;
+    #####:   48:   strm->total_out_lo32 = 0;
+    #####:   49:   strm->total_out_hi32 = 0;
+    #####:   50:   s->smallDecompress = (Bool)small;
+    #####:   51:   s->ll4 = 
+        -:   52:                             ((void *)0)
+        -:   53:                                 ;
+    #####:   54:   s->ll16 = 
+        -:   55:                             ((void *)0)
+        -:   56:                                 ;
+    #####:   57:   s->tt = 
+        -:   58:                             ((void *)0)
+        -:   59:                                 ;
+    #####:   60:   s->currBlockNo = 0;
+    #####:   61:   s->verbosity = verbosity;
+        -:   62:
+    #####:   63:   return 0;
+        -:   64:}
+        -:   65:
+        -:   66:
+        -:   67:
+        -:   68:
+        -:   69:
+        -:   70:// #include <CUnit/CUnit.h>
+        -:   71:// #include <CUnit/Basic.h>
+        -:   72:
+        -:   73:// void test_BZ2_bzDecompressInit_valid() {
+        -:   74://     bz_stream strm;
+        -:   75://     memset(&strm, 0, sizeof(bz_stream));
+        -:   76:
+        -:   77://     int result = BZ2_bzDecompressInit(&strm, 2, 1);
+        -:   78://     CU_ASSERT_EQUAL(result, 0);
+        -:   79://     CU_ASSERT_PTR_NOT_NULL(strm.state);
+        -:   80:// }
+        -:   81:
+        -:   82:/*
+        -:   83:
+        -:   84:函数解释：
+        -:   85:BZ2_bzReadOpen初始化一个用于读取bzip2压缩文件的结构。它接受以下参数：
+        -:   86:
+        -:   87:bzerror：指向一个整数的指针，用于存储可能发生的错误代码。
+        -:   88:f：指向一个已打开的文件的FILE指针。
+        -:   89:verbosity：控制库输出的详细程度，范围从0到4。
+        -:   90:small：控制是否使用内存少的解压模式。
+        -:   91:unused：指向未使用的数据的指针。
+        -:   92:nUnused：未使用数据的长度。
+        -:   93:该函数首先对传入的参数进行一些基本的检查，例如检查f是否为NULL，verbosity是否在有效范围内，以及其他几个参数。如果检查不通过，它会设置错误代码并返回NULL。
+        -:   94:
+        -:   95:接着，该函数会为bzFile结构分配内存，并初始化其字段。然后，它将nUnused字节的数据从unused复制到bzFile结构的缓冲区。
+        -:   96:
+        -:   97:最后，它使用BZ2_bzDecompressInit初始化解压流，并返回初始化的bzFile结构。
+        -:   98:
+        -:   99:
+        -:  100:*/
+        -:  101:
+        -:  102:// 打开bzip2压缩文件并准备进行解压操作
+    #####:  103:BZFILE* BZ2_bzReadOpen(int* bzerror, FILE* f, int verbosity, int small, void* unused, int nUnused) {
+    #####:  104:    bzFile* bzf = NULL;
+        -:  105:    int ret;
+        -:  106:
+        -:  107:    // 初始化错误代码为0
+    #####:  108:    if (bzerror != NULL) *bzerror = 0;
+    #####:  109:    if (bzf != NULL) bzf->lastErr = 0;
+        -:  110:
+        -:  111:    // 参数有效性检查
+    #####:  112:    if (f == NULL ||
+    #####:  113:        (small != 0 && small != 1) ||
+    #####:  114:        (verbosity < 0 || verbosity > 4) ||
+    #####:  115:        (unused == NULL && nUnused != 0) ||
+    #####:  116:        (unused != NULL && (nUnused < 0 || nUnused > 5000))) {
+    #####:  117:        if (bzerror != NULL) *bzerror = (-2);
+    #####:  118:        if (bzf != NULL) bzf->lastErr = (-2);
+    #####:  119:        return NULL;
+        -:  120:    }
+        -:  121:
+        -:  122:    // 检查文件错误
+    #####:  123:    if (ferror(f)) {
+    #####:  124:        if (bzerror != NULL) *bzerror = (-6);
+    #####:  125:        if (bzf != NULL) bzf->lastErr = (-6);
+    #####:  126:        return NULL;
+        -:  127:    }
+        -:  128:
+        -:  129:    // 为bzFile结构分配内存
+    #####:  130:    bzf = malloc(sizeof(bzFile));
+    #####:  131:    if (bzf == NULL) {
+    #####:  132:        if (bzerror != NULL) *bzerror = (-3);
+    #####:  133:        if (bzf != NULL) bzf->lastErr = (-3);
+    #####:  134:        return NULL;
+        -:  135:    }
+        -:  136:
+        -:  137:    // 初始化bzFile结构
+    #####:  138:    bzf->initialisedOk = false;
+    #####:  139:    bzf->handle = f;
+    #####:  140:    bzf->bufN = 0;
+    #####:  141:    bzf->writing = false;
+    #####:  142:    bzf->strm.bzalloc = NULL;
+    #####:  143:    bzf->strm.bzfree = NULL;
+    #####:  144:    bzf->strm.opaque = NULL;
+        -:  145:
+        -:  146:    // 复制未使用的数据到缓冲区
+    #####:  147:    while (nUnused > 0) {
+    #####:  148:        bzf->buf[bzf->bufN] = *((UChar*)(unused));
+    #####:  149:        bzf->bufN++;
+    #####:  150:        unused = ((void*)(1 + ((UChar*)(unused))));
+    #####:  151:        nUnused--;
+        -:  152:    }
+        -:  153:
+        -:  154:    // 初始化解压流
+    #####:  155:    ret = BZ2_bzDecompressInit(&(bzf->strm), verbosity, small);
+    #####:  156:    if (ret != 0) {
+    #####:  157:        if (bzerror != NULL) *bzerror = ret;
+    #####:  158:        if (bzf != NULL) bzf->lastErr = ret;
+    #####:  159:        free(bzf);
+    #####:  160:        return NULL;
+        -:  161:    }
+        -:  162:
+    #####:  163:    bzf->strm.avail_in = bzf->bufN;
+    #####:  164:    bzf->strm.next_in = bzf->buf;
+        -:  165:
+    #####:  166:    bzf->initialisedOk = true;
+    #####:  167:    return bzf;
+        -:  168:}
+        -:  169:
+        -:  170:// void test_BZ2_bzReadOpen_valid() {
+        -:  171://     int error;
+        -:  172://     FILE* file = fopen("test.bzip2", "rb"); // 请确保有一个叫做test.bzip2的压缩文件
+        -:  173://     BZFILE* bzf = BZ2_bzReadOpen(&error, file, 2, 1, NULL, 0);
+        -:  174:
+        -:  175://     CU_ASSERT_PTR_NOT_NULL(bzf);
+        -:  176://     CU_ASSERT_EQUAL(error, 0);
+        -:  177:    
+        -:  178://     // 在此处添加额外的测试，如关闭文件，释放资源等
+        -:  179://     fclose(file);
+        -:  180:// }
+        -:  181:
+        -:  182:// int main() {
+        -:  183://     CU_initialize_registry();
+        -:  184:
+        -:  185://     CU_pSuite suite = CU_add_suite("Test Two", NULL, NULL);
+        -:  186://     CU_add_test(suite, "test_BZ2_bzReadOpen_valid", test_BZ2_bzReadOpen_valid);
+        -:  187://     CU_add_test(suite, "test_BZ2_bzDecompressInit_valid", test_BZ2_bzDecompressInit_valid);
+        -:  188:
+        -:  189:
+        -:  190://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:  191://     CU_basic_run_tests();
+        -:  192:
+        -:  193://     CU_cleanup_registry();
+        -:  194://     return 0;
+        -:  195:// }

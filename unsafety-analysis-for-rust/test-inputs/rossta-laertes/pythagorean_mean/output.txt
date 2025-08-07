@@ -1,3 +1,0 @@
-Arithmetic mean = -nan
-Geometric mean = 1.000000
-Harmonic mean = -nan

@@ -1,0 +1,58 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/compress/scc_36_root_24_BZ2_bsInitWrite.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::global_vars::bzip2_c1::{EState};
+        -:    2:#include  "../typedef.h"
+        -:    3:
+        -:    4:
+        -:    5:// 初始化写入位流的状态
+        1:    6:void BZ2_bsInitWrite ( EState* s )
+        -:    7:{
+        -:    8:   // 设置当前有效的位数为0
+        1:    9:   s->bsLive = 0;
+        -:   10:   // 清空位缓冲
+        1:   11:   s->bsBuff = 0;
+        1:   12:}
+        -:   13:
+        -:   14:
+        -:   15:
+        -:   16:#include <CUnit/Basic.h>
+        -:   17:
+        -:   18:// 假设已经定义了EState结构体和BZ2_bsInitWrite函数...
+        -:   19:
+        1:   20:void test_BZ2_bsInitWrite(void) {
+        -:   21:   EState s;
+        1:   22:   s.bsLive = 5;  // 为测试目的随意设置一个值
+        1:   23:   s.bsBuff = 10; // 同上
+        -:   24:
+        1:   25:   BZ2_bsInitWrite(&s);
+        -:   26:
+        1:   27:   CU_ASSERT_EQUAL(s.bsLive, 0);
+        1:   28:   CU_ASSERT_EQUAL(s.bsBuff, 0);
+        1:   29:}
+        -:   30:
+        1:   31:int main(void) {
+        1:   32:   CU_pSuite pSuite = NULL;
+        -:   33:
+        -:   34:   // 初始化CUnit库
+        1:   35:   if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   36:      return CU_get_error();
+        -:   37:
+        -:   38:   // 添加测试套件到注册中心
+        1:   39:   pSuite = CU_add_suite("BZ2_bsInitWrite_test_suite", NULL, NULL);
+        1:   40:   if (NULL == pSuite) {
+    #####:   41:      CU_cleanup_registry();
+    #####:   42:      return CU_get_error();
+        -:   43:   }
+        -:   44:
+        -:   45:   // 将测试添加到套件中
+        1:   46:   CU_ADD_TEST(pSuite, test_BZ2_bsInitWrite);
+        -:   47:
+        -:   48:   // 运行所有测试
+        1:   49:   CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   50:   CU_basic_run_tests();
+        -:   51:
+        1:   52:   CU_cleanup_registry();
+        1:   53:   return CU_get_error();
+        -:   54:}

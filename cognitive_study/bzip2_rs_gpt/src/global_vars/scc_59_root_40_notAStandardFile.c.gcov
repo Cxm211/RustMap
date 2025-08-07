@@ -1,0 +1,79 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcno
+        -:    0:Data:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_59_root_40_notAStandardFile.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:
+        -:    3:// 检查给定名称的文件是否是一个标准的文件。
+        -:    4:static
+    #####:    5:Bool notAStandardFile ( Char* name )
+        -:    6:{
+        -:    7:   IntNative i;
+        -:    8:   struct stat statBuf;
+        -:    9:
+        -:   10:   // 尝试获取文件的状态信息。
+    #####:   11:   i = lstat ( name, &statBuf );
+        -:   12:   // 如果lstat返回错误，表示它不是标准文件。
+    #####:   13:   if (i != 0) return ((Bool)1);
+        -:   14:   // 如果文件的模式表示它是一个标准的文件，返回false。
+    #####:   15:   if ( (statBuf.st_mode & 0170000) == (0100000)) return ((Bool)0);
+        -:   16:   // 在其他情况下返回true。
+    #####:   17:   return ((Bool)1);
+        -:   18:}
+        -:   19:
+        -:   20:
+        -:   21:#include <CUnit/Basic.h>
+        -:   22:#include <sys/types.h>
+        -:   23:#include <sys/stat.h>
+        -:   24:#include <unistd.h>
+        -:   25:#include <fcntl.h>
+        -:   26:
+        -:   27:// 创建测试文件和链接
+        1:   28:void setup(void) {
+        -:   29:    // 创建一个标准文件
+        1:   30:    int fd = open("someStandardFile.txt", O_CREAT | O_WRONLY, 0644);
+        1:   31:    if (fd != -1) {
+        1:   32:        close(fd);
+        -:   33:    }
+        -:   34:
+        -:   35:    // 创建一个符号链接
+        1:   36:    symlink("someStandardFile.txt", "someLinkOrSpecialFile");
+        1:   37:}
+        -:   38:
+        -:   39:// 删除测试文件和链接
+    #####:   40:void teardown(void) {
+    #####:   41:    remove("someStandardFile.txt");
+    #####:   42:    remove("someLinkOrSpecialFile");
+    #####:   43:}
+        -:   44:
+    #####:   45:void test_notAStandardFile(void) {
+    #####:   46:    CU_ASSERT_EQUAL(notAStandardFile("someStandardFile.txt"), 0);
+    #####:   47:    CU_ASSERT_EQUAL(notAStandardFile("someLinkOrSpecialFile"), 1);
+    #####:   48:}
+        -:   49:
+        1:   50:int main() {
+        1:   51:    CU_pSuite pSuite = NULL;
+        -:   52:
+        -:   53:    /* 初始化CUnit库 */
+        1:   54:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   55:        return CU_get_error();
+        -:   56:
+        -:   57:    /* 添加一个Suite到测试注册表 */
+        1:   58:    pSuite = CU_add_suite("notAStandardFile_test_suite", setup, teardown);
+        1:   59:    if (NULL == pSuite) {
+    #####:   60:        CU_cleanup_registry();
+    #####:   61:        return CU_get_error();
+        -:   62:    }
+        -:   63:
+        -:   64:    /* 在Suite中添加测试用例 */
+        1:   65:    if ((NULL == CU_add_test(pSuite, "test_notAStandardFile", test_notAStandardFile))) {
+    #####:   66:        CU_cleanup_registry();
+    #####:   67:        return CU_get_error();
+        -:   68:    }
+        -:   69:
+        -:   70:    /* 运行所有测试用CUnit Basic接口 */
+        1:   71:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   72:    CU_basic_run_tests();
+        1:   73:    CU_cleanup_registry();
+        1:   74:    return CU_get_error();
+        -:   75:}

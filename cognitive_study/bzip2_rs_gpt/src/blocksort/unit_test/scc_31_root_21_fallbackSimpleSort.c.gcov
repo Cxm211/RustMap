@@ -1,0 +1,99 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_31_root_21_fallbackSimpleSort.c
+        -:    0:Graph:scc_31_root_21_fallbackSimpleSort.gcno
+        -:    0:Data:scc_31_root_21_fallbackSimpleSort.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include <CUnit/Basic.h>
+        -:    3:#include <CUnit/CUnit.h>
+        -:    4:// 该函数对fmap数组在指定范围[lo, hi]内进行排序。
+        -:    5:// 排序是基于eclass数组中的值进行的，即fmap中的值用作eclass的索引。
+        1:    6:void fallbackSimpleSort ( UInt32* fmap,    // 需要排序的数组
+        -:    7:                          UInt32* eclass,  // 用于排序的辅助数组
+        -:    8:                          Int32 lo,        // 排序范围的开始索引
+        -:    9:                          Int32 hi )       // 排序范围的结束索引
+        -:   10:{
+        -:   11:   Int32 i, j, tmp;         // 临时变量
+        -:   12:   UInt32 ec_tmp;           // 临时存储eclass的值
+        -:   13:
+        -:   14:   // 如果lo和hi相等，即排序范围只有一个元素，则直接返回
+       1*:   15:   if (lo == hi) return;
+        -:   16:
+        -:   17:   // 如果排序范围大于3个元素
+        1:   18:   if (hi - lo > 3) {
+        -:   19:      // 从倒数第四个元素开始，向前遍历
+        4:   20:      for ( i = hi-4; i >= lo; i-- ) {
+        3:   21:         tmp = fmap[i];
+        3:   22:         ec_tmp = eclass[tmp];
+        -:   23:         // 向后移动eclass值大于ec_tmp的所有元素
+       3*:   24:         for ( j = i+4; j <= hi && ec_tmp > eclass[fmap[j]]; j += 4 )
+    #####:   25:            fmap[j-4] = fmap[j];
+        -:   26:         // 插入当前元素
+        3:   27:         fmap[j-4] = tmp;
+        -:   28:      }
+        -:   29:   }
+        -:   30:
+        -:   31:   // 对所有元素进行一般的插入排序
+        7:   32:   for ( i = hi-1; i >= lo; i-- ) {
+        6:   33:      tmp = fmap[i];
+        6:   34:      ec_tmp = eclass[tmp];
+        -:   35:      // 向后移动eclass值大于ec_tmp的所有元素
+       12:   36:      for ( j = i+1; j <= hi && ec_tmp > eclass[fmap[j]]; j++ )
+        6:   37:         fmap[j-1] = fmap[j];
+        -:   38:      // 插入当前元素
+        6:   39:      fmap[j-1] = tmp;
+        -:   40:   }
+        -:   41:}
+        1:   42:void test_fallbackSimpleSort(void) {
+        -:   43:    // 第一个测试用例
+        1:   44:    UInt32 fmap1[] = {120243, 242, 184, 183, 177, 113, 54};
+        1:   45:    UInt32 eclass1[120244] = {0}; // 初始化所有值为0
+        1:   46:    eclass1[120243] = 30061;
+        1:   47:    eclass1[242] = 0;
+        1:   48:    eclass1[184] = 90183;
+        1:   49:    eclass1[183] = 0;
+        1:   50:    eclass1[177] = 60126;
+        1:   51:    eclass1[113] = 30122;
+        1:   52:    eclass1[54] = 90187;
+        -:   53:
+        1:   54:    fallbackSimpleSort(fmap1, eclass1, 0, 6);
+        -:   55:
+        1:   56:    UInt32 expected_fmap1[] = {242, 183, 120243, 113, 177, 184, 54};
+        8:   57:    for(int i = 0; i < 7; i++) {
+        7:   58:        CU_ASSERT_EQUAL(fmap1[i], expected_fmap1[i]);
+        -:   59:    }
+        1:   60:}
+        -:   61: // // 第二个测试用例
+        -:   62:    // UInt32 fmap2[] = {210, 128, 220, 145, 159, 106};
+        -:   63:    // UInt32 eclass2[] = {90200, 90187, 90187, 90200, 90200, 90200};
+        -:   64:    // fallbackSimpleSort(fmap2, eclass2, 0, 5);
+        -:   65:    // UInt32 expected_fmap2[] = {128, 220, 210, 145, 159, 106};
+        -:   66:    // for(int i = 0; i < 6; i++) {
+        -:   67:    //     CU_ASSERT_EQUAL(fmap2[i], expected_fmap2[i]);
+        -:   68:    // }
+        -:   69:
+        -:   70:
+        1:   71:int main() {
+        -:   72:    // 初始化CUnit test registry
+        1:   73:    if (CUE_SUCCESS != CU_initialize_registry())
+    #####:   74:        return CU_get_error();
+        -:   75:
+        -:   76:    // 添加测试用例
+        1:   77:    CU_pSuite pSuite = NULL;
+        1:   78:    pSuite = CU_add_suite("TestSuite_fallbackSimpleSort", 0, 0);
+        1:   79:    if (NULL == pSuite) {
+    #####:   80:        CU_cleanup_registry();
+    #####:   81:        return CU_get_error();
+        -:   82:    }
+        -:   83:    
+        -:   84:    // 添加测试函数到测试集
+        1:   85:    if ((NULL == CU_add_test(pSuite, "test_fallbackSimpleSort", test_fallbackSimpleSort))) {
+    #####:   86:        CU_cleanup_registry();
+    #####:   87:        return CU_get_error();
+        -:   88:    }
+        -:   89:
+        -:   90:    // 运行所有测试
+        1:   91:    CU_basic_set_mode(CU_BRM_VERBOSE);
+        1:   92:    CU_basic_run_tests();
+        1:   93:    CU_cleanup_registry();
+        1:   94:    return CU_get_error();
+        -:   95:}

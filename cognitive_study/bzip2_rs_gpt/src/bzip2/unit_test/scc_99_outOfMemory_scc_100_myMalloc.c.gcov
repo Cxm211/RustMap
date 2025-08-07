@@ -1,0 +1,82 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_99_outOfMemory_scc_100_myMalloc.c
+        -:    0:Graph:scc_101_mkCell.gcno
+        -:    0:Data:scc_101_mkCell.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include <CUnit/CUnit.h>
+        -:    3:#include <CUnit/Basic.h>
+        -:    4:#include <ctype.h>
+        -:    5:#include "./scc_91_cleanUpAndFail.c"
+        -:    6:#include "./scc_80_root_43_showFileNames.c"
+        -:    7:
+        -:    8:// 当内存分配失败时，报告错误信息并退出程序
+        -:    9:static
+    #####:   10:void outOfMemory ( void )
+        -:   11:{
+        -:   12:   // 向标准错误输出流打印错误信息，其中包含程序名
+    #####:   13:   fprintf(stderr, "\n%s: couldn't allocate enough memory\n", progName);
+        -:   14:   // 显示相关文件名
+    #####:   15:   showFileNames();
+        -:   16:   // 清理并以错误代码1退出
+    #####:   17:   cleanUpAndFail(1);
+    #####:   18:}
+        -:   19:
+        -:   20:
+        -:   21:
+        -:   22:// 注意：这个函数的功能是报告错误并终止程序，因此很难为其编写单元测试。
+        -:   23:// 但如果需要的话，可以模拟内存分配失败或者使用mocking技术来测试它的行为。
+        -:   24:// 以下是一个简单的测试，假设我们可以模拟内存分配失败。
+        -:   25:
+    #####:   26:void test_outOfMemory(void) {
+        -:   27:    // 假设我们可以模拟内存分配失败
+        -:   28:    // outOfMemory();  // 调用这个函数会导致程序退出，所以在实际测试中应该避免直接调用
+    #####:   29:    CU_FAIL("This test is just a placeholder and shouldn't be executed directly.");
+    #####:   30:}
+        -:   31:
+        -:   32:
+        -:   33:static
+    #####:   34:void *myMalloc ( Int32 n )
+        -:   35:{
+        -:   36:   void* p;
+        -:   37:
+        -:   38:   // 尝试分配n个字节的内存
+    #####:   39:   p = malloc ( (size_t)n );
+        -:   40:   
+        -:   41:   // 如果分配失败，调用outOfMemory函数
+    #####:   42:   if (p == ((void *)0)) outOfMemory ();
+        -:   43:   
+    #####:   44:   return p;
+        -:   45:}
+        -:   46:
+        -:   47:// use crate::bzip2::scc_100_myMalloc::*;
+        -:   48:
+        -:   49:// myMalloc ( Int32 )
+        -:   50:
+        -:   51:// 对标准的malloc函数进行封装，当分配内存失败时调用outOfMemory处理。
+        -:   52:
+        -:   53:#include <CUnit/CUnit.h>
+        -:   54:#include <CUnit/Basic.h>
+        -:   55:
+        -:   56:
+    #####:   57:void test_myMalloc(void) {
+        -:   58:    // 测试正常情况下的内存分配
+    #####:   59:    void* p = myMalloc(10);
+    #####:   60:    CU_ASSERT_PTR_NOT_NULL(p); // 断言p不为NULL
+    #####:   61:    free(p);
+        -:   62:
+        -:   63:    // 虽然在真实环境中很难模拟malloc失败的情况，但我们可以通过其他方式来测试outOfMemory被调用的逻辑。
+        -:   64:    // 例如，可以暂时修改myMalloc中的逻辑来模拟malloc失败，或者尝试分配极大的内存来触发失败。
+    #####:   65:}
+        -:   66:
+        -:   67:// int main() {
+        -:   68://     CU_initialize_registry();
+        -:   69://     CU_pSuite suite = CU_add_suite("Test myMalloc", NULL, NULL);
+        -:   70:    
+        -:   71://     CU_add_test(suite, "test_myMalloc", test_myMalloc);
+        -:   72://     CU_add_test(suite, "test_outOfMemory", test_outOfMemory);
+        -:   73:
+        -:   74://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   75://     CU_basic_run_tests();
+        -:   76://     CU_cleanup_registry();
+        -:   77://     return 0;
+        -:   78:// }

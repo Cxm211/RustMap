@@ -1,0 +1,38 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_90_root_52_setExit.c
+        -:    0:Graph:scc_91_cleanUpAndFail.gcno
+        -:    0:Data:scc_91_cleanUpAndFail.gcda
+        -:    0:Runs:1
+        -:    1:#include "../typedef.h"
+        -:    2:#include <CUnit/CUnit.h>
+        -:    3:#include <CUnit/Basic.h>
+        -:    4:
+        -:    5:// 定义函数 setExit
+        -:    6:static
+    #####:    7:void setExit ( Int32 v )
+        -:    8:{
+        -:    9:   // 如果传入的值 v 大于当前的 exitValue，则更新 exitValue
+    #####:   10:   if (v > exitValue) exitValue = v;
+    #####:   11:}
+        -:   12:
+        -:   13:
+    #####:   14:void test_setExit_noUpdate() {
+    #####:   15:    exitValue = 10;  // 设置初始值
+    #####:   16:    setExit(5);      // 尝试更新
+        -:   17:
+    #####:   18:    CU_ASSERT_EQUAL(exitValue, 10);  // 检查值仍然是10
+    #####:   19:}
+        -:   20:
+        -:   21:// int main() {
+        -:   22://     CU_initialize_registry();
+        -:   23:
+        -:   24://     CU_pSuite suite = CU_add_suite("Test setExit", NULL, NULL);
+        -:   25:
+        -:   26://     CU_add_test(suite, "test_setExit_updateValue", test_setExit_noUpdate);
+        -:   27://     CU_add_test(suite, "test_setExit_noUpdate", test_setExit_noUpdate);
+        -:   28:
+        -:   29://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:   30://     CU_basic_run_tests();
+        -:   31:
+        -:   32://     CU_cleanup_registry();
+        -:   33://     return 0;
+        -:   34:// }

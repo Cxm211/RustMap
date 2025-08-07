@@ -1,0 +1,35 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_10_root_5_BZ2_bzDecompressEnd.c
+        -:    0:Graph:scc_11_BZ2_bzReadClose.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:// use crate::global_vars::bzip2_c1::{DState, bz_stream};
+        -:    2:#include "../typedef.h"
+    #####:    3:int BZ2_bzDecompressEnd ( bz_stream *strm )
+        -:    4:{
+        -:    5:   DState* s;
+    #####:    6:   if (strm == 
+        -:    7:              ((void *)0)
+    #####:    8:                  ) return (-2);
+    #####:    9:   s = strm->state;
+    #####:   10:   if (s == 
+        -:   11:           ((void *)0)
+    #####:   12:               ) return (-2);
+    #####:   13:   if (s->strm != strm) return (-2);
+        -:   14:
+    #####:   15:   if (s->tt != 
+        -:   16:                 ((void *)0)
+    #####:   17:                     ) (strm->bzfree)(strm->opaque,(s->tt));
+    #####:   18:   if (s->ll16 != 
+        -:   19:                 ((void *)0)
+    #####:   20:                     ) (strm->bzfree)(strm->opaque,(s->ll16));
+    #####:   21:   if (s->ll4 != 
+        -:   22:                 ((void *)0)
+    #####:   23:                     ) (strm->bzfree)(strm->opaque,(s->ll4));
+        -:   24:
+    #####:   25:   (strm->bzfree)(strm->opaque,(strm->state));
+    #####:   26:   strm->state = 
+        -:   27:                ((void *)0)
+        -:   28:                    ;
+        -:   29:
+    #####:   30:   return 0;
+        -:   31:}

@@ -1,0 +1,88 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzlib/scc_11_BZ2_bzReadClose.c
+        -:    0:Graph:scc_11_BZ2_bzReadClose.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:// use crate::huffman::scc_12_root_6_BZ2_hbCreateDecodeTables::*;
+        -:    2:// use crate::global_vars::bzip2_c1::{bzFile};
+        -:    3:#include "../typedef.h"
+        -:    4:#include <CUnit/CUnit.h>
+        -:    5:#include <CUnit/Basic.h>
+        -:    6:#include "./scc_10_root_5_BZ2_bzDecompressEnd.c"
+        -:    7:// 关闭bzip2的文件流并释放相关资源
+    #####:    8:void BZ2_bzReadClose ( int *bzerror, BZFILE *b )
+        -:    9:{
+        -:   10:   // 将BZFILE指针转换为bzFile类型，以方便后续操作
+    #####:   11:   bzFile* bzf = (bzFile*)b;
+        -:   12:
+        -:   13:   // 初始化错误状态
+    #####:   14:   if (bzerror != 
+        -:   15:  ((void *)0)
+    #####:   16:  ) *bzerror = 0;
+    #####:   17:   if (bzf != 
+        -:   18:  ((void *)0)
+    #####:   19:  ) bzf->lastErr = 0;
+        -:   20:
+        -:   21:   // 如果文件流为空，则直接返回
+    #####:   22:   if (bzf == 
+        -:   23:             ((void *)0)
+        -:   24:                 )
+        -:   25:   {
+    #####:   26:      if (bzerror != 
+        -:   27:       ((void *)0)
+    #####:   28:       ) *bzerror = 0;
+    #####:   29:      if (bzf != 
+        -:   30:       ((void *)0)
+    #####:   31:       ) bzf->lastErr = 0;
+    #####:   32:      return;
+        -:   33:   }
+        -:   34:
+        -:   35:   // 如果文件流是用于写入，返回错误
+    #####:   36:   if (bzf->writing)
+        -:   37:   {
+    #####:   38:      if (bzerror != 
+        -:   39:       ((void *)0)
+    #####:   40:       ) *bzerror = (-1);
+    #####:   41:      if (bzf != 
+        -:   42:       ((void *)0)
+    #####:   43:       ) bzf->lastErr = (-1);
+    #####:   44:      return;
+        -:   45:   }
+        -:   46:
+        -:   47:   // 如果文件流已初始化，结束解压操作
+    #####:   48:   if (bzf->initialisedOk)
+    #####:   49:      (void)BZ2_bzDecompressEnd ( &(bzf->strm) );
+        -:   50:
+        -:   51:   // 释放文件流资源
+    #####:   52:   free ( bzf );
+        -:   53:}
+        -:   54:
+        -:   55:#include "./scc_47_BZ2_bzDecompressInit_48_bzReadOpen.c"
+        -:   56:
+        -:   57:
+    #####:   58:void test_BZ2_bzReadClose(void) {
+        -:   59:    int error;
+        -:   60:    
+        -:   61:    // 打开一个测试用的bzip2文件流
+    #####:   62:    FILE *testF = fopen("11-test.txt.bz2.bz2", "rb");
+    #####:   63:    BZFILE* testFile = BZ2_bzReadOpen(&error, testF, 0, 0, NULL, 0);
+        -:   64:
+    #####:   65:    BZ2_bzReadClose(&error, testFile);
+        -:   66:
+        -:   67:    // 验证error和其他可能的状态
+    #####:   68:    CU_ASSERT_EQUAL(error, 0);  // 假设成功关闭文件时错误代码为0
+    #####:   69:    fclose(testF);  // 关闭文件描述符
+    #####:   70:}
+        -:   71:
+    #####:   72:int main() {
+    #####:   73:    CU_initialize_registry();
+        -:   74:
+    #####:   75:    CU_pSuite suite = CU_add_suite("Test BZ2_bzReadClose", NULL, NULL);
+        -:   76:
+    #####:   77:    CU_add_test(suite, "test_BZ2_bzReadClose", test_BZ2_bzReadClose);
+        -:   78:
+    #####:   79:    CU_basic_set_mode(CU_BRM_VERBOSE);
+    #####:   80:    CU_basic_run_tests();
+        -:   81:
+    #####:   82:    CU_cleanup_registry();
+    #####:   83:    return 0;
+        -:   84:}

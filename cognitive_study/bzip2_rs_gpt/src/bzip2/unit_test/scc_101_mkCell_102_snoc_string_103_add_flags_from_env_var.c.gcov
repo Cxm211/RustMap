@@ -1,0 +1,136 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/bzip2/scc_101_mkCell.c
+        -:    0:Graph:scc_101_mkCell.gcno
+        -:    0:Data:scc_101_mkCell.gcda
+        -:    0:Runs:1
+        -:    1:// use crate::bzip2::scc_101_mkCell::*;
+        -:    2:// use crate::global_vars::bzip2_c5::{Cell};
+        -:    3:#include "../typedef.h"
+        -:    4:#include <CUnit/CUnit.h>
+        -:    5:#include <CUnit/Basic.h>
+        -:    6:#include "./scc_99_outOfMemory_scc_100_myMalloc.c"
+        -:    7:// 定义单链表结构
+        -:    8:typedef
+        -:    9:   struct zzzz {
+        -:   10:      Char        *name;  // 节点名称
+        -:   11:      struct zzzz *link;  // 指向下一个节点的指针
+        -:   12:   }
+        -:   13:   Cell;
+        -:   14:
+        -:   15:
+        -:   16:
+        -:   17:// 创建一个新的链表节点
+        -:   18:static
+    #####:   19:Cell *mkCell ( void )
+        -:   20:{
+        -:   21:   Cell *c;
+    #####:   22:   c = (Cell*) myMalloc ( sizeof ( Cell ) );
+    #####:   23:   c->name = ((void *)0);  // 初始化名称为NULL
+    #####:   24:   c->link = ((void *)0);  // 初始化指向下一个节点的指针为NULL
+    #####:   25:   return c;
+        -:   26:}
+        -:   27:
+        -:   28:
+        -:   29:
+        -:   30:// 将新的名称添加到链表的末尾
+        -:   31:static
+    #####:   32:Cell *snocString ( Cell *root, Char *name )
+        -:   33:{
+    #####:   34:   if (root == ((void *)0)) {
+    #####:   35:      Cell *tmp = mkCell();
+    #####:   36:      tmp->name = (Char*) myMalloc ( 5 + strlen(name) );
+    #####:   37:      strcpy ( tmp->name, name );
+    #####:   38:      return tmp;
+        -:   39:   } else {
+    #####:   40:      Cell *tmp = root;
+    #####:   41:      while (tmp->link != ((void *)0)) tmp = tmp->link;
+    #####:   42:      tmp->link = snocString ( tmp->link, name );
+    #####:   43:      return root;
+        -:   44:   }
+        -:   45:}
+    #####:   46:void test_snocString(void) {
+    #####:   47:    Cell* root = ((void *)0);  // 初始为空的链表
+    #####:   48:    Char str1[] = "Hello";
+    #####:   49:    Char str2[] = "World";
+        -:   50:
+    #####:   51:    root = snocString(root, str1);
+    #####:   52:    CU_ASSERT_STRING_EQUAL(root->name, "Hello");  // 检查第一个节点的名称
+        -:   53:
+    #####:   54:    root = snocString(root, str2);
+    #####:   55:    CU_ASSERT_STRING_EQUAL(root->link->name, "World");  // 检查第二个节点的名称
+    #####:   56:}
+        -:   57:
+        -:   58:
+        -:   59:
+        -:   60:
+        -:   61:
+        -:   62:// 3
+        -:   63:// 从环境变量中读取标志并将其添加到链表中
+        -:   64:static
+    #####:   65:void addFlagsFromEnvVar ( Cell** argList, Char* varName )
+        -:   66:{
+        -:   67:   Int32 i, j, k;
+        -:   68:   Char *envbase, *p;
+        -:   69:
+    #####:   70:   envbase = getenv(varName);
+    #####:   71:   if (envbase != 
+        -:   72:                 ((void *)0)
+        -:   73:                     ) {
+    #####:   74:      p = envbase;
+    #####:   75:      i = 0;
+        -:   76:      while (((Bool)1)) {
+    #####:   77:         if (p[i] == 0) break;
+    #####:   78:         p += i;
+    #####:   79:         i = 0;
+    #####:   80:         while (
+    #####:   81:               ((*__ctype_b_loc ())[(int) ((
+    #####:   82:               (Int32)(p[0])
+    #####:   83:               ))] & (unsigned short int) _ISspace)
+    #####:   84:                                     ) p++;
+    #####:   85:         while (p[i] != 0 && !
+    #####:   86:                             ((*__ctype_b_loc ())[(int) ((
+    #####:   87:                             (Int32)(p[i])
+    #####:   88:                             ))] & (unsigned short int) _ISspace)
+    #####:   89:                                                   ) i++;
+    #####:   90:         if (i > 0) {
+    #####:   91:            k = i; if (k > 1034 -10) k = 1034 -10;
+    #####:   92:            for (j = 0; j < k; j++) tmpName[j] = p[j];
+    #####:   93:            tmpName[k] = 0;
+    #####:   94:            *argList=snocString((*argList), (tmpName));
+        -:   95:         }
+        -:   96:      }
+        -:   97:   }
+    #####:   98:}
+        -:   99:
+        -:  100:
+        -:  101:
+        -:  102:// 为模拟目的定义假的getenv函数
+        -:  103:Char* getenv(const Char* varName) {
+        2:  104:    if (strcmp(varName, "MY_TEST_ENV") == 0) {
+    #####:  105:        return "flag1 flag2 flag3";  // 这是模拟的环境变量值
+        -:  106:    }
+        2:  107:    return ((void *)0);
+        -:  108:}
+        -:  109:
+        -:  110:// CUnit 测试用例
+    #####:  111:void test_addFlagsFromEnvVar(void) {
+    #####:  112:    Cell* root = ((void *)0);  // 初始为空的链表
+        -:  113:
+    #####:  114:    addFlagsFromEnvVar(&root, "MY_TEST_ENV");  // 添加从模拟环境变量获取的标志
+        -:  115:
+    #####:  116:    CU_ASSERT_STRING_EQUAL(root->name, "flag1");  // 检查第一个节点的名称
+    #####:  117:    CU_ASSERT_STRING_EQUAL(root->link->name, "flag2");  // 检查第二个节点的名称
+    #####:  118:    CU_ASSERT_STRING_EQUAL(root->link->link->name, "flag3");  // 检查第三个节点的名称
+    #####:  119:}
+        -:  120:
+        -:  121:// int main(void) {
+        -:  122://     CU_initialize_registry();
+        -:  123:
+        -:  124://     CU_pSuite suite = CU_add_suite("Test addFlagsFromEnvVar", 0, 0);
+        -:  125://     CU_add_test(suite, "test_addFlagsFromEnvVar", test_addFlagsFromEnvVar);
+        -:  126:
+        -:  127://     CU_basic_set_mode(CU_BRM_VERBOSE);
+        -:  128://     CU_basic_run_tests();
+        -:  129://     CU_cleanup_registry();
+        -:  130:
+        -:  131://     return 0;
+        -:  132:// }

@@ -358,261 +358,49 @@ bash /root/rustmap/c-code/rosetta-125/gcc-Rosetta-code.sh
 View the result in `/root/rustmap/c-code/rosetta-125/coverage_report/index.html` for Table 1 Rosetta Code
 ![](paper_pic/Table-Coverage-Rosetta.jpg)
 
-<!-- 
 # 7. Cogntive Complexity Test
 
-> The following operational instructions can be executed in the Docker image `rustmap-feasibility-study.tar.gz` available on [zenodo](https://zenodo.org/records/10433166). The operational code is present in both this repository and the Zenodo Docker image.
-
-
-## 7.1. bzip2 Complexity Test
+## 7.1. Compute Cognitive Complexity
+To analyze the cognitive complexity of each function, first run:
 ```bash
-# Generate Cognitivie Complexity comparative study result for Rustmap and C2Rust for each folder
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/bzip2
-
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/blocksort
-
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/bzlib
-
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/compress
-
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/decompress
-
-cargo run -- /root/rustmap/cognitive-complex-test/src/comparision/huffman
+cd cognitive_study
+./run_all.sh
 ```
-View the initial result in `/root/rustmap/cognitive-complex-test/result/bzip2-complexity-init-result.csv`
-
-
-We merge the result as image below
-![](cognitive-complex-test/result/bzip2-merged-result.pdf)
-
-
-
-View Final Result after merge
-![](cognitive-complex-test/result/bzip2-Complexity-Final-Result.pdf)
-
-
-## 7.2. Rosetta Code Complexity Test
-In `cognitive-complex-test/src`
-
-1. Generate RustMap Rosetta Code Complexity Result
+This will compute the cognitive complexity for each function in four project in /results folder. 
+Then extract cognitive complexity values using:
 ```bash
-# Rename `main-Rosetta-gpt` and replace it as `main.rs`
-cargo run -- /root/rustmap/rust-code/Rosetta_code_gpt
-
+python extract_cc.py
 ```
+This will generate four CSV files, each containing the complexity values for one project:
+- cognitive_complexity_bzip2_rs_gpt.csv
+- cognitive_complexity_bzip2-c2rust.csv
+- cognitive_complexity_rosetta_code_gpt.csv
+- cognitive_complexity_rossta-c2rust.csv
 
-2. Generate C2Rust Rosetta Code Complexity Result
-```bash
-#  Rename `main-Rosetta-c2rust` and replace it as `main.rs`
-cargo run --  /root/rustmap/unsafety-analysis-for-rust/test-inputs/Rosetta-c2rust-readability
-```
-
-
-View the initial result in `/root/rustmap/cognitive-complex-test/result/Rosetta-complexity-init-result.csv`
+Each file includes the cognitive complexity scores at the function or file level, depending on the project.
 
 
-View Final Result after merge
-![](paper_pic/Roseta-Code-Complexity.pdf)  
-
-
-
-
-### 7.2.1. Drawing Violin Graph for both bzip2 and Rosetta code
-![](./paper_pic/violin-diagram.jpg)
-This `.ipynb` file reads two CSV files containing complexity score data for RustMap and C2Rust, generates violin plots for these data, and performs statistical comparisons using the Wilcoxon test and Cliff's Delta test.
-
-The first `Book1.csv` contains complexity scores for bzip2 RustMap and C2Rust. The second `Book2.csv` contains complexity scores for Rosetta Code RustMap and C2Rust.
-
-#### 7.2.1.1. How to Execute:
-
-1. Ensure that Jupyter Notebook is installed. If not, install it using the following command:
+## 7.2. Visualize Results
+To generate violin plots comparing complexity across different tools and datasets, run:
 
 ```bash
-pip install notebook
+python plot.py
 ```
+This will produce and save plot violin_plot.png summarizing the cognitive complexity distributions.
 
+# 8. Unsafety Analysis for bzip2-rustmap-gpt, which-rustmap-gpt and rossta-rustmap-gpt RQ2
 
-2. Open a terminal or command prompt and navigate to the directory containing the violin_plot.ipynb file. For example:
-
-```bash
-/root/rustmap/violin_plot.ipynb
-```
-
-3. Start Jupyter Notebook
-```bash
-jupyter notebook
-```
-
-4. The Jupyter Notebook interface will automatically open in your browser. Find and click on the `violin_plot.ipynb` file.
-
-5. Run each code cell one by one (click on each cell and press Shift+Enter) to ensure all code executes correctly and generates the violin plots and statistical comparison results.
-
-
-
-
-
-
-
-# 8. Unsafety Analysis for bzip2-rustmap-gpt and Rosetta-rustmap-gpt
-
-The below operation is based on docker image *rustmap-unsafety-evaluation.tar.gz* in Zenodo.
-The Code is of operation is both on README.md and Zenodo docker image.
 
 - for C2Rust: we use [C2Rust](https://github.com/immunant/c2rust)
 - for CRUSTS : we use [In Rust We Trust – A Transpiler from Unsafe C to Safer Rust](https://ieeexplore.ieee.org/document/9793767) from [CRustS - Transpiling Unsafe C code to Safer Rust](https://github.com/yijunyu/crusts)
-- for Laertes: we use [aliasing-limit-23](10.5281/zenodo.7714175) from *[Aliasing Limits on Translating C to Safe Rust](https://dl.acm.org/doi/abs/10.1145/3586046)* 
-- for unsafe-counter: We will use [unsafe-counter](https://zenodo.org/records/10433166) from [Translating C to safer Rust](https://dl.acm.org/doi/abs/10.1145/3485498)
+- for Laertes: we use data from *[Aliasing Limits on Translating C to Safe Rust](https://dl.acm.org/doi/abs/10.1145/3586046)* 
+- for rustmap: we use GPT-4 to generate result, which located in feasibility folder to generate the result
+- for unsafe-counter: We will use [unsafe-counter](https://zenodo.org/records/5442253) from [Translating C to safer Rust](https://dl.acm.org/doi/abs/10.1145/3485498)
+
+The code is uploaded in our docker image in [docker hub](https://hub.docker.com/r/cxm211/unsafe_analysis) 
 
 
-
- In order to execute the instructions below, we recommend to the unsafe-counter docker image use [zenodo doi](https://zenodo.org/records/10433166)  
-
-
-the core step is below:
-```bash
- cargo run --release --target=x86_64-unknown-linux-gnu --bin unsafe-counter -- project 
-```
-
-
-After running the below commands, we mainly focus on two rows, each generate the data requires in Unsafe Test
-```bash
-Benchmark,Statistic,ReadFromUnion,MutGlobalAccess,InlineAsm,ExternCall,RawPtrDeref,UnsafeCast,Alloc
-(unknown),Occurrences, ........,........,........,........,........,........
-```
-See Table in ![](./paper_pic/Unsafety-Code.jpg)
-
-
-View the shell script in `/root/rustmap/unsafety-analysis-for-rust/test-inputs/Rosetta-code-catgorization.sh`
-
-
-
-###  8.0.1. Bzip2 unsafety categorization
-```bash
-
-# bzip2-c2rust
-cargo run --release --bin unsafe-counter -- ../laertes/test-inputs/bzip2-c2rust/rust/c2rust-lib.rs 
-
-# bzip2-crusts
-cargo run --release --bin unsafe-counter -- ../laertes/test-inputs/bzip2-crust/rust/lib.rs 
-
-# bzip2-laertes
-cargo run --release --bin unsafe-counter -- ../laertes/test-inputs/bzip2-laertes/rust/c2rust-lib.rs 
-
-# manual categorization for bzip2-rustmap
-```
-
-
-
-# 9. Code Rewrite Pattern Samples
-
-## 9.1. Global Variable Lazy Static
-We have demonstrated the origianl C code and its Rust rewrite in the directory `code_patterns/global_variables_lazy_static`
-
-## 9.2. Pointer Aliasing without Endiness Concern 
-See the code under `/root/rustmap-clone/code_patterns/pointer_aliasing/raw_pointer_rewrite` to illustrate both pointer aliasing without endiness concern and with endiness concern
-
-
-## 9.3. Pointer Aliasing with Endiness Concern 
-See the code under `/root/rustmap-clone/code_patterns/pointer_aliasing/endianness_concern` to illustrate both pointer aliasing without endiness concern and with endiness concern
-The Rust code above addresses the endianness concern in the C code. Here is a detailed explanation of how the C and Rust codes implement this functionality:
-
-To view the code in details in the folder `/root/rustmap-clone/code_patterns/pointer_aliasing/endianness_concern`
-
-### 9.3.1. C Code Implementation:
-
-In the C code, data is manipulated directly using memory pointers. The specific steps are as follows:
-
-1. **Define Structures and Types**:
-    ```c
-    typedef unsigned char UChar;
-    typedef unsigned int UInt32;
-    typedef int Int32;
-
-    typedef struct {
-        UChar* zbits;
-        UInt32* arr2;
-        Int32 nblock;
-    } EState;
-    ```
-
-2. **Set Pointer**:
-    ```c
-    s.zbits = (UChar*) (&((UChar*)s.arr2)[s.nblock]);
-    ```
-    This line performs the following operations:
-    - Casts `s.arr2` to a `UChar` type pointer.
-    - Offsets this pointer by `s.nblock` and gets the address.
-    - Assigns this address to `s.zbits`, making `s.zbits` point to the `nblock`th byte of `s.arr2`.
-
-### 9.3.2. Rust Code Implementation:
-
-The Rust code implements the same logic as the C code but in a safer manner by handling memory and endianness explicitly:
-
-1. **Define Structure and Function**:
-    ```rust
-    pub struct EState { 
-        pub zbits: Vec<u8>,
-        pub arr2: Vec<u32>,
-        pub nblock: i32,
-    }
-
-    fn get_zbits(estate: &mut EState) {
-        let nblock = estate.nblock as usize;
-        let offset = nblock / 4;
-        let remaining_bytes = estate.arr2.len() * 4 - nblock;
-        estate.zbits.clear();
-        estate.zbits.reserve(remaining_bytes);
-
-        for &num in &estate.arr2[offset..] {
-            let bytes = if cfg!(target_endian = "little") {
-                num.to_le_bytes()
-            } else {
-                num.to_be_bytes()
-            };
-
-            let start_index = if estate.zbits.is_empty() { nblock % 4 } else { 0 };
-            estate.zbits.extend_from_slice(&bytes[start_index..]);
-        }
-    }
-    ```
-
-2. **Handle Endianness and Update Array**:
-    ```rust
-    fn update_block_from_zbits(estate: &mut EState) {
-        /* ... */
-    }
-    ```
-
-### 9.3.3. Summary of Differences:
-
-- **C Code**: Directly manipulates memory pointers and offsets, a low-level approach prone to errors but often used in hardware control or high-performance needs.
-- **Rust Code**: Uses safe methods to handle memory and endianness, ensuring correct operation across different endianness systems and avoiding memory safety issues.
-
-The comparison highlights that Rust code is more robust in handling memory safety and cross-platform compatibility.
-
-### 9.3.4. Summary of Differences:
-
-- **C Code**: Directly manipulates memory pointers and offsets, a low-level approach prone to errors but often used in hardware control or high-performance needs.
-- **Rust Code**: Uses safe methods to handle memory and endianness, ensuring correct operation across different endianness systems and avoiding memory safety issues.
-
-The comparison highlights that Rust code is more robust in handling memory safety and cross-platform compatibility.
-
-
-
-
-
-
-
-
-## 9.4. Illustrate Necessity to rewrite Complex Macro and how to rewrite C `switch-case` to Rust `while match`
-In this folder, you can see that the `.c` switch case has a fall-through state. The corresponding `c2rust-decompress.rs` uses complex match blocks to handle this fall-through, while our `rustmap-decompress.rs` uses a relatively simple and clear `while-loop` to handle it.
-
-You can clearly see the code explosion in `decompress.i` and `c2rust-decompress.rs`, so finding the correct way to rewrite it is extremely important.
-
-See the code under `/root/rustmap/code_patterns/complex_switch_fall_through_complex_macros` to illustrate  -->
-
-
-# 7. Macro Handling
+# 9. Macro Handling
 [This section](./README_example.md) provides examples of different types of macro translations, showcasing how various C macros are transformed into more structured and maintainable formats in both C and Rust. These examples illustrate the process of converting numerical macros, complex macros, and unhandled macros, ensuring better readability, type safety, and platform compatibility. By following these references, readers can explore detailed case studies and understand the rationale behind each transformation.
 
 # License

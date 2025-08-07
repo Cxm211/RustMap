@@ -1,0 +1,162 @@
+        -:    0:Source:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_28_root_19_mainGtU.c
+        -:    0:Graph:/root/crown-rust/bzip2_rs_gpt/src/blocksort/scc_29_mainSimpleSort.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:
+        -:    2:#include "../typedef.h"
+        -:    3:// 目的是比较block数组中两个位置（i1和i2）的子序列。这个比较是在BWT（Burrows-Wheeler transform）数据压缩算法中使用的，主要用于排序前缀。函数的具体行为是逐个比较两个子序列的字符，直到找到一个不相等的字符或达到预算限制为止。
+        -:    4:static
+        -:    5:__inline__
+    #####:    6:Bool mainGtU ( UInt32 i1,  // 第一个索引
+        -:    7:               UInt32 i2,  // 第二个索引
+        -:    8:               UChar* block,  // 包含字符的块
+        -:    9:               UInt16* quadrant, // 四分区数组
+        -:   10:               UInt32 nblock,  // 块的大小
+        -:   11:               Int32* budget ) // 预算（可能与循环迭代次数有关
+        -:   12:{
+        -:   13:   Int32 k;
+        -:   14:   UChar c1, c2;
+        -:   15:   UInt16 s1, s2;
+        -:   16:
+        -:   17:   ;
+        -:   18:
+    #####:   19:   c1 = block[i1]; c2 = block[i2];
+    #####:   20:   if (c1 != c2) return (c1 > c2);
+    #####:   21:   i1++; i2++;
+        -:   22:
+    #####:   23:   c1 = block[i1]; c2 = block[i2];
+    #####:   24:   if (c1 != c2) return (c1 > c2);
+    #####:   25:   i1++; i2++;
+        -:   26:
+    #####:   27:   c1 = block[i1]; c2 = block[i2];
+    #####:   28:   if (c1 != c2) return (c1 > c2);
+    #####:   29:   i1++; i2++;
+        -:   30:
+    #####:   31:   c1 = block[i1]; c2 = block[i2];
+    #####:   32:   if (c1 != c2) return (c1 > c2);
+    #####:   33:   i1++; i2++;
+        -:   34:
+    #####:   35:   c1 = block[i1]; c2 = block[i2];
+    #####:   36:   if (c1 != c2) return (c1 > c2);
+    #####:   37:   i1++; i2++;
+        -:   38:
+    #####:   39:   c1 = block[i1]; c2 = block[i2];
+    #####:   40:   if (c1 != c2) return (c1 > c2);
+    #####:   41:   i1++; i2++;
+        -:   42:
+    #####:   43:   c1 = block[i1]; c2 = block[i2];
+    #####:   44:   if (c1 != c2) return (c1 > c2);
+    #####:   45:   i1++; i2++;
+        -:   46:
+    #####:   47:   c1 = block[i1]; c2 = block[i2];
+    #####:   48:   if (c1 != c2) return (c1 > c2);
+    #####:   49:   i1++; i2++;
+        -:   50:
+    #####:   51:   c1 = block[i1]; c2 = block[i2];
+    #####:   52:   if (c1 != c2) return (c1 > c2);
+    #####:   53:   i1++; i2++;
+        -:   54:
+    #####:   55:   c1 = block[i1]; c2 = block[i2];
+    #####:   56:   if (c1 != c2) return (c1 > c2);
+    #####:   57:   i1++; i2++;
+        -:   58:
+    #####:   59:   c1 = block[i1]; c2 = block[i2];
+    #####:   60:   if (c1 != c2) return (c1 > c2);
+    #####:   61:   i1++; i2++;
+        -:   62:
+    #####:   63:   c1 = block[i1]; c2 = block[i2];
+    #####:   64:   if (c1 != c2) return (c1 > c2);
+    #####:   65:   i1++; i2++;
+        -:   66:
+    #####:   67:   k = nblock + 8;
+        -:   68:
+        -:   69:   do {
+        -:   70:
+    #####:   71:      c1 = block[i1]; c2 = block[i2];
+    #####:   72:      if (c1 != c2) return (c1 > c2);
+    #####:   73:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:   74:      if (s1 != s2) return (s1 > s2);
+    #####:   75:      i1++; i2++;
+        -:   76:
+    #####:   77:      c1 = block[i1]; c2 = block[i2];
+    #####:   78:      if (c1 != c2) return (c1 > c2);
+    #####:   79:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:   80:      if (s1 != s2) return (s1 > s2);
+    #####:   81:      i1++; i2++;
+        -:   82:
+    #####:   83:      c1 = block[i1]; c2 = block[i2];
+    #####:   84:      if (c1 != c2) return (c1 > c2);
+    #####:   85:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:   86:      if (s1 != s2) return (s1 > s2);
+    #####:   87:      i1++; i2++;
+        -:   88:
+    #####:   89:      c1 = block[i1]; c2 = block[i2];
+    #####:   90:      if (c1 != c2) return (c1 > c2);
+    #####:   91:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:   92:      if (s1 != s2) return (s1 > s2);
+    #####:   93:      i1++; i2++;
+        -:   94:
+    #####:   95:      c1 = block[i1]; c2 = block[i2];
+    #####:   96:      if (c1 != c2) return (c1 > c2);
+    #####:   97:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:   98:      if (s1 != s2) return (s1 > s2);
+    #####:   99:      i1++; i2++;
+        -:  100:
+    #####:  101:      c1 = block[i1]; c2 = block[i2];
+    #####:  102:      if (c1 != c2) return (c1 > c2);
+    #####:  103:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:  104:      if (s1 != s2) return (s1 > s2);
+    #####:  105:      i1++; i2++;
+        -:  106:
+    #####:  107:      c1 = block[i1]; c2 = block[i2];
+    #####:  108:      if (c1 != c2) return (c1 > c2);
+    #####:  109:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:  110:      if (s1 != s2) return (s1 > s2);
+    #####:  111:      i1++; i2++;
+        -:  112:
+    #####:  113:      c1 = block[i1]; c2 = block[i2];
+    #####:  114:      if (c1 != c2) return (c1 > c2);
+    #####:  115:      s1 = quadrant[i1]; s2 = quadrant[i2];
+    #####:  116:      if (s1 != s2) return (s1 > s2);
+    #####:  117:      i1++; i2++;
+        -:  118:    // 更新索引，如果超出块的大小，则回到块的开头。 
+    #####:  119:      if (i1 >= nblock) i1 -= nblock;
+    #####:  120:      if (i2 >= nblock) i2 -= nblock;
+        -:  121:
+    #####:  122:      k -= 8;
+    #####:  123:      (*budget)--;// 更新预算值
+        -:  124:   }
+    #####:  125:      while (k >= 0);// 当k非负时，继续循环
+        -:  126:
+    #####:  127:   return ((Bool)0);
+        -:  128:}
+        -:  129:
+        -:  130:#include <CUnit/Basic.h>
+        -:  131:
+        -:  132:// 声明函数
+        -:  133:static __inline__ Bool mainGtU ( UInt32, UInt32, UChar*, UInt16*, UInt32, Int32* );
+        -:  134:
+    #####:  135:void test_mainGtU(void) {
+    #####:  136:    UChar block[] = "abracadabra";
+    #####:  137:    UInt16 quadrant[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    #####:  138:    UInt32 nblock = 11;
+    #####:  139:    Int32 budget = 100;
+        -:  140:
+        -:  141:    // 测试两个相同的索引
+    #####:  142:    CU_ASSERT_FALSE(mainGtU(0, 0, block, quadrant, nblock, &budget));
+        -:  143:
+        -:  144:    // 测试具有不同字符的两个索引
+    #####:  145:    CU_ASSERT_TRUE(mainGtU(0, 3, block, quadrant, nblock, &budget));
+        -:  146:
+        -:  147:    // 测试两个索引，其中一个索引会导致越界
+    #####:  148:    CU_ASSERT_FALSE(mainGtU(10, 0, block, quadrant, nblock, &budget));
+    #####:  149:}
+        -:  150:
+        -:  151:// int main() {
+        -:  152://     CU_initialize_registry();
+        -:  153://     CU_add_suite("mainGtU_test", NULL, NULL);
+        -:  154://     CU_add_test(CU_get_suite("mainGtU_test"), "test_mainGtU", test_mainGtU);
+        -:  155://     CU_basic_run_tests();
+        -:  156://     CU_cleanup_registry();
+        -:  157://     return CU_get_error();
+        -:  158:// }
